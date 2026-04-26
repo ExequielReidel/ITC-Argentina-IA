@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { DM_Sans, Nunito } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { Providers } from '@/components/providers'
 import './globals.css'
 
 const dmSans = DM_Sans({ 
@@ -52,8 +53,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${dmSans.variable} ${nunito.variable} bg-background`}>
       <body className="font-sans antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <Providers>
+          {children}
+          {process.env.NODE_ENV === 'production' && <Analytics />}
+        </Providers>
       </body>
     </html>
   )

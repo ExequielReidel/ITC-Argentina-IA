@@ -274,33 +274,33 @@ export const alumnosDemo: Alumno[] = [
   },
 ]
 
-// Clases del curso
+// Clases del curso (datos estáticos - el estado dinámico viene de la BD)
 export const clasesDemo: Clase[] = [
   // Fase 1 - IA Aplicada (15 clases)
-  { id: 1, numero: 1, titulo: 'La IA en tu vida diaria', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'completada', htmlPath: '/clases/Clase_01_IA_En_Tu_Vida.html' },
-  { id: 2, numero: 2, titulo: 'Prompt Engineering: Fundamentos', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'completada', htmlPath: '/clases/Clase_02_Prompt_Engineering.html' },
-  { id: 3, numero: 3, titulo: 'IA para Ventas y Atención al Cliente', categoria: 'ia-aplicada', categoriaLabel: 'Aplicación Comercial', fase: 1, duracion: 90, estado: 'completada', htmlPath: '/clases/Clase_03_IA_Ventas.html' },
-  { id: 4, numero: 4, titulo: 'ChatGPT Avanzado', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'completada', htmlPath: '/clases/Clase_04_ChatGPT_Avanzado.html' },
-  { id: 5, numero: 5, titulo: 'GPTs Personalizados para tu Negocio', categoria: 'estrategia', categoriaLabel: 'Estrategia', fase: 1, duracion: 90, estado: 'completada', htmlPath: '/clases/Clase_05_GPTs_Personalizados.html' },
-  { id: 6, numero: 6, titulo: 'Diseño Gráfico con IA: Canva', categoria: 'diseno-ia', categoriaLabel: 'Diseño con IA', fase: 1, duracion: 90, estado: 'completada', htmlPath: '/clases/Clase_06_Canva_IA.html' },
-  { id: 7, numero: 7, titulo: 'Creación de Imágenes con IA', categoria: 'diseno-ia', categoriaLabel: 'Diseño con IA', fase: 1, duracion: 90, estado: 'completada', htmlPath: '/clases/Clase_07_Imagenes_IA.html' },
-  { id: 8, numero: 8, titulo: 'Video y Audio con IA: CapCut', categoria: 'diseno-ia', categoriaLabel: 'Diseño con IA', fase: 1, duracion: 90, estado: 'en_curso', htmlPath: '/clases/Clase_08_Video_Audio_IA.html' },
-  { id: 9, numero: 9, titulo: 'Análisis de Datos con IA', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_09_Analisis_Datos.html' },
-  { id: 10, numero: 10, titulo: 'Gemini y el Ecosistema Google', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_10_Gemini_Google.html' },
-  { id: 11, numero: 11, titulo: 'Marketing Digital con IA', categoria: 'estrategia', categoriaLabel: 'Estrategia', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_11_Marketing_IA.html' },
-  { id: 12, numero: 12, titulo: 'Productividad Personal con IA', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_12_Productividad_IA.html' },
-  { id: 13, numero: 13, titulo: 'IA para Emprendedores', categoria: 'estrategia', categoriaLabel: 'Estrategia', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_13_IA_Emprendedores.html' },
-  { id: 14, numero: 14, titulo: 'Buyer Persona y Estrategia con IA', categoria: 'estrategia', categoriaLabel: 'Estrategia', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_14_Buyer_Persona.html' },
-  { id: 15, numero: 15, titulo: 'Repaso Fase 1: IA Aplicada', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_15_Repaso_Fase1.html' },
-  
+  { id: 1, numero: 1, titulo: 'La IA en tu vida diaria', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_01_IA_En_Tu_Vida.html' },
+  { id: 2, numero: 2, titulo: 'Prompt Engineering: Fundamentos', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_02_Prompt_Engineering.html' },
+  { id: 3, numero: 3, titulo: 'IA para Ventas y Atención al Cliente', categoria: 'ia-aplicada', categoriaLabel: 'Aplicación Comercial', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_03_IA_Ventas_Atencion_Cliente.html' },
+  { id: 4, numero: 4, titulo: 'Copywriting y Contenido con IA', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_04_Copywriting_Contenido.html' },
+  { id: 5, numero: 5, titulo: 'Diseño Visual e Imágenes con IA', categoria: 'diseno-ia', categoriaLabel: 'Diseño con IA', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_05_Diseno_Visual_Imagenes.html' },
+  { id: 6, numero: 6, titulo: 'Canva: Flyers, Logos y Diseño', categoria: 'diseno-ia', categoriaLabel: 'Diseño con IA', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_06_Canva_Flyers_Logos.html' },
+  { id: 7, numero: 7, titulo: 'Video y Marketing con IA', categoria: 'diseno-ia', categoriaLabel: 'Diseño con IA', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_07_Video_Marketing.html' },
+  { id: 8, numero: 8, titulo: 'Productividad con IA', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_08_Productividad.html' },
+  { id: 9, numero: 9, titulo: 'Análisis de Clientes y Mercado', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_09_Analisis_Clientes_Mercado.html' },
+  { id: 10, numero: 10, titulo: 'Datos, Reportes y Excel con IA', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_10_Datos_Reportes_Excel.html' },
+  { id: 11, numero: 11, titulo: 'GPT Personalizado para tu Negocio', categoria: 'estrategia', categoriaLabel: 'Estrategia', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_11_GPT_Personalizado.html' },
+  { id: 12, numero: 12, titulo: 'Finanzas para PyME con IA', categoria: 'estrategia', categoriaLabel: 'Estrategia', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_12_Finanzas_Pyme.html' },
+  { id: 13, numero: 13, titulo: 'Repaso Fase 1: IA Aplicada', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_13_Repaso_Fase1.html' },
+  { id: 14, numero: 14, titulo: 'Agentes de IA y Futuro del Trabajo', categoria: 'ia-aplicada', categoriaLabel: 'IA Aplicada', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_14_Agentes_IA_Futuro_Trabajo.html' },
+  { id: 15, numero: 15, titulo: 'Mini Proyecto I', categoria: 'proyectos', categoriaLabel: 'Proyectos', fase: 1, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_15_Mini_Proyecto_I.html' },
+
   // Fase 2 - Automatización (7 clases)
-  { id: 16, numero: 16, titulo: 'Introducción a Make (Integromat)', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_16_Intro_Make.html' },
-  { id: 17, numero: 17, titulo: 'APIs: El Menú del Restaurante Digital', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_17_APIs.html' },
-  { id: 18, numero: 18, titulo: 'Escenarios y Módulos en Make', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_18_Escenarios_Make.html' },
+  { id: 16, numero: 16, titulo: 'Introducción a la Automatización', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_16_Introduccion_Automatizacion.html' },
+  { id: 17, numero: 17, titulo: 'Conexiones en Make', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_17_Conexiones_Make.html' },
+  { id: 18, numero: 18, titulo: 'APIs y JSON', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_18_APIs_JSON.html' },
   { id: 19, numero: 19, titulo: 'Automatización de WhatsApp', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_19_Automatizacion_WhatsApp.html' },
-  { id: 20, numero: 20, titulo: 'Agentes de IA y Flujos Avanzados', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_20_Agentes_IA.html' },
-  { id: 21, numero: 21, titulo: 'Proyecto Final: Planificación', categoria: 'proyectos', categoriaLabel: 'Proyectos', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_21_Proyecto_Planificacion.html' },
-  { id: 22, numero: 22, titulo: 'Proyecto Final: Presentación y Cierre', categoria: 'proyectos', categoriaLabel: 'Proyectos', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_22_Proyecto_Presentacion.html' },
+  { id: 20, numero: 20, titulo: 'Integración IA + Make', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_20_Integracion_IA_Make.html' },
+  { id: 21, numero: 21, titulo: 'Filtros y Manejo de Errores', categoria: 'automatizacion', categoriaLabel: 'Automatización', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_21_Filtros_Errores.html' },
+  { id: 22, numero: 22, titulo: 'Proyecto Final', categoria: 'proyectos', categoriaLabel: 'Proyectos', fase: 2, duracion: 90, estado: 'bloqueada', htmlPath: '/clases/Clase_22_Proyecto_Final.html' },
 ]
 
 // Preguntas del examen (30 preguntas)

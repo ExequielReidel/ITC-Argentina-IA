@@ -2,21 +2,22 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
 import { cn } from '@/lib/utils'
 import { LogoITC } from '@/components/logo-itc'
-import { 
-  Home, 
-  BookOpen, 
-  FileText, 
-  BarChart3, 
-  Award, 
+import {
+  Home,
+  BookOpen,
+  FileText,
+  BarChart3,
+  Award,
   Settings,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
-import { alumnoDemo } from '@/lib/data'
 
 interface SidebarProps {
   isCollapsed: boolean
@@ -34,9 +35,15 @@ const menuItems = [
 
 export function AlumnoSidebar({ isCollapsed, onToggle }: SidebarProps) {
   const pathname = usePathname()
-  const progreso = alumnoDemo.progreso
+  const [completadas, setCompletadas] = useState(0)
   const totalClases = 22
-  const porcentaje = Math.round((progreso / totalClases) * 100)
+  const porcentaje = Math.round((completadas / totalClases) * 100)
+
+  useEffect(() => {
+    fetch('/api/clases').then(r => r.json()).then(d => {
+      if (d?.completadas) setCompletadas(d.completadas.length)
+    }).catch(() => {})
+  }, [])
 
   return (
     <aside className={cn(
@@ -91,14 +98,14 @@ export function AlumnoSidebar({ isCollapsed, onToggle }: SidebarProps) {
                 />
               </svg>
               <span className="absolute inset-0 flex items-center justify-center text-xs font-bold">
-                {progreso}
+                {completadas}
               </span>
             </div>
           ) : (
             <div className="w-full space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Tu progreso</span>
-                <span className="font-semibold text-primary">Clase {progreso} / {totalClases}</span>
+                <span className="font-semibold text-primary">Clase {completadas} / {totalClases}</span>
               </div>
               <Progress value={porcentaje} className="h-2" />
               <p className="text-xs text-muted-foreground text-center">{porcentaje}% completado</p>

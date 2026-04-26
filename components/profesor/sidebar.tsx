@@ -2,21 +2,18 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { LogoITC } from '@/components/logo-itc'
-import { 
-  Home, 
-  Users, 
-  BookOpen, 
-  FileText, 
-  BarChart3, 
-  UserPlus,
-  Settings,
+import {
+  Home,
+  Users,
+  BookOpen,
+  FileText,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { profesorDemo, alumnosDemo } from '@/lib/data'
 
 interface SidebarProps {
   isCollapsed: boolean
@@ -28,15 +25,17 @@ const menuItems = [
   { href: '/profesor/alumnos', label: 'Mis Alumnos', icon: Users },
   { href: '/profesor/clases', label: 'Gestión de Clases', icon: BookOpen },
   { href: '/profesor/examenes', label: 'Exámenes', icon: FileText },
-  { href: '/profesor/reportes', label: 'Reportes', icon: BarChart3 },
-  { href: '/profesor/nuevo-alumno', label: 'Agregar Alumno', icon: UserPlus },
-  { href: '/profesor/configuracion', label: 'Configuración', icon: Settings },
 ]
 
 export function ProfesorSidebar({ isCollapsed, onToggle }: SidebarProps) {
   const pathname = usePathname()
-  const profesor = profesorDemo
-  const totalAlumnos = alumnosDemo.length
+  const [totalAlumnos, setTotalAlumnos] = useState<number | null>(null)
+
+  useEffect(() => {
+    fetch('/api/alumnos').then(r => r.json()).then(d => {
+      if (Array.isArray(d)) setTotalAlumnos(d.filter((a: any) => a.activo !== false).length)
+    }).catch(() => {})
+  }, [])
 
   return (
     <aside className={cn(
@@ -63,13 +62,13 @@ export function ProfesorSidebar({ isCollapsed, onToggle }: SidebarProps) {
       )}>
         {isCollapsed ? (
           <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold">
-            {totalAlumnos}
+            {totalAlumnos ?? '—'}
           </div>
         ) : (
           <div className="space-y-1">
-            <p className="text-sm text-muted-foreground">Alumnos a cargo</p>
-            <p className="text-2xl font-bold text-accent">{totalAlumnos}</p>
-            <p className="text-xs text-muted-foreground">{profesor.sede}</p>
+            <p className="text-sm text-muted-foreground">Alumnos activos</p>
+            <p className="text-2xl font-bold text-accent">{totalAlumnos ?? '—'}</p>
+            <p className="text-xs text-muted-foreground">ITC Argentina 2026</p>
           </div>
         )}
       </div>
