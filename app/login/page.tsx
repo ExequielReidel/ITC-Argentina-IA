@@ -82,9 +82,11 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <div className="text-blue-200 text-sm" ref="https://www.itcarg.com">
-            <p>Informatic Training Center</p>
-            <p>www.itcarg.com</p>
+          <div className="text-blue-200 text-sm">
+            <a href="https://www.itcarg.com">
+              <p>Informatic Training Center</p>
+              <p>www.itcarg.com</p>
+            </a>
           </div>
         </div>
         <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
