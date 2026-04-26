@@ -1,0 +1,187 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ITC Argentina - Colores principales */
+  --background: oklch(0.984 0.003 247.858); /* slate-50 #F8FAFC */
+  --foreground: oklch(0.208 0.042 265.755); /* slate-900 #1E293B */
+  
+  --card: oklch(1 0 0); /* white */
+  --card-foreground: oklch(0.208 0.042 265.755); /* slate-900 */
+  
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.208 0.042 265.755);
+  
+  /* Azul oscuro ITC #1E3A8A */
+  --primary: oklch(0.424 0.149 258.029);
+  --primary-foreground: oklch(1 0 0);
+  
+  /* Azul medio ITC #1D4ED8 */
+  --secondary: oklch(0.496 0.174 259.065);
+  --secondary-foreground: oklch(1 0 0);
+  
+  --muted: oklch(0.968 0.007 247.896); /* slate-100 */
+  --muted-foreground: oklch(0.554 0.046 257.417); /* slate-500 #64748B */
+  
+  /* Indigo ITC #4338CA */
+  --accent: oklch(0.457 0.194 277.366);
+  --accent-foreground: oklch(1 0 0);
+  
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  
+  --border: oklch(0.929 0.013 255.508); /* slate-200 */
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.496 0.174 259.065); /* blue-700 */
+  
+  /* Colores por módulo */
+  --ia-aplicada: oklch(0.546 0.19 258.338); /* #2563EB azul */
+  --diseno-ia: oklch(0.549 0.232 347.569); /* #DB2777 rosa */
+  --estrategia: oklch(0.541 0.239 293.009); /* #7C3AED violeta */
+  --automatizacion: oklch(0.496 0.251 292.088); /* #9333EA púrpura */
+  --proyectos: oklch(0.596 0.145 163.225); /* #059669 esmeralda */
+  --alertas: oklch(0.666 0.179 58.318); /* #D97706 ámbar */
+  
+  /* Charts */
+  --chart-1: oklch(0.546 0.19 258.338);
+  --chart-2: oklch(0.549 0.232 347.569);
+  --chart-3: oklch(0.541 0.239 293.009);
+  --chart-4: oklch(0.596 0.145 163.225);
+  --chart-5: oklch(0.666 0.179 58.318);
+  
+  --radius: 1rem;
+  
+  /* Sidebar */
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-primary: oklch(0.424 0.149 258.029);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.496 0.174 259.065);
+}
+
+.dark {
+  --background: oklch(0.208 0.042 265.755);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.269 0.042 264.052);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.269 0.042 264.052);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.546 0.19 258.338);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.373 0.13 258.292);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.269 0.042 264.052);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.457 0.194 277.366);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.373 0.034 257.287);
+  --input: oklch(0.373 0.034 257.287);
+  --ring: oklch(0.546 0.19 258.338);
+  --sidebar: oklch(0.269 0.042 264.052);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.546 0.19 258.338);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.373 0.034 257.287);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(0.373 0.034 257.287);
+  --sidebar-ring: oklch(0.546 0.19 258.338);
+}
+
+@theme inline {
+  --font-sans: 'Nunito', 'Nunito Fallback', sans-serif;
+  --font-heading: 'DM Sans', 'DM Sans Fallback', sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Colores de módulos */
+  --color-ia-aplicada: var(--ia-aplicada);
+  --color-diseno-ia: var(--diseno-ia);
+  --color-estrategia: var(--estrategia);
+  --color-automatizacion: var(--automatizacion);
+  --color-proyectos: var(--proyectos);
+  --color-alertas: var(--alertas);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Animaciones ITC */
+@layer utilities {
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+  
+  .shadow-itc {
+    box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.1), 0 8px 10px -6px rgba(30, 58, 138, 0.1);
+  }
+  
+  .shadow-itc-lg {
+    box-shadow: 0 20px 40px -10px rgba(30, 58, 138, 0.15), 0 10px 20px -10px rgba(30, 58, 138, 0.1);
+  }
+  
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .gradient-itc {
+    background: linear-gradient(135deg, #1E3A8A 0%, #4338CA 50%, #1D4ED8 100%);
+  }
+  
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+}
