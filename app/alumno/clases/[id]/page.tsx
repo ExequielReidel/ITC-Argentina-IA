@@ -78,7 +78,7 @@ export default function ClaseViewerPage({ params }: { params: Promise<{ id: stri
   }
 
   return (
-    <div className={cn('bg-background flex flex-col', isFullscreen && 'fixed inset-0 z-50')}>
+    <div className={cn('bg-background flex flex-col', isFullscreen ? 'fixed inset-0 z-50 h-screen' : 'h-[calc(100vh-4rem)]')}>
       {/* Header */}
       <div className="sticky top-0 z-10 bg-card border-b border-border p-4 flex-shrink-0">
         <div className="flex items-center justify-between gap-4">
@@ -115,7 +115,7 @@ export default function ClaseViewerPage({ params }: { params: Promise<{ id: stri
       </div>
 
       {/* Iframe con el HTML de la clase */}
-      <div className={cn('flex-1', isFullscreen ? 'h-[calc(100vh-130px)]' : 'h-[75vh] min-h-[500px]')}>
+      <div className="flex-1 min-h-0">
         {loading ? (
           <div className="w-full h-full flex items-center justify-center bg-muted/30">
             <div className="w-8 h-8 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
