@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 12 · IA para Finanzas de la Pyme | ITC Argentina</title>
+    <meta name="description" content="Clase 12 del curso IA + Automatizaciones de ITC Argentina. Aprendé a controlar gastos, proyectar ventas y armar presupuestos profesionales con IA.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .money-cell { font-family: 'Courier New', monospace; font-weight: 600; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-violet-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 12</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">IA para Finanzas de la Pyme</h1>
+            <p class="text-violet-100 text-lg mb-4 max-w-2xl">Sabés cuánto entra. Pero, ¿sabés cuánto te queda? Control de gastos, proyecciones y flujo de caja con IA.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">ESTRATEGIA</span>
+        </header>
+
+        <section class="bg-violet-50 border-l-8 border-violet-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-violet-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-violet-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener 3 herramientas financieras básicas listas</strong>: clasificador automático de gastos, proyección de ventas a 3 meses y alertas de flujo de caja. Sin ser contador.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-violet-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-violet-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">En la Clase 11 creaste tu <strong>GPT personalizado</strong>: un asistente virtual entrenado con la información de tu negocio, con System Prompt propio, datos cargados, y listo para usar desde el celular.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-violet-600 mt-1"></i>¿Pudiste compartir tu GPT con tu equipo? ¿Qué feedback te dieron?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-violet-600 mt-1"></i>¿Cuántas consultas repetitivas te sacó de encima en la semana?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-violet-50 border border-violet-200 rounded-xl">
+                <p class="text-sm text-violet-900"><i class="fa-solid fa-lightbulb text-violet-600 mr-2"></i><strong>Tema sensible de hoy:</strong> muchos emprendedores le tienen miedo a las finanzas. "No soy bueno con números", "no entiendo balances". Buena noticia: la IA sí entiende de números. Vos sabés de tu negocio. Juntos hacen el equipo perfecto.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-violet-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-violet-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Por qué la mayoría de las Pymes quiebran por plata, no por ventas?</h3>
+            <p class="text-slate-700 text-lg mb-4">El 60% de las Pymes que cierran lo hacen con ventas sólidas pero <strong>sin control financiero</strong>. Hay plata entrando todos los días y plata saliendo todos los días, pero nadie mira el "delta". Cuando el dueño se da cuenta, ya está sin efectivo para pagar sueldos o proveedores. La IA no te convierte en contador, pero te da la <strong>visibilidad</strong> para reaccionar a tiempo.</p>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">Las finanzas de tu negocio son <strong>como el tablero del auto</strong>. Si solo mirás la velocidad (las ventas), no ves el combustible (flujo de caja), ni el aceite (rentabilidad), ni la temperatura (deudas). Un día te quedás parado en la ruta. La IA te arma ese tablero completo en 30 minutos.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Los 4 indicadores básicos que tenés que mirar sí o sí</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-500 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrow-trend-up text-emerald-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">1. Facturación</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Todo lo que entra en ventas. El número más visible pero no el más importante.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-500 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrow-trend-down text-red-500 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">2. Egresos</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Todo lo que sale: insumos, sueldos, alquiler, servicios, impuestos.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-500 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-coins text-amber-500 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">3. Margen (rentabilidad)</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Facturación − Egresos. Lo que realmente te queda. Puede ser en $ o en %.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-500 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-wave-square text-indigo-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">4. Flujo de caja</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Plata disponible en el tiempo. Podés tener rentabilidad positiva y quedarte sin efectivo.</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">La diferencia crítica: rentabilidad vs. caja</h4>
+            <div class="bg-white border border-slate-200 rounded-xl p-5">
+                <p class="text-slate-700 mb-3"><strong>Caso real:</strong> vendiste $1.000.000 en marzo. Pagaste $700.000 en costos. <strong>Margen: $300.000</strong> (rentabilidad positiva).</p>
+                <p class="text-slate-700 mb-3">PERO: tus clientes te pagan a 60 días. Y tus proveedores cobran al contado. Entonces <strong>tu cuenta bancaria está en rojo</strong> en abril aunque "ganaste $300.000".</p>
+                <p class="text-sm text-violet-800 font-bold"><i class="fa-solid fa-triangle-exclamation text-amber-500 mr-2"></i>La IA te ayuda a prever esos baches antes de que te agarren desprevenido.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-violet-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-violet-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">3 herramientas financieras que vas a tener al terminar</h3>
+            <p class="text-slate-700 mb-6">Caso: <strong>Diego tiene una florería en Rosario ("Flores del Paraná")</strong>. Factura $2.5M por mes pero no sabe cuánto le queda después de gastos. Vamos a armarle el tablero financiero desde cero.</p>
+
+            <!-- PASO 1: CLASIFICADOR DE GASTOS -->
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Clasificador automático de gastos</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Diego tiene una lista desordenada de gastos del mes. Sin categorías. La IA le arma el orden:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como contador de Pymes. Te paso una lista de gastos de mi florería correspondientes al mes de marzo. Clasificalos en 6 categorías: FIJOS (alquiler, sueldos, servicios), INSUMOS (mercadería, flores, envoltorios), COMERCIALES (publicidad, delivery), IMPUESTOS, FINANCIEROS (comisiones, intereses), OTROS.<br><br>
+                    Devolveme una tabla con: fecha | descripción | categoría | monto. Al final, sumá por categoría y decime el % sobre el total.<br><br>
+                    GASTOS:<br>
+                    05/03 Alquiler local: $450.000<br>
+                    05/03 Compra flores proveedor Martinez: $280.000<br>
+                    06/03 Sueldo empleado Marcela: $380.000<br>
+                    07/03 Facebook ads: $35.000<br>
+                    08/03 Luz: $48.000<br>
+                    10/03 Envoltorios mayorista: $62.000<br>
+                    12/03 Monotributo categoría G: $28.000<br>
+                    15/03 Combustible moto delivery: $40.000<br>
+                    18/03 Cajitas personalizadas: $35.000<br>
+                    20/03 Comisión Mercado Pago: $24.500<br>
+                    25/03 Sueldo empleado Ramiro: $380.000<br>
+                    28/03 IIBB provincial: $32.000<br>
+                    [... y 18 gastos más]</p>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Resultado típico:</strong> ChatGPT te devuelve una tabla ordenada y te dice: <em>"Gastos fijos: 58% del total. Insumos: 22%. Impuestos: 8%..."</em>. Diego descubre que el 58% fijo es alto — puede ser señal para revisar.
+                </div>
+            </div>
+
+            <!-- PASO 2: TABLA DE MARGEN POR PRODUCTO -->
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Análisis de margen por producto</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">¿Sabías que el producto que más vendés puede ser el que menos margen te deja? La IA te ayuda a detectarlo:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Te paso los 8 productos principales de mi florería con su precio de venta y costo de insumo. Calculá para cada uno:<br>
+                    1) Margen en pesos (precio − costo)<br>
+                    2) Margen en % (margen / precio × 100)<br>
+                    3) Margen bruto estimado según volumen de venta<br><br>
+                    Ordenalos de mayor a menor MARGEN %.<br>
+                    Al final decime: ¿cuál me conviene PROMOCIONAR más? ¿Cuál debería revisar en precio?<br><br>
+                    PRODUCTOS:<br>
+                    - Ramo clásico rosas (precio $28.000 / costo $11.000 / vendido 45 unid/mes)<br>
+                    - Bouquet mixto (precio $35.000 / costo $18.000 / vendido 28 unid/mes)<br>
+                    - Arreglo fúnebre (precio $65.000 / costo $22.000 / vendido 15 unid/mes)<br>
+                    - Caja de rosas preservadas (precio $45.000 / costo $15.000 / vendido 12 unid/mes)<br>
+                    - Planta con maceta (precio $18.000 / costo $9.500 / vendido 60 unid/mes)<br>
+                    - Ramo cumpleaños (precio $32.000 / costo $14.000 / vendido 40 unid/mes)<br>
+                    - Centro mesa casamiento (precio $85.000 / costo $32.000 / vendido 8 unid/mes)<br>
+                    - Girasoles (precio $22.000 / costo $12.000 / vendido 25 unid/mes)</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">La IA te devuelve la tabla ordenada. Diego descubre que <strong>las rosas preservadas tienen 67% de margen y solo vende 12</strong>. Decisión: promocionar más ese producto en lugar de las plantas que son su caballito de batalla pero con margen bajo.</p>
+            </div>
+
+            <!-- PASO 3: PROYECCIÓN A 3 MESES -->
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Proyección de ventas a 3 meses</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Con los datos de los últimos 6 meses, la IA estima qué puede pasar en los próximos 3:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Tengo la facturación de los últimos 6 meses de mi florería en Rosario. Hacé una proyección realista de los próximos 3 meses considerando:<br>
+                    - Estacionalidad: el 14 de febrero (San Valentín), Día de la Madre (3er domingo de octubre) y Día de los Enamorados son picos.<br>
+                    - El Día del Amigo (20 de julio) genera un pico menor.<br>
+                    - Inflación argentina esperada: 3-4% mensual.<br>
+                    - Tendencia de crecimiento orgánico: 5% año contra año.<br><br>
+                    FACTURACIÓN HISTÓRICA:<br>
+                    Sep 2025: $1.800.000<br>
+                    Oct 2025: $3.100.000 (pico Día de la Madre)<br>
+                    Nov 2025: $2.200.000<br>
+                    Dic 2025: $2.800.000 (navidad)<br>
+                    Ene 2026: $1.700.000 (bajón verano)<br>
+                    Feb 2026: $3.800.000 (pico San Valentín)<br><br>
+                    Proyectá marzo, abril y mayo 2026. Explicá supuestos. Devolveme escenarios: conservador / base / optimista.</p>
+                </div>
+                <div class="bg-violet-50 border border-violet-200 rounded-lg p-3 ml-13 mt-3 text-sm text-violet-900">
+                    <i class="fa-solid fa-circle-info mr-2"></i><strong>Por qué sirve:</strong> con esa proyección Diego puede decidir cuánta mercadería comprar, si le conviene contratar un empleado más para mayo, o si tiene que ajustar gastos en el bajón.
+                </div>
+            </div>
+
+            <!-- PASO 4: ALERTAS DE FLUJO DE CAJA -->
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Mapa de flujo de caja (cash flow)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Acá la IA arma el calendario de ingresos y egresos para detectar "baches":</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Armame un cash flow (flujo de caja) semanal para las próximas 8 semanas de mi florería.<br><br>
+                    <strong>Saldo inicial:</strong> $350.000 en caja.<br><br>
+                    <strong>Ingresos esperados por semana:</strong> $600.000 (promedio de facturación 60% al contado, 40% a 30 días).<br><br>
+                    <strong>Egresos recurrentes:</strong><br>
+                    - Sueldos: $760.000 (quincenal, días 5 y 20)<br>
+                    - Alquiler: $450.000 (día 5)<br>
+                    - Proveedor flores: $350.000 (todos los lunes)<br>
+                    - Servicios: $90.000 (dia 10)<br>
+                    - Impuestos: $60.000 (día 20)<br>
+                    - Otros: $40.000/semana<br><br>
+                    Armame una tabla semana x semana con: saldo inicial, ingresos, egresos, saldo final. Marcá con ⚠ las semanas con saldo negativo o bajo. Sugerí soluciones.</p>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 ml-13 mt-3 text-sm text-amber-900">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i><strong>Lo que descubre Diego:</strong> la semana del 5 del mes, cuando se superpone alquiler + primera quincena de sueldos, queda con saldo negativo. La IA sugiere: mover pago de proveedor 3 días, negociar 7 días más con alquiler, o tener un margen de caja de $200.000 extra.
+                </div>
+            </div>
+
+            <!-- PLANTILLA MAESTRA -->
+            <div class="step-card bg-violet-50 border-2 border-violet-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-violet-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-violet-900">Plantilla maestra: informe financiero mensual</h4>
+                </div>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 font-mono text-sm">
+                    <p>Actuá como mi asistente financiero. Te paso los datos del mes <span class="text-amber-300">[MES]</span> de mi <span class="text-amber-300">[RUBRO]</span>.<br><br>
+                    <strong>Facturación:</strong> $<span class="text-amber-300">XXX</span><br>
+                    <strong>Gastos (lista cruda):</strong> <span class="text-amber-300">[pegar lista]</span><br>
+                    <strong>Productos principales:</strong> <span class="text-amber-300">[lista con precios y costos]</span><br>
+                    <strong>Saldo en caja:</strong> $<span class="text-amber-300">XXX</span><br><br>
+                    Devolveme:<br>
+                    1) Clasificación de gastos por categoría (con %)<br>
+                    2) Top 3 productos por margen<br>
+                    3) Rentabilidad total del mes ($ y %)<br>
+                    4) Alertas financieras: gastos desproporcionados, productos con bajo margen<br>
+                    5) 3 recomendaciones accionables para el próximo mes<br><br>
+                    Formato: reporte ejecutivo de 1 página.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-violet-50 border-y-4 border-violet-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-violet-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-violet-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-violet-900">Armá el tablero financiero de TU negocio</h3>
+                </div>
+            </div>
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Anotá rápido los <strong>gastos del último mes</strong> (pueden ser del celu, del homebanking, aproximados).</li>
+                <li>Usá el <strong>prompt de clasificación</strong> y revisá dónde se te va la plata.</li>
+                <li>Listá tus <strong>5 productos/servicios más vendidos</strong> con precio y costo aproximado.</li>
+                <li>Pedí el <strong>análisis de margen</strong>. Detectá el que más te conviene promocionar.</li>
+                <li>Si te queda tiempo, armá una <strong>mini-proyección de 3 meses</strong>.</li>
+                <li>Guardá todo en tu carpeta <em>"Finanzas [tu negocio]"</em>.</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-violet-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> tomá UNA decisión financiera concreta basada en los números de hoy. Ej: "dejo de promocionar plantas y empiezo a promocionar rosas preservadas porque me dejan 3× más margen".</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés los <strong>4 indicadores básicos</strong>: facturación, egresos, margen, flujo de caja.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Entendés la diferencia clave entre <strong>rentabilidad y caja</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés clasificar <strong>gastos automáticamente</strong> y sacar porcentajes.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Podés analizar el <strong>margen por producto</strong> para decidir qué promocionar.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés una <strong>proyección a 3 meses</strong> con 3 escenarios y alertas de caja.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-violet-50 rounded-xl border-2 border-violet-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-violet-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-violet-900 mb-1">Próxima clase: Repaso y Consolidación de Fase 1</p>
+                        <p class="text-sm text-violet-800">Cerramos 12 clases de IA Aplicada. La próxima vamos a <strong>integrar todo lo aprendido</strong> en una sola jornada de consolidación: repasamos conceptos clave, resolvemos dudas acumuladas y dejamos todo listo para arrancar Fase 2 (Automatizaciones).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> hacé el tablero financiero completo de tu negocio con los datos reales del último mes. Compará la rentabilidad real con la que vos estimabas "de cabeza". Muchos se sorprenden.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Clase sensible: muchos alumnos tienen miedo a las finanzas. Enfoque práctico, sin tecnicismos. Aclarar que esto NO reemplaza a un contador matriculado para impuestos.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 12</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-violet-500 rounded-full" style="width: 54.5%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

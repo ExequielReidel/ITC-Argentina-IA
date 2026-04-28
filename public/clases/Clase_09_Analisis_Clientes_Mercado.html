@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 09 · Análisis de Clientes y Mercado con IA | ITC Argentina</title>
+    <meta name="description" content="Clase 09 del curso IA + Automatizaciones de ITC Argentina. Aprendé a analizar reseñas, espiar competencia, construir buyer persona y hacer un FODA con IA.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .review-card { background: white; border-left: 3px solid #fbbf24; padding: 12px; border-radius: 6px; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-violet-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 09</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Análisis de Clientes y Mercado</h1>
+            <p class="text-violet-100 text-lg mb-4 max-w-2xl">Lo que tu cliente piensa, lo que tu competencia hace, lo que el mercado pide. La IA lo descubre por vos.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">ESTRATEGIA</span>
+        </header>
+
+        <section class="bg-violet-50 border-l-8 border-violet-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-violet-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-violet-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener un análisis estratégico real de tu negocio</strong>: reseñas resumidas con patrones, perfil de tu cliente ideal (buyer persona), análisis de 2 competidores y un FODA inicial.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-violet-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-violet-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">En la Clase 8 ordenaste tu semana con la <strong>agenda IA</strong>, generaste minutas de reuniones, armaste un SOP y aprendiste a redactar emails profesionales en segundos. Tu carpeta "IA al rescate" ya está armada.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-violet-600 mt-1"></i>¿Cuántos minutos te ahorraste con los emails generados por IA esta semana?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-violet-600 mt-1"></i>¿Trajiste las 5-10 reseñas de Google que te pedí?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-violet-50 border border-violet-200 rounded-xl">
+                <p class="text-sm text-violet-900"><i class="fa-solid fa-lightbulb text-violet-600 mr-2"></i><strong>Cambio de chip:</strong> hasta ahora vimos cómo hacer cosas más rápido. Hoy vamos a usar la IA para <strong>tomar mejores decisiones</strong>. La diferencia entre un negocio promedio y uno que crece es la calidad de sus decisiones.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-violet-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-violet-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Por qué es estratégico escuchar al cliente?</h3>
+            <p class="text-slate-700 text-lg mb-4">Cada reseña, cada comentario en redes, cada queja por WhatsApp es <strong>oro de información</strong>. Pero leer 500 reseñas a mano es imposible. La IA hace lo que un equipo de marketing tardaría una semana: detecta patrones, agrupa quejas, identifica fortalezas.</p>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">La IA es <strong>como contratar un consultor de mercado para una tarde</strong>. Le pasás los datos crudos (reseñas, comentarios, info de competencia) y te devuelve insights: "el 60% de las quejas son por demoras de entrega" o "tu competidor tiene 4 estrellas pero pésima atención telefónica". Decisiones reales en minutos, no en meses.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 4 cosas que vamos a investigar hoy</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-500 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-comments text-violet-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">1. ¿Qué dice tu cliente?</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Análisis de reseñas y comentarios. Detección de patrones positivos y negativos.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-500 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-binoculars text-violet-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">2. ¿Qué hace tu competencia?</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Análisis básico de 2-3 competidores: qué ofrecen, en qué fallan, cómo se comunican.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-500 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-user-tag text-violet-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">3. ¿Quién es tu cliente ideal?</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Construcción de tu Buyer Persona: edad, intereses, miedos, motivaciones.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-500 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-chart-pie text-violet-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">4. ¿Dónde estás parado?</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Análisis FODA inicial: Fortalezas, Oportunidades, Debilidades, Amenazas.</p>
+                </div>
+            </div>
+
+            <div class="bg-violet-50 border border-violet-200 rounded-lg p-4">
+                <p class="text-sm text-violet-900"><i class="fa-solid fa-triangle-exclamation text-violet-600 mr-2"></i><strong>Limitación importante:</strong> la información que la IA tiene de internet puede estar <strong>desactualizada o incompleta</strong>, especialmente sobre negocios chicos del interior. Siempre validá los datos importantes con tus propios ojos antes de tomar decisiones grandes.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-violet-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-violet-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">El consultor virtual de tu negocio</h3>
+            <p class="text-slate-700 mb-6">El caso: <strong>Mariela tiene una pizzería en Bahía Blanca</strong>. Quiere entender qué piensan sus clientes y por qué su competencia (la pizzería de enfrente) tiene más reseñas.</p>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">⭐</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Ejercicio estrella: análisis de 10 reseñas reales</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Mariela sacó 10 reseñas de Google de su pizzería. Las pegó tal cual y le pidió a ChatGPT que encontrara patrones:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como analista de experiencia del cliente. Te paso las últimas 10 reseñas de Google de mi pizzería. Analizalas y devolveme:<br>
+                    1) <strong>3 fortalezas más mencionadas</strong> (con cuántas veces aparece cada una)<br>
+                    2) <strong>3 quejas o puntos de mejora más mencionados</strong> (con cuántas veces aparecen)<br>
+                    3) <strong>1 patrón sorpresivo</strong> que yo no esperaría<br>
+                    4) <strong>3 acciones concretas</strong> que recomendás priorizar la próxima semana<br><br>
+                    RESEÑAS:<br>
+                    [pegar las 10 reseñas, una por línea]</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-3 ml-13 mt-4">
+                    <div class="review-card text-sm">⭐⭐⭐⭐⭐ "La masa es lo mejor del barrio, pero el delivery se demora demasiado..."</div>
+                    <div class="review-card text-sm">⭐⭐⭐⭐ "Atención impecable, sabor excelente. La carta podría ser más variada."</div>
+                    <div class="review-card text-sm">⭐⭐⭐ "Buena pizza pero la última vez la entregaron fría."</div>
+                    <div class="review-card text-sm">⭐⭐⭐⭐⭐ "Las mejores empanadas. Ojalá tuvieran más opciones veganas."</div>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Resultado típico:</strong> ChatGPT te marca que "demoras en delivery" aparece 5 de 10 veces, y "ampliar opciones veganas" aparece 3. <strong>Eso es info accionable que de otra forma se te perdía.</strong>
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Espiar a tu competencia (sin malas intenciones)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Conocer a la competencia es estrategia, no espionaje. Vamos a hacerlo de forma profesional:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como analista competitivo. Necesito un análisis de mi competencia.<br><br>
+                    <strong>Mi negocio:</strong> Pizzería "La Mariella" en Bahía Blanca, foco en pizzas a la piedra clásicas, delivery propio.<br>
+                    <strong>Competencia 1:</strong> "Pizzería del Centro" — pegales un vistazo a su Instagram (@pizzeriadelcentrobb) y reseñas Google. ¿Qué ofrecen? ¿Qué los diferencia? ¿En qué les va bien y en qué fallan según los comentarios?<br>
+                    <strong>Competencia 2:</strong> "Don Carlo Pizza" — mismo análisis.<br><br>
+                    Devolveme una tabla comparativa con: precios aprox, productos destacados, fortalezas, debilidades, oportunidades para diferenciarme.</p>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-circle-info mr-2"></i><strong>Realidad:</strong> ChatGPT no siempre tiene datos en vivo de cuentas específicas. Para datos actuales, usá <strong>Gemini</strong> (que sí busca en tiempo real) o pedile a ChatGPT que arme el análisis con la info que VOS le pegues (capturas de menús, reseñas, posts).
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Construir tu Buyer Persona</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Un Buyer Persona es <strong>una "ficha imaginaria" de tu cliente ideal</strong>. Le ponés nombre, edad, vida diaria, miedos, motivaciones. Te ayuda a saber qué decir y dónde decirlo.</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como estratega de marketing. Construime el perfil completo de mi cliente ideal (Buyer Persona) para mi pizzería en Bahía Blanca, basándote en este contexto:<br><br>
+                    - 70% de mis ventas son delivery los viernes y sábados a la noche<br>
+                    - Ticket promedio: 1 pizza grande + 1 bebida<br>
+                    - Reseñas más comunes: "ideal para una noche en familia"<br>
+                    - Los pedidos vienen mayormente de barrios residenciales<br><br>
+                    Devolveme:<br>
+                    1) Nombre ficticio + foto descriptiva (edad, género, profesión)<br>
+                    2) Situación familiar y rutina semanal<br>
+                    3) Sus 3 motivaciones principales para pedir delivery<br>
+                    4) Sus 3 miedos o frenos al elegir una pizzería<br>
+                    5) En qué redes/canales lo encuentro<br>
+                    6) Cómo conviene hablarle (tono, palabras clave)</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">El resultado: una ficha tipo "Carlos, 38, gerente, casado con 2 hijos, busca cenar tranquilo el viernes sin cocinar...". Imprimila y pegala en la pared. Cada decisión que tomes se tiene que pensar para Carlos.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">FODA asistido por IA</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El FODA es la herramienta clásica de planificación estratégica. La IA te lo arma en 1 minuto:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como consultor estratégico para Pymes. Hacé un FODA para mi pizzería con esta info:<br><br>
+                    <strong>Internas:</strong> 8 años en el barrio, masa con receta familiar, 3 empleados fijos, no tengo redes activas, delivery propio (1 moto).<br>
+                    <strong>Externas:</strong> 2 pizzerías nuevas abiertas en 6 meses, suba de precios de harina 40% anual, crecimiento del delivery por apps (PedidosYa).<br><br>
+                    Devolveme un FODA en tabla 2x2 (Fortalezas, Debilidades, Oportunidades, Amenazas), con 3-4 puntos en cada cuadrante. Al final agregá 3 acciones prioritarias para los próximos 90 días.</p>
+                </div>
+            </div>
+
+            <div class="step-card bg-violet-50 border-2 border-violet-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-violet-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-violet-900">Tu "informe estratégico" en 1 documento</h4>
+                </div>
+                <p class="text-slate-700 mb-3">Después de hacer los 4 análisis, pedile a ChatGPT que los <strong>integre en un documento único</strong>:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 font-mono text-sm">
+                    <p>Tomá los 4 análisis que hicimos (reseñas, competencia, buyer persona, FODA) y armá un INFORME ESTRATÉGICO de 1 página, con:<br>
+                    - Resumen ejecutivo (3 líneas)<br>
+                    - 5 hallazgos más importantes<br>
+                    - 3 prioridades para los próximos 90 días<br>
+                    - 3 métricas para medir si funcionó</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-violet-50 border-y-4 border-violet-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-violet-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-violet-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-violet-900">Hacé el análisis con TUS reseñas reales</h3>
+                </div>
+            </div>
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Sacá las <strong>5-10 reseñas reales</strong> que trajiste (Google Maps, Instagram, lo que sea).</li>
+                <li>Pegalas en ChatGPT usando el <strong>prompt de análisis de reseñas</strong>.</li>
+                <li>Leé el resultado. Si te llama la atención algo, pedí más detalle.</li>
+                <li>Construí tu <strong>Buyer Persona</strong> con los datos reales de tu negocio.</li>
+                <li>Si te quedan minutos, pedí el <strong>FODA</strong>.</li>
+                <li>Guardá todo en una carpeta <em>"Estrategia [tu negocio]"</em>.</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-violet-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> elegí UNA acción del FODA o del análisis de reseñas y comprometete a ejecutarla esta semana. Ej: "responder todas las reseñas pendientes". La estrategia sin acción es decoración.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés <strong>analizar reseñas en bulk</strong> y extraer patrones reales.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés un método para <strong>analizar competencia</strong> sin necesidad de espiar.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Construiste tu <strong>Buyer Persona</strong> con datos propios.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Hiciste tu primer <strong>FODA con IA</strong> y tenés acciones priorizadas.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés que <strong>los datos de IA tienen límites</strong> y que conviene validarlos con tu propia experiencia.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-violet-50 rounded-xl border-2 border-violet-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-violet-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-violet-900 mb-1">Próxima clase: IA para Datos y Reportes (Excel + IA)</p>
+                        <p class="text-sm text-violet-800">Pasamos de analizar texto a <strong>analizar números</strong>. Vamos a meter Excel y planillas en ChatGPT y hacerle preguntas en lenguaje natural. <strong>Traé un Excel real de ventas</strong> (o pedile prestado a alguien). Si no tenés, vas a usar uno de ejemplo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> ejecutá la acción que elegiste del FODA. Tomá nota del resultado. La próxima clase compartimos cómo te fue.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Ejercicio estrella: pegar 10 reseñas reales de Google de su negocio y pedirle a la IA que encuentre patrones y puntos de mejora.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 09</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-violet-500 rounded-full" style="width: 41%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

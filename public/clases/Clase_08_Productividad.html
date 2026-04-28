@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 08 · IA para Gestión del Tiempo y Productividad | ITC Argentina</title>
+    <meta name="description" content="Clase 08 del curso IA + Automatizaciones de ITC Argentina. Aprendé a planificar tu agenda, generar minutas, checklists y emails profesionales con IA.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-indigo-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 08</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">IA para Gestión del Tiempo y Productividad</h1>
+            <p class="text-indigo-100 text-lg mb-4 max-w-2xl">Recuperá 10 horas semanales. Agendas, minutas, checklists y emails redactados en segundos.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRODUCTIVIDAD</span>
+        </header>
+
+        <section class="bg-indigo-50 border-l-8 border-indigo-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener 4 plantillas de productividad listas</strong>: agenda semanal automatizada, minutas de reunión, checklists/SOPs y emails profesionales. Todo recuperable en menos de 1 minuto cuando lo necesites.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-indigo-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-indigo-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">Cerramos el bloque visual con la <strong>Clase 7 de Video Marketing</strong>: produjiste tu primer Reel con CapCut, voz IA, subtítulos automáticos y workflow completo.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-indigo-600 mt-1"></i>¿Publicaste los 2 Reels de tarea? ¿Qué reacciones tuviste?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-indigo-600 mt-1"></i>¿Cuánto tiempo te llevó hacerlos vs. lo que imaginabas?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-xl">
+                <p class="text-sm text-indigo-900"><i class="fa-solid fa-lightbulb text-indigo-600 mr-2"></i><strong>Cambiamos de bloque.</strong> Hasta ahora hablamos de <em>cara visible</em> de tu negocio (atención, ventas, contenido). Hoy entramos a <strong>la trastienda</strong>: tareas administrativas que te comen el día. Si sos empleado o profesional, esta clase te va a cambiar la semana.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-indigo-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Por qué pierdo tanto tiempo en cosas chicas?</h3>
+            <p class="text-slate-700 text-lg mb-4">Estudios recientes muestran que un trabajador promedio invierte <strong>2-3 horas diarias en tareas repetitivas y de baja jerarquía</strong>: organizar agenda, redactar emails, tomar nota de reuniones, armar listas. La IA las hace en segundos. El tiempo que recuperás se va a las tareas que de verdad importan.</p>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">La IA es como <strong>tener un asistente personal a sueldo cero</strong>. Le delegás todo lo que no requiere tu criterio único: redactar el mail, ordenar la agenda, resumir esa reunión de 1 hora a 5 puntos. Vos te dedicás a lo que SÍ requiere tu cabeza.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 4 áreas que vamos a delegar</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-500 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-calendar-week text-indigo-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">1. Planificación de agenda</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Distribuir tareas en bloques de tiempo. La IA prioriza, agrupa similares y respeta tu energía.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-500 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-file-lines text-indigo-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">2. Minutas de reuniones</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Pasás un audio o tus notas desordenadas, te devuelve resumen claro con responsables y plazos.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-500 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-list-check text-indigo-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">3. Checklists / SOPs</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Procedimientos paso a paso para que tu equipo replique tareas sin necesitar tu supervisión.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-500 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-envelope text-indigo-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">4. Emails profesionales</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Mails de seguimiento, respuestas formales, propuestas comerciales en el tono justo.</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 2 herramientas estrella de productividad</h4>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white rounded-xl border-l-4 border-indigo-600 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-n text-slate-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Notion AI</h5>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">Editor de documentos / wiki personal con IA integrada. Genera, resume, traduce y reescribe sin salir del documento.</p>
+                    <p class="text-xs text-slate-500"><strong>Gratuito</strong> con límite de IA mensual. Plan Plus desde USD 8/mes.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-indigo-600 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-brands fa-google text-blue-500 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Google Workspace + Gemini</h5>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">Si ya usás Gmail, Docs, Sheets y Calendar, Gemini se integra para redactar, resumir y responder dentro de cada herramienta.</p>
+                    <p class="text-xs text-slate-500"><strong>Gratuito</strong> en versión básica con cuenta Google.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-indigo-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">4 plantillas que te van a salvar la semana</h3>
+            <p class="text-slate-700 mb-6">Vamos a generar las 4 plantillas con casos reales. Copiá los prompts en ChatGPT y guardá las respuestas como modelo personal.</p>
+
+            <div class="step-card bg-white border-l-8 border-indigo-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Agenda semanal con bloques de foco</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El caso: <strong>Andrea es contadora independiente en Salta</strong>. Trabaja 8 horas, atiende clientes, cierra balances, lleva monotributos. Suele terminar el día sintiendo que "no avanzó nada".</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como coach de productividad. Soy contadora independiente. Mis tareas semanales son:<br>
+                    - Atender 5 clientes presenciales (1 hora cada uno)<br>
+                    - Cerrar 3 balances mensuales<br>
+                    - Responder 30+ emails<br>
+                    - Cargar IVA de 8 monotributistas<br>
+                    - 2 reuniones nuevas con potenciales clientes<br><br>
+                    Trabajo de lunes a viernes, 9 a 17 hs. Tengo más energía a la mañana, después del café. Después de las 14 hs me cuesta concentrarme en tareas analíticas.<br><br>
+                    Armame una agenda semanal en formato tabla (días x bloques de 2 horas), agrupando tareas similares y priorizando las analíticas en la mañana. Dejá un bloque de "imprevistos" cada día.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">ChatGPT te devuelve una tabla impecable. Si querés, podés pedirle: <em>"convertilo en eventos para Google Calendar con horarios"</em>.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Minutas de reunión a partir de notas desordenadas</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El caso: salís de una reunión con 5 personas y tenés 2 carillas de garabatos. Convertilas en un acta profesional:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como asistente ejecutivo. Te paso mis notas crudas de una reunión. Convertilas en un acta profesional con:<br>
+                    1) Asistentes y fecha<br>
+                    2) Temas tratados (numerados)<br>
+                    3) Decisiones tomadas<br>
+                    4) Tabla de tareas: responsable + qué + plazo<br>
+                    5) Próxima reunión (si se acordó)<br><br>
+                    NOTAS:<br>
+                    Reunión 12/3, vinieron Pablo, Marcela, Juan, Luis, yo. Hablamos local nuevo Belgrano. Pablo dijo presupuesto de obra 4M. Marcela hace planos para el 25. Juan pide ver permisos antes 30/3. Luis arma cronograma proveedores. Tema 2: ATR app celular, presupuesto cerrado por Marcela, lanza abril. Próxima reunión 26/3 16hs.</p>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Truco premium:</strong> grabá la reunión con el celular (con consentimiento), pasala por una herramienta como Otter.ai (transcribe gratis), y después le mandás la transcripción a ChatGPT con el mismo prompt. Resultado de 1 hora de reunión = acta profesional en 5 minutos.
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Crear un SOP (procedimiento operativo estándar)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El caso: <strong>Federico tiene una panadería con 3 empleados</strong>. Cuando él no está, las tortas no salen iguales. Necesita un manual paso a paso.</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como consultor de operaciones de pymes. Necesito un SOP (Procedimiento Operativo Estándar) para mi panadería. La tarea: "Preparación de torta de chocolate clásica para venta diaria".<br><br>
+                    Quiero un documento claro que cualquier empleado nuevo pueda seguir, con:<br>
+                    - Lista de ingredientes con cantidades<br>
+                    - Lista de utensilios<br>
+                    - Pasos numerados (con tiempos estimados)<br>
+                    - Puntos críticos donde puede fallar (señalados como ⚠)<br>
+                    - Checklist de calidad final (✓)<br>
+                    - Tiempo total estimado<br><br>
+                    Lenguaje sencillo, sin tecnicismos. Que un empleado de su primer día pueda hacerlo bien.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">Lo imprimís, lo ponés en la cocina, y ahora cualquier empleado nuevo arranca produciendo bien desde el día uno. Multiplicalo por todas las tareas críticas de tu negocio.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Email profesional en 30 segundos</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El caso: tenés que mandar un mail a un cliente importante para reagendar una entrega que se complicó. ¿Cómo lo escribís sin sonar mal?</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como redactor profesional. Necesito un email para un cliente importante. Contexto: nuestra entrega prevista para el viernes 14 se demoró por un retraso del proveedor. Podemos entregar recién el lunes 17.<br><br>
+                    El email debe:<br>
+                    1) Asunto claro<br>
+                    2) Reconocer la situación sin excusas largas<br>
+                    3) Ofrecer compensación (10% off en próxima compra)<br>
+                    4) Confirmar la nueva fecha y hora<br>
+                    5) Cerrar agradeciendo la comprensión<br><br>
+                    Tono: profesional pero cálido, no acartonado. Máximo 150 palabras. Firma: Lucas Pereyra, Distribuidora Norte.</p>
+                </div>
+                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-3 ml-13 mt-3 text-sm text-indigo-900">
+                    <i class="fa-solid fa-circle-info mr-2"></i><strong>Bonus:</strong> después de la respuesta, pedile <em>"hacé 2 versiones más: una más formal y otra más cercana"</em>. Te lleva 5 segundos y elegís la que mejor encaje con ese cliente.
+                </div>
+            </div>
+
+            <div class="step-card bg-indigo-50 border-2 border-indigo-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-indigo-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Tu carpeta "IA al rescate"</h4>
+                </div>
+                <p class="text-slate-700 mb-3">Creá hoy una carpeta en Google Drive o Notion llamada <strong>"IA al rescate"</strong>. Adentro, archivos:</p>
+                <ul class="space-y-2 text-slate-700 text-sm">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-folder text-indigo-600 mt-1"></i><strong>📅 Mi agenda semanal:</strong> el prompt + la última versión generada.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-folder text-indigo-600 mt-1"></i><strong>📝 Plantilla minutas:</strong> el prompt para reuniones.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-folder text-indigo-600 mt-1"></i><strong>✅ SOPs:</strong> uno por cada tarea crítica de tu negocio.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-folder text-indigo-600 mt-1"></i><strong>✉ Plantillas de email:</strong> reagendar, agradecer, cobrar, dar la bienvenida.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-indigo-50 border-y-4 border-indigo-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-indigo-900">Ordená tu propia semana</h3>
+                </div>
+            </div>
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Hacé una <strong>lista cruda</strong> en una hoja con las tareas que tenés que hacer la próxima semana (10-15 tareas).</li>
+                <li>Abrí ChatGPT. Usá el prompt de <strong>agenda semanal</strong> con tus datos reales (rubro, horarios, mejor momento del día).</li>
+                <li>Generá tu agenda. Si algo no encaja, pedí ajustes: <em>"sacá el bloque del jueves a la mañana, tengo médico"</em>.</li>
+                <li>Cargá los bloques principales en <strong>Google Calendar</strong>.</li>
+                <li>Identificá <strong>1 tarea crítica de tu negocio</strong> que repetís todos los días y armá un SOP usando el prompt 3.</li>
+                <li>Guardá ambas piezas en tu carpeta <em>"IA al rescate"</em>.</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-indigo-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> compartí el SOP con tu equipo (si tenés). Pediles feedback: ¿algo falta? ¿algo sobra? Usá ese feedback para mejorarlo con IA.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés <strong>4 plantillas de productividad</strong>: agenda, minutas, SOPs, emails.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés qué tareas <strong>conviene delegar a la IA</strong> y cuáles guardar para vos.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés Notion AI y Gemini en Workspace como <strong>complementos</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Armaste tu carpeta <strong>"IA al rescate"</strong> y planificaste tu próxima semana real.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-indigo-50 rounded-xl border-2 border-indigo-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-indigo-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-indigo-900 mb-1">Próxima clase: Análisis de Clientes y Mercado con IA</p>
+                        <p class="text-sm text-indigo-800">Pasamos a un bloque <strong>estratégico</strong>: vamos a usar la IA para analizar reseñas reales, espiar competencia y armar el perfil ideal de tu cliente. Traé 5-10 reseñas de Google de tu negocio (o de uno parecido si recién arrancás).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> esta semana, antes de redactar cualquier email importante, pasalo por ChatGPT primero. Cronometrá cuánto tiempo te ahorraste el viernes. Compartilo en la próxima clase.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Muy valorada por empleados administrativos y profesionales independientes. Traer ejemplos de actas de reunión desorganizadas para ordenarlas en vivo.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 08</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-indigo-500 rounded-full" style="width: 36%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

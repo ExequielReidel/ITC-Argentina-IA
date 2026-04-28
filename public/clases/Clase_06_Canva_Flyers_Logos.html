@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 06 · Diseño Visual con IA II: Canva | ITC Argentina</title>
+    <meta name="description" content="Clase 06 del curso IA + Automatizaciones de ITC Argentina. Aprendé a dominar Canva con IA: logos, flyers, redes sociales y branding consistente.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .canva-mockup {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .canva-header {
+            background: linear-gradient(90deg, #7b2cbf 0%, #ff006e 50%, #ff8500 100%);
+            padding: 6px 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .format-card {
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- 1. HEADER -->
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-pink-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 06</span>
+                <span>•</span>
+                <span>Fase 1 — IA Aplicada</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">
+                Diseño Visual con IA II
+            </h1>
+            <p class="text-pink-100 text-lg mb-4 max-w-2xl">
+                Canva + IA = tu estudio de diseño completo. Flyers, logos, stories y placas para redes, profesionales, en minutos.
+            </p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">
+                DISEÑO CON IA
+            </span>
+        </header>
+
+        <!-- 2. OBJETIVO -->
+        <section class="bg-pink-50 border-l-8 border-pink-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-bullseye text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-pink-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener tu kit visual básico armado en Canva</strong>: logo propio, plantilla de flyer, plantilla de story y plantilla de post, todos con identidad de marca consistente y listos para reusar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TIMELINE -->
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4">
+                <i class="fa-solid fa-clock mr-1"></i> Mapa de la clase
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-pink-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-pink-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <!-- 4. REPASO -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                En la Clase 5 generaste <strong>imágenes desde cero con IA</strong>: aprendiste Ideogram (para placas con texto), Firefly (para fotos de producto), Remove.bg (para quitar fondos) y upscaling (para mejorar fotos viejas). Los 6 ingredientes del prompt visual: sujeto, escena, luz, estilo, toma y formato.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <p class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3"><i class="fa-solid fa-hand mr-1"></i> Mini-ronda rápida</p>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-pink-600 mt-1"></i>¿Generaste las 5 imágenes de tarea? Mostrá 1 en el proyector.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-pink-600 mt-1"></i>¿Creaste tu cuenta gratuita de Canva antes de venir? <em>(Si no, lo hacemos ahora antes de arrancar.)</em></li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-pink-50 border border-pink-200 rounded-xl">
+                <p class="text-sm text-pink-900"><i class="fa-solid fa-lightbulb text-pink-600 mr-2"></i><strong>La Clase 5 te dio imágenes sueltas. Hoy armamos el rompecabezas:</strong> unimos todo eso en una identidad visual con marca propia. Canva es el "pegamento" que conecta las imágenes con tu negocio.</p>
+            </div>
+        </section>
+
+        <!-- 5. TEORÍA -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-pink-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-pink-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Qué es Canva y por qué lo elegimos?</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                <strong>Canva</strong> es una herramienta online de diseño gráfico que funciona desde el navegador o la app del celular. La gran ventaja para una Pyme es que tiene <strong>miles de plantillas listas</strong>, <strong>todas editables</strong>, y ahora incorpora IA nativa para generar imágenes, videos y textos. Tiene versión gratuita muy completa.
+            </p>
+
+            <!-- Analogía didáctica -->
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">Canva es como <strong>una cocina con todos los ingredientes precortados</strong>. En la Clase 5 aprendiste a cocinar desde cero (Firefly, Ideogram). Ahora entrás a una cocina donde ya hay verduras cortadas, carne marinada, salsas preparadas. Vos sólo tenés que armar el plato a tu gusto. Mucho más rápido, con menos experiencia, y el resultado igual sale bueno.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- LAS 3 FUNCIONES DE IA DE CANVA -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 3 funciones de IA que vamos a usar hoy</h4>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div class="step-card bg-white rounded-xl border-l-4 border-pink-500 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-pen-fancy text-pink-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Magic Write</h5>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">Genera textos adentro de tu diseño. Ej: el copy de un flyer, el título de una promo.</p>
+                    <p class="text-xs text-slate-500 italic">Similar a ChatGPT, pero integrado al diseño.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-pink-500 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-wand-magic-sparkles text-pink-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Magic Design</h5>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">Le decís qué querés ("flyer para almuerzo del Día de la Madre") y te arma 4 versiones profesionales en 20 segundos.</p>
+                    <p class="text-xs text-slate-500 italic">Perfecto para cuando no tenés idea por dónde empezar.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-pink-500 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-cloud-sun text-pink-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Dream Lab</h5>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">Generador de imágenes con IA dentro de Canva. Similar a Firefly pero integrado: generás y podés editar en el mismo lugar.</p>
+                    <p class="text-xs text-slate-500 italic">Útil para crear fondos personalizados.</p>
+                </div>
+            </div>
+
+            <!-- ANATOMÍA DE UN NEGOCIO VISUALMENTE CONSISTENTE -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-10">¿Qué es "consistencia visual" y por qué importa?</h4>
+            <p class="text-slate-700 mb-4">
+                Consistencia visual significa que <strong>todas tus publicaciones parezcan de la misma "familia"</strong>: mismos colores, misma tipografía, mismo estilo. Cuando alguien ve un post tuyo, sabe que es tuyo sin leer el nombre. Es lo que tienen Starbucks, Apple, Havanna. Y también lo podés tener vos.
+            </p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3">Los 4 elementos de tu identidad de marca</p>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="flex items-start gap-3">
+                        <div class="bg-pink-100 text-pink-700 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">1</div>
+                        <div>
+                            <p class="font-bold text-slate-800">Paleta de colores</p>
+                            <p class="text-sm text-slate-600">3 a 5 colores que te representen (1 principal + 2-3 acentos).</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-pink-100 text-pink-700 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                        <div>
+                            <p class="font-bold text-slate-800">Tipografías</p>
+                            <p class="text-sm text-slate-600">2 fuentes: una para títulos, otra para texto corrido.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-pink-100 text-pink-700 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">3</div>
+                        <div>
+                            <p class="font-bold text-slate-800">Logo</p>
+                            <p class="text-sm text-slate-600">Tu firma visual. No hace falta que sea perfecto: que sea reconocible.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-pink-100 text-pink-700 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">4</div>
+                        <div>
+                            <p class="font-bold text-slate-800">Estilo de imágenes</p>
+                            <p class="text-sm text-slate-600">¿Fotos realistas? ¿Ilustraciones? ¿Todo en blanco y negro? Elegí uno y mantenelo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMATOS DE EXPORTACIÓN -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-10">Tamaños y formatos que necesitás conocer</h4>
+            <p class="text-slate-700 mb-4">Canva te ofrece plantillas con tamaños predefinidos. Estos son los más usados:</p>
+
+            <div class="grid md:grid-cols-4 gap-3">
+                <div class="format-card bg-gradient-to-br from-pink-100 to-pink-200 text-pink-900">
+                    <i class="fa-brands fa-instagram text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">Post IG</p>
+                    <p class="text-xs">1080 × 1080</p>
+                    <p class="text-xs opacity-75">Cuadrado 1:1</p>
+                </div>
+                <div class="format-card bg-gradient-to-br from-purple-100 to-purple-200 text-purple-900" style="aspect-ratio: 9/16;">
+                    <i class="fa-solid fa-mobile-screen text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">Story / Reel</p>
+                    <p class="text-xs">1080 × 1920</p>
+                    <p class="text-xs opacity-75">Vertical 9:16</p>
+                </div>
+                <div class="format-card bg-gradient-to-br from-blue-100 to-blue-200 text-blue-900" style="aspect-ratio: 16/9;">
+                    <i class="fa-brands fa-facebook text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">Portada FB</p>
+                    <p class="text-xs">1640 × 859</p>
+                    <p class="text-xs opacity-75">Horizontal 16:9</p>
+                </div>
+                <div class="format-card bg-gradient-to-br from-amber-100 to-amber-200 text-amber-900" style="aspect-ratio: 1/1.414;">
+                    <i class="fa-solid fa-file-lines text-2xl mb-2"></i>
+                    <p class="font-bold text-sm">Flyer A4</p>
+                    <p class="text-xs">2480 × 3508</p>
+                    <p class="text-xs opacity-75">Para imprimir</p>
+                </div>
+            </div>
+            <p class="text-sm text-slate-600 mt-3 italic"><i class="fa-solid fa-circle-info mr-1"></i> No te preocupes por los números: en Canva los buscás por nombre ("Publicación Instagram", "Story Instagram") y aparecen con el tamaño correcto automáticamente.</p>
+        </section>
+
+        <!-- 6. PRÁCTICA GUIADA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-pink-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-pink-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Armamos tu kit visual completo</h3>
+            <p class="text-slate-700 mb-6">En los próximos 40 minutos vamos a crear: (1) tu paleta + tipografías, (2) un logo básico con IA, (3) un flyer, (4) una story, y (5) un post de feed. Todo con identidad consistente.</p>
+
+            <!-- PASO 1 -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Configurar tu cuenta y conocer la interfaz</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Entrá a <a href="https://www.canva.com" class="text-pink-600 underline font-semibold">canva.com</a>. Si tenés cuenta de Google, registrate con eso (es lo más rápido).</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>En la pantalla principal vas a ver: buscador arriba, plantillas por categoría en el medio, "Crear un diseño" en la esquina superior derecha.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>La versión gratuita te alcanza perfecto. Canva Pro ($10 USD/mes) desbloquea más plantillas, pero no es necesario para empezar.</li>
+                </ul>
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 ml-13 mt-3 text-sm text-amber-900">
+                    <i class="fa-solid fa-gift text-amber-600 mr-2"></i><strong>Ojo:</strong> si sos docente, estudiante o tenés ONG, Canva te da Pro gratis. Averiguá en <em>canva.com/education</em>.
+                </div>
+            </div>
+
+            <!-- PASO 2 -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Elegir tu paleta de colores y tipografías</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El caso: <strong>Florencia tiene una dietética en Mendoza llamada "Natural MDZ"</strong>. Antes de crear nada, definimos su identidad.</p>
+
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>Usá ChatGPT para que te sugiera una paleta según tu rubro:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs mb-3">
+                    <p>Actuá como diseñador de marca. Tengo una dietética llamada "Natural MDZ" en Mendoza. Mi público es mujeres de 30-55 años preocupadas por la alimentación saludable. Sugeriré 1 paleta de 5 colores (con código hexadecimal de cada uno) y 2 tipografías (una para títulos, otra para textos). El estilo debe transmitir: natural, confiable, cálido, moderno. Explicá brevemente por qué elegís cada color.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>Respuesta tipo (ejemplo):</strong></p>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 ml-13 text-sm">
+                    <div class="grid grid-cols-5 gap-2 mb-3">
+                        <div class="text-center">
+                            <div style="background: #4a6741;" class="w-full h-12 rounded"></div>
+                            <p class="text-xs mt-1 text-slate-700">#4A6741</p>
+                            <p class="text-xs text-slate-500">Verde oliva</p>
+                        </div>
+                        <div class="text-center">
+                            <div style="background: #c4a57b;" class="w-full h-12 rounded"></div>
+                            <p class="text-xs mt-1 text-slate-700">#C4A57B</p>
+                            <p class="text-xs text-slate-500">Beige cálido</p>
+                        </div>
+                        <div class="text-center">
+                            <div style="background: #f4f1ea;" class="w-full h-12 rounded border border-slate-200"></div>
+                            <p class="text-xs mt-1 text-slate-700">#F4F1EA</p>
+                            <p class="text-xs text-slate-500">Crema</p>
+                        </div>
+                        <div class="text-center">
+                            <div style="background: #8b4513;" class="w-full h-12 rounded"></div>
+                            <p class="text-xs mt-1 text-slate-700">#8B4513</p>
+                            <p class="text-xs text-slate-500">Marrón</p>
+                        </div>
+                        <div class="text-center">
+                            <div style="background: #e8a87c;" class="w-full h-12 rounded"></div>
+                            <p class="text-xs mt-1 text-slate-700">#E8A87C</p>
+                            <p class="text-xs text-slate-500">Terracota</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600"><strong>Tipografías:</strong> Títulos → <span style="font-family: Georgia, serif;">Playfair Display</span> (elegante, orgánica) · Texto → Inter (moderna, legible).</p>
+                </div>
+                <div class="bg-pink-50 border border-pink-200 rounded-lg p-3 ml-13 mt-3 text-sm text-pink-900">
+                    <i class="fa-solid fa-lightbulb text-pink-600 mr-2"></i><strong>Anotá esos colores en una hoja.</strong> En Canva vas a cargar esos hexadecimales en todos tus diseños para mantener consistencia.
+                </div>
+            </div>
+
+            <!-- PASO 3 - LOGO CON IA -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Crear un logo básico con Magic Design</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm mb-3">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>En la barra superior de Canva, escribí en el buscador: <strong>"Logo"</strong>. Clickeá "Crear un diseño → Logo".</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Arriba a la izquierda, buscá el ícono <strong>"Magic Studio"</strong> o <strong>"Magic Media"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Dentro, elegí <strong>"Magic Design"</strong>.</li>
+                </ul>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>Prompt para el logo de Natural MDZ:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Logo minimalista para una dietética llamada "Natural MDZ". Estilo orgánico y moderno. Incluir una hoja o elemento natural sutil. Colores: verde oliva, beige, marrón. Tipografía elegante. Sin fondo, fondo transparente.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">Canva te devuelve <strong>varias versiones</strong>. Eligí la que más te guste, abrila para editar y ajustá colores usando los hexadecimales de tu paleta.</p>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i><strong>Importante:</strong> los logos de Canva son un buen punto de partida para Pymes, pero si vas a registrar marca legalmente, te conviene consultar un diseñador para garantizar originalidad.
+                </div>
+            </div>
+
+            <!-- PASO 4 - FLYER CON MAGIC DESIGN -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Crear un flyer para una promo</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Vamos a armar un flyer para promocionar "Semana de almendras en Natural MDZ — 20% off".</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm mb-3">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>En Canva, buscá "Publicación Instagram" (1080×1080).</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Usá <strong>Magic Design</strong> y escribí: <em>"Flyer para dietética, promoción semana de almendras, 20% de descuento, estilo natural y cálido, colores verde oliva y beige"</em>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Canva te devuelve 4 opciones. Eligí una y abrila para editar.</li>
+                </ul>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>Ahora la magia de la personalización:</strong></p>
+                <ul class="ml-13 text-slate-700 space-y-1 text-sm">
+                    <li><i class="fa-solid fa-circle-dot text-pink-600 mr-2"></i>Cambiá los colores del flyer por los tuyos (hexadecimales del Paso 2).</li>
+                    <li><i class="fa-solid fa-circle-dot text-pink-600 mr-2"></i>Reemplazá las tipografías por las tuyas.</li>
+                    <li><i class="fa-solid fa-circle-dot text-pink-600 mr-2"></i>Agregá tu logo (arrastralo desde "Uploads").</li>
+                    <li><i class="fa-solid fa-circle-dot text-pink-600 mr-2"></i>Reemplazá la imagen por una generada con Dream Lab: <em>"plato rústico con almendras naturales, luz cálida, estilo orgánico"</em>.</li>
+                </ul>
+            </div>
+
+            <!-- PASO 5 - STORY -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Adaptar el flyer a Story (9:16)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Una story es vertical, no cuadrada. Ventaja enorme de Canva:</p>
+                <div class="bg-pink-50 border border-pink-200 rounded-lg p-4 ml-13">
+                    <p class="text-sm text-slate-800"><i class="fa-solid fa-wand-magic-sparkles text-pink-600 mr-2"></i>Con tu flyer abierto, hacé clic arriba en <strong>"Cambiar tamaño" (Resize Magic)</strong>. Elegí "Story de Instagram". En 2 segundos, Canva <strong>reorganiza los elementos</strong> al nuevo formato. Te ajustás los detalles y listo.</p>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Tip:</strong> esta función de redimensionar es Pro. En la versión gratuita podés duplicar el diseño y ajustar manualmente, te toma 2 minutos.
+                </div>
+            </div>
+
+            <!-- PASO 6 - POST FEED -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Generar el texto con Magic Write</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Ya tenés las imágenes. Falta el copy (el pie de foto).</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm mb-3">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Dentro de Canva, agregá una caja de texto (T).</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Hacé clic en la caja y buscá la opción <strong>"Magic Write"</strong> (ícono de varita).</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Escribí: <em>"Pie de foto corto para Instagram anunciando 20% off en almendras esta semana, tono cálido, incluí 2 emojis, termina con CTA al WhatsApp"</em>.</li>
+                </ul>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Importante:</strong> aunque Magic Write está adentro de Canva, para textos largos o complejos te conviene ir a ChatGPT y copiar la respuesta. Magic Write es ideal para textos cortos que van dentro de un diseño.
+                </div>
+            </div>
+
+            <!-- PASO 7 - EXPORTAR -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">7</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Exportar correctamente según el uso</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Cuando termines tu diseño, hacé clic en <strong>"Compartir" → "Descargar"</strong>. Canva te ofrece distintos formatos:</p>
+                <div class="overflow-x-auto ml-13">
+                    <table class="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="p-3 text-left font-bold text-slate-700">Formato</th>
+                                <th class="p-3 text-left font-bold text-slate-700">Usalo para</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white text-xs">
+                            <tr class="border-t border-slate-200">
+                                <td class="p-3 font-semibold text-slate-800">JPG</td>
+                                <td class="p-3 text-slate-700">Redes sociales, subir a WhatsApp, la mayoría de usos online.</td>
+                            </tr>
+                            <tr class="border-t border-slate-200 bg-slate-50">
+                                <td class="p-3 font-semibold text-slate-800">PNG</td>
+                                <td class="p-3 text-slate-700">Imágenes con fondo transparente (logos). Peso mayor, mejor calidad.</td>
+                            </tr>
+                            <tr class="border-t border-slate-200">
+                                <td class="p-3 font-semibold text-slate-800">PDF Estándar</td>
+                                <td class="p-3 text-slate-700">Documentos para mandar por mail, ver en pantalla.</td>
+                            </tr>
+                            <tr class="border-t border-slate-200 bg-slate-50">
+                                <td class="p-3 font-semibold text-slate-800">PDF para Impresión</td>
+                                <td class="p-3 text-slate-700">Volantes, tarjetas, afiches que vas a mandar a imprimir en una imprenta.</td>
+                            </tr>
+                            <tr class="border-t border-slate-200">
+                                <td class="p-3 font-semibold text-slate-800">MP4</td>
+                                <td class="p-3 text-slate-700">Videos y reels (si tu diseño tiene animación).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PLANTILLA MAESTRA -->
+            <div class="step-card bg-pink-50 border-2 border-pink-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-pink-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-pink-900">Tu "manual de marca" en 1 página</h4>
+                </div>
+                <p class="text-slate-700 mb-3">Guardá en una nota del celular o en Google Docs esta ficha. Vas a necesitarla <strong>todas las semanas</strong>:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 font-mono text-sm">
+                    <p><strong class="text-pink-300">MANUAL DE MARCA — [Nombre del negocio]</strong><br><br>
+                    <span class="text-amber-300">Colores (hexadecimales):</span><br>
+                    Principal: #<span class="text-amber-300">XXXXXX</span><br>
+                    Secundario: #<span class="text-amber-300">XXXXXX</span><br>
+                    Acento: #<span class="text-amber-300">XXXXXX</span><br>
+                    Fondo: #<span class="text-amber-300">XXXXXX</span><br><br>
+                    <span class="text-amber-300">Tipografías:</span><br>
+                    Títulos: <span class="text-amber-300">[Nombre tipografía]</span><br>
+                    Texto: <span class="text-amber-300">[Nombre tipografía]</span><br><br>
+                    <span class="text-amber-300">Logo:</span> [link a la imagen en Drive / carpeta]<br>
+                    <span class="text-amber-300">Estilo de imágenes:</span> [realista cálido / ilustración / blanco y negro]<br>
+                    <span class="text-amber-300">Tono de voz:</span> [cercano / profesional / humorístico]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. EJERCICIO AUTÓNOMO -->
+        <section class="p-6 md:p-10 bg-pink-50 border-y-4 border-pink-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-rocket text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-pink-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-pink-900">Armá tu propio kit visual</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Con los pasos de la práctica, ahora replicá todo con <strong>tu negocio real</strong>:</p>
+
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li><strong>Definí tu paleta y tipografías.</strong> Usá el prompt de ChatGPT del Paso 2 con los datos de tu rubro. Anotá los hexadecimales.</li>
+                <li><strong>Creá tu logo básico.</strong> Con Magic Design o buscando plantillas en Canva. Si ya tenés logo, subilo a "Uploads".</li>
+                <li><strong>Armá un flyer para una promo real tuya.</strong> Usá tus colores, tu logo, tu texto.</li>
+                <li><strong>Duplicalo como story.</strong> El mismo diseño adaptado a formato vertical.</li>
+                <li><strong>Exportá ambos en JPG</strong> y guardalos en una carpeta "Kit visual [tu negocio]".</li>
+                <li><strong>Llená tu manual de marca</strong> (el del último recuadro de la práctica).</li>
+            </ol>
+
+            <div class="bg-white rounded-xl p-4 border border-pink-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> entrá a "Carpetas" en Canva y creá una carpeta con el nombre de tu negocio. Ahí guardás todos tus diseños. Al mes que viene vas a tener un banco profesional de plantillas reutilizables.</p>
+            </div>
+        </section>
+
+        <!-- 8. CIERRE -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés cuenta en <strong>Canva</strong> y sabés moverte por la interfaz.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Dominás las <strong>3 funciones de IA</strong>: Magic Write (texto), Magic Design (diseño completo) y Dream Lab (imágenes).</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés claros los <strong>4 elementos de tu identidad</strong>: colores, tipografías, logo, estilo de imágenes.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés los <strong>tamaños correctos</strong> para cada red (post, story, portada FB, flyer A4).</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Armaste <strong>tu kit visual básico</strong>: logo, flyer, story y post consistentes.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés tu <strong>manual de marca en 1 página</strong> para reusar siempre.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-pink-50 rounded-xl border-2 border-pink-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-pink-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-pink-900 mb-1">Próxima clase: Video Marketing con IA</p>
+                        <p class="text-sm text-pink-800">Cerramos el bloque de diseño con el formato que más vende hoy: el <strong>video corto</strong>. Vamos a ver CapCut con IA, generar Reels con avatares, subtítulos automáticos y voces en español latino. Traé una idea de video de 30 segundos para tu negocio.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> publicá al menos 3 piezas esta semana usando tu kit visual nuevo. Fijate si la gente empieza a reconocer tu estilo. La consistencia visual es lo que separa a los negocios "de barrio" de los profesionales.</p>
+            </div>
+        </section>
+
+        <!-- 9. NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">
+                    Usar Canva (cuenta gratuita educativa). Verificar que todos los alumnos tengan cuenta creada antes de la clase.
+                </p>
+            </div>
+        </section>
+
+        <!-- 10. FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 06</span>
+                    <span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2">
+                        <div class="h-full bg-pink-500 rounded-full" style="width: 27%"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

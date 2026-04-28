@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 15 · Mini-Proyecto I — IA Aplicada al Negocio Real | ITC Argentina</title>
+    <meta name="description" content="Clase 15 del curso IA + Automatizaciones de ITC Argentina. Cierre de Fase 1: cada alumno presenta una solución con IA aplicada a un problema real de su negocio.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .rubric-cell { padding: 8px; border: 1px solid #d1fae5; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-emerald-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 15</span><span>•</span>
+                <span>Fase 1 — IA Aplicada · CIERRE</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Mini-Proyecto I</h1>
+            <p class="text-emerald-100 text-lg mb-4 max-w-2xl">El cierre de Fase 1. Mostrás un problema real de TU negocio, resuelto con IA. Cada uno con su caso. Cada uno con su victoria.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PROYECTO</span>
+        </header>
+
+        <section class="bg-emerald-50 border-l-8 border-emerald-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener documentado y presentado tu primer caso real de IA aplicada</strong> a un problema concreto de tu negocio o trabajo. Recibís feedback del grupo y del docente. Es el cierre formal de Fase 1.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase (formato proyecto)</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Bienvenida + reglas</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-emerald-800">Preparación final</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>55 min</strong><br><span class="text-emerald-800">Presentaciones</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Cierre Fase 1</span></div>
+            </div>
+        </section>
+
+        <!-- BIENVENIDA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-handshake-angle text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Bienvenida y reglas · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Hoy graduás Fase 1</h3>
+            <p class="text-slate-700 text-lg mb-4">Después de 14 clases, llegamos al cierre de la primera mitad del curso. Esta clase no enseña nada nuevo: <strong>esta clase muestra todo lo que aprendiste</strong>. Es tu momento.</p>
+            <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                <p class="text-sm font-bold text-emerald-900 uppercase tracking-widest mb-3"><i class="fa-solid fa-list-check mr-1"></i> Reglas del Mini-Proyecto</p>
+                <ul class="space-y-2 text-emerald-900 text-sm">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Cada alumno presenta <strong>5 minutos</strong>. Sin excepciones, para que entremos en tiempo.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Después de cada presentación: <strong>1 minuto de feedback grupal</strong> (1 felicitación + 1 sugerencia).</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><strong>No es una competencia.</strong> Es un cierre celebratorio. Aplaudimos a todos.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Si no preparaste tu proyecto, podés usar uno de los <strong>casos de respaldo</strong> que tiene el docente.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ESTRUCTURA DE LA PRESENTACIÓN -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-diagram-project text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Preparación final · 15 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Estructura de tu presentación (5 minutos)</h3>
+            <p class="text-slate-700 mb-6">Si todavía no terminaste de armar tu caso, usá estos 15 minutos para ordenarlo en estos 5 bloques:</p>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">El problema (1 min)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-2">¿Qué te quitaba tiempo, plata o tranquilidad?</p>
+                <ul class="ml-13 text-slate-600 text-xs space-y-1 italic">
+                    <li>Ej: "Respondía 30 mensajes de WhatsApp por día con la misma pregunta sobre precios."</li>
+                    <li>Ej: "Tardaba 2 horas armando el reporte de ventas mensual."</li>
+                    <li>Ej: "No tenía tiempo de hacer contenido en redes y mi negocio estaba estancado."</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">La solución que diseñaste (1.5 min)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-2">¿Qué herramienta usaste? ¿Qué prompt o configuración? ¿Cómo está armado el flujo?</p>
+                <ul class="ml-13 text-slate-600 text-xs space-y-1 italic">
+                    <li>Ej: "Creé un GPT personalizado con mi lista de precios y políticas."</li>
+                    <li>Ej: "Armé un prompt RTF que recibe los datos de ventas y devuelve un reporte."</li>
+                    <li>Ej: "Diseñé una plantilla de Canva + IA para hacer 5 posts en 30 minutos."</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">Demo o pantalla (1.5 min)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-2">Mostrá EN VIVO cómo funciona. Una captura, un video corto, o una demo real desde tu compu.</p>
+                <ul class="ml-13 text-slate-600 text-xs space-y-1 italic">
+                    <li>Compartí la pantalla del proyector y mostrá el ChatGPT o el GPT funcionando.</li>
+                    <li>Si no podés conectarte, llevá capturas en el celular o impresas.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">Resultado obtenido (45 seg)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-2">¿Qué pasó después de implementarlo? Tiempo ahorrado, ventas, calidad mejorada.</p>
+                <ul class="ml-13 text-slate-600 text-xs space-y-1 italic">
+                    <li>"Ahorré 5 horas semanales que antes dedicaba a responder consultas."</li>
+                    <li>"El primer Reel hecho con esta IA tuvo 1.200 vistas, mi promedio era de 200."</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">Cómo lo replicaría otra persona (15 seg)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-2">En una frase: ¿qué consejo le das a un compañero que quiera hacer algo parecido?</p>
+                <ul class="ml-13 text-slate-600 text-xs space-y-1 italic">
+                    <li>"Empezá con un solo caso, no quieras automatizar todo de una."</li>
+                    <li>"Probá el prompt 5 veces y ajustalo hasta que te guste el resultado."</li>
+                </ul>
+            </div>
+
+            <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mt-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-amber-900 mb-1">Consejo del docente para la presentación</p>
+                        <p class="text-sm text-amber-900">No tenés que ser orador profesional. <strong>Mostrá el problema, mostrá la solución, mostrá el resultado.</strong> Los nervios son normales. El grupo te apoya.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESENTACIONES -->
+        <section class="p-6 md:p-10 bg-emerald-50 border-y-4 border-emerald-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-microphone text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Presentaciones · 55 min</h2>
+                    <h3 class="text-2xl font-extrabold text-emerald-900">El gran momento</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-6">Cada alumno pasa al frente. <strong>5 minutos de presentación + 1 minuto de feedback</strong>. Calculen 6 minutos por persona. Para 8-10 alumnos, alcanza con 55 minutos justos.</p>
+
+            <h4 class="font-bold text-emerald-900 mb-3 text-lg">Reglas del feedback grupal</h4>
+            <div class="space-y-3 mb-6">
+                <div class="bg-white rounded-xl p-4 border border-emerald-200">
+                    <p class="text-sm text-slate-700"><i class="fa-solid fa-thumbs-up text-emerald-600 mr-2"></i><strong>1 felicitación concreta:</strong> "Me encantó cómo armaste el GPT con el tono de tu marca". <em>Evitar genéricos como "está bueno".</em></p>
+                </div>
+                <div class="bg-white rounded-xl p-4 border border-emerald-200">
+                    <p class="text-sm text-slate-700"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>1 sugerencia constructiva:</strong> "Quizás podrías probar agregar X". <em>Sin tono de crítica destructiva.</em></p>
+                </div>
+                <div class="bg-white rounded-xl p-4 border border-emerald-200">
+                    <p class="text-sm text-slate-700"><i class="fa-solid fa-clock text-violet-600 mr-2"></i><strong>Respeten el tiempo.</strong> El docente lleva el cronómetro. Es para que todos puedan presentar.</p>
+                </div>
+            </div>
+
+            <h4 class="font-bold text-emerald-900 mb-3 text-lg">Casos de respaldo (si algún alumno no preparó el suyo)</h4>
+            <p class="text-sm text-slate-700 mb-3">El docente puede ofrecer estos casos pre-armados al alumno que llegue sin proyecto:</p>
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="bg-white rounded-xl border-l-4 border-emerald-600 p-4">
+                    <p class="font-bold text-slate-900 text-sm mb-1">Caso A — Generador de respuestas WhatsApp</p>
+                    <p class="text-xs text-slate-600">Para almacén/kiosco/ferretería. Plantilla de prompt + 6 escenarios típicos.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-emerald-600 p-4">
+                    <p class="font-bold text-slate-900 text-sm mb-1">Caso B — Generador de 30 ideas de contenido</p>
+                    <p class="text-xs text-slate-600">Para profesional independiente o emprendedor. Workflow de Clase 4.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-emerald-600 p-4">
+                    <p class="font-bold text-slate-900 text-sm mb-1">Caso C — Reporte mensual de ventas con IA</p>
+                    <p class="text-xs text-slate-600">Para comercio con Excel. Workflow de Clase 10.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-emerald-600 p-4">
+                    <p class="font-bold text-slate-900 text-sm mb-1">Caso D — GPT personalizado de FAQ</p>
+                    <p class="text-xs text-slate-600">Para cualquier rubro con preguntas frecuentes. Workflow de Clase 11.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RÚBRICA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clipboard-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cómo se evalúa</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Rúbrica del Mini-Proyecto I</h3>
+            <p class="text-slate-700 mb-6">El docente evalúa con esta rúbrica. Recordá que <strong>la complejidad técnica no es lo que más pesa</strong>. Lo que se valora es que el caso sea real y aplicable.</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm border border-emerald-200 rounded-xl overflow-hidden">
+                    <thead class="bg-emerald-100">
+                        <tr>
+                            <th class="rubric-cell text-left font-bold text-emerald-900">Criterio</th>
+                            <th class="rubric-cell text-center font-bold text-emerald-900">Peso</th>
+                            <th class="rubric-cell text-left font-bold text-emerald-900">Qué se valora</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-t border-emerald-200">
+                            <td class="rubric-cell font-semibold text-slate-800">Aplicabilidad real</td>
+                            <td class="rubric-cell text-center font-bold text-emerald-700">35%</td>
+                            <td class="rubric-cell text-slate-700">Que sea un problema concreto de tu negocio (no inventado).</td>
+                        </tr>
+                        <tr class="border-t border-emerald-200 bg-emerald-50/30">
+                            <td class="rubric-cell font-semibold text-slate-800">Solución funcionando</td>
+                            <td class="rubric-cell text-center font-bold text-emerald-700">30%</td>
+                            <td class="rubric-cell text-slate-700">Que la demo muestre algo realmente operativo, no una idea.</td>
+                        </tr>
+                        <tr class="border-t border-emerald-200">
+                            <td class="rubric-cell font-semibold text-slate-800">Claridad de presentación</td>
+                            <td class="rubric-cell text-center font-bold text-emerald-700">20%</td>
+                            <td class="rubric-cell text-slate-700">Que se entienda el problema, la solución y el resultado.</td>
+                        </tr>
+                        <tr class="border-t border-emerald-200 bg-emerald-50/30">
+                            <td class="rubric-cell font-semibold text-slate-800">Documentación mínima</td>
+                            <td class="rubric-cell text-center font-bold text-emerald-700">15%</td>
+                            <td class="rubric-cell text-slate-700">Que esté armada de manera que otra persona pueda replicarlo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mt-6">
+                <p class="text-sm text-emerald-900"><i class="fa-solid fa-circle-info text-emerald-600 mr-2"></i><strong>Reconocimiento:</strong> el Mini-Proyecto I representa el <strong>25% de la nota final del curso</strong>. Es una entrega importante, no solo una formalidad.</p>
+            </div>
+        </section>
+
+        <!-- CIERRE FASE 1 -->
+        <section class="p-6 md:p-10 bg-gradient-to-br from-emerald-50 to-emerald-100">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-flag-checkered text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre Fase 1 · 10 min</h2>
+            </div>
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-4">🎉 Terminaste la primera mitad del curso</h3>
+            <p class="text-slate-800 text-lg mb-4"><strong>15 clases. 22 horas y media presenciales. Decenas de prompts guardados, herramientas dominadas, casos resueltos.</strong></p>
+            <p class="text-slate-700 mb-6">Si volvés mentalmente a la Clase 1 cuando no sabías qué era un prompt, y te ves hoy presentando un caso real de IA aplicada a tu negocio, la diferencia es enorme. <strong>Ese eres vos.</strong></p>
+
+            <div class="bg-white rounded-xl p-5 border-2 border-emerald-300 mb-4">
+                <h4 class="font-bold text-emerald-900 mb-3"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i>Lo que conseguiste en Fase 1</h4>
+                <div class="grid md:grid-cols-2 gap-3 text-sm text-slate-700">
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Dominio de prompt engineering (RTF, TAFEC, CoT)</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Workflows de ventas y atención al cliente</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Generación de contenido escalable</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Kit visual completo en Canva</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Producción de videos con IA</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Productividad personal automatizada</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Análisis estratégico con IA</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Manejo de Excel + IA</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>GPT personalizado propio</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Tablero financiero asistido</div>
+                </div>
+            </div>
+
+            <div class="p-5 bg-purple-50 rounded-xl border-2 border-purple-300">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-purple-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-purple-900 mb-1">Próxima clase: Introducción a la Automatización</p>
+                        <p class="text-sm text-purple-800">Arrancamos <strong>Fase 2</strong>. Hasta ahora la IA pensaba, vos ejecutabas. Ahora vamos a hacer que el negocio empiece a trabajar SOLO. Bienvenido al mundo de Make.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> celebrá el avance. Mostrale tu Mini-Proyecto a alguien (familia, socio, amigo). Compartir lo que aprendiste consolida el conocimiento.</p>
+            </div>
+        </section>
+
+        <!-- NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Esta clase requiere preparación previa del alumno (avisar con 2 semanas). El docente titular debe estar en esta clase. Tener casos de respaldo si algún alumno no trae su proyecto.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 15</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-emerald-500 rounded-full" style="width: 68%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

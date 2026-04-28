@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 03 · IA para Ventas y Atención al Cliente | ITC Argentina</title>
+    <meta name="description" content="Clase 03 del curso IA + Automatizaciones de ITC Argentina. Aprendé a usar la IA para responder WhatsApp, manejar reclamos, objeciones y cerrar ventas.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        /* Burbujas estilo WhatsApp */
+        .wa-bubble-client {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px 16px 16px 4px;
+        }
+        .wa-bubble-business {
+            background: #d9fdd3;
+            border-radius: 16px 16px 4px 16px;
+        }
+        .wa-container {
+            background-color: #e5ddd5;
+            background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85));
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- 1. HEADER -->
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-sky-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 03</span>
+                <span>•</span>
+                <span>Fase 1 — IA Aplicada</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">
+                IA para Ventas y Atención al Cliente
+            </h1>
+            <p class="text-sky-100 text-lg mb-4 max-w-2xl">
+                Tu WhatsApp deja de ser un caos. Aprendé a responder rápido, vender mejor y no perder ningún mensaje importante.
+            </p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">
+                APLICACIÓN COMERCIAL
+            </span>
+        </header>
+
+        <!-- 2. OBJETIVO -->
+        <section class="bg-sky-50 border-l-8 border-sky-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-sky-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-bullseye text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-sky-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener un arsenal de plantillas listas para responder WhatsApp</strong>: consultas frecuentes, reclamos, objeciones de precio, seguimiento de clientes y pedido de reseñas. Todo adaptado a tu rubro.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TIMELINE -->
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4">
+                <i class="fa-solid fa-clock mr-1"></i> Mapa de la clase
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-sky-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-sky-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <!-- 4. REPASO -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                En la Clase 2 aprendiste <strong>a construir prompts profesionales</strong>. Te llevaste dos fórmulas: <strong>RTF</strong> (Rol, Tarea, Formato) para lo rápido y <strong>TAFEC</strong> (Tarea, Audiencia, Formato, Estilo, Contexto) para lo preciso. Además, la magia del <em>"pensá paso a paso"</em> y la técnica de <em>dar ejemplos</em>.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <p class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3"><i class="fa-solid fa-hand mr-1"></i> Mini-ronda rápida</p>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-sky-600 mt-1"></i>¿Hiciste los 3 prompts de tarea? ¿Cuál te funcionó mejor?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-sky-600 mt-1"></i>¿Trajiste la consulta real de WhatsApp que te pedí la semana pasada?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-sky-50 border border-sky-200 rounded-xl">
+                <p class="text-sm text-sky-900"><i class="fa-solid fa-lightbulb text-sky-600 mr-2"></i><strong>Hoy bajamos todo a tierra:</strong> vamos a aplicar los prompts a la situación más común del comercio argentino: <strong>el WhatsApp del negocio</strong>. Ese que no para de sonar y que a veces te agarra desprevenido.</p>
+            </div>
+        </section>
+
+        <!-- 5. TEORÍA -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-sky-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-sky-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Por qué la IA te hace vender más (sin ser pesado)</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                En un comercio típico argentino, el WhatsApp concentra el <strong>80% de las consultas</strong>. El problema no es tener mensajes: es <strong>responder a tiempo, con la voz correcta y sin perder la paciencia</strong>. La IA no reemplaza tu trato humano: te da las palabras cuando estás desbordado.
+            </p>
+
+            <!-- Analogía didáctica -->
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">La IA es como <strong>un empleado de atención al cliente que nunca duerme, nunca se enoja y siempre tiene el guión a mano</strong>. Vos le pasás el mensaje que te llegó, él te redacta 3 versiones de respuesta, vos elegís la mejor y la mandás. En 20 segundos. Sin dolor de cabeza.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Los 6 escenarios que vamos a cubrir hoy</h4>
+            <p class="text-slate-700 mb-4">Son las situaciones más comunes del WhatsApp de cualquier comercio. Al final de la clase vas a tener una plantilla para cada una:</p>
+
+            <div class="grid md:grid-cols-2 gap-3 mb-6">
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4 flex items-start gap-3">
+                    <i class="fa-solid fa-comment-dollar text-sky-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-slate-900">1. Mensaje de venta</p>
+                        <p class="text-sm text-slate-600">Ofrecer sin parecer spam.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4 flex items-start gap-3">
+                    <i class="fa-solid fa-circle-question text-sky-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-slate-900">2. Consulta frecuente</p>
+                        <p class="text-sm text-slate-600">"¿Cuánto sale?" "¿Tienen stock?"</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4 flex items-start gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-sky-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-slate-900">3. Reclamo</p>
+                        <p class="text-sm text-slate-600">Cliente enojado, sin echar leña al fuego.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4 flex items-start gap-3">
+                    <i class="fa-solid fa-hand-holding-dollar text-sky-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-slate-900">4. Objeción de precio</p>
+                        <p class="text-sm text-slate-600">"Está caro" sin bajar precio.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4 flex items-start gap-3">
+                    <i class="fa-solid fa-reply text-sky-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-slate-900">5. Seguimiento</p>
+                        <p class="text-sm text-slate-600">El cliente dejó el mensaje en visto.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4 flex items-start gap-3">
+                    <i class="fa-solid fa-star text-sky-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-slate-900">6. Pedido de reseña</p>
+                        <p class="text-sm text-slate-600">Que el cliente te deje 5 estrellas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 3 reglas de oro del WhatsApp comercial</h4>
+            <div class="space-y-3">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0">1</div>
+                    <div>
+                        <p class="font-bold text-slate-900">Responder rápido, aunque sea para avisar que vas a responder.</p>
+                        <p class="text-sm text-slate-600">Un <em>"¡Hola! Ahora te contesto en detalle"</em> en 5 minutos vale más que la respuesta perfecta 3 horas después.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                    <div>
+                        <p class="font-bold text-slate-900">Cerrar cada mensaje con una pregunta o una acción.</p>
+                        <p class="text-sm text-slate-600">No dejes el balón en el aire. Terminá con <em>"¿Te reservo uno?"</em> o <em>"¿Pasás hoy o mañana?"</em>. La conversación tiene que avanzar.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0">3</div>
+                    <div>
+                        <p class="font-bold text-slate-900">Hablar como hablás vos, no como "empresa".</p>
+                        <p class="text-sm text-slate-600">Nada de <em>"Estimado cliente, nos complace informarle"</em>. El WhatsApp es cercano: <em>"¡Hola Marcela! Tenemos eso, sí"</em> vende mucho más.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PRÁCTICA GUIADA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-sky-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-sky-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Resolvamos los 6 escenarios juntos</h3>
+            <p class="text-slate-700 mb-6">En cada paso vas a ver: <strong>el mensaje del cliente</strong>, <strong>el prompt que le pasás a ChatGPT</strong> y <strong>la respuesta tipo que te devuelve</strong>. Copialos en tu ChatGPT y adaptalos a tu rubro.</p>
+
+            <!-- PASO 1 — VENTA -->
+            <div class="step-card bg-white border-l-8 border-sky-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">Venta sin ser invasivo — Peluquería</h4>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mb-3">
+                    <div class="wa-bubble-client p-3 max-w-sm text-sm shadow-sm mb-2">
+                        <p class="text-xs text-sky-700 font-bold mb-1">Vos querés mandar</p>
+                        Una oferta de descuento en mechas, a las clientas que no vinieron en 2 meses.
+                    </div>
+                </div>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como copywriter de WhatsApp para una peluquería de barrio. Escribime un mensaje breve (máximo 60 palabras) para enviarle a clientas que no vienen hace 2 meses. Ofrecele 15% off en coloración durante esta semana. Tono cálido, cercano, como si le escribiera una amiga. Terminá con una pregunta concreta para que responda. Usá 1 o 2 emojis suaves.</p>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mt-3">
+                    <div class="wa-bubble-business p-3 max-w-sm text-sm ml-auto shadow-sm">
+                        <p class="text-xs text-emerald-800 font-bold mb-1">Respuesta tipo de la IA</p>
+                        ¡Hola Rocío! 💕 Te extrañamos por acá. Esta semana tengo un 15% off en color para vos, así volvés a brillar. ¿Te armo un turno para el jueves o preferís el sábado?
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 2 — CONSULTA FRECUENTE -->
+            <div class="step-card bg-white border-l-8 border-sky-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">Consulta frecuente — Ferretería</h4>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mb-3">
+                    <div class="wa-bubble-client p-3 max-w-sm text-sm shadow-sm">
+                        <p class="text-xs text-sky-700 font-bold mb-1">Cliente escribe</p>
+                        "Hola, tenés taladro percutor? Cuánto sale?"
+                    </div>
+                </div>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como vendedor de una ferretería. Un cliente me pregunta por WhatsApp si tengo taladro percutor y cuánto sale. Tengo el modelo Black+Decker HD455 a $68.000 y el Bosch GSB 550 a $95.000. Redactá una respuesta breve y clara que: (1) confirme stock, (2) dé los dos precios con una diferencia clave de cada uno, y (3) cierre con una pregunta para que compre. Tono amable, sin palabras rebuscadas.</p>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mt-3">
+                    <div class="wa-bubble-business p-3 max-w-sm text-sm ml-auto shadow-sm">
+                        <p class="text-xs text-emerald-800 font-bold mb-1">Respuesta tipo de la IA</p>
+                        ¡Hola! Sí, tengo dos opciones: <br>🔹 Black+Decker HD455 — $68.000 (ideal para uso hogareño, bien rendidor)<br>🔹 Bosch GSB 550 — $95.000 (más potente, para laburo intenso)<br>¿Para qué lo vas a usar? Así te recomiendo el que mejor te sirve.
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 3 — RECLAMO -->
+            <div class="step-card bg-white border-l-8 border-sky-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">Reclamo sin echar leña — Taller mecánico</h4>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mb-3">
+                    <div class="wa-bubble-client p-3 max-w-sm text-sm shadow-sm">
+                        <p class="text-xs text-sky-700 font-bold mb-1">Cliente escribe (enojado)</p>
+                        "Me cambiaron el embrague la semana pasada y anda peor que antes!!! Esto es una vergüenza."
+                    </div>
+                </div>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como mecánico dueño de un taller, con experiencia en atención al cliente. Recibí este mensaje de un cliente enojado: "Me cambiaron el embrague la semana pasada y anda peor que antes, esto es una vergüenza". Redactá una respuesta que: (1) no se ponga a la defensiva, (2) reconozca el problema sin aceptar culpa ciega, (3) ofrezca una revisión sin cargo lo antes posible, (4) cierre coordinando fecha. Tono tranquilo, profesional, humano. Máximo 80 palabras.</p>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mt-3">
+                    <div class="wa-bubble-business p-3 max-w-sm text-sm ml-auto shadow-sm">
+                        <p class="text-xs text-emerald-800 font-bold mb-1">Respuesta tipo de la IA</p>
+                        Hola Ramón, lamento lo que me contás. Si el auto no quedó bien, lo revisamos sin ningún cargo, es lo que corresponde. ¿Podés acercarlo mañana a primera hora? Lo reviso yo mismo y si hay algo que ajustar, lo resolvemos en el día. Contame cuándo podés pasar.
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 4 — OBJECIÓN DE PRECIO -->
+            <div class="step-card bg-white border-l-8 border-sky-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">Objeción "está caro" — Gomería</h4>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mb-3">
+                    <div class="wa-bubble-client p-3 max-w-sm text-sm shadow-sm">
+                        <p class="text-xs text-sky-700 font-bold mb-1">Cliente escribe</p>
+                        "Uf, está caro. En la otra cuadra me sale $15.000 menos."
+                    </div>
+                </div>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como dueño de una gomería con 20 años en el barrio. Un cliente me dice que otra gomería le hace el servicio $15.000 más barato. Redactá una respuesta para WhatsApp que: (1) no hable mal de la competencia, (2) explique en qué se diferencia mi servicio (marca de la cubierta, alineación incluida, garantía), (3) le deje la decisión a él, sin presionar. Tono seguro pero respetuoso. 60 palabras.</p>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mt-3">
+                    <div class="wa-bubble-business p-3 max-w-sm text-sm ml-auto shadow-sm">
+                        <p class="text-xs text-emerald-800 font-bold mb-1">Respuesta tipo de la IA</p>
+                        Te entiendo, el precio importa. En mi caso incluyo alineación y balanceo, y te doy 6 meses de garantía escrita. Laburo con Fate y Bridgestone originales, no con segundas marcas. Si preferís el otro precio, te entiendo perfecto. Si querés asegurarte el servicio completo, te espero. ¿Qué te parece?
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 5 — SEGUIMIENTO -->
+            <div class="step-card bg-white border-l-8 border-sky-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">Seguimiento de visto — Veterinaria</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-2 text-sm">Hace 3 días le mandaste un presupuesto de vacunación a un cliente. Lo dejó en visto. ¿Qué hacer?</p>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como asistente de una veterinaria. Hace 3 días le mandamos a un cliente un presupuesto de plan sanitario anual para su perro. No respondió. Redactá un mensaje de seguimiento breve (máx 50 palabras) que: (1) no lo haga sentir presionado, (2) le recuerde el plan con onda, (3) ofrezca responder dudas. Terminá con una pregunta. Sin emojis exagerados.</p>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mt-3">
+                    <div class="wa-bubble-business p-3 max-w-sm text-sm ml-auto shadow-sm">
+                        <p class="text-xs text-emerald-800 font-bold mb-1">Respuesta tipo de la IA</p>
+                        ¡Hola Pablo! Te escribo por el plan sanitario de Rocco que te había pasado. No es urgente, pero por si te quedó alguna duda o querés que te arme un plan con distintos valores, acá estamos 🐾 ¿Seguís interesado?
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 6 — PEDIDO DE RESEÑA -->
+            <div class="step-card bg-white border-l-8 border-sky-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">Pedir reseña — Panadería</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-2 text-sm">Un cliente te elogió por WhatsApp: <em>"¡El pan dulce estuvo espectacular, gracias!"</em>. Aprovechemos el momento para pedirle una reseña de Google.</p>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como dueño de panadería. Un cliente me escribió felicitándome por el pan dulce. Redactá una respuesta breve para WhatsApp que: (1) agradezca con humildad, (2) le pida amablemente una reseña en Google, (3) le facilite el link (usaré un placeholder [LINK_RESEÑA]). 50 palabras máximo. Tono agradecido y genuino.</p>
+                </div>
+                <div class="wa-container rounded-lg p-4 ml-13 mt-3">
+                    <div class="wa-bubble-business p-3 max-w-sm text-sm ml-auto shadow-sm">
+                        <p class="text-xs text-emerald-800 font-bold mb-1">Respuesta tipo de la IA</p>
+                        ¡Gracias Marta! Me alegra muchísimo que lo hayas disfrutado 🥖 Si te animás, ¿me dejarías una reseña en Google? Me ayuda mucho a que otros vecinos nos conozcan. Acá te dejo el link: [LINK_RESEÑA]. ¡Gracias de nuevo!
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLANTILLA MAESTRA -->
+            <div class="step-card bg-sky-50 border-2 border-sky-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-sky-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-sky-900">Plantilla maestra universal</h4>
+                </div>
+                <p class="text-slate-700 mb-3">Guardá esta en tu celular. Cambiás los datos en corchetes y la reutilizás para cualquier situación:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 font-mono text-sm">
+                    <p>Actuá como <span class="text-amber-300">[tu profesión/rubro]</span> con experiencia en atención al cliente.<br>
+                    Recibí este mensaje de un cliente por WhatsApp: <span class="text-amber-300">"[pegar mensaje textual]"</span><br>
+                    Redactá una respuesta que: (1) <span class="text-amber-300">[qué quiero lograr, ej: dar info + cerrar venta]</span>, (2) <span class="text-amber-300">[consideración, ej: sin hablar mal de la competencia]</span>, (3) termine con una <span class="text-amber-300">[pregunta o llamada a la acción]</span>.<br>
+                    Contexto del negocio: <span class="text-amber-300">[rubro, ciudad, tamaño, 1 diferencial]</span>.<br>
+                    Tono <span class="text-amber-300">[cercano/profesional/cálido]</span>. Máximo <span class="text-amber-300">[X]</span> palabras.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. EJERCICIO AUTÓNOMO -->
+        <section class="p-6 md:p-10 bg-sky-50 border-y-4 border-sky-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-sky-600 text-white w-12 h-12 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-rocket text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-sky-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-sky-900">Resolvé TU mensaje real</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Sacá la captura o el texto de la consulta real de WhatsApp que te pedí traer. Vamos a resolverla con IA.</p>
+
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Abrí <strong>ChatGPT</strong> en un chat nuevo.</li>
+                <li>Copiá la <strong>plantilla maestra</strong> del último recuadro de la práctica.</li>
+                <li>Completá cada campo con los datos de <strong>tu mensaje real</strong> (quién te escribió, qué pide, qué querés responder).</li>
+                <li>Mandá el prompt. Leé la respuesta.</li>
+                <li>¿No te gustó algo? Pedí ajustes: <em>"más corto"</em>, <em>"menos formal"</em>, <em>"agregá una referencia al clima de hoy"</em>.</li>
+                <li>Cuando esté perfecto, <strong>copiá la respuesta final</strong> y mandala al cliente real. 🚀</li>
+                <li>Guardá el prompt final en tu nota <em>"Mis prompts"</em>.</li>
+            </ol>
+
+            <div class="bg-white rounded-xl p-4 border border-sky-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> creá un documento de Word o Google Docs titulado <em>"Mi libreta de respuestas WhatsApp"</em> y armá 6 plantillas (una por cada escenario de hoy) adaptadas a tu rubro. En 3 meses va a ser tu herramienta más usada.</p>
+            </div>
+        </section>
+
+        <!-- 8. CIERRE -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés las <strong>3 reglas de oro</strong> del WhatsApp comercial: responder rápido, cerrar con pregunta, hablar como vos.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés <strong>6 plantillas listas</strong> para los escenarios más comunes: venta, consulta, reclamo, objeción, seguimiento, reseña.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés una <strong>plantilla maestra universal</strong> que sirve para cualquier tipo de mensaje.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Resolviste <strong>un mensaje real tuyo</strong> con IA (no teoría: algo que te llegó).</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-sky-50 rounded-xl border-2 border-sky-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-sky-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-sky-900 mb-1">Próxima clase: IA para Copywriting y Contenido</p>
+                        <p class="text-sm text-sky-800">Si hoy aprendiste a responder, la próxima aprendés a <strong>atraer</strong>. Vamos a generar publicaciones de Instagram, descripciones de producto y contenido para redes. Spoiler: vas a salir con 30 ideas de posts desde 1 sola idea tuya.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> usá las 6 plantillas al menos una vez esta semana en tu WhatsApp real. Llevá cuenta de cuánto tiempo te ahorraste. Lo vamos a compartir en la próxima clase.</p>
+            </div>
+        </section>
+
+        <!-- 9. NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">
+                    Usar ejemplos de rubros reales de los alumnos. Pedir antes de la clase que traigan 1 consulta real de WhatsApp que quieran mejorar.
+                </p>
+            </div>
+        </section>
+
+        <!-- 10. FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 03</span>
+                    <span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2">
+                        <div class="h-full bg-sky-500 rounded-full" style="width: 13.5%"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 10 · IA para Datos y Reportes (Excel + IA) | ITC Argentina</title>
+    <meta name="description" content="Clase 10 del curso IA + Automatizaciones de ITC Argentina. Subí Excel a ChatGPT, generá gráficos, fórmulas y reportes con IA. Alternativa gratuita Google Sheets + Gemini.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .excel-cell { border: 1px solid #cbd5e1; padding: 4px 8px; font-size: 0.75rem; font-family: monospace; background: white; }
+        .excel-header { background: #f1f5f9; font-weight: 700; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-violet-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 10</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">IA para Datos y Reportes</h1>
+            <p class="text-violet-100 text-lg mb-4 max-w-2xl">Tus Excel ya no son un misterio. Subilos a la IA y hacé preguntas como si fueran personas.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">ESTRATEGIA</span>
+        </header>
+
+        <section class="bg-violet-50 border-l-8 border-violet-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-violet-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-violet-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>poder analizar un Excel real con IA</strong> en lenguaje natural, generar gráficos, detectar productos de baja rotación, fugas de dinero y crear un reporte de ventas profesional. Sin saber Excel avanzado.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-violet-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-violet-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <!-- Aviso importante -->
+        <div class="m-6 p-5 bg-amber-50 border-2 border-amber-400 rounded-xl">
+            <div class="flex items-start gap-3">
+                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl mt-1"></i>
+                <div>
+                    <h3 class="font-extrabold text-amber-900 mb-1">⚠ Importante para esta clase</h3>
+                    <p class="text-sm text-amber-900">Para subir archivos Excel a ChatGPT necesitás <strong>ChatGPT Plus (USD 20/mes)</strong> o usar Microsoft Copilot. Como alternativa <strong>100% gratuita</strong>, vamos a usar también <strong>Google Sheets + Gemini</strong> que tiene funciones de IA integradas sin costo. Vas a aprender los dos caminos.</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">En la Clase 9 hiciste el <strong>análisis estratégico</strong> de tu negocio: reseñas, competencia, buyer persona y FODA. Salimos con un informe estratégico de 1 página.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-violet-600 mt-1"></i>¿Ejecutaste la acción del FODA que te comprometiste? ¿Qué resultado tuvo?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-violet-600 mt-1"></i>¿Trajiste un Excel de ventas para hoy? Si no, vas a usar uno de ejemplo.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-violet-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-violet-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Tus Excel son una mina de oro (que casi nunca explotás)</h3>
+            <p class="text-slate-700 text-lg mb-4">Casi todos los comercios tienen Excel: ventas mensuales, gastos, stock, clientes. Pero pocos los usan para tomar decisiones porque <strong>analizarlos lleva horas</strong>. La IA te permite "hablar" con ese Excel: <em>"¿qué producto se vendió menos en marzo?"</em>, <em>"¿en qué día de la semana facturé más?"</em>. Y te responde al instante.</p>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">Hasta hace poco para analizar un Excel necesitabas <strong>conocer fórmulas, tablas dinámicas y gráficos</strong>. Era como hablar otro idioma. La IA es <strong>el traductor</strong>: vos hablás en castellano normal, ella habla con el Excel y te trae la respuesta en castellano normal.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 2 vías que vamos a aprender</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-600 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-comments text-violet-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Vía A: ChatGPT Plus / Copilot</h5>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">Subís el archivo Excel directamente. Le hacés preguntas en lenguaje natural y te devuelve análisis, gráficos y conclusiones.</p>
+                    <p class="text-xs text-slate-500"><strong>Costo:</strong> USD 20/mes (ChatGPT Plus) o incluido en Microsoft 365.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-violet-600 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-brands fa-google text-blue-500 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Vía B: Google Sheets + Gemini</h5>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">100% gratuita. Convertís tu Excel en hoja de Google Sheets, y Gemini te ayuda a analizar, generar fórmulas y resumir.</p>
+                    <p class="text-xs text-slate-500"><strong>Costo:</strong> $0. Solo necesitás cuenta Google.</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 5 preguntas que todo Excel de ventas debería responder</h4>
+            <div class="space-y-2">
+                <div class="bg-white border border-slate-200 rounded-lg p-3 text-sm"><i class="fa-solid fa-circle-question text-violet-600 mr-2"></i>¿Cuáles son los 3 productos que más vendí este mes?</div>
+                <div class="bg-white border border-slate-200 rounded-lg p-3 text-sm"><i class="fa-solid fa-circle-question text-violet-600 mr-2"></i>¿Cuáles son los 3 productos que casi no vendí (baja rotación)?</div>
+                <div class="bg-white border border-slate-200 rounded-lg p-3 text-sm"><i class="fa-solid fa-circle-question text-violet-600 mr-2"></i>¿Qué día de la semana facturo más, en promedio?</div>
+                <div class="bg-white border border-slate-200 rounded-lg p-3 text-sm"><i class="fa-solid fa-circle-question text-violet-600 mr-2"></i>¿Cuál es mi ticket promedio y cómo evolucionó en los últimos 3 meses?</div>
+                <div class="bg-white border border-slate-200 rounded-lg p-3 text-sm"><i class="fa-solid fa-circle-question text-violet-600 mr-2"></i>¿Hay productos donde mi margen es chiquito y conviene revisar precio?</div>
+            </div>
+
+            <div class="bg-violet-50 border border-violet-200 rounded-lg p-4 mt-6">
+                <p class="text-sm text-violet-900"><i class="fa-solid fa-shield-halved text-violet-600 mr-2"></i><strong>Privacidad:</strong> antes de subir información sensible (datos de clientes con nombres y teléfonos, datos financieros confidenciales), considerá <strong>anonimizar</strong>. Cambiá nombres reales por "Cliente 1, Cliente 2" o usá la función de reemplazar de Excel. Esto vale para CUALQUIER IA.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-violet-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-violet-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Análisis completo de un Excel real</h3>
+            <p class="text-slate-700 mb-6">Caso: <strong>Romina tiene una librería en Posadas</strong>. Trae un Excel de 200 ventas del último mes con columnas: Fecha, Producto, Categoría, Cantidad, Precio Unitario, Total, Forma de Pago.</p>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Preparar el Excel para que la IA lo entienda</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Antes de subirlo, asegurate de que tenga estos requisitos básicos:</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i>Primera fila con <strong>nombres claros de columnas</strong> (Fecha, Producto, Cantidad, etc.)</li>
+                    <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i>Una fila por venta (sin filas combinadas, sin celdas en blanco aleatorias)</li>
+                    <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i>Fechas en formato consistente (todas como DD/MM/AAAA o todas como AAAA-MM-DD)</li>
+                    <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i>Sin colores raros, sin imágenes pegadas, sin notas en celdas</li>
+                </ul>
+                <div class="bg-slate-50 ml-13 mt-3 rounded-lg p-3 overflow-x-auto">
+                    <table class="text-xs">
+                        <tr>
+                            <th class="excel-cell excel-header">Fecha</th>
+                            <th class="excel-cell excel-header">Producto</th>
+                            <th class="excel-cell excel-header">Categoría</th>
+                            <th class="excel-cell excel-header">Cantidad</th>
+                            <th class="excel-cell excel-header">P. Unit</th>
+                            <th class="excel-cell excel-header">Total</th>
+                        </tr>
+                        <tr>
+                            <td class="excel-cell">02/03/2026</td>
+                            <td class="excel-cell">Cuaderno A4</td>
+                            <td class="excel-cell">Útiles</td>
+                            <td class="excel-cell">3</td>
+                            <td class="excel-cell">$2.500</td>
+                            <td class="excel-cell">$7.500</td>
+                        </tr>
+                        <tr>
+                            <td class="excel-cell">02/03/2026</td>
+                            <td class="excel-cell">"Cien años de soledad"</td>
+                            <td class="excel-cell">Libros</td>
+                            <td class="excel-cell">1</td>
+                            <td class="excel-cell">$18.500</td>
+                            <td class="excel-cell">$18.500</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Vía A: subir el Excel a ChatGPT Plus</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm mb-3">
+                    <li><i class="fa-solid fa-arrow-right text-violet-600 mr-2"></i>En ChatGPT, hacé clic en el ícono de <strong>clip (📎)</strong> al lado de la barra de texto.</li>
+                    <li><i class="fa-solid fa-arrow-right text-violet-600 mr-2"></i>Seleccioná tu archivo Excel desde tu computadora.</li>
+                    <li><i class="fa-solid fa-arrow-right text-violet-600 mr-2"></i>Esperá a que se cargue (un par de segundos).</li>
+                </ul>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>Primer prompt que SIEMPRE conviene mandar:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Hacé un análisis exploratorio de este Excel. Decime:<br>
+                    1) ¿Cuántas filas y columnas tiene?<br>
+                    2) ¿Qué representa cada columna?<br>
+                    3) ¿Cuál es el rango de fechas?<br>
+                    4) ¿Hay valores faltantes o errores que detectes?<br>
+                    5) Resumen de los totales principales (cantidad de ventas, monto total, ticket promedio).</p>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>Esto te asegura que la IA <strong>entendió bien</strong> tu archivo antes de hacer análisis más complejos.
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Hacer las preguntas estratégicas</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Una vez cargado, ya podés preguntar todo lo que quieras:</p>
+                <div class="ml-13 space-y-2">
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"¿Cuáles son los 5 productos más vendidos en cantidad? Hacé una tabla."</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"¿Y en facturación? Compará con los de cantidad y decime si hay diferencia."</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"Mostrame un gráfico de ventas totales por día de la semana."</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"¿Qué categoría de productos está perdiendo participación mes a mes?"</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"Detectá los productos con baja rotación (menos de 3 ventas en el mes)."</div>
+                </div>
+                <div class="bg-violet-50 border border-violet-200 rounded-lg p-3 ml-13 mt-3 text-sm text-violet-900">
+                    <i class="fa-solid fa-chart-column mr-2"></i><strong>Bonus:</strong> ChatGPT Plus puede <strong>generar gráficos</strong> directamente. Pedile <em>"Hacé un gráfico de barras de ventas por categoría"</em> y te devuelve la imagen.
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Vía B: Google Sheets + Gemini (gratis)</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm mb-3">
+                    <li><i class="fa-solid fa-arrow-right text-violet-600 mr-2"></i>Andá a <a href="https://sheets.google.com" class="text-violet-600 underline font-semibold">sheets.google.com</a>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-violet-600 mr-2"></i>Subí tu Excel: Archivo → Importar → Subir.</li>
+                    <li><i class="fa-solid fa-arrow-right text-violet-600 mr-2"></i>Una vez abierto, hacé clic en el ícono ⭐ de Gemini (esquina superior derecha).</li>
+                    <li><i class="fa-solid fa-arrow-right text-violet-600 mr-2"></i>Pedile lo que necesites en lenguaje natural.</li>
+                </ul>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>Otra alternativa: copiar y pegar los datos en ChatGPT gratis</strong></p>
+                <p class="text-slate-700 ml-13 mb-2 text-sm">Si tu Excel tiene menos de 200 filas, podés <strong>copiar y pegar el contenido como texto</strong> en ChatGPT gratis y hacer las preguntas igual. No es tan fluido como subir el archivo, pero funciona.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Generar fórmulas Excel sin saber Excel</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Si no querés subir el Excel pero necesitás una fórmula específica, podés pedírsela:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Dame la fórmula de Excel para sumar todas las celdas de la columna F donde la columna B diga "Libros". El rango va de la fila 2 a la 250.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm">ChatGPT te devuelve: <code class="bg-slate-100 text-slate-800 px-2 py-1 rounded text-xs">=SUMAR.SI(B2:B250;"Libros";F2:F250)</code> con explicación de cada parte.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-violet-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-violet-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</div>
+                    <h4 class="text-lg font-extrabold text-violet-900">Generar el reporte final automatizado</h4>
+                </div>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Con todo lo que analizaste, armame un REPORTE DE VENTAS de marzo 2026 con:<br>
+                    1) Resumen ejecutivo (3 líneas)<br>
+                    2) Métricas clave: facturación total, cantidad de ventas, ticket promedio<br>
+                    3) Top 5 productos<br>
+                    4) Días de mejor performance<br>
+                    5) Productos en alerta (baja rotación)<br>
+                    6) 3 recomendaciones accionables para abril<br><br>
+                    Formato: documento listo para imprimir o presentar a un socio.</p>
+                </div>
+            </div>
+
+            <div class="step-card bg-violet-50 border-2 border-violet-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-violet-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-violet-900">Plantilla maestra: análisis mensual de ventas</h4>
+                </div>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 font-mono text-sm">
+                    <p>Te paso/te subo el Excel de ventas de <span class="text-amber-300">[mes]</span> de mi <span class="text-amber-300">[rubro]</span>.<br><br>
+                    Hacé un análisis completo respondiendo:<br>
+                    1) Top 5 productos en cantidad y en facturación<br>
+                    2) Bottom 5 (baja rotación)<br>
+                    3) Día/horario de mejor performance<br>
+                    4) Comparación con mes anterior (si los datos lo permiten)<br>
+                    5) Ticket promedio<br>
+                    6) 3 recomendaciones accionables para el próximo mes<br><br>
+                    Formato: tabla + resumen ejecutivo. Tono profesional pero claro.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-violet-50 border-y-4 border-violet-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-violet-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-violet-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-violet-900">Analizá tu propio Excel</h3>
+                </div>
+            </div>
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Tomá el Excel real de ventas que trajiste (o el de ejemplo que dimos).</li>
+                <li>Si tenés ChatGPT Plus, subilo. Si no, abrilo en Google Sheets + Gemini, o copiá los datos en ChatGPT gratis.</li>
+                <li>Mandá el <strong>primer prompt exploratorio</strong>.</li>
+                <li>Hacé al menos <strong>3 de las 5 preguntas estratégicas</strong> que vimos en teoría.</li>
+                <li>Pedile el <strong>reporte final</strong> con la plantilla maestra.</li>
+                <li>Guardá el reporte en Google Drive en una carpeta <em>"Reportes mensuales [tu negocio]"</em>.</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-violet-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> tomá UNA recomendación del reporte y aplicala esta semana. Ejemplo: si te dijo "el martes facturás un 40% menos", probá una promo solo de martes.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés <strong>preparar un Excel</strong> para que la IA lo entienda bien.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés las <strong>2 vías</strong>: ChatGPT Plus (de pago) y Google Sheets + Gemini (gratis).</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés las <strong>5 preguntas estratégicas</strong> que todo Excel de ventas debería responder.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés generar <strong>fórmulas, gráficos y reportes profesionales</strong> sin saber Excel avanzado.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Entendés la <strong>importancia de proteger datos sensibles</strong> antes de subirlos.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-violet-50 rounded-xl border-2 border-violet-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-violet-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-violet-900 mb-1">Próxima clase: Asistentes Personalizados — Creá tu propio GPT</p>
+                        <p class="text-sm text-violet-800">Vamos a hacer algo que te va a volar la cabeza: un <strong>asistente IA propio entrenado con la información de TU negocio</strong>. Tus precios, tus productos, tus políticas. Pensá ya: ¿qué información de tu negocio te gustaría que un asistente sepa de memoria?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> repetí el análisis con el Excel del mes anterior. Compará: ¿mejoraste o empeoraste? La IA te lo dice en 30 segundos.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Requiere que los alumnos traigan o el docente tenga un Excel de ventas real (o simulado). IMPORTANTE: esta clase requiere ChatGPT Plus o Copilot para subir archivos.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 10</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-violet-500 rounded-full" style="width: 45%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

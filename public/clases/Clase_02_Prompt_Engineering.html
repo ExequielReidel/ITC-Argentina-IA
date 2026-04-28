@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 02 · Prompt Engineering para Negocios | ITC Argentina</title>
+    <meta name="description" content="Clase 02 del curso IA + Automatizaciones de ITC Argentina. Aprendé a redactar prompts efectivos con RTF, TAFEC, Chain of Thought y Few-Shot aplicados a tu negocio.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .framework-letter {
+            width: 48px; height: 48px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.25rem;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- 1. HEADER -->
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-blue-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 02</span>
+                <span>•</span>
+                <span>Fase 1 — IA Aplicada</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">
+                Prompt Engineering para Negocios
+            </h1>
+            <p class="text-blue-100 text-lg mb-4 max-w-2xl">
+                La clase más importante de todo el curso. Dominar esto te va a hacer ganar horas todas las semanas.
+            </p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">
+                FUNDAMENTOS
+            </span>
+        </header>
+
+        <!-- 2. OBJETIVO -->
+        <section class="bg-blue-50 border-l-8 border-blue-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-bullseye text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-blue-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>saber redactar prompts profesionales usando las fórmulas RTF y TAFEC</strong>, y podrás transformar un pedido genérico en una instrucción que la IA ejecute perfecto a la primera.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TIMELINE -->
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4">
+                <i class="fa-solid fa-clock mr-1"></i> Mapa de la clase
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-blue-100 p-3 rounded-lg"><strong>35 min</strong><br><span class="text-blue-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <!-- 4. REPASO -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                En la Clase 1 abriste tu cuenta de ChatGPT y tuviste tu primera conversación con una IA. Aprendimos que la IA es <strong>"un empleado muy capacitado"</strong>, conocimos ChatGPT, Gemini y Copilot, y entendimos que la calidad de la respuesta depende de cómo le pidas las cosas.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <p class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3"><i class="fa-solid fa-hand mr-1"></i> Antes de arrancar, comentemos entre todos</p>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>¿Cumpliste la tarea de hablar 10 minutos por día con ChatGPT?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>¿Qué fue lo que más te sorprendió? ¿En qué te falló?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>¿Probaste las 5 ideas que te dio para tu negocio? ¿Cómo salió?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Seguro notaste algo:</strong> a veces la IA te respondía cualquier cosa, o muy genérico. No es que esté rota. Es que le faltó dirección. Hoy vamos a arreglar eso de raíz.</p>
+            </div>
+        </section>
+
+        <!-- 5. TEORÍA -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-blue-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-blue-600">Desarrollo teórico · 25 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Qué es un prompt y por qué la estructura importa?</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                Un <strong>prompt</strong> es la instrucción que le das a la IA. Parece simple, pero acá está el 80% del juego: <strong>un buen prompt es la diferencia entre perder 30 minutos corrigiendo una respuesta genérica o tener el trabajo listo en 20 segundos</strong>.
+            </p>
+
+            <!-- Analogía didáctica -->
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Analogía para entenderlo</h4>
+                        <p class="text-amber-900">Pensá el prompt como <strong>las instrucciones que le darías a un empleado nuevo</strong>. Si le decís "hacé algo con los clientes", va a hacer cualquier cosa. Si le decís "llamá a los 10 clientes que no compraron en los últimos 60 días, ofreceles el descuento del 15% y anotá las respuestas en esta planilla", sabe exactamente qué hacer. La IA es igual: <strong>cuanto más clara sea la orden, mejor el resultado</strong>.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Comparación: prompt malo vs bueno -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">El mismo pedido, dos resultados distintos</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-thumbs-down text-red-600 text-xl"></i>
+                        <span class="font-bold text-red-800 text-sm uppercase tracking-wide">Prompt genérico</span>
+                    </div>
+                    <div class="bg-white rounded p-3 font-mono text-xs text-slate-700 border border-red-200 mb-3">
+                        "Escribime una publicación para Instagram."
+                    </div>
+                    <p class="text-sm text-slate-700"><i class="fa-solid fa-arrow-right text-red-600 mr-1"></i> La IA te devuelve algo plano, que sirve para cualquier negocio y para ninguno en particular. Te toca reescribirlo.</p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-thumbs-up text-emerald-600 text-xl"></i>
+                        <span class="font-bold text-emerald-800 text-sm uppercase tracking-wide">Prompt con estructura</span>
+                    </div>
+                    <div class="bg-white rounded p-3 font-mono text-xs text-slate-700 border border-emerald-200 mb-3">
+                        "Actuá como community manager. Escribí una publicación de Instagram para mi panadería de barrio en Rosario, anunciando pan dulce artesanal para Navidad. Tono cálido y familiar, con llamada a reservar por WhatsApp."
+                    </div>
+                    <p class="text-sm text-slate-700"><i class="fa-solid fa-arrow-right text-emerald-600 mr-1"></i> La IA te devuelve algo publicable, con tu voz y tu contexto. Copiás y pegás.</p>
+                </div>
+            </div>
+
+            <!-- FRAMEWORK RTF -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-10">Fórmula RTF: la más simple y efectiva</h4>
+            <p class="text-slate-700 mb-4">Tu primera herramienta. Memorizala porque la vas a usar todos los días. Se arma con tres letras:</p>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-white rounded-xl border-2 border-blue-200 p-5 shadow-sm">
+                    <div class="framework-letter bg-blue-600 text-white mb-3">R</div>
+                    <h5 class="font-extrabold text-blue-900 text-lg mb-1">Rol</h5>
+                    <p class="text-sm text-slate-700 mb-2">Decile quién es. Le das una personalidad profesional.</p>
+                    <p class="text-xs text-slate-500 italic">"Actuá como contador especializado en monotributo..."</p>
+                </div>
+                <div class="bg-white rounded-xl border-2 border-blue-200 p-5 shadow-sm">
+                    <div class="framework-letter bg-blue-600 text-white mb-3">T</div>
+                    <h5 class="font-extrabold text-blue-900 text-lg mb-1">Tarea</h5>
+                    <p class="text-sm text-slate-700 mb-2">Qué tiene que hacer. Sé específico con el verbo.</p>
+                    <p class="text-xs text-slate-500 italic">"...redactá un mensaje de recordatorio de pago..."</p>
+                </div>
+                <div class="bg-white rounded-xl border-2 border-blue-200 p-5 shadow-sm">
+                    <div class="framework-letter bg-blue-600 text-white mb-3">F</div>
+                    <h5 class="font-extrabold text-blue-900 text-lg mb-1">Formato</h5>
+                    <p class="text-sm text-slate-700 mb-2">Cómo querés que te lo devuelva.</p>
+                    <p class="text-xs text-slate-500 italic">"...en formato WhatsApp, máximo 80 palabras, cordial."</p>
+                </div>
+            </div>
+
+            <div class="prompt-box text-slate-100 rounded-xl p-5 my-4 font-mono text-sm">
+                <div class="flex items-center gap-2 text-slate-400 text-xs mb-2 uppercase tracking-widest">
+                    <i class="fa-solid fa-quote-right"></i> Ejemplo RTF completo
+                </div>
+                <p><span class="text-blue-300">[Rol]</span> Actuá como contador especializado en monotributo. <span class="text-blue-300">[Tarea]</span> Redactá un mensaje de recordatorio de pago para un cliente que se atrasó 2 días con la cuota mensual. <span class="text-blue-300">[Formato]</span> Formato WhatsApp, máximo 80 palabras, tono cordial pero firme.</p>
+            </div>
+
+            <!-- FRAMEWORK TAFEC -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-10">Fórmula TAFEC: cuando necesitás precisión quirúrgica</h4>
+            <p class="text-slate-700 mb-4">Para tareas más complejas (campañas, análisis, comunicaciones delicadas), agregás 2 letras más:</p>
+
+            <div class="grid md:grid-cols-5 gap-3 mb-6">
+                <div class="bg-white rounded-xl border border-blue-200 p-4 text-center">
+                    <div class="framework-letter bg-blue-600 text-white mx-auto mb-2">T</div>
+                    <h5 class="font-extrabold text-blue-900 text-sm mb-1">Tarea</h5>
+                    <p class="text-xs text-slate-600">Qué hacer</p>
+                </div>
+                <div class="bg-white rounded-xl border border-blue-200 p-4 text-center">
+                    <div class="framework-letter bg-blue-600 text-white mx-auto mb-2">A</div>
+                    <h5 class="font-extrabold text-blue-900 text-sm mb-1">Audiencia</h5>
+                    <p class="text-xs text-slate-600">Para quién</p>
+                </div>
+                <div class="bg-white rounded-xl border border-blue-200 p-4 text-center">
+                    <div class="framework-letter bg-blue-600 text-white mx-auto mb-2">F</div>
+                    <h5 class="font-extrabold text-blue-900 text-sm mb-1">Formato</h5>
+                    <p class="text-xs text-slate-600">Cómo entregarlo</p>
+                </div>
+                <div class="bg-white rounded-xl border border-blue-200 p-4 text-center">
+                    <div class="framework-letter bg-blue-600 text-white mx-auto mb-2">E</div>
+                    <h5 class="font-extrabold text-blue-900 text-sm mb-1">Estilo</h5>
+                    <p class="text-xs text-slate-600">Con qué tono</p>
+                </div>
+                <div class="bg-white rounded-xl border border-blue-200 p-4 text-center">
+                    <div class="framework-letter bg-blue-600 text-white mx-auto mb-2">C</div>
+                    <h5 class="font-extrabold text-blue-900 text-sm mb-1">Contexto</h5>
+                    <p class="text-xs text-slate-600">La info clave</p>
+                </div>
+            </div>
+
+            <div class="prompt-box text-slate-100 rounded-xl p-5 my-4 font-mono text-sm">
+                <div class="flex items-center gap-2 text-slate-400 text-xs mb-2 uppercase tracking-widest">
+                    <i class="fa-solid fa-quote-right"></i> Ejemplo TAFEC completo
+                </div>
+                <p><span class="text-blue-300">[Tarea]</span> Redactá un mail promocional para el sorteo del Día del Padre. <span class="text-blue-300">[Audiencia]</span> Clientes de mi ferretería de Córdoba, hombres 35-65 años, barrio trabajador. <span class="text-blue-300">[Formato]</span> Email corto, asunto + 3 párrafos + botón de CTA. <span class="text-blue-300">[Estilo]</span> Cercano, sin palabras rebuscadas, con humor argentino moderado. <span class="text-blue-300">[Contexto]</span> El sorteo es una caja de herramientas Stanley. Participan quienes compren más de $30.000 entre el 1 y el 15 de junio.</p>
+            </div>
+
+            <!-- CHAIN OF THOUGHT -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-10">Técnica Chain of Thought: "pensá paso a paso"</h4>
+            <p class="text-slate-700 mb-4">Cuando el problema es complejo (decidir un precio, analizar un caso, elegir entre opciones), agregale esta frase mágica al final del prompt:</p>
+            <div class="bg-emerald-50 border-2 border-emerald-400 rounded-xl p-5 my-4">
+                <p class="text-emerald-900 text-lg font-semibold"><i class="fa-solid fa-quote-left mr-2"></i>"Antes de responderme, pensá paso a paso y explicame tu razonamiento."<i class="fa-solid fa-quote-right ml-2"></i></p>
+            </div>
+            <p class="text-slate-700 mb-4">
+                ¿Por qué funciona? Porque <strong>obligás a la IA a no tirar la primera respuesta que se le ocurra</strong>. La hacés "mostrar el cálculo", como cuando la maestra te pedía que escribieras el procedimiento. Las respuestas mejoran muchísimo.
+            </p>
+
+            <!-- FEW-SHOT -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-10">Técnica Few-Shot: enseñarle con ejemplos</h4>
+            <p class="text-slate-700 mb-4">
+                Si querés que la IA respete un estilo muy particular (el tuyo, el de tu marca), <strong>dale 2 o 3 ejemplos</strong> de cómo sería el resultado ideal. Es como cuando entrenás a un empleado nuevo mostrándole casos anteriores.
+            </p>
+            <div class="prompt-box text-slate-100 rounded-xl p-5 my-4 font-mono text-xs">
+                <div class="flex items-center gap-2 text-slate-400 text-xs mb-2 uppercase tracking-widest">
+                    <i class="fa-solid fa-quote-right"></i> Ejemplo Few-Shot
+                </div>
+                <p class="mb-3">Actuá como redactor de mi peluquería. Te paso 2 ejemplos de cómo escribo yo las publicaciones. Seguí ese mismo estilo para crear una nueva sobre el servicio de mechas.</p>
+                <p class="text-slate-300 mb-2"><span class="text-blue-300">EJEMPLO 1:</span> "¿Ya te viste al espejo hoy? 👀 Si la respuesta es 'meh', reservate un turno. Te esperamos con mate y música buena 💇‍♀️"</p>
+                <p class="text-slate-300"><span class="text-blue-300">EJEMPLO 2:</span> "Lunes de energía nueva ⚡ Cortes a partir de $8.500. WhatsApp 11-xxxx-xxxx. Estamos sobre Av. San Martín 432, Moreno."</p>
+            </div>
+
+            <!-- ERRORES COMUNES -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-10">Los 5 errores más comunes (y cómo arreglarlos)</h4>
+            <div class="space-y-3">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-red-100 text-red-700 w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0">1</div>
+                    <div>
+                        <p class="font-bold text-slate-900">Pedir sin dar contexto.</p>
+                        <p class="text-sm text-slate-600">❌ "Hacé un cartel de promo." ✅ Agregá rubro, producto, precio, público.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-red-100 text-red-700 w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                    <div>
+                        <p class="font-bold text-slate-900">No especificar el formato.</p>
+                        <p class="text-sm text-slate-600">❌ "Dame ideas." ✅ "Dame una lista numerada de 5 ideas, cada una con máximo 2 renglones."</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-red-100 text-red-700 w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0">3</div>
+                    <div>
+                        <p class="font-bold text-slate-900">Asumir que la IA conoce tu negocio.</p>
+                        <p class="text-sm text-slate-600">❌ "Escribí como escribo yo." ✅ Dale 2-3 ejemplos reales tuyos (Few-Shot).</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-red-100 text-red-700 w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0">4</div>
+                    <div>
+                        <p class="font-bold text-slate-900">Prompts tipo "novela" con datos irrelevantes.</p>
+                        <p class="text-sm text-slate-600">❌ Contar toda la historia del negocio. ✅ Solo la info que necesita para esta tarea.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-red-100 text-red-700 w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0">5</div>
+                    <div>
+                        <p class="font-bold text-slate-900">Rendirse con la primera respuesta.</p>
+                        <p class="text-sm text-slate-600">❌ Aceptar lo que te dio. ✅ Pedirle que la ajuste: "más corta", "más informal", "menos técnica".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PRÁCTICA GUIADA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-blue-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-blue-600">Práctica guiada · 35 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Transformemos un prompt malo en uno brillante</h3>
+            <p class="text-slate-700 mb-6">Vamos a tomar un caso real y mejorarlo juntos, paso a paso. Copiá los prompts en tu ChatGPT y mirá cómo cambia la respuesta en cada paso.</p>
+
+            <!-- PASO 1 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">El caso: inmobiliaria en Mar del Plata</h4>
+                </div>
+                <p class="text-slate-700 ml-13">Laura tiene una inmobiliaria chica y quiere una descripción atractiva para una propiedad que está publicando. Veamos cómo evoluciona el prompt.</p>
+            </div>
+
+            <!-- PASO 2 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Versión 1: prompt genérico (malo)</h4>
+                </div>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-sm">
+                    <p>Escribime una descripción para una propiedad en venta.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">👉 Pegalo en ChatGPT. Mirá la respuesta: seguro te da algo tipo "hermosa propiedad ubicada en excelente zona...", sin ninguna diferenciación. Podría ser cualquier casa del mundo.</p>
+            </div>
+
+            <!-- PASO 3 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Versión 2: aplicamos RTF</h4>
+                </div>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-sm">
+                    <p><span class="text-blue-300">[R]</span> Actuá como martillera pública con 15 años de experiencia vendiendo propiedades en la costa. <span class="text-blue-300">[T]</span> Redactá la descripción de una casa en venta en Mar del Plata, zona Playa Grande, 3 ambientes, con patio y cochera, 78 m². <span class="text-blue-300">[F]</span> Texto de 120 palabras, estructurado en 3 párrafos, con un gancho al inicio.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">👉 La respuesta ya tiene estructura, vocabulario inmobiliario, y se siente profesional.</p>
+            </div>
+
+            <!-- PASO 4 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full font-bold flex items-center justify-center">4</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Versión 3: saltamos a TAFEC</h4>
+                </div>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p><span class="text-blue-300">[Tarea]</span> Redactá la descripción de una propiedad en venta. <span class="text-blue-300">[Audiencia]</span> Familias jóvenes de Capital Federal que buscan casa de fin de semana en la costa, con presupuesto de 120 mil dólares. <span class="text-blue-300">[Formato]</span> Texto de 120 palabras, 3 párrafos, gancho inicial + características + cierre con llamado a contactar. <span class="text-blue-300">[Estilo]</span> Cálido, emocional pero realista, sin usar palabras vacías tipo "maravilloso" o "soñada". <span class="text-blue-300">[Contexto]</span> Casa en Mar del Plata, Playa Grande, 3 ambientes, 78 m², patio con parrilla, cochera cubierta, a 5 cuadras del mar. Escritura al día. Precio USD 115.000.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">👉 Comparalo con la versión 1. La diferencia es brutal. <strong>Esto ya se publica.</strong></p>
+            </div>
+
+            <!-- PASO 5 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Agregamos Chain of Thought</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Ahora pidámosle algo más complejo: que decida el mejor titular para el aviso.</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-sm">
+                    <p>Basándote en la descripción que me acabás de dar, proponeme 5 titulares de no más de 8 palabras para publicar en Mercado Libre Inmuebles. <strong>Antes de dármelos, pensá paso a paso qué palabras atraen más a una familia joven buscando casa en la costa, y explicame tu razonamiento. Recién después, listá los 5 titulares finales.</strong></p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">👉 Fijate cómo ahora la IA primero te muestra su razonamiento y después te da los titulares. Son <strong>mucho mejores</strong> que los que daría sin esa instrucción.</p>
+            </div>
+
+            <!-- PASO 6 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Corrección en tiempo real: refinar la respuesta</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Si algo no te convence, no empieces un chat nuevo: <strong>seguí la conversación</strong>. Probá frases como:</p>
+                <div class="ml-13 space-y-2">
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"Hacelo más corto, la mitad."</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"Menos formal, más argentino."</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"Sacá las palabras 'maravilloso' y 'soñado'."</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"Dame 3 versiones alternativas."</div>
+                </div>
+            </div>
+
+            <!-- PASO 7 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">7</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Tu plantilla salvavidas</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Guardá esta plantilla en tus notas del celular. Cuando no sepas cómo empezar, copiala y completala:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-sm">
+                    <p>Actuá como <span class="text-amber-300">[ROL: qué profesional sos]</span>.<br>
+                    Necesito que <span class="text-amber-300">[TAREA: verbo + objeto concreto]</span>.<br>
+                    Mi negocio es <span class="text-amber-300">[CONTEXTO: rubro, ciudad, tamaño]</span>.<br>
+                    Mi cliente es <span class="text-amber-300">[AUDIENCIA: edad, intereses, situación]</span>.<br>
+                    Devolvémelo en formato <span class="text-amber-300">[FORMATO: tipo, largo, estructura]</span>.<br>
+                    El tono tiene que ser <span class="text-amber-300">[ESTILO: adjetivos concretos]</span>.<br>
+                    Antes de responder, pensá paso a paso.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. EJERCICIO AUTÓNOMO -->
+        <section class="p-6 md:p-10 bg-blue-50 border-y-4 border-blue-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-rocket text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-blue-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-blue-900">Construí tu primer prompt profesional</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Usá la plantilla del Paso 7 para tu <strong>propio negocio o trabajo</strong>. No copies el ejemplo de la inmobiliaria.</p>
+
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Pensá en <strong>una tarea real que hacés todas las semanas</strong> y que te lleva tiempo: responder un mismo tipo de consulta, redactar una publicación, armar una lista de productos, escribir un presupuesto, etc.</li>
+                <li>Abrí un <strong>nuevo chat</strong> en ChatGPT.</li>
+                <li>Escribí tu prompt usando <strong>la plantilla TAFEC + Chain of Thought</strong>. Completá todas las variables.</li>
+                <li>Mirá la respuesta de la IA. Si no te convence, <strong>pedile ajustes en la misma conversación</strong> (más corto, más informal, que agregue X).</li>
+                <li>Cuando quede bien, <strong>copiá el prompt final</strong> y guardalo en una nota del celular titulada <em>"Mis prompts"</em>. Ya tenés 1. En 6 meses vas a tener 50.</li>
+            </ol>
+
+            <div class="bg-white rounded-xl p-4 border border-blue-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> convertí tu mejor prompt en una plantilla reutilizable. Reemplazá los datos específicos por variables entre corchetes <code class="bg-slate-100 px-1 rounded text-xs">[NOMBRE_CLIENTE]</code>, <code class="bg-slate-100 px-1 rounded text-xs">[PRODUCTO]</code>, <code class="bg-slate-100 px-1 rounded text-xs">[PRECIO]</code>. Así lo reutilizás cada vez cambiando solo esos campos.</p>
+            </div>
+        </section>
+
+        <!-- 8. CIERRE -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Entendiste por qué <strong>la estructura del prompt es el 80% del resultado</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés dos fórmulas bajo el brazo: <strong>RTF</strong> (rápida) y <strong>TAFEC</strong> (precisa).</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés cuándo agregar <strong>"pensá paso a paso"</strong> (Chain of Thought) para tareas complejas.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés cómo <strong>enseñarle tu estilo con ejemplos</strong> (Few-Shot).</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Construiste tu <strong>primer prompt profesional reutilizable</strong>.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-blue-50 rounded-xl border-2 border-blue-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-blue-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-blue-900 mb-1">Próxima clase: IA para Ventas y Atención al Cliente</p>
+                        <p class="text-sm text-blue-800">Vamos a bajar todo esto a tierra: cómo usar la IA para <strong>responder WhatsApp de clientes, manejar reclamos y cerrar ventas</strong>. Traé a clase 1 consulta real de WhatsApp que te gustaría mejorar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> construí 3 prompts más usando TAFEC para 3 tareas distintas de tu trabajo. Guardalos todos en la nota <em>"Mis prompts"</em>.</p>
+            </div>
+        </section>
+
+        <!-- 9. NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">
+                    Esta es la clase más importante de toda la Fase 1. El alumno que domine el prompt engineering acelerará todo lo demás. Reservar 30 min de práctica guiada.
+                </p>
+            </div>
+        </section>
+
+        <!-- 10. FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 02</span>
+                    <span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2">
+                        <div class="h-full bg-blue-500 rounded-full" style="width: 9%"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

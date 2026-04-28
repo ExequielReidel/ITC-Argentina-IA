@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 01 · La IA en tu Vida Cotidiana | ITC Argentina</title>
+    <meta name="description" content="Clase 01 del curso IA + Automatizaciones de ITC Argentina. Conocé qué es la IA, los principales modelos y hacé tu primera interacción guiada con ChatGPT.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- 1. HEADER -->
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-blue-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 01</span>
+                <span>•</span>
+                <span>Fase 1 — IA Aplicada</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">
+                La IA en tu Vida Cotidiana
+            </h1>
+            <p class="text-blue-100 text-lg mb-4 max-w-2xl">
+                Tu primer encuentro con la inteligencia artificial. Sin miedo, sin tecnicismos, paso a paso.
+            </p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">
+                FUNDAMENTOS
+            </span>
+        </header>
+
+        <!-- 2. OBJETIVO -->
+        <section class="bg-blue-50 border-l-8 border-blue-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-bullseye text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-blue-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener tu cuenta de ChatGPT creada y habrás hecho tu primera conversación con una IA</strong>, entendiendo qué es y qué no es la inteligencia artificial.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TIMELINE -->
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4">
+                <i class="fa-solid fa-clock mr-1"></i> Mapa de la clase
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Bienvenida</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-blue-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-blue-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <!-- 4. BIENVENIDA (en la primera clase, reemplaza al Repaso) -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-hand-peace text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Bienvenida · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de arrancar, respiremos hondo</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                Si estás leyendo esto, ya diste el paso más difícil: <strong>decidiste aprender algo nuevo</strong>. No importa si tenés 14 o 65 años, si tenés un kiosco en Chivilcoy o trabajás en una oficina de Córdoba. El próximo medio año vamos a transformar tu forma de trabajar.
+            </p>
+            <div class="grid md:grid-cols-3 gap-4 mt-6">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <i class="fa-solid fa-hand-holding-heart text-blue-600 text-2xl mb-2"></i>
+                    <h4 class="font-bold text-slate-900 mb-1">No hace falta saber nada</h4>
+                    <p class="text-sm text-slate-600">Si manejás un celular y Word básico, alcanza y sobra.</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <i class="fa-solid fa-users text-blue-600 text-2xl mb-2"></i>
+                    <h4 class="font-bold text-slate-900 mb-1">Aprendemos juntos</h4>
+                    <p class="text-sm text-slate-600">Todo el recorrido es guiado. Nadie se queda atrás.</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <i class="fa-solid fa-store text-blue-600 text-2xl mb-2"></i>
+                    <h4 class="font-bold text-slate-900 mb-1">Aplicado a tu realidad</h4>
+                    <p class="text-sm text-slate-600">Usamos ejemplos reales de negocios argentinos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. TEORÍA -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-blue-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-blue-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Qué es la IA y por qué cambia todo?</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                La <strong>Inteligencia Artificial</strong> es un programa de computadora que aprendió a entender lo que le pedís en lenguaje natural (como si le hablaras a un humano) y te responde con texto, imágenes o ideas. Hasta hace 3 años, esto era ciencia ficción. Hoy lo tenés gratis en tu celular.
+            </p>
+
+            <!-- Analogía didáctica -->
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Analogía para entenderlo</h4>
+                        <p class="text-amber-900">Imaginate que tenés un <strong>empleado súper capacitado</strong> que sabe de todo: leyó miles de libros, vio millones de casos, pero nunca trabajó en tu negocio. Vos le das instrucciones y él hace el trabajo. Eso es la IA: un empleado que te atiende 24 horas, no se cansa y no pide aumento.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Mitos y realidades</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-xmark-circle text-red-600"></i>
+                        <span class="font-bold text-red-800 text-sm uppercase tracking-wide">Mito</span>
+                    </div>
+                    <p class="text-slate-700 text-sm">"La IA piensa como una persona y siente emociones."</p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-check-circle text-emerald-600"></i>
+                        <span class="font-bold text-emerald-800 text-sm uppercase tracking-wide">Realidad</span>
+                    </div>
+                    <p class="text-slate-700 text-sm">Es un programa que predice qué palabra viene después, basándose en patrones. Muy potente, pero no tiene conciencia.</p>
+                </div>
+                <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-xmark-circle text-red-600"></i>
+                        <span class="font-bold text-red-800 text-sm uppercase tracking-wide">Mito</span>
+                    </div>
+                    <p class="text-slate-700 text-sm">"La IA me va a dejar sin trabajo."</p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-check-circle text-emerald-600"></i>
+                        <span class="font-bold text-emerald-800 text-sm uppercase tracking-wide">Realidad</span>
+                    </div>
+                    <p class="text-slate-700 text-sm">Las personas que sepan usar IA van a reemplazar a las que no sepan. Por eso estás acá.</p>
+                </div>
+                <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-xmark-circle text-red-600"></i>
+                        <span class="font-bold text-red-800 text-sm uppercase tracking-wide">Mito</span>
+                    </div>
+                    <p class="text-slate-700 text-sm">"La IA siempre dice la verdad."</p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-check-circle text-emerald-600"></i>
+                        <span class="font-bold text-emerald-800 text-sm uppercase tracking-wide">Realidad</span>
+                    </div>
+                    <p class="text-slate-700 text-sm">A veces "alucina": inventa datos. Siempre verificá lo importante (precios, leyes, datos médicos).</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Los 3 modelos principales: ¿cuál uso?</h4>
+            <p class="text-slate-700 mb-4">En el mercado hay muchas IA, pero en este curso nos vamos a enfocar en las 3 más conocidas. Todas tienen versión gratis.</p>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="step-card bg-white border-l-8 border-emerald-500 rounded-xl p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-comments text-emerald-600 text-2xl"></i>
+                        <h5 class="font-extrabold text-slate-900">ChatGPT</h5>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-bold mb-2">Empresa: OpenAI</p>
+                    <p class="text-sm text-slate-700 mb-3">El más popular del mundo. Excelente para escribir, analizar y conversar.</p>
+                    <p class="text-xs text-slate-600"><strong>Cuándo usarlo:</strong> redactar textos, responder mensajes, generar ideas.</p>
+                </div>
+                <div class="step-card bg-white border-l-8 border-sky-500 rounded-xl p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-gem text-sky-600 text-2xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Gemini</h5>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-bold mb-2">Empresa: Google</p>
+                    <p class="text-sm text-slate-700 mb-3">Integrado con Gmail, Drive y YouTube. Buenísimo para datos actualizados.</p>
+                    <p class="text-xs text-slate-600"><strong>Cuándo usarlo:</strong> buscar info reciente, trabajar con tus documentos de Google.</p>
+                </div>
+                <div class="step-card bg-white border-l-8 border-indigo-500 rounded-xl p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-microsoft text-indigo-600 text-2xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Copilot</h5>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-bold mb-2">Empresa: Microsoft</p>
+                    <p class="text-sm text-slate-700 mb-3">Viene en Windows, Word y Excel. Ideal si trabajás con Office.</p>
+                    <p class="text-xs text-slate-600"><strong>Cuándo usarlo:</strong> dentro de tus planillas de Excel o documentos de Word.</p>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-6">
+                <p class="text-sm text-blue-900"><i class="fa-solid fa-circle-info mr-2"></i><strong>En este curso vamos a usar ChatGPT</strong> como herramienta principal porque tiene la versión gratis más completa y es la que más vas a encontrar explicada en Internet si necesitás ayuda.</p>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Gratis vs. Paga: ¿qué conviene?</h4>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+                    <thead class="bg-slate-100">
+                        <tr>
+                            <th class="p-3 text-left font-bold text-slate-700">Característica</th>
+                            <th class="p-3 text-left font-bold text-emerald-700">Versión Gratis</th>
+                            <th class="p-3 text-left font-bold text-blue-700">Versión Plus (USD 20/mes)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-t border-slate-200">
+                            <td class="p-3 font-semibold text-slate-800">Chatear / escribir textos</td>
+                            <td class="p-3 text-slate-700">✅ Suficiente</td>
+                            <td class="p-3 text-slate-700">✅ Igual, más rápida</td>
+                        </tr>
+                        <tr class="border-t border-slate-200 bg-slate-50">
+                            <td class="p-3 font-semibold text-slate-800">Subir archivos (Excel, PDF)</td>
+                            <td class="p-3 text-slate-700">⚠ Limitada</td>
+                            <td class="p-3 text-slate-700">✅ Sin límite</td>
+                        </tr>
+                        <tr class="border-t border-slate-200">
+                            <td class="p-3 font-semibold text-slate-800">Generar imágenes</td>
+                            <td class="p-3 text-slate-700">⚠ Pocas por día</td>
+                            <td class="p-3 text-slate-700">✅ Sin límite práctico</td>
+                        </tr>
+                        <tr class="border-t border-slate-200 bg-slate-50">
+                            <td class="p-3 font-semibold text-slate-800">Crear GPTs personalizados</td>
+                            <td class="p-3 text-slate-700">✅ Podés usar</td>
+                            <td class="p-3 text-slate-700">✅ Podés crear</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm text-slate-600 mt-3 italic"><i class="fa-solid fa-circle-info mr-1"></i> Recomendación: arrancá con la gratis. Si a los 2 meses sentís que la usás todos los días, pagás la Plus. No antes.</p>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Palabras clave que vas a escuchar</h4>
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="bg-white border border-slate-200 rounded-lg p-4">
+                    <p class="font-bold text-blue-700 text-sm">Modelo</p>
+                    <p class="text-sm text-slate-700">El "cerebro" de la IA. Ej: GPT-4o, Gemini 2.5.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4">
+                    <p class="font-bold text-blue-700 text-sm">Prompt</p>
+                    <p class="text-sm text-slate-700">La instrucción que vos le escribís a la IA.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4">
+                    <p class="font-bold text-blue-700 text-sm">Respuesta</p>
+                    <p class="text-sm text-slate-700">Lo que la IA te devuelve.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4">
+                    <p class="font-bold text-blue-700 text-sm">Contexto</p>
+                    <p class="text-sm text-slate-700">La info previa de la conversación que la IA recuerda.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4">
+                    <p class="font-bold text-blue-700 text-sm">Token</p>
+                    <p class="text-sm text-slate-700">Cada pedacito de palabra. La IA cobra por token (en la paga).</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-lg p-4">
+                    <p class="font-bold text-blue-700 text-sm">Chat / Conversación</p>
+                    <p class="text-sm text-slate-700">Una charla completa. Podés tener muchas en paralelo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PRÁCTICA GUIADA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-blue-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-blue-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Tu primera conversación con una IA</h3>
+            <p class="text-slate-700 mb-6">Vamos a hacerlo todos juntos. El profe va a ir paso a paso en la pantalla y vos lo replicás en tu celular o computadora. Si te quedás atrás, levantá la mano: nadie avanza sin todos.</p>
+
+            <!-- PASO 1 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Entrá a ChatGPT</h4>
+                </div>
+                <p class="text-slate-700 ml-13">Abrí el navegador (Chrome, Edge o Safari) y andá a <a href="https://chat.openai.com" class="text-blue-600 underline font-semibold">chat.openai.com</a>. Desde el celular podés instalar la app oficial de OpenAI buscándola en Play Store o App Store.</p>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i>Cuidado con apps truchas. Verificá que diga "OpenAI" como desarrollador.
+                </div>
+            </div>
+
+            <!-- PASO 2 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Creá tu cuenta gratuita</h4>
+                </div>
+                <p class="text-slate-700 ml-13">Hacé clic en "Sign up" (Registrate). Podés usar:</p>
+                <ul class="ml-13 mt-2 space-y-1 text-slate-700 text-sm">
+                    <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i>Tu cuenta de Gmail (es la forma más rápida)</li>
+                    <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i>Tu email y una contraseña nueva</li>
+                    <li><i class="fa-solid fa-check text-emerald-600 mr-2"></i>Tu número de celular (llega un código por SMS)</li>
+                </ul>
+            </div>
+
+            <!-- PASO 3 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Reconocé la pantalla principal</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Ya estás adentro. Lo que vas a ver:</p>
+                <div class="ml-13 grid md:grid-cols-2 gap-3 text-sm">
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <p class="font-bold text-slate-800 mb-1"><i class="fa-solid fa-left-long text-blue-600 mr-1"></i> A la izquierda</p>
+                        <p class="text-slate-700">Lista de tus chats anteriores (por ahora vacía).</p>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <p class="font-bold text-slate-800 mb-1"><i class="fa-solid fa-down-long text-blue-600 mr-1"></i> Abajo al centro</p>
+                        <p class="text-slate-700">La barra donde vas a escribir tus mensajes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 4 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Escribí tu primer mensaje</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Copiá y pegá este <strong>prompt</strong> en la barra (adaptalo a tu rubro):</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-sm">
+                    <div class="flex items-center gap-2 text-slate-400 text-xs mb-2 uppercase tracking-widest">
+                        <i class="fa-solid fa-quote-right"></i> Prompt de ejemplo
+                    </div>
+                    <p>Hola, soy Carlos, tengo una ferretería en Luján, Buenos Aires. Presentate y contame en qué me podés ayudar en mi trabajo.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic">Presioná Enter o tocá la flechita. Esperá unos segundos: la IA va a responder.</p>
+            </div>
+
+            <!-- PASO 5 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Leé la respuesta con calma</h4>
+                </div>
+                <p class="text-slate-700 ml-13">La IA te va a devolver una respuesta en párrafos. Es común que te liste 5 o 10 ideas. No te asustes si es larga: leéla, y si hay algo que no entendés, en el próximo paso le vas a pedir que te lo explique mejor.</p>
+            </div>
+
+            <!-- PASO 6 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Corregile y pedile más</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Esto es lo más importante: <strong>la IA aprende de la conversación</strong>. Si la primera respuesta no te convence, pedile que ajuste. Probá con:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-sm">
+                    <div class="flex items-center gap-2 text-slate-400 text-xs mb-2 uppercase tracking-widest">
+                        <i class="fa-solid fa-quote-right"></i> Seguí la charla
+                    </div>
+                    <p>Gracias. De todo eso, dame los 3 puntos más importantes en lenguaje simple, como si se lo explicaras a un jubilado que nunca usó IA.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm">La IA se adapta. Eso es <strong>contexto</strong>: recuerda de qué venían hablando.</p>
+            </div>
+
+            <!-- PASO 7 -->
+            <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">7</div>
+                    <h4 class="text-lg font-extrabold text-blue-900">Aprendé el botón mágico: "Nuevo chat"</h4>
+                </div>
+                <p class="text-slate-700 ml-13">En la esquina superior izquierda hay un botón que dice <strong>"Nuevo chat"</strong> (o "+ New chat"). Cada vez que vayas a hablar de un tema distinto, hacé clic ahí. Así la IA no se confunde mezclando temas. Regla de oro: <em>un tema, un chat</em>.</p>
+            </div>
+        </section>
+
+        <!-- 7. EJERCICIO AUTÓNOMO -->
+        <section class="p-6 md:p-10 bg-blue-50 border-y-4 border-blue-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-rocket text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-blue-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-blue-900">Ahora te toca a vos</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Hacelo con <strong>tu propio negocio o trabajo real</strong>. No copies el ejemplo del profe: usá tu caso.</p>
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2">
+                <li><strong>Abrí un nuevo chat</strong> (el botón de arriba a la izquierda).</li>
+                <li><strong>Escribile a la IA</strong>: "Hola, soy [tu nombre], tengo un/una [tu rubro: panadería, peluquería, kiosco, etc.] en [tu ciudad]. Dame 5 ideas concretas de cómo la IA me podría ahorrar tiempo en mi trabajo cotidiano."</li>
+                <li><strong>Leé la respuesta</strong> y elegí la idea que más te llame la atención.</li>
+                <li><strong>Respondele</strong>: "La idea número X me gusta. Explicámela más en profundidad y dame un ejemplo concreto de cómo la aplicaría esta semana."</li>
+                <li><strong>Guardá ese chat.</strong> La próxima clase lo vamos a usar de base.</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 mt-6 border border-blue-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra (si terminaste antes):</strong> pedile a la IA que te explique los 5 puntos en formato de lista para WhatsApp, con emojis. ¿Podés mandarle ese mensaje a un amigo y que te crea que lo escribiste vos?</p>
+            </div>
+        </section>
+
+        <!-- 8. CIERRE -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Entendiste que la <strong>IA es un empleado virtual</strong>, no una criatura que piensa. Le das instrucciones y te devuelve resultados.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés las <strong>3 IAs principales</strong>: ChatGPT, Gemini y Copilot. Sabés cuándo usar cada una.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Creaste tu cuenta de ChatGPT y <strong>tuviste tu primera conversación real</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Aprendiste que <strong>la calidad del resultado depende de cómo le pidas las cosas</strong> (esto se llama "prompt" y lo vemos en profundidad la clase que viene).</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-blue-50 rounded-xl border-2 border-blue-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-blue-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-blue-900 mb-1">Próxima clase: Prompt Engineering para Negocios</p>
+                        <p class="text-sm text-blue-800">Vamos a aprender la clase más importante del curso: <strong>cómo pedirle las cosas a la IA</strong> para que te dé resultados profesionales. Spoiler: hay fórmulas que funcionan siempre. Traé tu chat de hoy guardado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa (opcional):</strong> hablá todos los días 10 minutos con ChatGPT esta semana. Sobre lo que quieras: cocina, fútbol, noticias, tu trabajo. Tomale confianza.</p>
+            </div>
+        </section>
+
+        <!-- 9. NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">
+                    Clase de bienvenida. Enfocar en reducir el miedo y la desorientación. El ejercicio de la primera interacción debe ser "totalmente guiado" por el docente.
+                </p>
+            </div>
+        </section>
+
+        <!-- 10. FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 01</span>
+                    <span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2">
+                        <div class="h-full bg-blue-500 rounded-full" style="width: 4.5%"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

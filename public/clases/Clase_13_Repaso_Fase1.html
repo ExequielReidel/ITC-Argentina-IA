@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 13 · Repaso y Consolidación Fase 1 | ITC Argentina</title>
+    <meta name="description" content="Clase 13 del curso IA + Automatizaciones de ITC Argentina. Repaso integrador de las 12 clases de IA Aplicada antes de pasar a Automatizaciones.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .class-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #334155;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-amber-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 13</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Repaso y Consolidación</h1>
+            <p class="text-amber-100 text-lg mb-4 max-w-2xl">Respirá hondo. Recorrimos 12 clases. Hoy ordenamos todo lo aprendido y sacamos dudas antes de entrar a la Fase 2.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">REPASO</span>
+        </header>
+
+        <section class="bg-amber-50 border-l-8 border-amber-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-amber-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener integrados los 12 temas de IA Aplicada</strong>, vas a haber resuelto tus dudas principales, y vas a haber presentado 1 caso real de tu negocio ante el grupo. Quedás listo para entrar a Automatizaciones.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase (formato especial: sin teoría nueva)</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-xs">
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Mapa mental</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-amber-800">Ejercicio integrador</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>35 min</strong><br><span class="text-amber-800">Presentaciones</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Pre-Fase 2 + cierre</span></div>
+            </div>
+        </section>
+
+        <!-- BIENVENIDA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-handshake-angle text-amber-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-amber-700">Bienvenida · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Mirá hasta dónde llegaste</h3>
+            <p class="text-slate-700 text-lg mb-4">Hace 13 semanas te sentaste en esta misma aula sin saber qué era un prompt. Hoy, si miramos tu celular y tu computadora, vas a encontrar: una cuenta activa de ChatGPT con decenas de conversaciones guardadas, un kit visual armado en Canva, al menos un Reel producido con IA, tu GPT personalizado, tu carpeta "IA al rescate" y un tablero financiero armado. <strong>Eso no es poco. Es mucho.</strong></p>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+                <p class="text-sm font-bold text-amber-900 uppercase tracking-widest mb-3"><i class="fa-solid fa-heart mr-1"></i> Tomemos 1 minuto</p>
+                <p class="text-amber-900 italic">Antes de arrancar, levantá la mano y compartí <strong>el cambio más concreto</strong> que lograste en tu día a día desde que empezamos el curso. Una sola cosa. No tiene que ser gigante. El ahorro de 30 minutos diarios también cuenta.</p>
+            </div>
+        </section>
+
+        <!-- MAPA MENTAL DE LAS 12 CLASES -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-sitemap text-amber-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-amber-700">Mapa mental de Fase 1 · 15 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Las 12 clases en una sola mirada</h3>
+            <p class="text-slate-700 mb-6">El curso está organizado en 6 bloques temáticos. Cada uno resuelve una dimensión distinta de tu negocio:</p>
+
+            <!-- Bloque 1 -->
+            <div class="bg-white border-l-4 border-blue-600 rounded-xl p-5 mb-4 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-compass text-blue-600 text-xl"></i>
+                    <h4 class="text-lg font-extrabold text-blue-900">FUNDAMENTOS (Clases 1-2)</h4>
+                </div>
+                <p class="text-slate-700 text-sm mb-3">Te diste el puntapié: qué es la IA, cómo hablarle, cómo sacarle buenos resultados.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="class-chip"><i class="fa-solid fa-1 text-blue-600"></i> IA en tu vida cotidiana</span>
+                    <span class="class-chip"><i class="fa-solid fa-2 text-blue-600"></i> Prompt Engineering (RTF, TAFEC)</span>
+                </div>
+            </div>
+
+            <!-- Bloque 2 -->
+            <div class="bg-white border-l-4 border-sky-600 rounded-xl p-5 mb-4 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-bag-shopping text-sky-600 text-xl"></i>
+                    <h4 class="text-lg font-extrabold text-sky-900">APLICACIÓN COMERCIAL (Clases 3-4)</h4>
+                </div>
+                <p class="text-slate-700 text-sm mb-3">IA al servicio de lo que te entra plata: ventas y contenido.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="class-chip"><i class="fa-solid fa-3 text-sky-600"></i> Ventas y atención al cliente</span>
+                    <span class="class-chip"><i class="fa-solid fa-4 text-sky-600"></i> Copywriting y contenido</span>
+                </div>
+            </div>
+
+            <!-- Bloque 3 -->
+            <div class="bg-white border-l-4 border-pink-600 rounded-xl p-5 mb-4 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-palette text-pink-600 text-xl"></i>
+                    <h4 class="text-lg font-extrabold text-pink-900">DISEÑO CON IA (Clases 5-6-7)</h4>
+                </div>
+                <p class="text-slate-700 text-sm mb-3">Tu negocio con cara profesional. Imágenes, diseño gráfico y video.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="class-chip"><i class="fa-solid fa-5 text-pink-600"></i> Imágenes (Ideogram, Firefly)</span>
+                    <span class="class-chip"><i class="fa-solid fa-6 text-pink-600"></i> Canva + IA</span>
+                    <span class="class-chip"><i class="fa-solid fa-7 text-pink-600"></i> Video Marketing (CapCut)</span>
+                </div>
+            </div>
+
+            <!-- Bloque 4 -->
+            <div class="bg-white border-l-4 border-indigo-600 rounded-xl p-5 mb-4 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-gauge-high text-indigo-600 text-xl"></i>
+                    <h4 class="text-lg font-extrabold text-indigo-900">PRODUCTIVIDAD (Clase 8)</h4>
+                </div>
+                <p class="text-slate-700 text-sm mb-3">Recuperar horas del día. La parte administrativa que a todos nos come.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="class-chip"><i class="fa-solid fa-8 text-indigo-600"></i> Agenda, minutas, SOPs, emails</span>
+                </div>
+            </div>
+
+            <!-- Bloque 5 -->
+            <div class="bg-white border-l-4 border-violet-600 rounded-xl p-5 mb-4 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-chess text-violet-600 text-xl"></i>
+                    <h4 class="text-lg font-extrabold text-violet-900">ESTRATEGIA (Clases 9, 10, 12)</h4>
+                </div>
+                <p class="text-slate-700 text-sm mb-3">De operar a decidir. Entender tu mercado, tus datos y tus finanzas.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="class-chip"><i class="fa-solid fa-9 text-violet-600"></i> Análisis de clientes y competencia</span>
+                    <span class="class-chip">🔟 Excel + IA</span>
+                    <span class="class-chip">1️⃣2️⃣ Finanzas de la Pyme</span>
+                </div>
+            </div>
+
+            <!-- Bloque 6 -->
+            <div class="bg-white border-l-4 border-indigo-800 rounded-xl p-5 mb-4 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-robot text-indigo-800 text-xl"></i>
+                    <h4 class="text-lg font-extrabold text-indigo-900">IA AVANZADA (Clase 11)</h4>
+                </div>
+                <p class="text-slate-700 text-sm mb-3">Del ChatGPT genérico a tu propio asistente entrenado.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="class-chip">1️⃣1️⃣ GPTs Personalizados</span>
+                </div>
+            </div>
+
+            <!-- CONCEPTOS TRANSVERSALES -->
+            <div class="mt-8 bg-amber-100 border-2 border-amber-400 rounded-xl p-5">
+                <h4 class="text-lg font-extrabold text-amber-900 mb-3"><i class="fa-solid fa-key mr-2"></i>Los 5 conceptos que NO podés olvidar</h4>
+                <ul class="space-y-2 text-amber-900 text-sm">
+                    <li><i class="fa-solid fa-circle-dot text-amber-700 mr-2"></i><strong>Prompt bien armado = resultado 10× mejor.</strong> RTF y TAFEC son tus amigos.</li>
+                    <li><i class="fa-solid fa-circle-dot text-amber-700 mr-2"></i><strong>Dale CONTEXTO.</strong> Quién sos, qué negocio tenés, quién es el cliente.</li>
+                    <li><i class="fa-solid fa-circle-dot text-amber-700 mr-2"></i><strong>La IA no reemplaza tu criterio.</strong> Valida la información antes de usarla.</li>
+                    <li><i class="fa-solid fa-circle-dot text-amber-700 mr-2"></i><strong>Guardá tus mejores prompts.</strong> Una buena plantilla es oro molido.</li>
+                    <li><i class="fa-solid fa-circle-dot text-amber-700 mr-2"></i><strong>Protegé datos sensibles.</strong> Anonimizá antes de subir info privada.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- EJERCICIO INTEGRADOR -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-wand-magic-sparkles text-amber-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-amber-700">Ejercicio integrador · 25 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Marketing completo en 25 minutos</h3>
+            <p class="text-slate-700 mb-6">Vamos a hacer un <strong>flujo de marketing integral de punta a punta</strong> combinando 5 clases distintas. Trabajá con tu propio negocio.</p>
+
+            <div class="step-card bg-white border-l-8 border-amber-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-amber-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-amber-900">Generá 10 ideas de contenido (Clase 4)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm">Abrí ChatGPT y aplicá la técnica de "10 ideas desde 1 tema". Tema base: algún producto/servicio tuyo de esta semana.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-amber-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-amber-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-amber-900">Elegí 1 idea y armá el copy para Instagram (Clase 4)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm">Prompt rápido: "Redactame un post para Instagram sobre [idea elegida], tono argentino cercano, 120 palabras, con CTA al WhatsApp".</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-amber-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-amber-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-amber-900">Generá la imagen del post (Clase 5)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm">Abrí Ideogram o Firefly. Usá los 6 ingredientes del prompt visual: sujeto, escena, luz, estilo, toma, formato.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-amber-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-amber-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-amber-900">Armá la placa en Canva con tu identidad (Clase 6)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm">Abrí Canva, formato post IG (1080×1080), aplicá tu paleta de colores, tu logo y tus tipografías. Pegá la imagen generada.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-amber-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-amber-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-amber-900">Generá el WhatsApp de respuesta (Clase 3)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm">Imaginate que te escriben por esa publicación. Con la plantilla universal de WhatsApp, generá 3 versiones de respuesta (cordial, directa, persuasiva).</p>
+            </div>
+
+            <div class="bg-amber-50 border-2 border-amber-400 rounded-xl p-5 mt-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-600 text-2xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-amber-900 mb-2">El resultado en 25 minutos</p>
+                        <p class="text-sm text-amber-900">Idea de contenido + copy redactado + imagen personalizada + placa con marca propia + respuesta de WhatsApp lista. Lo que antes llevaba un día de trabajo + diseñador + community manager, ahora lo hacés solo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESENTACIONES -->
+        <section class="p-6 md:p-10 bg-amber-50 border-y-4 border-amber-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-microphone text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-amber-700">Ronda de presentaciones · 35 min</h2>
+                    <h3 class="text-2xl font-extrabold text-amber-900">Cada uno cuenta su mejor caso</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Cada alumno tiene <strong>3 minutos</strong> para compartir con el grupo:</p>
+            <ol class="list-decimal list-inside space-y-2 text-slate-800 ml-2 mb-6">
+                <li>¿Qué tarea automatizaste o mejoraste con IA en las últimas 12 semanas?</li>
+                <li>¿Qué resultado concreto obtuviste? (tiempo ahorrado, ventas, engagement, etc.)</li>
+                <li>¿Qué herramienta o prompt te sirvió más?</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-amber-200 mb-4">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-users text-amber-600 mr-2"></i><strong>Formato grupal:</strong> cada presentación se acompaña con <strong>1 feedback del grupo</strong> (1 aplauso + 1 sugerencia). Esto construye comunidad y deja ideas para todos.</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 border border-amber-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-circle-info text-amber-600 mr-2"></i><strong>Docente:</strong> anotá las dudas frecuentes que surjan durante las presentaciones para abordarlas en la Fase 2 o en el mini-proyecto integrador.</p>
+            </div>
+        </section>
+
+        <!-- PRE-VISUALIZACIÓN FASE 2 -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-map-location-dot text-amber-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-amber-700">Pre-Fase 2 · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Qué es automatizar y por qué importa?</h3>
+            <p class="text-slate-700 text-lg mb-4">Hasta ahora la IA hacía lo que vos le pedías. En cada caso, <strong>vos abrís ChatGPT, pegás un prompt, copiás la respuesta, la pegás en Instagram</strong>. La IA es la "cabeza", pero vos seguís siendo las manos.</p>
+            <p class="text-slate-700 text-lg mb-4">En la <strong>Fase 2</strong> vamos a hacer que las "manos" también se automaticen. La IA recibe el mensaje del cliente, lo analiza, genera la respuesta, la envía al WhatsApp, carga el dato al Excel, y te avisa solo si hay algo raro. <strong>El negocio empieza a trabajar solo.</strong></p>
+
+            <aside class="bg-purple-50 border-2 border-purple-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-purple-600 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-purple-900 mb-1 text-sm uppercase tracking-wide">La analogía de fábrica</h4>
+                        <p class="text-purple-900">Si la IA es <strong>el cerebro</strong>, Make es <strong>la cinta transportadora de una fábrica</strong>. Conecta todas las partes: el cliente llega al formulario (entrada), la IA procesa la información (estación 1), Make la manda a una planilla (estación 2), después la envía por mail al cliente (estación 3). Todo sin que vos estés ahí.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5">
+                <h4 class="font-bold text-slate-900 mb-3"><i class="fa-solid fa-list-ol text-amber-600 mr-2"></i>Lo que te espera en Fase 2 (Clases 14 a 22)</h4>
+                <ul class="space-y-2 text-slate-700 text-sm">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-600 mt-1"></i><strong>Clase 14:</strong> Agentes de IA y el futuro del trabajo</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-600 mt-1"></i><strong>Clase 15:</strong> Mini-Proyecto de cierre de IA Aplicada</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-600 mt-1"></i><strong>Clases 16-22:</strong> Make, APIs, WhatsApp, IA integrada y Proyecto Final</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CIERRE -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés el <strong>mapa mental completo</strong> de las 12 clases de Fase 1.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Hiciste un <strong>flujo completo de marketing</strong> integrando 5 clases distintas.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Escuchaste los casos de <strong>tus compañeros</strong> — probablemente te quedaste con ideas nuevas.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Entendés el <strong>salto conceptual</strong> entre IA Aplicada y Automatización.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Estás listo para entrar a <strong>Fase 2</strong> con una base sólida.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-purple-50 rounded-xl border-2 border-purple-300">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-purple-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-purple-900 mb-1">Próxima clase: Agentes de IA y el Futuro del Trabajo</p>
+                        <p class="text-sm text-purple-800">Última clase de Fase 1. Vamos a mirar <strong>el horizonte</strong>: qué son los agentes de IA, cómo van a cambiar el trabajo en los próximos 3-5 años, ética y privacidad, y cómo te preparás para seguir vigente. Clase más reflexiva, con debate abierto.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> revisá tu carpeta "IA al rescate". Si hay prompts que no estás usando, archivalos. Si hay nuevos que descubriste esta semana, agregalos. Mantené el sistema vivo.</p>
+            </div>
+        </section>
+
+        <!-- NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Clase sin contenido nuevo. El docente auxiliar puede llevarla con guía del titular. Registrar dudas para incorporar en la Fase 2.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 13</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-amber-500 rounded-full" style="width: 59%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

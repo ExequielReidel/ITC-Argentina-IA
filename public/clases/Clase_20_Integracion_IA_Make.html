@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 20 · Integración IA + Make: El Empleado Digital | ITC Argentina</title>
+    <meta name="description" content="Clase 20 del curso IA + Automatizaciones de ITC Argentina. La clase estrella de Fase 2: conectá ChatGPT con Make para crear tu Empleado Digital.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .var-tag { background: #ede9fe; color: #6b21a8; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-size: 0.75rem; font-weight: 700; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-purple-700 via-indigo-800 to-emerald-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-purple-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 20</span><span>•</span>
+                <span>Fase 2 — Automatización · CLASE ESTRELLA</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Integración IA + Make</h1>
+            <p class="text-purple-100 text-lg mb-4 max-w-2xl">El Empleado Digital. La clase donde por primera vez vas a ver el negocio funcionando solo: el cliente escribe, la IA decide, Make ejecuta.</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">INTEGRACIÓN</span>
+                <span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">⭐ CLASE ESTRELLA</span>
+            </div>
+        </header>
+
+        <section class="bg-gradient-to-r from-purple-50 to-emerald-50 border-l-8 border-emerald-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener un flujo IA + Make completo funcionando</strong>: un mensaje del cliente entra, ChatGPT lo clasifica (consulta / reclamo / pedido), Make decide a dónde mandarlo y genera la respuesta automática. Tu primer "empleado digital".</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>45 min</strong><br><span class="text-emerald-800">Práctica IA+Make</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué hicimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">Aprendiste las 4 formas de automatizar WhatsApp y armaste tu bot de Telegram conectado a Make. Hoy ya recibís notificaciones automáticas de tu negocio en tu celular.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-emerald-600 mt-1"></i>¿Te llegaron notificaciones reales esta semana?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-emerald-600 mt-1"></i>¿Tenés tu API Key de OpenAI? Si no, en 5 minutos la sacamos juntos.</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-gradient-to-r from-purple-50 to-emerald-50 border-2 border-emerald-300 rounded-xl">
+                <p class="text-sm text-slate-900"><i class="fa-solid fa-rocket text-emerald-600 mr-2"></i><strong>Hoy es la clase más importante de toda la Fase 2.</strong> Hasta ahora la automatización ejecutaba acciones <em>fijas</em> (mandar mail, guardar en Sheets). Hoy vamos a sumar <strong>cerebro</strong>: la IA va a decidir qué acción ejecutar según el contexto. <strong>Es el salto de "automatización" a "agente inteligente".</strong></p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-600">Desarrollo teórico · 15 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">El concepto del "Empleado Digital"</h3>
+            <p class="text-slate-700 text-lg mb-4">Imaginate que tenés un empleado nuevo. Le explicás cómo funciona tu negocio, le dejás un manual de respuestas, y lo ponés a leer mensajes. Cada vez que llega uno, el empleado decide: <strong>"esto es una consulta de precio"</strong>, <strong>"esto es un reclamo grave"</strong>, <strong>"esto es un cliente que ya compró"</strong>. Y actúa según corresponda.</p>
+            <p class="text-slate-700 text-lg mb-4">Eso es exactamente lo que vas a armar hoy. Con una diferencia: <strong>tu empleado digital trabaja 24/7, nunca se olvida nada y procesa miles de mensajes en segundos</strong>.</p>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">El esquema mental</h4>
+                        <p class="text-amber-900 mb-2"><strong>Make recibe los datos. La IA los procesa. Make ejecuta el resultado.</strong></p>
+                        <p class="text-amber-900 text-sm">Make es las <strong>manos</strong>. ChatGPT es el <strong>cerebro</strong>. Hasta ahora habíamos usado solo las manos. Hoy enchufamos el cerebro.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Los 3 patrones más usados de IA + Make</h4>
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl border-l-4 border-emerald-600 p-5">
+                    <h5 class="font-extrabold text-slate-900 mb-2"><i class="fa-solid fa-tags text-emerald-600 mr-2"></i>1. Clasificación automática</h5>
+                    <p class="text-sm text-slate-700">El mensaje entrante se le pasa a la IA con la pregunta: <em>"¿esto es A, B o C?"</em>. La IA devuelve la categoría. Make ramifica el flujo según la categoría.</p>
+                    <p class="text-xs text-slate-500 mt-1 italic">Ejemplo: clasificar mails entrantes en "Consulta", "Reclamo", "Spam".</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-emerald-600 p-5">
+                    <h5 class="font-extrabold text-slate-900 mb-2"><i class="fa-solid fa-magnifying-glass text-emerald-600 mr-2"></i>2. Extracción de datos</h5>
+                    <p class="text-sm text-slate-700">Texto desordenado entra. La IA extrae datos estructurados (nombre, email, monto, fecha) en formato JSON. Make los guarda en Sheets.</p>
+                    <p class="text-xs text-slate-500 mt-1 italic">Ejemplo: leer un mensaje de WhatsApp y armar la ficha del cliente automáticamente.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-emerald-600 p-5">
+                    <h5 class="font-extrabold text-slate-900 mb-2"><i class="fa-solid fa-comment-dots text-emerald-600 mr-2"></i>3. Generación de contenido</h5>
+                    <p class="text-sm text-slate-700">Datos entran (un producto, una promo, un cliente). La IA genera el texto final (post, mail, mensaje) con tu tono de marca. Make lo manda.</p>
+                    <p class="text-xs text-slate-500 mt-1 italic">Ejemplo: tu hoja de productos → IA genera descripción → Sheets actualizada con copy listo para publicar.</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Sacar tu API Key de OpenAI</h4>
+            <div class="bg-white border border-slate-200 rounded-xl p-5">
+                <ol class="list-decimal list-inside space-y-2 text-slate-700 text-sm">
+                    <li>Andá a <a href="https://platform.openai.com" class="text-emerald-600 underline font-semibold">platform.openai.com</a> y registrate (puede ser con tu Gmail).</li>
+                    <li>Andá a <strong>"API Keys"</strong> en el menú izquierdo.</li>
+                    <li>Hacé clic en "Create new secret key", dale un nombre (ej: "Make-Curso-ITC") y copiala apenas la generan.</li>
+                    <li><strong>Cargá saldo:</strong> con USD 5 te alcanza para varios meses de uso aprendiendo. Necesita tarjeta de crédito internacional.</li>
+                </ol>
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 mt-3 text-xs text-amber-900">
+                    <i class="fa-solid fa-circle-info mr-1"></i><strong>Si no tenés tarjeta internacional:</strong> el docente puede ofrecer una clave compartida solo para esta clase, o usar Gemini (Google) que tiene plan gratuito generoso.
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-600">Práctica guiada · 45 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Caso: estudio jurídico "Suárez &amp; Asoc." en Santa Fe</h3>
+            <p class="text-slate-700 mb-6">El estudio recibe entre 20 y 40 consultas diarias por su formulario web. Algunas son <strong>consultas legales reales</strong>, otras son <strong>vendedores de productos</strong>, y otras son <strong>reclamos de clientes existentes</strong>. La secretaria pierde 2 horas por día filtrándolas. Vamos a hacer que la IA lo haga sola.</p>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">Escenario base + módulo OpenAI</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>Escenario nuevo. Trigger: <strong>Google Sheets → Watch New Rows</strong> (planilla de respuestas del formulario).</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>Agregá módulo: <strong>OpenAI → Create a Chat Completion</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>Te pide la API Key: pegala (queda guardada como conexión, no la tipeás más).</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>Modelo: <code class="bg-slate-100 px-2 py-0.5 rounded text-xs">gpt-4o-mini</code> (económico y rápido).</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">El prompt clave: clasificación + JSON estructurado</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-2">En el módulo OpenAI, en "Messages" agregá uno con role "system":</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 mt-2 font-mono text-xs">
+                    <p>Sos el clasificador del estudio jurídico Suárez &amp; Asoc.<br><br>
+                    Recibís consultas que llegan por formulario web. Las clasificás SIEMPRE en una de estas 3 categorías:<br><br>
+                    1. <span class="text-emerald-300">CONSULTA_LEGAL</span> — pregunta legítima sobre temas jurídicos<br>
+                    2. <span class="text-emerald-300">RECLAMO_CLIENTE</span> — queja o seguimiento de un cliente existente<br>
+                    3. <span class="text-emerald-300">SPAM</span> — vendedor, marketing, contenido no relacionado<br><br>
+                    Devolvé SOLO un JSON con este formato exacto:<br>
+                    {<br>
+                    &nbsp;&nbsp;"categoria": "...",<br>
+                    &nbsp;&nbsp;"resumen": "1 frase max 15 palabras",<br>
+                    &nbsp;&nbsp;"urgencia": "alta/media/baja"<br>
+                    }</p>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mt-3 mb-2">Y el mensaje "user" con el contenido del formulario:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Nombre: <span class="text-purple-300">{{1.Nombre}}</span><br>
+                    Email: <span class="text-purple-300">{{1.Email}}</span><br>
+                    Mensaje: <span class="text-purple-300">{{1.Mensaje}}</span></p>
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">Parsear el JSON que devuelve la IA</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>Agregá módulo <strong>JSON → Parse JSON</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>En "JSON string": mapeá la salida de OpenAI <span class="var-tag">{{2.choices[].message.content}}</span>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>En "Data structure": creá una nueva con los 3 campos: categoria (texto), resumen (texto), urgencia (texto).</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>Hacé "Run once" y verificá que el JSON se desarmó en variables: <span class="var-tag">{{3.categoria}}</span>, <span class="var-tag">{{3.resumen}}</span>, <span class="var-tag">{{3.urgencia}}</span>.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">Ramificar el flujo con un Router</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>Agregá un <strong>Router</strong> (botón "Add a router" entre módulos). Vas a ver que el flujo se bifurca en varias ramas.</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>En cada rama, hacé clic en la "llave inglesa" → <strong>"Set up filter"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>Filtros:</li>
+                </ul>
+                <div class="ml-13 mt-2 grid md:grid-cols-3 gap-3">
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 text-xs">
+                        <p class="font-bold text-emerald-900 mb-1">RAMA 1</p>
+                        <p class="text-emerald-800">Filter: <span class="var-tag">{{3.categoria}}</span> = <strong>"CONSULTA_LEGAL"</strong></p>
+                        <p class="text-slate-600 mt-1 italic">→ Mail al abogado del área</p>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs">
+                        <p class="font-bold text-amber-900 mb-1">RAMA 2</p>
+                        <p class="text-amber-800">Filter: <span class="var-tag">{{3.categoria}}</span> = <strong>"RECLAMO_CLIENTE"</strong></p>
+                        <p class="text-slate-600 mt-1 italic">→ Telegram URGENTE al socio</p>
+                    </div>
+                    <div class="bg-slate-100 border border-slate-200 rounded-lg p-3 text-xs">
+                        <p class="font-bold text-slate-900 mb-1">RAMA 3</p>
+                        <p class="text-slate-800">Filter: <span class="var-tag">{{3.categoria}}</span> = <strong>"SPAM"</strong></p>
+                        <p class="text-slate-600 mt-1 italic">→ Archivar y nada más</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">Acción de cada rama</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i><strong>Rama Consulta Legal:</strong> Gmail al abogado del área con el resumen y los datos.</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i><strong>Rama Reclamo:</strong> Telegram al socio principal (alta urgencia) + email al cliente confirmando recepción.</li>
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i><strong>Rama Spam:</strong> Sheets → marcar la fila como "spam" para revisar al final del mes.</li>
+                </ul>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 ml-13 mt-3 text-sm text-emerald-900">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i><strong>Resultado:</strong> el estudio nunca pierde un caso urgente, los abogados solo reciben consultas reales, y la secretaria recupera sus 2 horas diarias para tareas de mayor valor.
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</div>
+                    <h4 class="text-lg font-extrabold text-emerald-900">Bonus: respuesta automática al cliente con IA</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-2">Para consultas legales legítimas, generá una respuesta inicial automática (el cliente siente respuesta inmediata):</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-emerald-600 mr-2"></i>Antes del Gmail al cliente, agregá otro módulo OpenAI con prompt:</li>
+                </ul>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 mt-2 font-mono text-xs">
+                    <p>Sos asistente del estudio Suárez &amp; Asoc. Recibiste esta consulta:<br><br>
+                    "<span class="text-purple-300">{{1.Mensaje}}</span>"<br><br>
+                    Redactá una respuesta cordial de 80 palabras max que:<br>
+                    1) Confirme recepción de la consulta<br>
+                    2) Aclare que un abogado especialista responderá en menos de 24hs<br>
+                    3) Pida 1 dato adicional si es necesario para avanzar<br>
+                    Tono profesional argentino. NUNCA dar consejo legal específico.</p>
+                </div>
+            </div>
+
+            <div class="step-card bg-emerald-50 border-2 border-emerald-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-emerald-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-emerald-900">Plantilla universal: cualquier flujo IA + Make</h4>
+                </div>
+                <ol class="list-decimal list-inside space-y-2 text-emerald-900 text-sm">
+                    <li><strong>Trigger</strong> (entra el dato bruto)</li>
+                    <li><strong>OpenAI</strong> (IA clasifica / extrae / genera) → devuelve JSON</li>
+                    <li><strong>Parse JSON</strong> (Make convierte el JSON en variables usables)</li>
+                    <li><strong>Router + filtros</strong> (el flujo se ramifica según la decisión de la IA)</li>
+                    <li><strong>Acciones específicas</strong> en cada rama (mail, WhatsApp, Sheets, etc.)</li>
+                    <li><strong>Logging</strong> (guardar en Sheets qué clasificó la IA, para auditar y mejorar)</li>
+                </ol>
+            </div>
+
+            <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mt-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-shield-halved text-amber-600 text-2xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-amber-900 mb-1">Recordá: Human-in-the-Loop</p>
+                        <p class="text-sm text-amber-900">Para decisiones legales, financieras o sensibles, <strong>nunca dejes que la IA actúe sola</strong>. Que la IA proponga, vos aprobás. Lo que automatizamos hoy es la <strong>clasificación y el primer contacto</strong>, no las respuestas técnicas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-emerald-50 border-y-4 border-emerald-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-emerald-900">Tu primer Empleado Digital</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Diseñá un flujo de IA + Make para tu negocio. Elegí uno de estos casos según rubro:</p>
+            <ul class="list-disc list-inside space-y-1 text-slate-700 ml-2 mb-4 text-sm">
+                <li><strong>Comercio:</strong> mensajes de WhatsApp → IA clasifica (consulta de precio / reclamo / pedido) → respuesta automática.</li>
+                <li><strong>Profesional independiente:</strong> mails entrantes → IA categoriza (nuevo cliente / proyecto en curso / spam) → ruteo.</li>
+                <li><strong>E-commerce:</strong> hoja de productos → IA genera descripciones SEO → Sheets actualizada para publicar.</li>
+            </ul>
+            <ol class="list-decimal list-inside space-y-2 text-slate-800 ml-2 mb-4 text-sm">
+                <li>Definí qué clasifica/extrae/genera la IA.</li>
+                <li>Armá el prompt con formato JSON de salida.</li>
+                <li>Probá con 3 datos reales y verificá la calidad.</li>
+                <li>Activalo y dejalo correr.</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-emerald-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> agregá un Router con 3 ramas y una notificación distinta por Telegram según la categoría.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés conectado <strong>OpenAI con Make</strong> y entendés cómo funciona el módulo.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés cómo pedirle a la IA que devuelva <strong>JSON estructurado</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Dominás el uso del <strong>Router + filtros</strong> para ramificar flujos.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Construiste tu primer <strong>Empleado Digital completo</strong> de punta a punta.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés la <strong>plantilla universal</strong> para replicar este patrón en cualquier rubro.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-purple-50 rounded-xl border-2 border-purple-300">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-purple-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-purple-900 mb-1">Próxima clase: Filtros, Errores y Flujos Robustos</p>
+                        <p class="text-sm text-purple-800">Tu Empleado Digital ya funciona. Ahora hay que hacerlo <strong>resistente</strong>: ¿qué pasa si la API falla? ¿si llegan datos raros? ¿si hay un error? Vamos a blindarlo para producción real.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> dejá tu flujo IA + Make corriendo durante la semana. Anotá: ¿cuántos casos clasificó bien? ¿cuántos mal? Con ese feedback ajustamos el prompt en la próxima clase.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Esta es la clase estrella de la Fase 2. Preparar el flujo armado de antemano para mostrar el resultado. Pedir API Key gratuita de OpenAI con anticipación.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 20</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-emerald-500 rounded-full" style="width: 90.5%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

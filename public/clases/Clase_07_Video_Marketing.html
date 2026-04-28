@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 07 · Video Marketing con IA | ITC Argentina</title>
+    <meta name="description" content="Clase 07 del curso IA + Automatizaciones de ITC Argentina. Aprendé a crear Reels, videos cortos con avatares, subtítulos automáticos y voces con IA usando CapCut.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .reel-mockup {
+            aspect-ratio: 9/16;
+            background: linear-gradient(135deg, #1e1b4b, #831843);
+            border-radius: 16px;
+            color: white;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- HEADER -->
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-pink-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 07</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Video Marketing con IA</h1>
+            <p class="text-pink-100 text-lg mb-4 max-w-2xl">El formato que más vende hoy. Vas a producir tu primer Reel profesional sin cámara, sin actor, sin estudio.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">DISEÑO CON IA</span>
+        </header>
+
+        <!-- OBJETIVO -->
+        <section class="bg-pink-50 border-l-8 border-pink-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-bullseye text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-pink-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener un video corto de 30 segundos producido para tu negocio</strong>, con texto, música, subtítulos automáticos y voz generada por IA. Listo para publicar en Reels, TikTok o estado de WhatsApp.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-pink-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-pink-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <!-- REPASO -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">En la Clase 6 armaste tu <strong>kit visual completo en Canva</strong>: paleta de colores, tipografías, logo básico, flyer, story y post. Tenés tu manual de marca en 1 página y consistencia visual.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <p class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3"><i class="fa-solid fa-hand mr-1"></i> Mini-ronda rápida</p>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-pink-600 mt-1"></i>¿Publicaste las 3 piezas con tu kit visual? ¿Notaste reconocimiento?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-pink-600 mt-1"></i>¿Trajiste la idea de video de 30 segundos para hoy?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-pink-50 border border-pink-200 rounded-xl">
+                <p class="text-sm text-pink-900"><i class="fa-solid fa-lightbulb text-pink-600 mr-2"></i><strong>Dato 2026:</strong> Instagram, Facebook y TikTok dan más alcance a videos cortos que a fotos. Una placa con texto llega a 100 personas; un Reel similar puede llegar a 5.000. Hoy es el día de aprender a producirlos.</p>
+            </div>
+        </section>
+
+        <!-- TEORÍA -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-pink-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-pink-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Por qué el video corto domina las redes</h3>
+            <p class="text-slate-700 text-lg mb-4">Los algoritmos de Instagram, TikTok y YouTube Shorts <strong>premian el video corto vertical</strong>. ¿Por qué? Porque mantiene a la gente más tiempo en la app. Y a vos, te conviene aprovecharlo: con el mismo esfuerzo de un post estático, llegás a muchísima más gente.</p>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">Producir un video <strong>antes era contratar un equipo de filmación</strong>: cámara, luces, sonido, edición. Hoy un emprendedor con un celular y 2 herramientas de IA produce algo que parece hecho por una agencia. La barrera ya no es técnica: es animarse a salir.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">El paisaje actual de herramientas</h4>
+            <p class="text-slate-700 mb-4">El mercado del video con IA cambia muy rápido. Estas son las opciones a abril 2026:</p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="step-card bg-white rounded-xl border-l-4 border-pink-600 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-scissors text-pink-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">CapCut</h5>
+                        <span class="bg-pink-100 text-pink-800 text-xs px-2 py-0.5 rounded-full font-bold">⭐ Principal</span>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">Editor de video con IA, gratuito y completo. Funciona en celular y en computadora.</p>
+                    <p class="text-xs text-slate-600"><strong>Hace:</strong> recortes, transiciones, música, subtítulos auto, voces, efectos.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-pink-300 p-5 shadow-sm opacity-90">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-user-tie text-pink-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">HeyGen</h5>
+                        <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded-full font-bold">Referencia</span>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">Genera videos con avatares (personas digitales) que hablan en cualquier idioma.</p>
+                    <p class="text-xs text-slate-600"><strong>Limitación:</strong> versión gratis muy restringida. Plan paid desde USD 24/mes.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-pink-300 p-5 shadow-sm opacity-90">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-video text-pink-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Runway / Kling AI</h5>
+                        <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded-full font-bold">Referencia</span>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">Generan videos completos a partir de un texto descriptivo (text-to-video).</p>
+                    <p class="text-xs text-slate-600"><strong>Limitación:</strong> calidad variable, planes limitados, alta rotación.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-pink-300 p-5 shadow-sm opacity-90">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microphone text-pink-600 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">ElevenLabs</h5>
+                        <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded-full font-bold">Referencia</span>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-2">La mejor IA para generar voces realistas en español latino.</p>
+                    <p class="text-xs text-slate-600"><strong>Plan gratuito:</strong> 10.000 caracteres/mes (alcanza para varios videos cortos).</p>
+                </div>
+            </div>
+
+            <div class="bg-pink-50 border border-pink-200 rounded-lg p-4 mb-4">
+                <p class="text-sm text-pink-900"><i class="fa-solid fa-circle-info mr-2"></i><strong>Decisión del curso:</strong> nos enfocamos en <strong>CapCut</strong> porque es el más estable, gratuito y completo para el perfil del alumno. Las otras herramientas son útiles pero cambian mucho. Aprendés el WORKFLOW en CapCut y después podés usar cualquier editor.</p>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Anatomía de un Reel que funciona</h4>
+            <div class="grid md:grid-cols-3 gap-3">
+                <div class="bg-white rounded-xl border-l-4 border-pink-500 p-4">
+                    <p class="font-bold text-slate-900 mb-1"><i class="fa-solid fa-bolt text-pink-600 mr-1"></i> 1. Hook (0-3 seg)</p>
+                    <p class="text-sm text-slate-600">Primera frase impactante o imagen sorpresiva. Si no enganchás acá, perdés al 90% de la audiencia.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-pink-500 p-4">
+                    <p class="font-bold text-slate-900 mb-1"><i class="fa-solid fa-circle-play text-pink-600 mr-1"></i> 2. Desarrollo (3-25 seg)</p>
+                    <p class="text-sm text-slate-600">El contenido principal. Cortes rápidos cada 2-3 segundos. Texto en pantalla siempre visible.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-pink-500 p-4">
+                    <p class="font-bold text-slate-900 mb-1"><i class="fa-solid fa-bullhorn text-pink-600 mr-1"></i> 3. CTA (25-30 seg)</p>
+                    <p class="text-sm text-slate-600">Llamado a la acción claro: "Mandame mensaje", "Seguime", "Pasá por el local".</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">3 tipos de video que funcionan en cualquier rubro</h4>
+            <div class="space-y-3">
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-list"></i></div>
+                    <div>
+                        <p class="font-bold text-slate-900">Tipo lista — "5 razones por las que..."</p>
+                        <p class="text-sm text-slate-600">Texto en pantalla con datos numerados. Ejemplo: "5 errores al elegir un colchón".</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+                    <div>
+                        <p class="font-bold text-slate-900">Tipo "antes y después"</p>
+                        <p class="text-sm text-slate-600">Mostrás transformación. Ejemplo: pelo antes/después de tratamiento, plato crudo/cocinado.</p>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 flex gap-4">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div>
+                        <p class="font-bold text-slate-900">Tipo "tutorial corto"</p>
+                        <p class="text-sm text-slate-600">Enseñás algo en 30 segundos. Ejemplo: "Cómo elegir el aceite de oliva correcto".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRÁCTICA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-pink-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-pink-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Producimos un Reel completo en 40 minutos</h3>
+            <p class="text-slate-700 mb-6">El caso: <strong>Marcos tiene una vinería en Mendoza</strong>. Quiere un Reel de 30 segundos titulado "3 errores al servir un Malbec". Vamos a producirlo paso a paso.</p>
+
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Generar el guión con ChatGPT</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>Prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como guionista de Reels. Necesito un guión de 30 segundos para Instagram titulado "3 errores al servir un Malbec". Mi negocio es una vinería en Mendoza. Estructura: (1) Hook en los primeros 3 seg que enganche. (2) Los 3 errores en formato dinámico, 6-7 segundos cada uno. (3) CTA final invitando a venir a la vinería. Devolvelo dividido en escenas con: tiempo, texto en pantalla, voz en off (lo que se escucha), e indicación visual breve. Tono cercano, argentino.</p>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>ChatGPT te devuelve algo tipo: <em>Escena 1 (0-3s): Texto: "¿Estás arruinando tu Malbec?". Voz: "Sí, los 3 errores que casi todos cometen". Visual: copa de vino derramada"</em>...
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Conseguir las imágenes/videos base</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Tenés <strong>3 opciones</strong> para el material visual:</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i><strong>Filmás vos.</strong> Con tu celular. Cortes cortos: copa, vino sirviéndose, etiqueta, etc.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i><strong>Bancos gratuitos.</strong> Pexels Videos (pexels.com/videos) o Pixabay tienen videos profesionales gratis para uso comercial.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i><strong>Generás con IA.</strong> Imágenes en Firefly/Ideogram (Clase 5) y las animás con CapCut.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Abrir CapCut y crear el proyecto</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Bajá la app <strong>CapCut</strong> en el celular (Play Store / App Store) o usá la versión web en <a href="https://www.capcut.com" class="text-pink-600 underline font-semibold">capcut.com</a>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Abrí la app y tocá <strong>"Nuevo proyecto"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Importá los videos/imágenes que conseguiste en el Paso 2.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Ajustá el formato a vertical 9:16 (Reels/Stories).</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Generar la voz con IA</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Si no querés grabar tu voz, CapCut tiene <strong>"Texto a voz"</strong> integrado:</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>En CapCut, agregá un texto vacío.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Pegá el texto del guión que te dio ChatGPT.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Tocá <strong>"Texto a voz"</strong> y elegí una voz en español latino. Hay opciones masculinas y femeninas.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>CapCut genera el audio automáticamente.</li>
+                </ul>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Alternativa premium:</strong> ElevenLabs.io tiene voces más realistas. Generás el audio ahí, lo descargás como MP3 y lo importás en CapCut.
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Subtítulos automáticos</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3"><strong>El 70% de la gente ve los Reels sin sonido</strong>. Los subtítulos son OBLIGATORIOS.</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>En CapCut, andá a <strong>"Texto" → "Subtítulos automáticos"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Elegí el idioma (Español Latinoamericano) y tocá <strong>Comenzar</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>En 30 segundos, CapCut transcribe el audio palabra por palabra.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Personalizá: fuente grande (mínimo tamaño 32), borde negro o caja de color, ubicación en el centro o tercio inferior.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Música, transiciones y efectos</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-music text-pink-600 mr-2"></i><strong>Música:</strong> CapCut tiene biblioteca gratuita de música libre de derechos. Buscá por mood ("upbeat", "chill", "epic"). Bajá el volumen al 20-30% para que no tape la voz.</li>
+                    <li><i class="fa-solid fa-shuffle text-pink-600 mr-2"></i><strong>Transiciones:</strong> entre escenas, agregá transiciones cortas (0.3 segundos máx). Las más usadas: "fade", "zoom", "slide".</li>
+                    <li><i class="fa-solid fa-wand-magic-sparkles text-pink-600 mr-2"></i><strong>Efectos:</strong> usalos con moderación. Un zoom rápido en el momento de impacto, un brillo cuando aparece el CTA. Más es menos.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">7</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Exportar y publicar</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Tocá <strong>"Exportar"</strong>. Elegí calidad 1080p y 30 fps (suficiente para redes).</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Se guarda en la galería del celular.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Subilo directo a Instagram Reels, TikTok o Estados de WhatsApp.</li>
+                </ul>
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 ml-13 mt-3 text-sm text-amber-900">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i><strong>Marca de agua:</strong> CapCut a veces agrega un logo al final. Para sacarla, en la pantalla de exportar buscá "Sin marca de agua" (a veces requiere ver un anuncio corto).
+                </div>
+            </div>
+
+            <!-- PLANTILLA MAESTRA -->
+            <div class="step-card bg-pink-50 border-2 border-pink-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-pink-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-pink-900">Plantilla maestra: guión de Reel de 30 segundos</h4>
+                </div>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 font-mono text-sm">
+                    <p>Actuá como guionista de Reels para Instagram.<br>
+                    Mi negocio: <span class="text-amber-300">[rubro + ciudad]</span>.<br>
+                    Cliente ideal: <span class="text-amber-300">[edad + situación]</span>.<br>
+                    Tema del video: <span class="text-amber-300">"[título del Reel, formato lista o tutorial]"</span>.<br><br>
+                    Devolveme un guión de 30 segundos con:<br>
+                    - Hook impactante (0-3s)<br>
+                    - Desarrollo en 3-4 escenas (3-25s)<br>
+                    - CTA claro al final (25-30s)<br><br>
+                    Por escena indicá: tiempo, TEXTO EN PANTALLA, VOZ EN OFF, IMAGEN/VISUAL.<br>
+                    Tono argentino cercano. Frases cortas (máximo 8 palabras).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EJERCICIO -->
+        <section class="p-6 md:p-10 bg-pink-50 border-y-4 border-pink-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-pink-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-pink-900">Producí TU primer Reel</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Usá la idea de video que trajiste. En 15 minutos vas a salir con un Reel listo para publicar.</p>
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Generá el <strong>guión con ChatGPT</strong> usando la plantilla maestra.</li>
+                <li>Buscá <strong>3-4 videos cortos</strong> en Pexels Videos o filmá rápido en el aula con el celular.</li>
+                <li>Abrí <strong>CapCut</strong> y armá el proyecto.</li>
+                <li>Generá la <strong>voz con texto-a-voz</strong> (o grabá vos mismo).</li>
+                <li>Activá los <strong>subtítulos automáticos</strong>.</li>
+                <li>Agregá <strong>música y transiciones</strong> básicas.</li>
+                <li>Exportá y <strong>guardá en tu galería</strong>.</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-pink-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> publicá el Reel ya mismo en tu Estado de WhatsApp y en tu Instagram. La acción supera a la perfección. La primera vez nunca sale ideal — la décima es excelente.</p>
+            </div>
+        </section>
+
+        <!-- CIERRE -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Entendiste por qué <strong>el video corto domina las redes en 2026</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés el paisaje: CapCut como principal, HeyGen, Runway, ElevenLabs como referencia.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés la <strong>anatomía de un Reel que funciona</strong>: hook, desarrollo, CTA.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Dominás el <strong>workflow completo en CapCut</strong>: guión → videos → voz IA → subtítulos → música → exportar.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Produjiste y <strong>publicaste tu primer Reel</strong>.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-pink-50 rounded-xl border-2 border-pink-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-pink-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-pink-900 mb-1">Próxima clase: IA para Gestión del Tiempo y Productividad</p>
+                        <p class="text-sm text-pink-800">Cerramos el bloque visual. Pasamos a <strong>productividad personal</strong>: agendas, minutas de reuniones, checklists, emails profesionales en segundos. Si sos empleado administrativo o profesional independiente, esta es de las clases que más te van a impactar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> producí 2 Reels más esta semana usando la plantilla. La consistencia gana al perfeccionismo.</p>
+            </div>
+        </section>
+
+        <!-- NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">El paisaje de herramientas de video cambia rápido. Enseñar el CONCEPTO y la WORKFLOW, no solo la herramienta. CapCut es la más estable para el segmento.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 07</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-pink-500 rounded-full" style="width: 31.5%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

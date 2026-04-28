@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 19 · Automatización con WhatsApp y Notificaciones | ITC Argentina</title>
+    <meta name="description" content="Clase 19 del curso IA + Automatizaciones de ITC Argentina. Automatizá WhatsApp con Make: WhatsApp Business API, Twilio, UltraMsg y Telegram Bot.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .var-tag { background: #ede9fe; color: #6b21a8; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-size: 0.75rem; font-weight: 700; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-purple-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-purple-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 19</span><span>•</span>
+                <span>Fase 2 — Automatización</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Automatización con WhatsApp</h1>
+            <p class="text-purple-100 text-lg mb-4 max-w-2xl">El santo grial de las Pymes argentinas. Hacé que WhatsApp responda solo, mande recordatorios y vos te enterés al instante.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">AUTOMATIZACIÓN</span>
+        </header>
+
+        <section class="bg-purple-50 border-l-8 border-purple-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-purple-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>conocer las 4 formas de automatizar WhatsApp</strong> (WhatsApp Business API, Twilio, UltraMsg, Telegram Bot), entender cuándo conviene cada una, y vas a tener un flujo Telegram-Make funcionando como demo gratuita.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-purple-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué hicimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">Entramos a APIs y JSON con la analogía del restaurante. Conectaste Make con APIs públicas reales (clima + ChatGPT) y guardaste los resultados en Sheets. Ya sabés que <strong>una API es un mozo digital</strong>.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Probaste alguna API en tu negocio? ¿Cuál?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Cuántos mensajes de WhatsApp respondés por día en tu negocio? Pensalo unos segundos.</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-xl">
+                <p class="text-sm text-purple-900"><i class="fa-solid fa-rocket text-purple-600 mr-2"></i><strong>Hoy es la clase más esperada.</strong> WhatsApp es donde ocurre el 80% de la actividad comercial de una Pyme argentina. Si lo automatizás, recuperás horas y vendés más sin estar conectado.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-purple-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-purple-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Las 4 formas de automatizar WhatsApp</h3>
+            <p class="text-slate-700 text-lg mb-4">A diferencia de Gmail (que tiene módulo nativo gratis en Make), WhatsApp es <strong>cerrado</strong>. Meta no permite que cualquiera se conecte directo. Hay 4 caminos, cada uno con sus pros y contras:</p>
+
+            <div class="overflow-x-auto mb-6">
+                <table class="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+                    <thead class="bg-slate-100">
+                        <tr>
+                            <th class="p-3 text-left font-bold text-slate-700">Opción</th>
+                            <th class="p-3 text-left font-bold text-slate-700">Costo</th>
+                            <th class="p-3 text-left font-bold text-slate-700">Ideal para</th>
+                            <th class="p-3 text-left font-bold text-slate-700">Dificultad</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-t border-slate-200">
+                            <td class="p-3 font-bold text-slate-900">WhatsApp Business API (Meta oficial)</td>
+                            <td class="p-3 text-slate-700">Pago por conversación (USD 0,005 a 0,08)</td>
+                            <td class="p-3 text-slate-700">Pymes medianas/grandes con volumen alto</td>
+                            <td class="p-3 text-slate-700">Alta (requiere validación)</td>
+                        </tr>
+                        <tr class="border-t border-slate-200 bg-slate-50">
+                            <td class="p-3 font-bold text-slate-900">Twilio</td>
+                            <td class="p-3 text-slate-700">USD 5/mes + costo por mensaje</td>
+                            <td class="p-3 text-slate-700">Negocios profesionales, alta confiabilidad</td>
+                            <td class="p-3 text-slate-700">Media</td>
+                        </tr>
+                        <tr class="border-t border-slate-200">
+                            <td class="p-3 font-bold text-slate-900">UltraMsg / Whapi.cloud</td>
+                            <td class="p-3 text-slate-700">Plan free limitado, paid USD 9-15/mes</td>
+                            <td class="p-3 text-slate-700">Pymes chicas, prueba inicial</td>
+                            <td class="p-3 text-slate-700">Baja</td>
+                        </tr>
+                        <tr class="border-t border-slate-200 bg-purple-50/40">
+                            <td class="p-3 font-bold text-purple-900">Telegram Bot ⭐</td>
+                            <td class="p-3 text-slate-700"><strong>100% gratis</strong></td>
+                            <td class="p-3 text-slate-700">Demo, notificaciones internas, empezar</td>
+                            <td class="p-3 text-slate-700">Muy baja</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Consejo honesto</h4>
+                        <p class="text-amber-900">Para empezar y aprender la lógica, <strong>usá Telegram Bot</strong>. Es gratis, instantáneo y enseña los mismos conceptos. Cuando tu negocio crezca y necesites WhatsApp real, contratás UltraMsg o Twilio. La lógica ya la vas a tener dominada.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Casos de uso típicos en Pymes argentinas</h4>
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="bg-white rounded-xl border-l-4 border-purple-600 p-4">
+                    <p class="font-bold text-slate-900 text-sm mb-1"><i class="fa-solid fa-bell text-purple-600 mr-1"></i> Notificación interna a vos</p>
+                    <p class="text-xs text-slate-600">"Llegó un lead nuevo de la web". Es el caso más usado y el que más impacto tiene.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-purple-600 p-4">
+                    <p class="font-bold text-slate-900 text-sm mb-1"><i class="fa-solid fa-calendar-check text-purple-600 mr-1"></i> Recordatorios de turno</p>
+                    <p class="text-xs text-slate-600">"Tu turno es mañana a las 10". Reduce ausentismo en consultorios, peluquerías, gimnasios.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-purple-600 p-4">
+                    <p class="font-bold text-slate-900 text-sm mb-1"><i class="fa-solid fa-truck text-purple-600 mr-1"></i> Confirmación de pedido</p>
+                    <p class="text-xs text-slate-600">"Tu pedido salió, llega en 30 min". Para delivery, e-commerce, distribuciones.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-purple-600 p-4">
+                    <p class="font-bold text-slate-900 text-sm mb-1"><i class="fa-solid fa-gift text-purple-600 mr-1"></i> Cumpleaños y promos</p>
+                    <p class="text-xs text-slate-600">"Hoy es tu cumpleaños, te regalamos un 20%". Mensajería 1-a-1 que suma fidelidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-purple-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-purple-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Caso: gimnasio "FuerzaUrbana" en Córdoba</h3>
+            <p class="text-slate-700 mb-6">Lucas tiene un gimnasio chico. Cada vez que un socio reserva una clase grupal en su web, quiere recibir <strong>una notificación instantánea en su celular</strong>. También quiere mandarle al socio un recordatorio 1 hora antes de la clase. Vamos a hacerlo todo con Telegram (gratis).</p>
+
+            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-purple-900">Crear tu Bot de Telegram (5 min)</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Abrí Telegram en tu celular o PC. Buscá el contacto <strong>@BotFather</strong> (es oficial, tiene tilde azul).</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Empezá la conversación con <code>/start</code>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Ahora escribí <code>/newbot</code> y seguí los pasos. Te pide nombre y luego un username (debe terminar en "_bot").</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Cuando termina, BotFather te entrega un <strong>token</strong> (parecido a <code>1234567890:ABCdefGHIjklMNO</code>). Copialo y guardalo, es tu llave.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-purple-900">Conseguir tu Chat ID</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Buscá tu bot recién creado en Telegram (por el username) y mandale un mensaje cualquiera (ej: "hola").</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Buscá el contacto <strong>@userinfobot</strong> y mandale <code>/start</code>. Te devuelve tu Chat ID (un número como <code>123456789</code>). Anotalo.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-purple-900">Conectar Telegram en Make</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En Make, creá un escenario nuevo. Buscá <strong>Telegram Bot</strong> (no es lo mismo que Telegram a secas).</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Seleccioná la acción <strong>"Send a Text Message"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Te pide crear conexión: pegá el <strong>token</strong> del bot.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "Chat ID": pegá tu Chat ID. En "Text": <code class="bg-slate-100 px-2 py-0.5 rounded text-xs">🚀 Conexión funcionando!</code></li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Hacé "Run once". En 2 segundos te llega el mensaje al Telegram. <strong>Listo, conexión funcionando.</strong></li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-purple-900">Flujo completo: reserva → Sheets → Telegram</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-2">Conectá los módulos así:</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Trigger:</strong> Google Sheets → "Watch New Rows" sobre la planilla de reservas del gimnasio.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Acción:</strong> Telegram Bot → "Send a Text Message".</li>
+                </ul>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 mt-3 font-mono text-xs">
+                    <p>🏋️ <span class="text-purple-300">¡Nueva reserva en FuerzaUrbana!</span><br><br>
+                    👤 Socio: <span class="text-purple-300">{{1.Nombre}}</span><br>
+                    📞 Tel: <span class="text-purple-300">{{1.Telefono}}</span><br>
+                    🏃 Clase: <span class="text-purple-300">{{1.Clase}}</span><br>
+                    📅 Día: <span class="text-purple-300">{{1.Fecha}}</span> a las <span class="text-purple-300">{{1.Hora}}</span><br><br>
+                    Total reservas hoy: <span class="text-purple-300">{{1.row_number}}</span></p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 ml-13 mt-3 text-sm text-emerald-900">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i><strong>Resultado:</strong> Lucas recibe la notificación en Telegram al instante (en plan FREE, hasta 15 min de delay). Si quiere que sea instantáneo, configura un webhook (siguiente paso).
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-purple-900">Recordatorio automático 1 hora antes</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-2">Segundo escenario, separado del anterior:</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Trigger:</strong> Schedule → cada 30 minutos.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Filtro:</strong> Sheets → buscar reservas cuya hora sea +60 min desde ahora.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Acción:</strong> Telegram Bot → enviar mensaje al socio (Chat ID del socio).</li>
+                </ul>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 mt-3 font-mono text-xs">
+                    <p>Hola <span class="text-purple-300">{{1.Nombre}}</span>! 💪<br><br>
+                    Te esperamos en <span class="text-purple-300">1 hora</span> para tu clase de <span class="text-purple-300">{{1.Clase}}</span>.<br><br>
+                    📍 FuerzaUrbana, Av. Colón 1234, Córdoba.<br>
+                    🚿 Llegá 5 min antes para preparar.<br><br>
+                    Si no podés venir, escribinos para reagendar.</p>
+                </div>
+            </div>
+
+            <div class="step-card bg-purple-50 border-2 border-purple-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-purple-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-purple-900">Cómo escalar a WhatsApp real cuando estés listo</h4>
+                </div>
+                <ol class="space-y-2 text-purple-900 text-sm list-decimal list-inside">
+                    <li>Contratá <strong>UltraMsg</strong> (USD 9/mes) o <strong>Whapi.cloud</strong>. Conectás tu número de WhatsApp Business escaneando un QR.</li>
+                    <li>En Make, en lugar del módulo Telegram Bot, usás el <strong>módulo HTTP</strong> apuntando a la API del proveedor.</li>
+                    <li>El resto del flujo (trigger, variables, lógica) <strong>queda exactamente igual</strong>. Solo cambia el "destinatario" del mensaje.</li>
+                </ol>
+                <div class="bg-white rounded-lg p-3 mt-3 text-xs text-slate-700 italic">
+                    <i class="fa-solid fa-circle-info text-amber-500 mr-1"></i>Por eso Telegram Bot es la mejor escuela: aprendés gratis y después escalás sin reaprender la lógica.
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50 border-y-4 border-purple-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-purple-900">Tu primer flujo de notificaciones</h3>
+                </div>
+            </div>
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Creá tu propio Bot de Telegram (3 min con BotFather).</li>
+                <li>Conseguí tu Chat ID con @userinfobot.</li>
+                <li>En Make, conectá Telegram Bot y mandate un mensaje de prueba.</li>
+                <li>Conectá el bot a uno de los flujos que ya tenés corriendo (formulario, planilla, lo que sea).</li>
+                <li>Verificá que te llegue la notificación al instante en tu celular.</li>
+                <li>Bonus: agregá emojis al mensaje para que sea visual.</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-purple-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> creá un grupo de Telegram para tu equipo, agregá el bot como miembro, y hacé que las notificaciones lleguen al grupo (todos se enteran al mismo tiempo).</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés las <strong>4 formas</strong> de automatizar mensajería: WhatsApp Business API, Twilio, UltraMsg, Telegram Bot.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés un <strong>bot de Telegram propio</strong> conectado a Make.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Construiste un flujo de <strong>notificación instantánea</strong> y otro de <strong>recordatorios programados</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés cómo <strong>escalar a WhatsApp real</strong> sin tener que reaprender todo.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-purple-50 rounded-xl border-2 border-purple-300">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-purple-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-purple-900 mb-1">Próxima clase: Integración IA + Make — El Empleado Digital</p>
+                        <p class="text-sm text-purple-800">Llegamos a la <strong>clase estrella</strong> de la Fase 2. Vas a unir todo: ChatGPT recibe el mensaje del cliente, lo entiende, decide qué responder, y el flujo manda la respuesta automáticamente. <strong>El negocio que trabaja solo.</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> dejá tu bot de Telegram corriendo durante la semana. Mandá al menos 5 notificaciones reales de tu negocio. Vení a clase con tu API Key de OpenAI lista (próxima clase la usamos).</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">La API de WhatsApp Business tiene costos. UltraMsg tiene plan gratuito limitado. Telegram Bot es 100% gratuito y muy útil para demostración. Preparar ambas opciones.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 19</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-purple-500 rounded-full" style="width: 86%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

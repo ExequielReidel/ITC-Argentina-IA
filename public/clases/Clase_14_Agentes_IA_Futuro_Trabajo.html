@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 14 · Agentes de IA y el Futuro del Trabajo | ITC Argentina</title>
+    <meta name="description" content="Clase 14 del curso IA + Automatizaciones de ITC Argentina. Comprendé qué son los agentes de IA, el futuro del trabajo, ética y privacidad.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-indigo-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 14</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Agentes de IA y el Futuro del Trabajo</h1>
+            <p class="text-indigo-100 text-lg mb-4 max-w-2xl">No se trata de la IA que responde. Se trata de la IA que actúa. Y va a cambiar tu rubro más rápido de lo que pensás.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">IA AVANZADA</span>
+        </header>
+
+        <section class="bg-indigo-50 border-l-8 border-indigo-700 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-indigo-700 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>entender qué es un agente de IA</strong>, cómo difiere de un asistente, qué impacto va a tener en el mercado laboral, y qué decisiones éticas tenés que tomar al usar IA con datos propios y de terceros.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-indigo-100 p-3 rounded-lg"><strong>30 min</strong><br><span class="text-indigo-800">Teoría + debate</span></div>
+                <div class="bg-indigo-100 p-3 rounded-lg"><strong>30 min</strong><br><span class="text-indigo-800">Demos en vivo</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Reflexión</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+            <p class="text-xs text-slate-500 mt-3 italic"><i class="fa-solid fa-circle-info mr-1"></i> Esta clase tiene formato distinto: más reflexiva y conversada que las anteriores. Vas a debatir con el grupo.</p>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">En la Clase 13 hicimos el <strong>repaso integral</strong> de las 12 clases de Fase 1: el mapa mental por bloques, un ejercicio de marketing integrando 5 clases distintas, y la ronda de presentaciones grupales.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-indigo-700 mt-1"></i>De los casos que escuchaste de tus compañeros, ¿hay alguno que vas a aplicar en tu negocio?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-indigo-700 mt-1"></i>¿Qué tema de Fase 1 sentís que necesitás más práctica?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-xl">
+                <p class="text-sm text-indigo-900"><i class="fa-solid fa-lightbulb text-indigo-700 mr-2"></i><strong>Avisamos:</strong> esta clase es la última de Fase 1 y la más conceptual. Hoy no vas a abrir Canva ni vas a generar prompts. Vas a debatir, reflexionar y mirar el horizonte. <strong>Es importante.</strong> Lo que viene en los próximos 18 meses puede transformar tu rubro.</p>
+            </div>
+        </section>
+
+        <!-- TEORÍA + DEBATE -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-indigo-700 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700">Teoría + debate · 30 min</h2>
+            </div>
+
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Asistente vs Agente: la diferencia que cambia todo</h3>
+            <p class="text-slate-700 text-lg mb-4">Hasta ahora usaste IA como un <strong>asistente</strong>: vos le preguntás, ella te responde. Vos abrís ChatGPT, escribís un prompt, leés la respuesta. Sos el director, ella es el ejecutor de una sola acción.</p>
+            <p class="text-slate-700 text-lg mb-4">Un <strong>agente</strong> es radicalmente distinto: vos le decís un OBJETIVO, y él decide los pasos, ejecuta las acciones, navega webs, completa formularios, manda mails y te trae el resultado. Sos el director, pero ahora él arma toda la película.</p>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">Un <strong>asistente</strong> es como un empleado que te trae la información cuando se la pedís. Un <strong>agente</strong> es como un empleado de confianza al que le decís <em>"organizá mi viaje a Bariloche del próximo finde, que sea económico"</em> y vuelve con vuelos comparados, hotel reservado, alquiler de auto y reserva en restaurante. Vos solo aprobás.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Comparación lado a lado</h4>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+                    <thead class="bg-slate-100">
+                        <tr>
+                            <th class="p-3 text-left font-bold text-slate-700">Dimensión</th>
+                            <th class="p-3 text-left font-bold text-blue-700">Asistente (lo que usaste hasta ahora)</th>
+                            <th class="p-3 text-left font-bold text-indigo-700">Agente (lo que viene)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-t border-slate-200">
+                            <td class="p-3 font-semibold text-slate-800">Quién decide los pasos</td>
+                            <td class="p-3 text-slate-700">Vos</td>
+                            <td class="p-3 text-slate-700">El agente, en base al objetivo</td>
+                        </tr>
+                        <tr class="border-t border-slate-200 bg-slate-50">
+                            <td class="p-3 font-semibold text-slate-800">Qué le pedís</td>
+                            <td class="p-3 text-slate-700">Una respuesta concreta</td>
+                            <td class="p-3 text-slate-700">Un resultado u objetivo</td>
+                        </tr>
+                        <tr class="border-t border-slate-200">
+                            <td class="p-3 font-semibold text-slate-800">Acciones que toma</td>
+                            <td class="p-3 text-slate-700">Solo te responde</td>
+                            <td class="p-3 text-slate-700">Navega, escribe, compra, agenda</td>
+                        </tr>
+                        <tr class="border-t border-slate-200 bg-slate-50">
+                            <td class="p-3 font-semibold text-slate-800">Tu rol</td>
+                            <td class="p-3 text-slate-700">Operador permanente</td>
+                            <td class="p-3 text-slate-700">Supervisor + dueño</td>
+                        </tr>
+                        <tr class="border-t border-slate-200">
+                            <td class="p-3 font-semibold text-slate-800">Tiempo que te ahorra</td>
+                            <td class="p-3 text-slate-700">Minutos por tarea</td>
+                            <td class="p-3 text-slate-700">Horas por proyecto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Ejemplos reales de agentes (abril 2026)</h4>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-globe text-indigo-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">ChatGPT con "Tareas"</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">OpenAI sumó funciones agénticas: ChatGPT puede ahora navegar la web, abrir páginas, comparar precios y reservar.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-magnifying-glass text-indigo-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Perplexity</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Buscador agéntico. Le pedís información compleja y navega 30+ webs combinando datos en una respuesta.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-code text-indigo-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Claude Computer Use</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Anthropic permite que Claude controle directamente tu computadora: hacer clics, completar formularios, navegar.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-robot text-indigo-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Make AI Agents</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">La plataforma que vamos a usar en Fase 2 ya integra agentes que adaptan flujos en tiempo real según contexto.</p>
+                </div>
+            </div>
+
+            <div class="mt-6 bg-indigo-50 border border-indigo-200 rounded-xl p-5">
+                <h4 class="font-bold text-indigo-900 mb-2"><i class="fa-solid fa-comments text-indigo-700 mr-2"></i>Pausa para debatir (5 min)</h4>
+                <p class="text-sm text-indigo-900 italic">¿Qué tarea de tu negocio le delegarías a un agente <strong>esta misma semana</strong> si pudieras? Pensá una sola, contala al grupo.</p>
+            </div>
+        </section>
+
+        <!-- DEMOS EN VIVO -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-display text-indigo-700 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700">Demos y casos · 30 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Cómo cambia el mapa laboral en cada rubro</h3>
+            <p class="text-slate-700 mb-6">Veamos cómo agentes y automatización transforman cada sector. La pregunta no es "¿desaparece mi trabajo?". Es "¿qué parte de mi trabajo cambia y qué hago con eso?".</p>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-cash-register text-indigo-700 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Comercio minorista (almacén, ferretería, librería...)</h4>
+                </div>
+                <ul class="ml-6 text-slate-700 space-y-2 text-sm">
+                    <li><strong class="text-red-600">Cambia:</strong> atención por WhatsApp, gestión de stock, control de gastos diarios.</li>
+                    <li><strong class="text-emerald-600">Sigue siendo humano:</strong> trato cara a cara con clientes, decisiones de compra, negociación con proveedores, ambiente del local.</li>
+                    <li><strong class="text-indigo-700">Tu nuevo rol:</strong> dueño con más tiempo libre para lo estratégico (alianzas, expansión, mentoría a tu equipo).</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-briefcase text-indigo-700 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Empleados administrativos (contabilidad, oficina)</h4>
+                </div>
+                <ul class="ml-6 text-slate-700 space-y-2 text-sm">
+                    <li><strong class="text-red-600">Cambia:</strong> carga de datos, conciliación bancaria, redacción de mails repetitivos, armado de informes.</li>
+                    <li><strong class="text-emerald-600">Sigue siendo humano:</strong> análisis de excepciones, asesoramiento al cliente, decisiones contables, manejo de conflictos.</li>
+                    <li><strong class="text-indigo-700">Tu nuevo rol:</strong> de "tipear" a "interpretar y asesorar". Más valor agregado, menos operatoria.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-laptop-code text-indigo-700 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Profesionales independientes (diseñadores, redactores, consultores)</h4>
+                </div>
+                <ul class="ml-6 text-slate-700 space-y-2 text-sm">
+                    <li><strong class="text-red-600">Cambia:</strong> tareas operativas (primer borrador, primera maqueta, investigación inicial).</li>
+                    <li><strong class="text-emerald-600">Sigue siendo humano:</strong> criterio creativo, dirección de arte, estrategia, vínculo con cliente.</li>
+                    <li><strong class="text-indigo-700">Tu nuevo rol:</strong> hacés más proyectos, más rápido, con mejor calidad. Subís precios o multiplicás clientes.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-graduation-cap text-indigo-700 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Jóvenes que recién empiezan (14-22 años)</h4>
+                </div>
+                <ul class="ml-6 text-slate-700 space-y-2 text-sm">
+                    <li><strong class="text-red-600">Cambia:</strong> el "primer trabajo de oficina" tradicional ya no existe en muchos lugares.</li>
+                    <li><strong class="text-emerald-600">Aparece:</strong> emprendimientos chicos hechos por una sola persona usando IA + automatización.</li>
+                    <li><strong class="text-indigo-700">Tu ventaja:</strong> nativos digitales que aprenden estas herramientas más rápido que nadie. <strong>Hoy podés competir con empresas grandes desde tu cuarto.</strong></li>
+                </ul>
+            </div>
+
+            <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mt-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-circle-info text-amber-600 text-2xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-amber-900 mb-1">El patrón común en todos los rubros</p>
+                        <p class="text-sm text-amber-900">La IA no reemplaza profesiones completas: <strong>reemplaza tareas dentro de las profesiones</strong>. El que aprende a usarla, gana tiempo, calidad y competitividad. El que la ignora queda fuera de mercado en 3-5 años.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÉTICA Y PRIVACIDAD -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-scale-balanced text-indigo-700 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700">Ética y privacidad · 15 min (Reflexión)</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que tenés que tener claro antes de seguir</h3>
+
+            <div class="space-y-4">
+                <div class="bg-white border-l-4 border-amber-500 rounded-xl p-5">
+                    <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-shield-halved text-amber-600 mr-2"></i>1. Privacidad de datos</h4>
+                    <p class="text-sm text-slate-700">Cuando subís info a ChatGPT, Gemini o cualquier IA, esos datos pueden quedar en sus servidores. <strong>Nunca subas:</strong> documentos legales sensibles de clientes, contraseñas, números de tarjetas, datos médicos completos. Para datos sensibles, anonimizá o usá herramientas de pago con cláusulas de confidencialidad.</p>
+                </div>
+
+                <div class="bg-white border-l-4 border-amber-500 rounded-xl p-5">
+                    <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-circle-exclamation text-amber-600 mr-2"></i>2. Las "alucinaciones"</h4>
+                    <p class="text-sm text-slate-700">A veces la IA <strong>inventa información que no existe</strong> con total seguridad: leyes, fechas, nombres, cifras. Esto se llama "alucinar". <strong>Regla de oro:</strong> si vas a usar un dato puntual para una decisión importante, validalo en una fuente oficial. La IA es asistente, no oráculo.</p>
+                </div>
+
+                <div class="bg-white border-l-4 border-amber-500 rounded-xl p-5">
+                    <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-people-arrows text-amber-600 mr-2"></i>3. Sesgos algorítmicos</h4>
+                    <p class="text-sm text-slate-700">Los modelos de IA aprenden de datos humanos, y los datos humanos tienen prejuicios. La IA puede recomendarte cosas con sesgo de género, edad o cultura. Cuando uses IA para reclutar, valuar personas o tomar decisiones de impacto social, <strong>siempre suma un filtro humano</strong>.</p>
+                </div>
+
+                <div class="bg-white border-l-4 border-amber-500 rounded-xl p-5">
+                    <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-eye text-amber-600 mr-2"></i>4. Transparencia con tus clientes</h4>
+                    <p class="text-sm text-slate-700">Si tenés un chatbot que atiende clientes, <strong>tu cliente debería saber que está hablando con una IA</strong>, no con vos. La buena práctica es ser claros: "Hola, soy el asistente virtual de [negocio]. Si necesitás hablar con una persona, escribí 'humano' y te derivamos".</p>
+                </div>
+
+                <div class="bg-white border-l-4 border-amber-500 rounded-xl p-5">
+                    <h4 class="font-bold text-slate-900 mb-2"><i class="fa-solid fa-hand text-amber-600 mr-2"></i>5. La regla "Human-in-the-Loop"</h4>
+                    <p class="text-sm text-slate-700">Para decisiones importantes (montos altos, mensajes a clientes clave, contenido sensible) <strong>siempre dejá un paso de aprobación humana</strong>. La IA propone, vos disponés. Esto te protege a vos y al cliente.</p>
+                </div>
+            </div>
+
+            <div class="mt-6 bg-indigo-50 border border-indigo-200 rounded-xl p-5">
+                <h4 class="font-bold text-indigo-900 mb-2"><i class="fa-solid fa-comments text-indigo-700 mr-2"></i>Debate grupal (5 min)</h4>
+                <p class="text-sm text-indigo-900 italic">¿Te imaginás un caso de tu rubro donde el uso de IA podría ser éticamente problemático? Compartilo. No hay respuestas correctas ni incorrectas: la idea es entrenar el "olfato".</p>
+            </div>
+        </section>
+
+        <!-- MENTALIDAD DE APRENDIZAJE -->
+        <section class="p-6 md:p-10 bg-indigo-50 border-y-4 border-indigo-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-indigo-700 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700">Cómo te preparás · 10 min</h2>
+                    <h3 class="text-2xl font-extrabold text-indigo-900">Mentalidad de aprendizaje continuo</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-6">El mundo de la IA cambia cada 3-6 meses. Lo que aprendiste en este curso es la <strong>base que no caduca</strong>: prompt engineering, criterios de uso, diseño de flujos. Las herramientas van a cambiar de nombre pero la lógica es la misma. Para mantenerte vigente:</p>
+
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li><strong>Seguí 3 fuentes confiables:</strong> blogs/canales especializados (no influencers de moda). Sugerencias: blog de OpenAI, blog de Anthropic, blog de Make.</li>
+                <li><strong>Probá una herramienta nueva por mes.</strong> 30 minutos, sin presión. Si te sirve la sumás. Si no, la descartás.</li>
+                <li><strong>Sumate a comunidades:</strong> grupos de WhatsApp/Discord/Telegram de IA en español. El intercambio acelera 10× tu aprendizaje.</li>
+                <li><strong>Documentá lo que aprendés.</strong> Tu carpeta "IA al rescate" es un activo. Manténela viva.</li>
+                <li><strong>Enseñá lo que sabés.</strong> Mostrale a un colega un truco que aprendiste. Enseñar consolida tu propio conocimiento.</li>
+            </ol>
+
+            <div class="bg-white rounded-xl p-4 border border-indigo-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>El compromiso final:</strong> después de este curso, dedicale <strong>30 minutos por semana</strong> a explorar IA. Es lo único que te garantiza no quedar atrás.</p>
+            </div>
+        </section>
+
+        <!-- CIERRE -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Entendés la diferencia conceptual entre <strong>asistente y agente</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés <strong>4 ejemplos reales de agentes</strong> de IA disponibles en abril 2026.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés una visión clara de <strong>cómo cambia tu rubro</strong> y qué hacer al respecto.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés las <strong>5 reglas éticas básicas</strong> al usar IA: privacidad, alucinaciones, sesgos, transparencia, human-in-the-loop.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés un <strong>plan personal de aprendizaje continuo</strong>.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-emerald-50 rounded-xl border-2 border-emerald-300">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-emerald-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-emerald-900 mb-1">Próxima clase: Mini-Proyecto I — IA Aplicada al Negocio Real</p>
+                        <p class="text-sm text-emerald-800">Cierre formal de Fase 1. Cada alumno presenta <strong>1 problema real de su negocio resuelto con IA</strong>. Es la prueba final antes de pasar a Automatizaciones. <strong>Importante:</strong> tenés 2 semanas para preparar tu caso. Empezá a pensar HOY.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> identificá <strong>UN problema real</strong> de tu negocio (algo que te quita tiempo o te genera fricción) y empezá a diseñar la solución con IA. La próxima clase pedimos avances. La Clase 15 lo presentás terminado.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Clase más reflexiva. Fomentar el debate. Puede conectar con experiencias de los alumnos en sus trabajos actuales. Fundamental para la vigencia a 3 años del curso.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 14</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-indigo-700 rounded-full" style="width: 63.5%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

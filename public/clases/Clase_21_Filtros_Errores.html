@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 21 · Filtros, Errores y Flujos Robustos | ITC Argentina</title>
+    <meta name="description" content="Clase 21 del curso IA + Automatizaciones de ITC Argentina. Aprendé a manejar errores, configurar filtros avanzados y dejar tus flujos listos para producción.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .var-tag { background: #ede9fe; color: #6b21a8; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-size: 0.75rem; font-weight: 700; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-purple-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-purple-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 21</span><span>•</span>
+                <span>Fase 2 — Automatización</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Filtros, Errores y Flujos Robustos</h1>
+            <p class="text-purple-100 text-lg mb-4 max-w-2xl">El paso de "tengo un escenario que funciona" a "tengo un escenario que NUNCA me deja tirado". Lo que diferencia a un alumno de un profesional.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">AUTOMATIZACIÓN</span>
+        </header>
+
+        <section class="bg-purple-50 border-l-8 border-purple-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-purple-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener tus escenarios blindados</strong>: filtros avanzados, manejo de errores, iteradores y agregadores, y buenas prácticas de documentación. Listos para producción real.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-purple-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué hicimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">Construiste tu Empleado Digital: un flujo donde la IA clasifica los mensajes, devuelve JSON, y Make ramifica el flujo según la decisión. Es la integración más poderosa que vimos.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Tu Empleado Digital clasificó bien todos los mensajes? ¿Hubo errores?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Algún flujo se cortó esta semana sin que sepas por qué?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-xl">
+                <p class="text-sm text-purple-900"><i class="fa-solid fa-rocket text-purple-600 mr-2"></i><strong>Lo que vamos a aprender hoy</strong> es lo que separa al hobbysta del profesional. Cualquiera puede armar un flujo. <strong>Pocos saben qué hacer cuando el flujo falla.</strong> Hoy vos vas a saber.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-purple-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-purple-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Los 3 tipos de errores que vas a enfrentar</h3>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-white rounded-xl border-l-4 border-red-500 p-5">
+                    <h5 class="font-extrabold text-slate-900 mb-2"><i class="fa-solid fa-plug-circle-xmark text-red-500 mr-2"></i>Error de conexión</h5>
+                    <p class="text-sm text-slate-700 mb-2">La API externa no responde, internet se cae, el servidor está caído.</p>
+                    <p class="text-xs text-slate-500 italic">Solución: reintentos automáticos.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-amber-500 p-5">
+                    <h5 class="font-extrabold text-slate-900 mb-2"><i class="fa-solid fa-circle-exclamation text-amber-500 mr-2"></i>Error de datos</h5>
+                    <p class="text-sm text-slate-700 mb-2">Llega un dato vacío, mal formateado, o que no esperabas (ej: email sin @).</p>
+                    <p class="text-xs text-slate-500 italic">Solución: validar con filtros.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-purple-500 p-5">
+                    <h5 class="font-extrabold text-slate-900 mb-2"><i class="fa-solid fa-bug text-purple-500 mr-2"></i>Error de lógica</h5>
+                    <p class="text-sm text-slate-700 mb-2">El flujo se ejecuta sin error pero el resultado es incorrecto (ej: dos veces el mismo mail).</p>
+                    <p class="text-xs text-slate-500 italic">Solución: revisar prompts y mapeos.</p>
+                </div>
+            </div>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">La regla de oro</h4>
+                        <p class="text-amber-900"><strong>Esperá lo mejor, programá para lo peor.</strong> Cuando un escenario corre 1.000 veces, alguno va a fallar. La pregunta no es "¿y si falla?" sino "¿qué pasa cuando falle?". Diseñá pensando en el fallo desde el día 1.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Filtros: el guardián entre módulos</h4>
+            <p class="text-slate-700 mb-4">Un filtro es una <strong>condición</strong> que el dato tiene que cumplir para pasar al siguiente módulo. Si no cumple, el flujo se detiene en ese ramal sin error.</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="text-sm font-bold text-slate-700 mb-3">Operadores lógicos en filtros de Make:</p>
+                <div class="grid md:grid-cols-2 gap-2 text-sm text-slate-700">
+                    <div class="flex items-center gap-2"><span class="var-tag">Equal</span> el valor es exactamente igual</div>
+                    <div class="flex items-center gap-2"><span class="var-tag">Not equal</span> el valor NO es igual</div>
+                    <div class="flex items-center gap-2"><span class="var-tag">Contains</span> el texto contiene una palabra</div>
+                    <div class="flex items-center gap-2"><span class="var-tag">Greater than</span> el número es mayor que</div>
+                    <div class="flex items-center gap-2"><span class="var-tag">Exists</span> el campo no está vacío</div>
+                    <div class="flex items-center gap-2"><span class="var-tag">Matches pattern</span> cumple un patrón (regex)</div>
+                </div>
+            </div>
+
+            <p class="text-slate-700 mb-4">También podés combinar condiciones con <strong>AND</strong> (todas se cumplen) y <strong>OR</strong> (al menos una se cumple). Ejemplo:</p>
+            <div class="bg-white border border-slate-200 rounded-xl p-4 mb-4 text-sm">
+                <p class="font-mono text-slate-800">
+                    <span class="var-tag">{{Email}}</span> contains <strong>"@"</strong><br>
+                    <span class="text-purple-600 font-bold">AND</span><br>
+                    <span class="var-tag">{{Monto}}</span> greater than <strong>0</strong>
+                </p>
+                <p class="text-xs text-slate-500 mt-2 italic">→ El flujo solo avanza si tiene email válido Y monto positivo.</p>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Iteradores y Agregadores</h4>
+            <p class="text-slate-700 mb-4">Cuando un dato viene en <strong>lista</strong> (ej: 10 productos en un pedido), Make trata cada elemento por separado. Para eso existen:</p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white rounded-xl border-l-4 border-purple-600 p-5">
+                    <h5 class="font-extrabold text-slate-900 mb-2"><i class="fa-solid fa-list text-purple-600 mr-2"></i>Iterator</h5>
+                    <p class="text-sm text-slate-700">Toma una lista (ej: 10 productos) y la separa. El flujo se ejecuta una vez por cada elemento.</p>
+                    <p class="text-xs text-slate-500 mt-1 italic">Útil: procesar carrito de compras producto por producto.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-purple-600 p-5">
+                    <h5 class="font-extrabold text-slate-900 mb-2"><i class="fa-solid fa-layer-group text-purple-600 mr-2"></i>Aggregator</h5>
+                    <p class="text-sm text-slate-700">Lo opuesto: toma muchos datos individuales y los junta en una sola lista.</p>
+                    <p class="text-xs text-slate-500 mt-1 italic">Útil: armar un mail con resumen de TODAS las ventas del día.</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Manejo de errores en Make</h4>
+            <p class="text-slate-700 mb-4">Cualquier módulo en Make puede tener un <strong>"Error Handler"</strong> conectado. Hacés clic derecho sobre el módulo → "Add error handler". Aparece una rama gris alternativa que se ejecuta SOLO si ese módulo falla.</p>
+            <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                <p class="text-sm text-purple-900 mb-2"><strong>4 tipos de error handlers:</strong></p>
+                <ul class="space-y-1 text-sm text-purple-900">
+                    <li><strong>Resume:</strong> ignora el error y sigue con el siguiente módulo.</li>
+                    <li><strong>Rollback:</strong> deshace lo que hizo (avanzado).</li>
+                    <li><strong>Commit:</strong> guarda lo hecho hasta ahora y termina.</li>
+                    <li><strong>Break:</strong> espera y reintenta más tarde (ideal para errores temporales).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-purple-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-purple-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Caso: heladería "El Polo Sur" en San Juan</h3>
+            <p class="text-slate-700 mb-6">Diego tiene una heladería que recibe pedidos por WhatsApp y por su web. Su flujo procesa entre 50 y 100 pedidos por día. Vamos a blindarlo: validar datos, manejar errores, procesar listas de productos y armar reportes diarios.</p>
+
+            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-purple-900">Validar datos con filtros antes de procesar</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-3">El primer pedido del día tenía email vacío y rompió el flujo. Vamos a evitar que pase de nuevo.</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Hacé clic en la conexión entre el módulo Sheets y el siguiente módulo. Aparece una llave inglesa.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Click → "Set up filter".</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Configurá: <span class="var-tag">{{1.Email}}</span> "Contains" "@" <strong>AND</strong> <span class="var-tag">{{1.Telefono}}</span> "Exists".</li>
+                </ul>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 ml-13 mt-3 text-sm text-emerald-900">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i>Ahora si llega un pedido con datos incompletos, el flujo se corta limpio sin tirar error.
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-purple-900">Procesar lista de productos con Iterator</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-3">Cada pedido tiene varios productos. Diego necesita descontar el stock de cada uno por separado.</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Si los productos vienen en un campo del form como <em>"2 cucuruchos chocolate, 1 kg dulce de leche, 3 paletas frutilla"</em>, primero parseámoslos con IA.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Módulo OpenAI con prompt:</li>
+                </ul>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 mt-2 font-mono text-xs">
+                    <p>Convertí este pedido en JSON estructurado.<br><br>
+                    Pedido: "<span class="text-purple-300">{{1.Pedido_texto}}</span>"<br><br>
+                    Devolvé SOLO una lista en formato JSON:<br>
+                    [<br>
+                    &nbsp;&nbsp;{ "producto": "...", "cantidad": N },<br>
+                    &nbsp;&nbsp;{ "producto": "...", "cantidad": N }<br>
+                    ]</p>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm mt-3">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Luego: módulo <strong>Iterator</strong> → array <span class="var-tag">{{2.choices[].message.content}}</span> parseado.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Después del Iterator, módulo Sheets → "Search Rows" para buscar el producto, y luego "Update Row" para descontar el stock.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-purple-900">Agregar manejo de errores al módulo OpenAI</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-3">A veces la API de OpenAI tiene picos de demora. No queremos perder pedidos.</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Click derecho sobre el módulo OpenAI → <strong>"Add error handler"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Aparece una rama gris. Conectá un módulo <strong>"Break"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Configurá: 5 reintentos cada 5 minutos. Si después de eso sigue fallando, manda alerta a Telegram.</li>
+                </ul>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 ml-13 mt-3 text-sm text-emerald-900">
+                    <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i>Ahora el flujo es resiliente: si falla, reintenta. Si igual falla, te avisa para que vos lo resuelvas manualmente.
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-purple-900">Reporte diario con Aggregator</h4>
+                </div>
+                <p class="text-slate-700 ml-13 text-sm mb-3">Segundo escenario para Diego: cada noche a las 22hs, juntar todos los pedidos del día y mandarle un resumen ejecutivo por mail.</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Trigger:</strong> Schedule → todos los días 22:00.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Sheets → Search Rows:</strong> filtrar pedidos del día.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Aggregator (Text):</strong> juntar todas las filas en un solo bloque de texto.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>OpenAI:</strong> pedirle un resumen ejecutivo.</li>
+                </ul>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 mt-2 font-mono text-xs">
+                    <p>Sos analista de la heladería El Polo Sur (San Juan).<br><br>
+                    Acá están los pedidos del día:<br>
+                    <span class="text-purple-300">{{aggregator.text}}</span><br><br>
+                    Devolveme un reporte con:<br>
+                    1) Total de pedidos<br>
+                    2) Productos top 3 más vendidos<br>
+                    3) Horario pico de pedidos<br>
+                    4) Una observación útil o tendencia<br>
+                    Tono cercano, máximo 150 palabras.</p>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm mt-3">
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Gmail → Send:</strong> mandar el resumen a Diego.</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-purple-50 border-2 border-purple-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-purple-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-purple-900">Buenas prácticas profesionales para tus escenarios</h4>
+                </div>
+                <ul class="space-y-2 text-purple-900 text-sm">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Nombrá tus escenarios con sentido:</strong> "[Heladería] Pedidos web → Stock + Reporte" no "Untitled scenario 12".</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Renombrá cada módulo</strong> haciendo doble clic. "Validar email" en lugar de "Filter".</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Agregá Notes</strong> en módulos clave para documentar la lógica.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Versioná:</strong> antes de un cambio grande, "Clone" el escenario y trabajá en la copia.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Revisá el History semanalmente.</strong> Si hay errores recurrentes, ajustá filtros o handlers.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Loggeá las decisiones de la IA</strong> en una hoja aparte. Si después la IA empieza a fallar, vas a tener historial para ajustar el prompt.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50 border-y-4 border-purple-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-purple-900">Blindá tus escenarios existentes</h3>
+                </div>
+            </div>
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Abrí <strong>uno</strong> de tus escenarios funcionando.</li>
+                <li>Agregá al menos <strong>un filtro de validación</strong> antes del primer módulo crítico.</li>
+                <li>Configurá <strong>1 manejador de error</strong> en el módulo más importante.</li>
+                <li>Renombrá los módulos con nombres descriptivos.</li>
+                <li>Agregá Notes en al menos 3 módulos.</li>
+                <li>Probá rompiéndolo a propósito (datos vacíos, mal formato) y verificá que reaccione bien.</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-purple-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> creá un escenario "Health Check" que cada lunes te mande un Telegram con el resumen de cuántos errores tuvieron tus escenarios la semana anterior.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Reconocés los <strong>3 tipos de error</strong>: conexión, datos, lógica.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés configurar <strong>filtros avanzados</strong> con AND/OR y operadores múltiples.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Manejás <strong>iteradores y agregadores</strong> para procesar listas.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Configurás <strong>error handlers</strong> con reintentos y alertas.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Aplicás <strong>buenas prácticas</strong> profesionales: nombres, notes, versionado.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-emerald-50 rounded-xl border-2 border-emerald-300">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-emerald-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-emerald-900 mb-1">Próxima clase: Proyecto Final Integrador 🎓</p>
+                        <p class="text-sm text-emerald-800">La <strong>última clase</strong>. Cada uno presenta su flujo completo IA + Automatización resuelto sobre un caso real. Empezás a preparar tu proyecto desde HOY. Es el cierre del curso.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> definí <strong>el caso de tu Proyecto Final</strong> esta semana. Tiene que cumplir: 3 módulos en Make + 1 etapa con IA + caso real de tu negocio. Vení con el caso definido a la próxima clase.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Clase técnica pero fundamental para que los flujos funcionen en producción. Usar ejemplos de errores reales que el docente haya vivido.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 21</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-purple-500 rounded-full" style="width: 95%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

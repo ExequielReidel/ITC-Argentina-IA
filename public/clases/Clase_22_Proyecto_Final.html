@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 22 · Proyecto Final Integrador | ITC Argentina</title>
+    <meta name="description" content="Clase 22 del curso IA + Automatizaciones de ITC Argentina. Cierre del curso: cada alumno presenta su flujo completo IA + Automatización funcionando.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .rubric-cell { padding: 8px; border: 1px solid #d1fae5; }
+        .achievement-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-emerald-600 via-purple-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-emerald-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 22</span><span>•</span>
+                <span>Fase 2 — CIERRE DEL CURSO</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Proyecto Final Integrador</h1>
+            <p class="text-emerald-100 text-lg mb-4 max-w-2xl">Llegamos. 22 clases. Hoy presentás tu proyecto final, recibís tu certificado y empieza tu nueva vida profesional con IA y Automatización.</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PROYECTO</span>
+                <span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">🎓 GRADUACIÓN</span>
+            </div>
+        </header>
+
+        <section class="bg-emerald-50 border-l-8 border-emerald-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>haber presentado tu proyecto final</strong> (un flujo completo IA + Automatización funcionando), recibido tu certificado de finalización, y vas a tener un <strong>roadmap personal</strong> para seguir creciendo en este mundo después del curso.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase (formato graduación)</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Bienvenida</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>60 min</strong><br><span class="text-emerald-800">Presentaciones</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-emerald-800">Roadmap futuro</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-amber-800">Certificados 🎓</span></div>
+            </div>
+        </section>
+
+        <!-- BIENVENIDA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-handshake-angle text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Bienvenida final · 10 min</h2>
+            </div>
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-3">🎉 Lo lograste</h3>
+            <p class="text-slate-700 text-lg mb-4">Hace 6 meses te sentaste en la Clase 1 sin saber qué era un prompt. Hoy estás por presentar tu propio <strong>Empleado Digital</strong>, con IA conectada a Make, manejando un proceso real de tu vida o tu trabajo.</p>
+            <p class="text-slate-700 text-lg mb-4"><strong>Eso no es chamuyo. Eso es haberte transformado en un profesional con habilidades que el mercado argentino está pagando muy bien en 2026.</strong></p>
+
+            <div class="achievement-card rounded-2xl p-6 my-6">
+                <h4 class="text-xl font-extrabold mb-3"><i class="fa-solid fa-trophy mr-2"></i>Lo que conseguiste en 22 clases</h4>
+                <div class="grid md:grid-cols-2 gap-3 text-sm">
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Dominio de prompt engineering</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Workflows de ventas y atención al cliente</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Generación de contenido escalable</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Diseño visual con IA + Canva</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Producción de video con IA</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Análisis de datos y reportes</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>GPT personalizado propio</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Tableros financieros con IA</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Cuenta Make activa con escenarios</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>APIs y JSON entendidos</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Bot de Telegram + WhatsApp</div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-check mt-1"></i>Empleado Digital funcionando</div>
+                </div>
+            </div>
+
+            <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                <p class="text-sm font-bold text-emerald-900 uppercase tracking-widest mb-3"><i class="fa-solid fa-list-check mr-1"></i>Reglas del Proyecto Final</p>
+                <ul class="space-y-2 text-emerald-900 text-sm">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i><strong>10 minutos</strong> por alumno: 8 de presentación + 2 de feedback.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Demo <strong>en vivo</strong>: hay que mostrar el escenario corriendo, no solo capturas.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Requisitos mínimos: <strong>3 módulos en Make + IA en alguna etapa + caso real</strong>.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Hoy es celebración. Aplaudimos a todos.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ESTRUCTURA DE LA PRESENTACIÓN -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-diagram-project text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Estructura sugerida</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Cómo armar tus 8 minutos de presentación</h3>
+
+            <div class="space-y-4">
+                <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="bg-emerald-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                        <h4 class="text-base font-extrabold text-emerald-900">El problema (1.5 min)</h4>
+                    </div>
+                    <p class="text-slate-700 ml-12 text-sm">¿Qué tarea repetitiva te sacaba tiempo o plata? Contala como si se la explicaras a tu vecino.</p>
+                </div>
+
+                <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="bg-emerald-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                        <h4 class="text-base font-extrabold text-emerald-900">El diseño del flujo (1.5 min)</h4>
+                    </div>
+                    <p class="text-slate-700 ml-12 text-sm">Mostrá el lienzo de Make completo. Explicá: trigger → módulos → IA → acción final. Mencioná las decisiones clave (por qué este filtro, por qué este modelo de IA).</p>
+                </div>
+
+                <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="bg-emerald-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                        <h4 class="text-base font-extrabold text-emerald-900">Demo en vivo (3 min)</h4>
+                    </div>
+                    <p class="text-slate-700 ml-12 text-sm">El momento estrella. Disparás el flujo y mostrás cómo se ejecuta paso a paso. Ideal: hacé que pase algo real (un mail llegando, un Telegram recibiendo). Si no se puede en vivo, una grabación corta funciona.</p>
+                </div>
+
+                <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="bg-emerald-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                        <h4 class="text-base font-extrabold text-emerald-900">Resultado y aprendizajes (1.5 min)</h4>
+                    </div>
+                    <p class="text-slate-700 ml-12 text-sm">Tiempo ahorrado, errores evitados, ventas mejoradas, lo que sea concreto y medible. ¿Qué fue lo más difícil? ¿Qué consejo le darías a un compañero?</p>
+                </div>
+
+                <div class="step-card bg-white border-l-8 border-emerald-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="bg-emerald-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">5</div>
+                        <h4 class="text-base font-extrabold text-emerald-900">Próximos pasos (30 seg)</h4>
+                    </div>
+                    <p class="text-slate-700 ml-12 text-sm">¿Qué automatización querés sumar el mes próximo? Una sola idea concreta.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESENTACIONES -->
+        <section class="p-6 md:p-10 bg-emerald-50 border-y-4 border-emerald-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-microphone text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Presentaciones · 60 min</h2>
+                    <h3 class="text-2xl font-extrabold text-emerald-900">El gran momento</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Cada alumno pasa al frente con su laptop conectada al proyector. <strong>10 minutos por persona</strong> (8 presentación + 2 feedback). Para 6 alumnos alcanzan 60 min justos.</p>
+
+            <div class="bg-white rounded-xl p-5 border border-emerald-200 mb-4">
+                <h4 class="font-bold text-emerald-900 mb-3 text-base"><i class="fa-solid fa-comments text-emerald-600 mr-2"></i>Feedback grupal (2 min por presentación)</h4>
+                <ul class="space-y-2 text-sm text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-thumbs-up text-emerald-600 mt-1"></i><strong>1 felicitación específica:</strong> "Me encantó cómo manejaste los errores con Telegram".</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-lightbulb text-amber-500 mt-1"></i><strong>1 sugerencia constructiva:</strong> "Podrías agregar un Router para distinguir consultas urgentes".</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-question text-purple-600 mt-1"></i><strong>1 pregunta del grupo:</strong> profundizar en algo del flujo presentado.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-xl p-5 border border-emerald-200">
+                <h4 class="font-bold text-emerald-900 mb-3 text-base"><i class="fa-solid fa-circle-info text-emerald-600 mr-2"></i>Casos de respaldo (si algún alumno no llegó con su proyecto)</h4>
+                <p class="text-sm text-slate-700 mb-3">El docente puede ofrecer estos casos pre-armados:</p>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-emerald-50 rounded-lg p-3 border-l-4 border-emerald-600">
+                        <p class="font-bold text-slate-900 text-sm">Caso A — Clasificador de leads</p>
+                        <p class="text-xs text-slate-600">Form → IA clasifica → Mail diferencial según categoría.</p>
+                    </div>
+                    <div class="bg-emerald-50 rounded-lg p-3 border-l-4 border-emerald-600">
+                        <p class="font-bold text-slate-900 text-sm">Caso B — Generador de descripciones</p>
+                        <p class="text-xs text-slate-600">Sheets de productos → IA genera copy → Sheets actualizado.</p>
+                    </div>
+                    <div class="bg-emerald-50 rounded-lg p-3 border-l-4 border-emerald-600">
+                        <p class="font-bold text-slate-900 text-sm">Caso C — Reporte diario inteligente</p>
+                        <p class="text-xs text-slate-600">Schedule → Sheets → IA resumen → Telegram a dueño.</p>
+                    </div>
+                    <div class="bg-emerald-50 rounded-lg p-3 border-l-4 border-emerald-600">
+                        <p class="font-bold text-slate-900 text-sm">Caso D — Recordatorios automáticos</p>
+                        <p class="text-xs text-slate-600">Sheets de turnos → Filtro por hora → Telegram al cliente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RÚBRICA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clipboard-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cómo se evalúa</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Rúbrica del Proyecto Final</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm border border-emerald-200 rounded-xl overflow-hidden">
+                    <thead class="bg-emerald-100">
+                        <tr>
+                            <th class="rubric-cell text-left font-bold text-emerald-900">Criterio</th>
+                            <th class="rubric-cell text-center font-bold text-emerald-900">Peso</th>
+                            <th class="rubric-cell text-left font-bold text-emerald-900">Qué se valora</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-t border-emerald-200">
+                            <td class="rubric-cell font-semibold text-slate-800">Funcionamiento del flujo</td>
+                            <td class="rubric-cell text-center font-bold text-emerald-700">35%</td>
+                            <td class="rubric-cell text-slate-700">El escenario corre, ejecuta acciones reales y maneja datos.</td>
+                        </tr>
+                        <tr class="border-t border-emerald-200 bg-emerald-50/30">
+                            <td class="rubric-cell font-semibold text-slate-800">Aplicabilidad real</td>
+                            <td class="rubric-cell text-center font-bold text-emerald-700">25%</td>
+                            <td class="rubric-cell text-slate-700">Resuelve un problema concreto y verificable.</td>
+                        </tr>
+                        <tr class="border-t border-emerald-200">
+                            <td class="rubric-cell font-semibold text-slate-800">Uso inteligente de IA</td>
+                            <td class="rubric-cell text-center font-bold text-emerald-700">20%</td>
+                            <td class="rubric-cell text-slate-700">La IA aporta valor real (clasifica, genera, decide).</td>
+                        </tr>
+                        <tr class="border-t border-emerald-200 bg-emerald-50/30">
+                            <td class="rubric-cell font-semibold text-slate-800">Claridad de presentación</td>
+                            <td class="rubric-cell text-center font-bold text-emerald-700">15%</td>
+                            <td class="rubric-cell text-slate-700">Se entiende el problema, la solución y los resultados.</td>
+                        </tr>
+                        <tr class="border-t border-emerald-200">
+                            <td class="rubric-cell font-semibold text-slate-800">Robustez (filtros y errores)</td>
+                            <td class="rubric-cell text-center font-bold text-emerald-700">5%</td>
+                            <td class="rubric-cell text-slate-700">Aplica buenas prácticas de la Clase 21.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mt-6">
+                <p class="text-sm text-emerald-900"><i class="fa-solid fa-circle-info text-emerald-600 mr-2"></i>El Proyecto Final representa el <strong>35% de la nota final del curso</strong>. Sumado al Mini-Proyecto I (25%), participación (20%) y asistencia (20%). Aprobado: 70% de la nota total.</p>
+            </div>
+        </section>
+
+        <!-- ROADMAP FUTURO -->
+        <section class="p-6 md:p-10 bg-gradient-to-br from-emerald-50 via-purple-50 to-indigo-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-map-location-dot text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Roadmap futuro · 15 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Recursos para seguir aprendiendo</h3>
+            <p class="text-slate-700 text-lg mb-6">Este curso te dio la base, pero la IA y la automatización siguen evolucionando. <strong>Acá te dejamos un mapa para los próximos 6-12 meses.</strong></p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white rounded-xl p-5 border-l-4 border-blue-500 shadow-sm">
+                    <h4 class="font-extrabold text-blue-900 mb-2"><i class="fa-solid fa-graduation-cap mr-2"></i>Comunidades en español</h4>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• Make Community oficial</li>
+                        <li>• Grupos de Discord/Telegram de "no-code en español"</li>
+                        <li>• Subreddit r/automation_ar</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl p-5 border-l-4 border-purple-500 shadow-sm">
+                    <h4 class="font-extrabold text-purple-900 mb-2"><i class="fa-solid fa-newspaper mr-2"></i>Blogs y newsletters</h4>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• Blog oficial de Make</li>
+                        <li>• Newsletter de OpenAI</li>
+                        <li>• Newsletter de Anthropic</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl p-5 border-l-4 border-emerald-500 shadow-sm">
+                    <h4 class="font-extrabold text-emerald-900 mb-2"><i class="fa-solid fa-tools mr-2"></i>Herramientas para profundizar</h4>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• n8n (alternativa open-source a Make)</li>
+                        <li>• Zapier (otra plataforma comparable)</li>
+                        <li>• LangChain (para usuarios técnicos)</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl p-5 border-l-4 border-amber-500 shadow-sm">
+                    <h4 class="font-extrabold text-amber-900 mb-2"><i class="fa-solid fa-rocket mr-2"></i>Tu plan de los próximos 90 días</h4>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>• Mes 1: optimizar el flujo del proyecto final</li>
+                        <li>• Mes 2: sumar 2 automatizaciones más</li>
+                        <li>• Mes 3: ofrecer este servicio a 1 cliente externo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white border-2 border-emerald-300 rounded-xl p-5 mt-6">
+                <h4 class="font-bold text-emerald-900 mb-3"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>El último consejo del curso</h4>
+                <p class="text-sm text-slate-700 mb-3"><strong>30 minutos por semana.</strong> Si dedicás 30 minutos por semana a explorar IA y automatización, en 1 año vas a estar entre el 5% más capacitado del país. Todos pueden hacerlo. Pocos lo hacen.</p>
+                <p class="text-sm text-slate-700"><strong>Y enseñá lo que sabés.</strong> Cada vez que le mostrás a un colega un truco que aprendiste, consolidás tu propio conocimiento. Tu negocio crece, y el ecosistema argentino crece.</p>
+            </div>
+        </section>
+
+        <!-- CIERRE Y CERTIFICADOS -->
+        <section class="p-6 md:p-10 bg-gradient-to-r from-emerald-100 via-purple-100 to-indigo-100">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-graduation-cap text-emerald-700 text-2xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-800">Cierre y certificación · 5 min</h2>
+            </div>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">🎓 Te recibís</h3>
+            <p class="text-slate-800 text-lg mb-4">Llegaste hasta acá. <strong>Ahora sos parte de los 65.000+ alumnos formados por ITC Argentina.</strong> Hoy te entregamos tu certificado de finalización del curso "IA + Automatizaciones para Negocios y Emprendedores".</p>
+
+            <div class="bg-white rounded-2xl p-6 border-4 border-emerald-300 shadow-xl my-6">
+                <div class="text-center">
+                    <div class="text-emerald-600 text-5xl mb-3"><i class="fa-solid fa-award"></i></div>
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-1">Certificación</p>
+                    <h4 class="text-2xl font-extrabold text-slate-900 mb-2">IA + Automatizaciones para Negocios</h4>
+                    <p class="text-sm text-slate-600 mb-3">22 clases · 33 horas presenciales · Ciclo 2026</p>
+                    <p class="text-xs text-slate-500 italic">Certificación privada con validez nacional respaldada por UDEMM (Universidad de la Marina Mercante).</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-5 border border-emerald-200">
+                <p class="text-slate-800 italic text-center">
+                    <strong>"Este certificado dice algo, pero lo más importante son los flujos que dejás corriendo en tu negocio. Esos sí que valen oro."</strong>
+                </p>
+                <p class="text-center text-xs text-slate-500 mt-2">— Equipo docente, ITC Argentina</p>
+            </div>
+
+            <div class="text-center mt-6">
+                <p class="text-2xl font-extrabold text-emerald-800">🙌 ¡Gracias por elegirnos! 🙌</p>
+                <p class="text-sm text-slate-700 mt-2">Y ahora, a aplicar. El mundo te está esperando con esta nueva habilidad.</p>
+            </div>
+        </section>
+
+        <!-- NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">El docente titular debe estar presente. Preparar casos de ejemplo completos por si algún alumno necesita apoyo. La clase debe ser celebratoria — reconocer el esfuerzo del recorrido.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER FINAL -->
+        <footer class="bg-gradient-to-r from-slate-900 via-emerald-900 to-slate-900 text-slate-300 p-8 md:p-12 text-center">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-emerald-400 text-4xl mb-4"><i class="fa-solid fa-flag-checkered"></i></div>
+                <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">ITC Argentina · Curso 2026</p>
+                <p class="font-bold text-white text-2xl mb-4">IA + Automatizaciones para Negocios</p>
+                <div class="flex items-center justify-center gap-3 text-sm mb-6">
+                    <span class="text-emerald-400 font-bold">Clase 22</span>
+                    <span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-emerald-500 rounded-full" style="width: 100%"></div></div>
+                    <span class="text-emerald-400 font-bold ml-2">¡COMPLETADO! 🎉</span>
+                </div>
+                <p class="text-sm text-slate-400 italic mb-2">"Capacitaciones presenciales en tu ciudad" — Hace 15 años llevando educación de calidad a cada rincón del país.</p>
+                <p class="text-xs text-slate-500 italic mt-4">Material docente confidencial — Informatic Training Center®</p>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>

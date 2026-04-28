@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 05 · Diseño Visual con IA I: Imágenes y Fotos de Producto | ITC Argentina</title>
+    <meta name="description" content="Clase 05 del curso IA + Automatizaciones de ITC Argentina. Aprendé a generar imágenes, fotos de producto, eliminar fondos y mejorar calidad con Ideogram, Firefly y DALL-E.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .image-placeholder {
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-weight: 600;
+            text-align: center;
+            padding: 12px;
+        }
+        .grid-checker {
+            background-image: 
+                linear-gradient(45deg, #f1f5f9 25%, transparent 25%), 
+                linear-gradient(-45deg, #f1f5f9 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #f1f5f9 75%), 
+                linear-gradient(-45deg, transparent 75%, #f1f5f9 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- 1. HEADER -->
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-pink-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 05</span>
+                <span>•</span>
+                <span>Fase 1 — IA Aplicada</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">
+                Diseño Visual con IA I
+            </h1>
+            <p class="text-pink-100 text-lg mb-4 max-w-2xl">
+                Imágenes y fotos de producto profesionales, sin contratar fotógrafo ni estudio. Solo con una descripción bien hecha.
+            </p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">
+                DISEÑO CON IA
+            </span>
+        </header>
+
+        <!-- 2. OBJETIVO -->
+        <section class="bg-pink-50 border-l-8 border-pink-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-bullseye text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-pink-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>poder generar imágenes profesionales con IA para tu negocio</strong>, eliminar fondos de fotos de producto y mejorar imágenes viejas. Todo con herramientas gratuitas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TIMELINE -->
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4">
+                <i class="fa-solid fa-clock mr-1"></i> Mapa de la clase
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-pink-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-pink-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <!-- 4. REPASO -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                En la Clase 4 armaste <strong>30 ideas de contenido en 2 minutos</strong>. Aprendiste a dar voz de marca, los 4 ingredientes del buen copy (gancho, beneficio, hablar a 1 persona, CTA) y a adaptar un mismo mensaje a Instagram, Facebook y LinkedIn.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <p class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3"><i class="fa-solid fa-hand mr-1"></i> Mini-ronda rápida</p>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-pink-600 mt-1"></i>¿Publicaste las 2 ideas de tarea? ¿Qué reacciones te dejaron?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-pink-600 mt-1"></i>¿Notaste alguna diferencia entre la misma idea publicada con IA vs. como la hacías antes?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-pink-50 border border-pink-200 rounded-xl">
+                <p class="text-sm text-pink-900"><i class="fa-solid fa-lightbulb text-pink-600 mr-2"></i><strong>Una publicación sin imagen no existe.</strong> Por más que tu copy sea perfecto, si la imagen es mala, nadie se detiene a leerlo. Hoy arreglamos eso.</p>
+            </div>
+        </section>
+
+        <!-- 5. TEORÍA -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-pink-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-pink-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Cómo hace la IA para "dibujar" imágenes?</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                Las IAs de imagen funcionan parecido a ChatGPT, pero en vez de generar palabras, <strong>generan píxeles</strong>. Vos le pedís algo en texto ("una foto de un frasco de miel sobre mesa de madera") y ella arma la imagen píxel por píxel, inspirada en millones de fotos que vio antes durante su entrenamiento.
+            </p>
+
+            <!-- Analogía didáctica -->
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">Es como contratar <strong>un ilustrador virtual que trabaja a ciegas</strong>. Nunca vio tu producto. Vos le dictás la descripción por teléfono y él la pinta. Si le decís solo "un frasco de miel", te va a salir algo genérico. Si le decís "un frasco de vidrio de miel dorada, etiqueta rústica, sobre una mesa de madera clara, luz natural de ventana, estilo foto profesional para redes"… ahí la cosa cambia.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- LAS 3 HERRAMIENTAS PRINCIPALES -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 3 herramientas que vamos a usar</h4>
+            <p class="text-slate-700 mb-4">En este curso priorizamos <strong>Ideogram y Adobe Firefly</strong> porque tienen planes gratuitos estables y no dependen de suscripciones costosas. DALL-E (integrado en ChatGPT) lo vemos de referencia:</p>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="step-card bg-white border-l-8 border-pink-500 rounded-xl p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-lightbulb text-pink-600 text-2xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Ideogram</h5>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-bold mb-2">⭐ Recomendada #1</p>
+                    <p class="text-sm text-slate-700 mb-3">Gratuita (con límite diario). La mejor para imágenes con <strong>texto legible</strong> adentro (carteles, flyers, logos simples).</p>
+                    <p class="text-xs text-slate-600"><strong>Ideal para:</strong> promos con texto, placas para redes, logos básicos.</p>
+                </div>
+                <div class="step-card bg-white border-l-8 border-pink-500 rounded-xl p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-brands fa-adobe text-red-600 text-2xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Adobe Firefly</h5>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-bold mb-2">⭐ Recomendada #2</p>
+                    <p class="text-sm text-slate-700 mb-3">Gratis con cuenta Adobe. Muy buena para <strong>fotos de producto realistas</strong> y uso comercial sin líos de derechos.</p>
+                    <p class="text-xs text-slate-600"><strong>Ideal para:</strong> fotos de producto, escenas realistas, uso profesional.</p>
+                </div>
+                <div class="step-card bg-white border-l-8 border-pink-300 rounded-xl p-5 shadow-sm opacity-90">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-comments text-slate-500 text-2xl"></i>
+                        <h5 class="font-extrabold text-slate-900">DALL-E</h5>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-bold mb-2">De referencia</p>
+                    <p class="text-sm text-slate-700 mb-3">Viene dentro de ChatGPT. Imágenes creativas y rápidas, pero en el plan gratuito tiene <strong>pocas generaciones por día</strong>.</p>
+                    <p class="text-xs text-slate-600"><strong>Ideal para:</strong> brainstorming visual rápido dentro de la misma charla.</p>
+                </div>
+            </div>
+
+            <!-- ANATOMÍA DE UN BUEN PROMPT VISUAL -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-10">Anatomía de un buen prompt visual</h4>
+            <p class="text-slate-700 mb-4">Si en la Clase 2 aprendiste a escribir prompts de texto con TAFEC, para imágenes la lógica es parecida pero con <strong>otras variables</strong>:</p>
+
+            <div class="grid md:grid-cols-2 gap-3 mb-4">
+                <div class="bg-white rounded-xl border-l-4 border-pink-500 p-4">
+                    <p class="font-bold text-slate-900 mb-1"><i class="fa-solid fa-cube text-pink-600 mr-1"></i> 1. Sujeto principal</p>
+                    <p class="text-sm text-slate-600">"Un frasco de vidrio con miel dorada"</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-pink-500 p-4">
+                    <p class="font-bold text-slate-900 mb-1"><i class="fa-solid fa-image text-pink-600 mr-1"></i> 2. Escena / fondo</p>
+                    <p class="text-sm text-slate-600">"sobre mesa de madera clara con flores silvestres"</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-pink-500 p-4">
+                    <p class="font-bold text-slate-900 mb-1"><i class="fa-solid fa-sun text-pink-600 mr-1"></i> 3. Iluminación</p>
+                    <p class="text-sm text-slate-600">"luz natural de ventana lateral, cálida"</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-pink-500 p-4">
+                    <p class="font-bold text-slate-900 mb-1"><i class="fa-solid fa-palette text-pink-600 mr-1"></i> 4. Estilo</p>
+                    <p class="text-sm text-slate-600">"foto profesional para redes, tonos cálidos, realista"</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-pink-500 p-4">
+                    <p class="font-bold text-slate-900 mb-1"><i class="fa-solid fa-camera text-pink-600 mr-1"></i> 5. Tipo de toma</p>
+                    <p class="text-sm text-slate-600">"primer plano" / "vista aérea" / "plano general"</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-pink-500 p-4">
+                    <p class="font-bold text-slate-900 mb-1"><i class="fa-solid fa-expand text-pink-600 mr-1"></i> 6. Formato</p>
+                    <p class="text-sm text-slate-600">"cuadrado para Instagram" / "vertical 9:16 para story"</p>
+                </div>
+            </div>
+
+            <div class="prompt-box text-slate-100 rounded-xl p-5 my-4 font-mono text-sm">
+                <div class="flex items-center gap-2 text-slate-400 text-xs mb-2 uppercase tracking-widest">
+                    <i class="fa-solid fa-quote-right"></i> Ejemplo de prompt visual completo
+                </div>
+                <p><span class="text-pink-300">[Sujeto]</span> Un frasco de vidrio con miel artesanal dorada, etiqueta rústica. <span class="text-pink-300">[Escena]</span> Sobre mesa de madera clara, con ramitas de romero y flores silvestres al lado. <span class="text-pink-300">[Luz]</span> Luz natural de ventana, cálida, suave. <span class="text-pink-300">[Estilo]</span> Foto profesional para redes sociales, tonos cálidos, realista. <span class="text-pink-300">[Toma]</span> Primer plano. <span class="text-pink-300">[Formato]</span> Cuadrado 1:1.</p>
+            </div>
+
+            <!-- LEGALIDAD -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-10">¿Puedo usarlas comercialmente? — Lo legal</h4>
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle text-emerald-600 mt-1"></i>
+                        <div>
+                            <p class="font-bold text-slate-800">Adobe Firefly</p>
+                            <p class="text-sm text-slate-600">✅ Sí, explícitamente permite uso comercial. Está entrenada solo con imágenes licenciadas.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle text-emerald-600 mt-1"></i>
+                        <div>
+                            <p class="font-bold text-slate-800">DALL-E / ChatGPT</p>
+                            <p class="text-sm text-slate-600">✅ Sí, podés usarlas comercialmente según sus términos actuales.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-check-circle text-emerald-600 mt-1"></i>
+                        <div>
+                            <p class="font-bold text-slate-800">Ideogram</p>
+                            <p class="text-sm text-slate-600">✅ Sí, las imágenes generadas son tuyas.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600 mt-1"></i>
+                        <div>
+                            <p class="font-bold text-slate-800">Cuidado: personajes y marcas registradas</p>
+                            <p class="text-sm text-slate-600">⚠ No pidas imágenes de Mickey Mouse, logo de Nike o personajes conocidos. Aunque la IA lo genere, el uso comercial es infracción.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PRÁCTICA GUIADA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-pink-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-pink-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Generemos imágenes profesionales paso a paso</h3>
+            <p class="text-slate-700 mb-6">Vamos a pasar por 4 bloques: generar una imagen desde cero en Ideogram, hacer una foto de producto con Firefly, quitar fondo con Remove.bg y mejorar la calidad de una foto vieja.</p>
+
+            <!-- PASO 1 — IDEOGRAM -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Crear cuenta en Ideogram y primera imagen</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Entrá a <a href="https://ideogram.ai" class="text-pink-600 underline font-semibold">ideogram.ai</a>. Registrate con Google (es lo más rápido).</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Vas a ver una barra donde se escribe el prompt. El plan gratuito te da <strong>40 imágenes por día</strong>, que es más que suficiente para arrancar.</li>
+                </ul>
+            </div>
+
+            <!-- PASO 2 — PROMPT EN IDEOGRAM -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Caso: flyer para promo de una panadería</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Queremos una placa para Instagram anunciando la promo de medialunas 2x1 de los sábados.</p>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>Prompt en Ideogram (en inglés funciona mejor, pero el español ya mejoró mucho):</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Social media flyer for a neighborhood bakery. Big bold text saying "MEDIALUNAS 2X1 SÁBADOS". Background: warm cozy bakery, golden croissants on wooden tray, soft morning light. Warm color palette (cream, golden brown, soft red). Square format. Modern, cheerful, professional style.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm italic"><i class="fa-solid fa-circle-info mr-1"></i> Ideogram es especialmente buena escribiendo <strong>texto adentro de la imagen</strong>. Otras IAs suelen hacer garabatos ilegibles. Por eso es ideal para flyers y promos.</p>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Truco:</strong> Ideogram siempre te devuelve <strong>4 variantes</strong> de la imagen con cada prompt. Eligí la que más te guste y listo.
+                </div>
+            </div>
+
+            <!-- PASO 3 — FIREFLY: FOTO DE PRODUCTO -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Foto de producto profesional con Adobe Firefly</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm mb-3">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Andá a <a href="https://firefly.adobe.com" class="text-pink-600 underline font-semibold">firefly.adobe.com</a>. Registrate con email (o Google).</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Hacé clic en <strong>"Generate Image" / "Generar imagen"</strong>.</li>
+                </ul>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El caso:</strong> Laura tiene un emprendimiento de velas aromáticas y necesita fotos para su tienda online.</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>A handmade aromatic candle in a minimalist glass jar, soft natural wax, elegant label with brand name "LUNA", placed on a marble surface next to dried lavender and a wooden matchstick holder. Soft morning light from the left. Warm beige and cream color palette. Professional product photography for e-commerce, shallow depth of field, square 1:1 format.</p>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Para fotos de producto:</strong> siempre mencioná "professional product photography" y "shallow depth of field" (fondo desenfocado). Le da ese look editorial.
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm"><strong>Panel lateral de Firefly:</strong> además del prompt, podés elegir:</p>
+                <ul class="ml-13 text-slate-700 space-y-1 text-sm mt-2">
+                    <li><i class="fa-solid fa-palette text-pink-600 mr-2"></i><strong>Style preset:</strong> fotografía, arte digital, ilustración, etc.</li>
+                    <li><i class="fa-solid fa-crop-simple text-pink-600 mr-2"></i><strong>Aspect ratio:</strong> 1:1 (IG feed), 9:16 (stories/reels), 16:9 (Facebook portada).</li>
+                    <li><i class="fa-solid fa-wand-magic-sparkles text-pink-600 mr-2"></i><strong>Effects:</strong> cinematográfico, dorado, vintage, minimalista…</li>
+                </ul>
+            </div>
+
+            <!-- PASO 4 — REMOVE.BG -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Quitar el fondo de una foto en 3 segundos — Remove.bg</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El caso: sacaste una foto de tu producto con el celular sobre tu mostrador. Sirve, pero el fondo es un desastre. Vamos a quitarlo.</p>
+
+                <div class="ml-13 grid md:grid-cols-3 gap-3 mb-3">
+                    <div class="image-placeholder bg-gradient-to-br from-amber-100 to-amber-300 text-amber-900">
+                        <i class="fa-solid fa-image text-3xl mb-2"></i>
+                        <p class="text-xs uppercase tracking-wide">Foto original</p>
+                        <p class="text-xs">con fondo feo</p>
+                    </div>
+                    <div class="image-placeholder grid-checker text-slate-700">
+                        <i class="fa-solid fa-wand-magic-sparkles text-3xl mb-2 text-pink-600"></i>
+                        <p class="text-xs uppercase tracking-wide">Fondo removido</p>
+                        <p class="text-xs">transparente</p>
+                    </div>
+                    <div class="image-placeholder bg-gradient-to-br from-pink-200 to-pink-400 text-pink-900">
+                        <i class="fa-solid fa-palette text-3xl mb-2"></i>
+                        <p class="text-xs uppercase tracking-wide">Con nuevo fondo</p>
+                        <p class="text-xs">para tu tienda</p>
+                    </div>
+                </div>
+
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Entrá a <a href="https://www.remove.bg" class="text-pink-600 underline font-semibold">remove.bg</a>. No hace falta cuenta.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Arrastrá la foto. En 3 segundos te devuelve la imagen con fondo transparente.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i>Descargala. Después podés abrirla en Canva o Firefly y poner un fondo nuevo (blanco, de color, o una escena completa generada con IA).</li>
+                </ul>
+                <div class="bg-pink-50 rounded-lg p-3 ml-13 mt-3 text-sm text-pink-900 border border-pink-200">
+                    <i class="fa-solid fa-gift text-pink-600 mr-2"></i><strong>Plan gratuito:</strong> descarga en baja resolución. Para impresión (alta res) pagás por imagen. Para redes, la gratuita ya sirve perfecto.
+                </div>
+            </div>
+
+            <!-- PASO 5 — UPSCALING -->
+            <div class="step-card bg-white border-l-8 border-pink-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-pink-900">Mejorar calidad de una foto vieja — Upscaling</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Tenés fotos viejas borrosas de tu negocio (la inauguración, un evento), o fotos que te mandó tu tía por WhatsApp y están pixeladas. La IA las puede "ampliar" y mejorar.</p>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>Herramientas gratuitas recomendadas:</strong></p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i><a href="https://www.upscale.media" class="text-pink-600 underline font-semibold">upscale.media</a> — Gratuita, sin cuenta. Arrastrá la foto y listo.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i><a href="https://letsenhance.io" class="text-pink-600 underline font-semibold">letsenhance.io</a> — 10 fotos gratis al registrarte.</li>
+                    <li><i class="fa-solid fa-arrow-right text-pink-600 mr-2"></i><strong>Firefly</strong> — tiene opción "Enhance image" dentro de su panel.</li>
+                </ul>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Tip:</strong> estas herramientas duplican el tamaño, pero no inventan detalles que no existen. Si la foto era muy chiquita o muy borrosa, el resultado va a ser aceptable pero no mágico.
+                </div>
+            </div>
+
+            <!-- PLANTILLA MAESTRA -->
+            <div class="step-card bg-pink-50 border-2 border-pink-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-pink-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-pink-900">Plantilla maestra para fotos de producto</h4>
+                </div>
+                <p class="text-slate-700 mb-3">La fórmula universal que podés adaptar a cualquier producto:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 font-mono text-sm">
+                    <p>Professional product photography of <span class="text-amber-300">[describir producto: material, color, forma, detalles]</span>, placed on <span class="text-amber-300">[superficie: madera clara / mármol / lino beige / cemento pulido]</span>, surrounded by <span class="text-amber-300">[elementos de apoyo: flores, frutas, herramientas, libros]</span>. <span class="text-amber-300">[Luz: soft natural morning light / golden hour / studio lighting]</span>. Color palette: <span class="text-amber-300">[paleta: warm earth tones / minimalist white / vibrant colors]</span>. Shallow depth of field, high detail, realistic style. <span class="text-amber-300">[Formato: square 1:1 / vertical 9:16 / horizontal 16:9]</span>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. EJERCICIO AUTÓNOMO -->
+        <section class="p-6 md:p-10 bg-pink-50 border-y-4 border-pink-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-rocket text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-pink-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-pink-900">Generá 3 imágenes para tu negocio</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Usando las 2 fotos de producto que trajiste hoy (y tu propio rubro), vas a hacer 3 cosas:</p>
+
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li><strong>Imagen 1 — Foto de producto desde cero.</strong> Abrí Adobe Firefly. Usá la plantilla maestra y describí uno de tus productos como si estuviera en una foto profesional. Generá la imagen.</li>
+                <li><strong>Imagen 2 — Flyer con texto.</strong> Abrí Ideogram. Pedile un flyer cuadrado para una promo real tuya con texto bien grande y legible. Ejemplo: "Descuento 20% — Marzo 2026".</li>
+                <li><strong>Imagen 3 — Limpiar una foto existente.</strong> Tomá una de las fotos que trajiste del celular. Pasala por Remove.bg para quitar el fondo. Si quedó lindo, agregale un fondo nuevo generado con IA o uno liso en Canva.</li>
+            </ol>
+
+            <div class="bg-white rounded-xl p-4 border border-pink-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> subí a tu Instagram o Estado de WhatsApp una de las 3 imágenes que generaste. Fijate la reacción vs. tus fotos anteriores. La diferencia habla por sí sola.</p>
+            </div>
+        </section>
+
+        <!-- 8. CIERRE -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés cómo funcionan las <strong>IAs de imagen</strong>: texto entra, píxeles salen.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés las <strong>3 herramientas clave</strong>: Ideogram (texto en imagen), Firefly (fotos de producto), DALL-E (referencia).</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Dominás los <strong>6 ingredientes del prompt visual</strong>: sujeto, escena, luz, estilo, toma, formato.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Aprendiste a <strong>limpiar fondos con Remove.bg</strong> y <strong>mejorar fotos viejas con upscaling</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés qué podés <strong>usar comercialmente sin problemas</strong> y qué no.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-pink-50 rounded-xl border-2 border-pink-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-pink-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-pink-900 mb-1">Próxima clase: Diseño Visual con IA II — Flyers, Logos y Redes Sociales</p>
+                        <p class="text-sm text-pink-800">La segunda parte: vamos a meternos a fondo con <strong>Canva</strong> y sus funciones Magic. Logos básicos, flyers para promos, stories completas. <strong>Antes de la clase, creá tu cuenta gratuita en canva.com</strong>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> generá 5 imágenes más durante la semana para tu negocio. Guardalas en una carpeta llamada <em>"Banco de imágenes IA — [Mes]"</em>. Vas a empezar a tener material visual propio ilimitado.</p>
+            </div>
+        </section>
+
+        <!-- 9. NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">
+                    Focalizarse en Ideogram y Adobe Firefly (tienen planes gratuitos estables). Evitar depender de DALL-E solamente.
+                </p>
+            </div>
+        </section>
+
+        <!-- 10. FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 05</span>
+                    <span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2">
+                        <div class="h-full bg-pink-500 rounded-full" style="width: 22.5%"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

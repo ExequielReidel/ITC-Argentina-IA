@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 04 · IA para Copywriting y Contenido | ITC Argentina</title>
+    <meta name="description" content="Clase 04 del curso IA + Automatizaciones de ITC Argentina. Aprendé a generar descripciones, posts y 30 ideas de contenido en minutos con IA.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        /* Mockup Instagram */
+        .ig-mockup {
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            background: white;
+            max-width: 320px;
+        }
+        .ig-header {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            padding: 2px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .idea-chip {
+            background: white;
+            border: 1px solid #e0f2fe;
+            border-left: 3px solid #0284c7;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #0c4a6e;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- 1. HEADER -->
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-sky-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 04</span>
+                <span>•</span>
+                <span>Fase 1 — IA Aplicada</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">
+                IA para Copywriting y Contenido
+            </h1>
+            <p class="text-sky-100 text-lg mb-4 max-w-2xl">
+                Nunca más vas a mirar Instagram pensando "¿y qué subo hoy?". De 1 sola idea vas a salir con 30.
+            </p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">
+                APLICACIÓN COMERCIAL
+            </span>
+        </header>
+
+        <!-- 2. OBJETIVO -->
+        <section class="bg-sky-50 border-l-8 border-sky-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-sky-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-bullseye text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-sky-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>salir con 30 ideas de contenido para tu negocio</strong>, saber generar descripciones de productos irresistibles y adaptar un mismo post a Instagram, Facebook y LinkedIn sin reescribir todo a mano.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TIMELINE -->
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4">
+                <i class="fa-solid fa-clock mr-1"></i> Mapa de la clase
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-sky-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-sky-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <!-- 4. REPASO -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                En la Clase 3 aprendiste a <strong>responder WhatsApp como un pro</strong>: ventas sin ser pesado, manejo de reclamos, objeciones de precio, seguimientos y pedido de reseñas. Te llevaste 6 plantillas listas para copiar y pegar.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <p class="text-sm font-bold text-slate-700 uppercase tracking-widest mb-3"><i class="fa-solid fa-hand mr-1"></i> Mini-ronda rápida</p>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-sky-600 mt-1"></i>¿Usaste alguna plantilla esta semana en tu WhatsApp real?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-sky-600 mt-1"></i>¿Cuánto tiempo calculás que te ahorraste?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-sky-600 mt-1"></i>¿Algún mensaje difícil que quieras compartir con el grupo?</li>
+                </ul>
+            </div>
+            <div class="mt-4 p-4 bg-sky-50 border border-sky-200 rounded-xl">
+                <p class="text-sm text-sky-900"><i class="fa-solid fa-lightbulb text-sky-600 mr-2"></i><strong>Pasamos del "responder" al "atraer".</strong> Si la Clase 3 fue sobre clientes que ya te escribieron, hoy es sobre cómo <strong>hacer que te encuentren y te elijan</strong> antes de que te escriban.</p>
+            </div>
+        </section>
+
+        <!-- 5. TEORÍA -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-sky-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-sky-600">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Texto genérico vs. texto con voz de marca</h3>
+            <p class="text-slate-700 text-lg mb-4">
+                El error más común cuando la gente empieza a usar IA para contenido es <strong>aceptar la primera respuesta sin darle "tu voz"</strong>. El resultado: posts que parecen escritos por un robot, iguales a los de cualquier otro negocio. Hoy aprendemos a evitarlo.
+            </p>
+
+            <!-- Analogía didáctica -->
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">La voz de marca es <strong>cómo hablarías si tu negocio fuera una persona</strong>. ¿Es un amigo que te tira una broma? ¿Un profesional serio que te tranquiliza? ¿Un vecino que te recomienda algo? La IA, sin indicaciones, habla en tono "corporativo neutro". Tu trabajo es <strong>sacarla de ahí</strong> y llevarla a tu voz.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Comparación voz de marca -->
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Ejemplo: 2 posts para una nutricionista</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-white border-2 border-red-200 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-face-meh text-red-600 text-xl"></i>
+                        <span class="font-bold text-red-800 text-sm uppercase tracking-wide">Texto genérico</span>
+                    </div>
+                    <p class="text-slate-700 text-sm italic mb-3">"La alimentación saludable es fundamental para nuestro bienestar. Consumir frutas, verduras y alimentos naturales aporta nutrientes esenciales. Te invitamos a agendar una consulta para recibir un plan personalizado."</p>
+                    <p class="text-xs text-slate-500"><i class="fa-solid fa-arrow-right mr-1"></i>Suena a folleto de sala de espera. Nadie se identifica.</p>
+                </div>
+                <div class="bg-white border-2 border-emerald-300 rounded-xl p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-face-smile-beam text-emerald-600 text-xl"></i>
+                        <span class="font-bold text-emerald-800 text-sm uppercase tracking-wide">Con voz de marca</span>
+                    </div>
+                    <p class="text-slate-700 text-sm italic mb-3">"Te lo digo con cariño: no necesitás una dieta imposible. Necesitás que alguien te ayude a elegir qué meter al carrito del súper cada semana. Eso hago yo. Si estás cansada de empezar el lunes, escribime. 🥬"</p>
+                    <p class="text-xs text-slate-500"><i class="fa-solid fa-arrow-right mr-1"></i>Suena a una persona real. La gente se identifica, comenta, comparte.</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Los 4 ingredientes de un buen copy</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-fishing-rod text-sky-600"></i>
+                        <p class="font-bold text-slate-900">1. Gancho (primer renglón)</p>
+                    </div>
+                    <p class="text-sm text-slate-600">La frase que hace que la gente pare el scroll. Pregunta, dato impactante, o algo que roza el nervio del cliente.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-handshake text-sky-600"></i>
+                        <p class="font-bold text-slate-900">2. Beneficio, no característica</p>
+                    </div>
+                    <p class="text-sm text-slate-600">No digas "100% algodón". Decí "la remera que te ponés y no te saca más el marido".</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-user-group text-sky-600"></i>
+                        <p class="font-bold text-slate-900">3. Hablale a una sola persona</p>
+                    </div>
+                    <p class="text-sm text-slate-600">"Vos" en singular, no "ustedes". Aunque lo lean mil, cada uno debe sentir que le hablás a él.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-sky-500 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-bullhorn text-sky-600"></i>
+                        <p class="font-bold text-slate-900">4. Llamada a la acción (CTA)</p>
+                    </div>
+                    <p class="text-sm text-slate-600">Terminá diciendo qué querés que haga: "Mandame mensaje", "Reservá tu lugar", "Pasá por el local".</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 3 redes principales (y cómo cambia el mismo post)</h4>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+                    <thead class="bg-slate-100">
+                        <tr>
+                            <th class="p-3 text-left font-bold text-slate-700">Red</th>
+                            <th class="p-3 text-left font-bold text-slate-700">Largo ideal</th>
+                            <th class="p-3 text-left font-bold text-slate-700">Tono</th>
+                            <th class="p-3 text-left font-bold text-slate-700">Detalle clave</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="border-t border-slate-200">
+                            <td class="p-3 font-semibold text-slate-800"><i class="fa-brands fa-instagram text-pink-600 mr-1"></i> Instagram</td>
+                            <td class="p-3 text-slate-700">80-150 palabras</td>
+                            <td class="p-3 text-slate-700">Visual, emotivo</td>
+                            <td class="p-3 text-slate-700">Primer renglón gancho + emojis</td>
+                        </tr>
+                        <tr class="border-t border-slate-200 bg-slate-50">
+                            <td class="p-3 font-semibold text-slate-800"><i class="fa-brands fa-facebook text-blue-600 mr-1"></i> Facebook</td>
+                            <td class="p-3 text-slate-700">100-200 palabras</td>
+                            <td class="p-3 text-slate-700">Conversacional</td>
+                            <td class="p-3 text-slate-700">Genera debate y comentarios</td>
+                        </tr>
+                        <tr class="border-t border-slate-200">
+                            <td class="p-3 font-semibold text-slate-800"><i class="fa-brands fa-linkedin text-sky-700 mr-1"></i> LinkedIn</td>
+                            <td class="p-3 text-slate-700">150-300 palabras</td>
+                            <td class="p-3 text-slate-700">Profesional, reflexivo</td>
+                            <td class="p-3 text-slate-700">Aporta aprendizaje / insight</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm text-slate-600 mt-3 italic"><i class="fa-solid fa-circle-info mr-1"></i> Un mismo mensaje podés publicarlo en las 3 redes, pero <strong>reescrito para cada una</strong>. La IA hace esa traducción en segundos.</p>
+        </section>
+
+        <!-- 6. PRÁCTICA GUIADA -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-sky-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-sky-600">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Hagamos el trabajo de 1 semana en 40 minutos</h3>
+            <p class="text-slate-700 mb-6">Vamos a pasar por tres bloques: <strong>descripción de producto</strong>, <strong>el famoso ejercicio de las 30 ideas</strong> (atentos, que es la parte que impresiona), y <strong>adaptación a 3 redes</strong>. Copiá los prompts en tu ChatGPT.</p>
+
+            <!-- PASO 1 — DESCRIPCIÓN DE PRODUCTO -->
+            <div class="step-card bg-white border-l-8 border-sky-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">Descripción de producto — Emprendimiento de indumentaria</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El caso: Sofía vende buzos oversize tejidos a mano. Tiene 4 fotos y quiere publicar en su Instagram + en Mercado Libre. ¿Cómo describe el mismo producto sin que suene a folleto?</p>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como copywriter de moda. Te describo un producto y necesito 2 descripciones distintas del mismo:<br><br>
+                    <strong>Producto:</strong> Buzo oversize tejido a mano, lana merino, color mostaza, talles S/M/L, $48.000.<br><br>
+                    <strong>Versión 1:</strong> para Instagram. 100 palabras, tono cálido y emocional, que apele a "sentirse cómoda y abrigada en casa un domingo". Primer renglón como gancho. Terminá con CTA para escribir por DM.<br><br>
+                    <strong>Versión 2:</strong> para Mercado Libre. 80 palabras, tono informativo pero cercano, priorizando composición del material, talles y cuidado de la prenda. CTA para comprar.</p>
+                </div>
+                <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Truco:</strong> pedí siempre <em>2 versiones al mismo tiempo</em>. Te sale una sola consulta y te llevás el doble de material.
+                </div>
+            </div>
+
+            <!-- PASO 2 — EL EJERCICIO ESTRELLA: 30 IDEAS -->
+            <div class="step-card bg-sky-100 border-2 border-sky-500 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">⭐ El ejercicio que te va a volar la cabeza: 30 ideas desde 1 tema</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El caso: Diego tiene una dietética en San Miguel de Tucumán. Dice: <em>"No sé qué subir a Instagram. Ya publiqué 4 veces sobre los beneficios de la palta y se me acabaron las ideas"</em>. En 2 minutos vamos a generarle material para 1 mes entero.</p>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como estratega de contenidos de redes sociales. Mi negocio es una dietética en Tucumán que vende almendras, quinoa, frutos secos y productos sin TACC.<br><br>
+                    A partir del tema central <strong>"beneficios de la palta"</strong>, generame <strong>30 ideas de publicaciones distintas</strong> para Instagram, cada una desde un ángulo diferente. Variá entre: recetas, mitos, datos curiosos, comparaciones, tips, errores comunes, testimonios, humor, estacionalidad, combinaciones con otros productos.<br><br>
+                    Formato: lista numerada. Cada idea debe tener (a) título atractivo de máximo 8 palabras y (b) breve descripción de qué se muestra (1 renglón). Tono argentino, cálido, sin ser aburrido.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-4 mb-2 text-sm"><strong>Lo que ChatGPT te devuelve (muestra parcial):</strong></p>
+                <div class="ml-13 grid md:grid-cols-2 gap-2">
+                    <div class="idea-chip"><strong>1.</strong> La palta en 3 minutos — Reel rápido con una receta fácil.</div>
+                    <div class="idea-chip"><strong>2.</strong> Mito: ¿la palta engorda? — Post carrusel con el dato real.</div>
+                    <div class="idea-chip"><strong>3.</strong> Guacamole tucumano — Versión con ají local.</div>
+                    <div class="idea-chip"><strong>4.</strong> Palta para el desayuno — 5 ideas para arrancar el día.</div>
+                    <div class="idea-chip"><strong>5.</strong> ¿Por qué la palta está cara? — Contexto + alternativa local.</div>
+                    <div class="idea-chip"><strong>6.</strong> Ensalada express — Combinala con nuestra quinoa.</div>
+                    <div class="idea-chip"><strong>7.</strong> Antes y después de congelar palta — Tip visual.</div>
+                    <div class="idea-chip"><strong>8.</strong> La palta en el gimnasio — Grasa buena para entrenar.</div>
+                    <div class="idea-chip"><strong>9.</strong> Una palta, 7 desayunos — Carrusel semanal.</div>
+                    <div class="idea-chip"><strong>10.</strong> Testimonio: Marcela y sus hijos — Paltas a la semana.</div>
+                    <div class="idea-chip text-slate-400 italic">...y así hasta 30 ideas completas.</div>
+                </div>
+                <div class="bg-white rounded-lg p-4 ml-13 mt-4 border border-sky-200">
+                    <p class="text-sm text-slate-700"><i class="fa-solid fa-arrow-right text-sky-600 mr-2"></i><strong>Diego tiene contenido para 1 mes entero en 2 minutos.</strong> Ahora eligé las 8 mejores ideas y pedile a la IA que te escriba el texto completo de cada una. ¿Ves el potencial?</p>
+                </div>
+            </div>
+
+            <!-- PASO 3 — ADAPTAR A 3 REDES -->
+            <div class="step-card bg-white border-l-8 border-sky-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">Un mismo post, 3 redes distintas — Contador independiente</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El caso: Roberto es contador y quiere publicar sobre el cierre del ejercicio fiscal. ¿Cómo adapta el mismo mensaje a Instagram, Facebook y LinkedIn?</p>
+                <p class="text-slate-700 ml-13 mb-2 text-sm"><strong>El prompt:</strong></p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Actuá como estratega de contenidos. Te paso una idea y necesito 3 versiones del mismo mensaje, una para cada red.<br><br>
+                    <strong>Idea central:</strong> "Faltan 20 días para el cierre del ejercicio fiscal. Muchos monotributistas llegan tarde, con lío, y pagan multas evitables. Recordá que puedo ayudarte a cerrar sin stress."<br><br>
+                    <strong>Versión 1 — Instagram:</strong> 100 palabras. Tono cercano, 1 emoji al inicio, primer renglón como gancho. CTA: WhatsApp.<br>
+                    <strong>Versión 2 — Facebook:</strong> 150 palabras. Tono conversacional, terminá con pregunta que invite a comentar.<br>
+                    <strong>Versión 3 — LinkedIn:</strong> 200 palabras. Tono profesional, arrancá con una observación del sector, incluí un dato o aprendizaje. CTA: agendar consulta.</p>
+                </div>
+                <div class="ml-13 mt-4 grid md:grid-cols-3 gap-3">
+                    <div class="bg-pink-50 border border-pink-200 rounded-lg p-3">
+                        <p class="text-xs font-bold text-pink-800 uppercase tracking-wide mb-1"><i class="fa-brands fa-instagram mr-1"></i>Instagram</p>
+                        <p class="text-xs text-slate-700 italic">"⏰ Te quedan 20 días. Si sos monotributista, esto es para vos..."</p>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                        <p class="text-xs font-bold text-blue-800 uppercase tracking-wide mb-1"><i class="fa-brands fa-facebook mr-1"></i>Facebook</p>
+                        <p class="text-xs text-slate-700 italic">"Todos los años me pasa lo mismo: la gente llega en el último día..."</p>
+                    </div>
+                    <div class="bg-sky-50 border border-sky-200 rounded-lg p-3">
+                        <p class="text-xs font-bold text-sky-800 uppercase tracking-wide mb-1"><i class="fa-brands fa-linkedin mr-1"></i>LinkedIn</p>
+                        <p class="text-xs text-slate-700 italic">"En 15 años como contador, observé un patrón que se repite cada cierre..."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 4 — HERRAMIENTAS COMPLEMENTARIAS -->
+            <div class="step-card bg-white border-l-8 border-sky-600 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-sky-900">Vistazo a herramientas complementarias</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Si te copa el tema del copywriting y querés ir más allá de ChatGPT, estas dos plataformas están hechas específicamente para contenido:</p>
+                <div class="ml-13 grid md:grid-cols-2 gap-3">
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-feather-pointed text-sky-600 text-xl"></i>
+                            <h5 class="font-extrabold text-slate-900">Copy.ai</h5>
+                        </div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide font-bold mb-2">Plan gratuito disponible</p>
+                        <p class="text-sm text-slate-700">Viene con plantillas predeterminadas: descripciones de producto, mails, titulares. Útil si no te sale arrancar de cero.</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-robot text-sky-600 text-xl"></i>
+                            <h5 class="font-extrabold text-slate-900">Jasper</h5>
+                        </div>
+                        <p class="text-xs text-slate-500 uppercase tracking-wide font-bold mb-2">Desde USD 39/mes</p>
+                        <p class="text-sm text-slate-700">Más profesional, integrado con SEO. Recomendado si ya producís contenido todos los días o si tenés agencia.</p>
+                    </div>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 ml-13 mt-3">
+                    <p class="text-sm text-blue-900"><i class="fa-solid fa-circle-info mr-2"></i><strong>Recomendación honesta:</strong> con ChatGPT más los frameworks de la Clase 2, ya podés hacer todo lo que hacen Copy.ai o Jasper. Estas herramientas te dan velocidad, no magia.</p>
+                </div>
+            </div>
+
+            <!-- PLANTILLA MAESTRA -->
+            <div class="step-card bg-sky-50 border-2 border-sky-400 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-sky-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-sky-900">Plantilla maestra para generar 30 ideas de contenido</h4>
+                </div>
+                <p class="text-slate-700 mb-3">Guardala. Es la que vas a usar cada mes para planificar contenido de tu negocio:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 font-mono text-sm">
+                    <p>Actuá como estratega de contenidos.<br>
+                    Mi negocio es <span class="text-amber-300">[rubro + ciudad + 1-2 diferenciales]</span>.<br>
+                    Mi cliente ideal es <span class="text-amber-300">[edad + situación + qué necesita]</span>.<br><br>
+                    A partir del tema central <span class="text-amber-300">"[tema principal del mes]"</span>, generame <strong>30 ideas de publicaciones para Instagram</strong>, cada una desde un ángulo distinto (recetas, mitos, datos, tips, errores, comparaciones, humor, estacionalidad, testimonios, combinaciones).<br><br>
+                    Formato: lista numerada del 1 al 30. Cada idea incluye (a) título gancho de max 8 palabras y (b) una línea con el ángulo. Tono argentino, cercano.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. EJERCICIO AUTÓNOMO -->
+        <section class="p-6 md:p-10 bg-sky-50 border-y-4 border-sky-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-sky-600 text-white w-12 h-12 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-rocket text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-sky-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-sky-900">Generá 30 ideas para tu negocio</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Esto no es tarea para casa: lo hacemos ahora. Cuando termines vas a <strong>salir de la clase con 30 posts pensados</strong>.</p>
+
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Pensá cuál es <strong>el tema central que tu negocio más trabaja</strong> (ej: uñas esculpidas, reparación de celulares, clases de yoga, viandas saludables).</li>
+                <li>Abrí un <strong>nuevo chat</strong> en ChatGPT.</li>
+                <li>Copiá la <strong>plantilla maestra de 30 ideas</strong> del último recuadro de la práctica.</li>
+                <li>Completá cada dato con la realidad de tu negocio (rubro, ciudad, cliente ideal, tema).</li>
+                <li>Mandá el prompt. Esperá 30 segundos. Leé las 30 ideas.</li>
+                <li>Eligí <strong>las 4 que más te gusten</strong> y marcalas.</li>
+                <li>Para esas 4 ideas, pedile a la IA que te escriba <strong>el texto completo del post</strong> siguiendo TAFEC (de la Clase 2).</li>
+            </ol>
+
+            <div class="bg-white rounded-xl p-4 border border-sky-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> creá un documento titulado <em>"Calendario de contenido — [Tu negocio]"</em> y pegá las 30 ideas numeradas. Asignale una fecha a cada una. Listo: tenés el mes de contenido planificado en 15 minutos.</p>
+            </div>
+        </section>
+
+        <!-- 8. CIERRE -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Entendiste la diferencia entre <strong>texto genérico y texto con voz de marca</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés los <strong>4 ingredientes de un buen copy</strong>: gancho, beneficio, hablar a 1 persona, CTA.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Podés pedir <strong>2 descripciones del mismo producto</strong> para distintos canales.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés <strong>adaptar 1 mensaje a Instagram, Facebook y LinkedIn</strong> en una sola consulta.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Y lo más importante: <strong>saliste con 30 ideas de contenido para tu propio negocio</strong>.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-sky-50 rounded-xl border-2 border-sky-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-sky-600 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-sky-900 mb-1">Próxima clase: Diseño Visual con IA I — Imágenes y Fotos de Producto</p>
+                        <p class="text-sm text-sky-800">Pasamos del texto a la imagen. Vas a aprender a <strong>generar fotos de producto profesionales sin cámara</strong>, eliminar fondos, mejorar imágenes viejas y crear visuales listos para publicar. Traé 2 fotos de productos de tu negocio (pueden ser con el celular, no importa la calidad).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> publicá al menos 2 de las ideas que generaste hoy, esta semana. La próxima clase vamos a ver cómo te fue con el "enganche" (likes, comentarios, mensajes).</p>
+            </div>
+        </section>
+
+        <!-- 9. NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">
+                    El ejercicio de "30 ideas desde 1 tema" suele sorprender mucho. Usarlo como gancho motivador.
+                </p>
+            </div>
+        </section>
+
+        <!-- 10. FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 04</span>
+                    <span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2">
+                        <div class="h-full bg-sky-500 rounded-full" style="width: 18%"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 11 · Creá tu Propio GPT | ITC Argentina</title>
+    <meta name="description" content="Clase 11 del curso IA + Automatizaciones de ITC Argentina. Creá un asistente personalizado entrenado con tus precios, productos y políticas.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-indigo-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span>Clase 11</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Creá tu Propio GPT</h1>
+            <p class="text-indigo-100 text-lg mb-4 max-w-2xl">Tu propio asistente IA, entrenado con TU información. El empleado que conoce tu negocio mejor que vos.</p>
+            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">IA AVANZADA</span>
+        </header>
+
+        <section class="bg-indigo-50 border-l-8 border-indigo-700 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-indigo-700 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700 mb-1">Objetivo de la clase</h2>
+                    <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener tu primer GPT personalizado</strong> creado, configurado con tus precios, productos y políticas. Vas a poder usarlo desde el celular y compartirlo con tu equipo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la clase</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
+                <div class="bg-indigo-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-indigo-800">Práctica</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-clock-rotate-left text-slate-500 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-slate-500">Repaso · 10 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">¿Qué vimos la clase pasada?</h3>
+            <p class="text-slate-700 text-lg mb-4">En la Clase 10 aprendiste a <strong>"hablar" con tu Excel</strong>. Subiste un archivo de ventas, le hiciste preguntas en lenguaje natural, generaste fórmulas, gráficos y un reporte mensual completo.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-indigo-700 mt-1"></i>¿Comparaste el mes actual con el anterior? ¿Qué descubriste?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-indigo-700 mt-1"></i>Antes de empezar, pensá: <strong>¿qué pregunta repetida te hace tu equipo o tus clientes todos los días?</strong> Eso es lo que vamos a automatizar.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-book-open text-indigo-700 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700">Desarrollo teórico · 20 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Qué es un GPT personalizado?</h3>
+            <p class="text-slate-700 text-lg mb-4">Hasta ahora usaste ChatGPT como un empleado <strong>genérico</strong>: sabe de todo pero no de tu negocio. Un <strong>GPT personalizado</strong> es ese mismo empleado pero con un entrenamiento intensivo de TU empresa: tus precios, tus productos, tu tono, tus políticas. Desde la primera consulta responde como si trabajara con vos hace 5 años.</p>
+
+            <aside class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 my-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-lightbulb text-amber-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-extrabold text-amber-900 mb-1 text-sm uppercase tracking-wide">Pensalo así</h4>
+                        <p class="text-amber-900">Un <strong>GPT personalizado</strong> es como un <strong>empleado al que le enseñaste exactamente cómo funciona tu negocio</strong>. Le diste el manual de procedimientos, la lista de precios, las políticas de devolución, el tono con el que hablás. Ahora cuando alguien le pregunta algo, responde exactamente como respondería vos.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Casos de uso reales para una Pyme</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-headset text-indigo-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Asistente de ventas</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Responde consultas de productos, precios, formas de pago, plazos de entrega. Para usar internamente o con clientes.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-circle-question text-indigo-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">FAQ Bot</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Responde preguntas frecuentes 24/7: horarios, ubicación, políticas. Reduce 70% las consultas repetitivas.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-pen-fancy text-indigo-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Generador de contenido de marca</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Escribe posts, mails y mensajes con tu voz de marca configurada. Ya no le tenés que explicar cada vez.</p>
+                </div>
+                <div class="step-card bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-graduation-cap text-indigo-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Onboarding de empleados</h5>
+                    </div>
+                    <p class="text-sm text-slate-700">Tu nuevo empleado le pregunta lo que no sabe ("¿cuál es el WiFi del local?", "¿cómo cargo una venta?") en vez de preguntarte a vos.</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Las 3 alternativas para crear tu GPT</h4>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-comments text-indigo-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">GPTs de OpenAI</h5>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">⭐ Recomendada</p>
+                    <p class="text-sm text-slate-700">Requiere ChatGPT Plus para crear, pero cualquiera puede usarlo gratis. Interfaz visual, sin código.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-gem text-blue-500 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Gems de Gemini</h5>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Alternativa gratis</p>
+                    <p class="text-sm text-slate-700">Versión gratuita disponible. Similar a los GPTs pero dentro de Gemini.</p>
+                </div>
+                <div class="bg-white rounded-xl border-l-4 border-indigo-700 p-5 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-brands fa-microsoft text-blue-700 text-xl"></i>
+                        <h5 class="font-extrabold text-slate-900">Copilot GPT Builder</h5>
+                    </div>
+                    <p class="text-xs text-slate-500 uppercase font-bold mb-1">Para entornos MS</p>
+                    <p class="text-sm text-slate-700">Si trabajás con Microsoft 365, es la opción nativa. Integra con tus archivos de OneDrive.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-screwdriver-wrench text-indigo-700 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700">Práctica guiada · 40 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Construyamos un GPT para una ferretería</h3>
+            <p class="text-slate-700 mb-6">Caso: <strong>"Ferretería Don Pedro"</strong> en San Pedro, Buenos Aires. Vamos a crear "Pedro Bot", el asistente que responde consultas de productos, precios, horarios y políticas.</p>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Reunir la información del negocio</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Antes de crear el GPT, juntá la info que querés que sepa. Esto puede ir en archivos PDF, Word o pegado directamente:</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-file-lines text-indigo-700 mr-2"></i><strong>Lista de productos y precios</strong> (puede ser un Excel)</li>
+                    <li><i class="fa-solid fa-file-lines text-indigo-700 mr-2"></i><strong>Horarios de atención</strong> y dirección</li>
+                    <li><i class="fa-solid fa-file-lines text-indigo-700 mr-2"></i><strong>Políticas:</strong> formas de pago, envíos, garantías, devoluciones</li>
+                    <li><i class="fa-solid fa-file-lines text-indigo-700 mr-2"></i><strong>FAQ típicas:</strong> las preguntas que más te hacen los clientes</li>
+                    <li><i class="fa-solid fa-file-lines text-indigo-700 mr-2"></i><strong>Tono de marca:</strong> ¿cómo escribís? formal/cercano/humorístico</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Acceder al editor de GPTs</h4>
+                </div>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-arrow-right text-indigo-700 mr-2"></i>En ChatGPT (con Plus), andá a la barra lateral izquierda → <strong>"GPTs"</strong> o <strong>"Explorar GPTs"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-indigo-700 mr-2"></i>Hacé clic en <strong>"+ Crear"</strong> arriba a la derecha.</li>
+                    <li><i class="fa-solid fa-arrow-right text-indigo-700 mr-2"></i>Vas a ver dos columnas: "Crear" (chat con el constructor) y "Vista previa" (cómo va quedando tu GPT).</li>
+                </ul>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Configurar la identidad: nombre, descripción, ícono</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">El constructor (la columna izquierda) te va a guiar con preguntas. Vas respondiendo en lenguaje natural:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Quiero crear un asistente para mi ferretería en San Pedro, Buenos Aires. Se llama "Pedro Bot". Su función es responder consultas de clientes sobre productos, precios, horarios y formas de pago. Quiero que sea cordial, breve y muy directo. Crea un ícono que represente una ferretería de pueblo.</p>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm">El constructor te va sugiriendo nombre, descripción e imagen. Podés aceptar o pedir cambios.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">El paso clave: las "Instrucciones" (System Prompt)</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">En la pestaña <strong>"Configurar"</strong>, vas a ver un campo llamado "Instrucciones". Acá es donde el GPT cobra vida. Ejemplo de instrucciones para Pedro Bot:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 font-mono text-xs">
+                    <p>Sos "Pedro Bot", asistente virtual de la Ferretería Don Pedro en San Pedro, Buenos Aires.<br><br>
+                    <strong>Tu rol:</strong> responder consultas de clientes con cordialidad, brevedad y precisión.<br><br>
+                    <strong>Reglas inviolables:</strong><br>
+                    1) Solo respondés sobre productos, precios, horarios, formas de pago y políticas de la ferretería. Si te preguntan otra cosa, derivá amablemente al cliente al WhatsApp del negocio.<br>
+                    2) Si no sabés un dato exacto, decilo. NUNCA inventes precios o stock.<br>
+                    3) Tono: cercano, argentino, sin tecnicismos. Tratá al cliente de "vos".<br>
+                    4) Cerrá siempre con una invitación a pasar por el local o escribir al WhatsApp.<br><br>
+                    <strong>Datos del negocio:</strong><br>
+                    - Dirección: Av. Mitre 432, San Pedro, BA<br>
+                    - WhatsApp: 11-XXXX-XXXX<br>
+                    - Horarios: L-V 8 a 13 y 16 a 20 hs · Sábados 9 a 13 hs<br>
+                    - Formas de pago: efectivo, transferencia, débito, crédito hasta 6 cuotas<br>
+                    - Envíos: gratis dentro de San Pedro con compras +$50.000<br><br>
+                    <strong>Productos y precios:</strong> consultar el archivo "Lista_Precios_Marzo.pdf" que voy a subir.</p>
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Subir tus archivos de conocimiento</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">En la sección <strong>"Conocimiento"</strong> podés subir hasta 20 archivos (PDF, Word, Excel) que el GPT va a consultar para responder:</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>Lista de precios actualizada (PDF o Excel)</li>
+                    <li><i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>Catálogo de productos con descripciones</li>
+                    <li><i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>Manual de políticas internas</li>
+                    <li><i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>FAQ con respuestas armadas</li>
+                </ul>
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 ml-13 mt-3 text-sm text-amber-900">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i><strong>Importante:</strong> los archivos suben con la información, pero NO son un Excel viviente. Si actualizás precios, tenés que volver a subir el archivo nuevo en tu GPT.
+                </div>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Probar y ajustar en la Vista Previa</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">En la columna derecha tenés un chat de prueba. Hacele preguntas como si fueras un cliente:</p>
+                <div class="ml-13 space-y-2">
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"¿Cuánto sale un taladro percutor?"</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"¿Hacen envíos a Baradero?"</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"¿Aceptan tarjeta de crédito?"</div>
+                    <div class="bg-slate-100 rounded-lg p-3 text-sm font-mono text-slate-800">"¿Qué horario tienen el sábado?"</div>
+                </div>
+                <p class="text-slate-700 ml-13 mt-3 text-sm">Si responde mal o falta info, ajustá las instrucciones. Probá hasta que las respuestas te convenzan.</p>
+            </div>
+
+            <div class="step-card bg-white border-l-8 border-indigo-700 rounded-xl shadow-md p-6 mb-5">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-indigo-700 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">7</div>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Publicar y compartir tu GPT</h4>
+                </div>
+                <p class="text-slate-700 ml-13 mb-3">Cuando esté listo, hacé clic en <strong>"Crear"</strong> arriba a la derecha. Te ofrece 3 opciones:</p>
+                <ul class="ml-13 text-slate-700 space-y-2 text-sm">
+                    <li><i class="fa-solid fa-lock text-slate-500 mr-2"></i><strong>Solo yo:</strong> uso personal.</li>
+                    <li><i class="fa-solid fa-link text-indigo-700 mr-2"></i><strong>Quien tenga el link:</strong> ideal para compartir con tu equipo.</li>
+                    <li><i class="fa-solid fa-globe text-emerald-600 mr-2"></i><strong>Público:</strong> aparece en el catálogo de GPTs.</li>
+                </ul>
+                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-3 ml-13 mt-3 text-sm text-indigo-900">
+                    <i class="fa-solid fa-mobile-screen mr-2"></i><strong>Bonus:</strong> tu GPT también está disponible desde la app de ChatGPT en el celular. Tu equipo puede usarlo al instante.
+                </div>
+            </div>
+
+            <div class="step-card bg-indigo-50 border-2 border-indigo-700 rounded-xl shadow-md p-6 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-star text-indigo-700 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-indigo-900">Plantilla maestra: System Prompt para tu GPT</h4>
+                </div>
+                <div class="prompt-box text-slate-100 rounded-xl p-5 font-mono text-sm">
+                    <p>Sos <span class="text-amber-300">[NOMBRE BOT]</span>, asistente virtual de <span class="text-amber-300">[NEGOCIO]</span> en <span class="text-amber-300">[CIUDAD]</span>.<br><br>
+                    <strong>Tu rol:</strong> <span class="text-amber-300">[qué tareas resolvés]</span>.<br><br>
+                    <strong>Reglas:</strong><br>
+                    1) Solo respondés sobre <span class="text-amber-300">[temas habilitados]</span>. Si te preguntan otra cosa, derivá al humano.<br>
+                    2) Si no sabés un dato exacto, decilo. Nunca inventes.<br>
+                    3) Tono: <span class="text-amber-300">[cercano/profesional/humorístico]</span>. Trato de "vos".<br>
+                    4) Cerrá siempre con <span class="text-amber-300">[CTA: visitanos / WhatsApp / web]</span>.<br><br>
+                    <strong>Datos del negocio:</strong><br>
+                    - Dirección: <span class="text-amber-300">[XXX]</span><br>
+                    - Contacto: <span class="text-amber-300">[XXX]</span><br>
+                    - Horarios: <span class="text-amber-300">[XXX]</span><br>
+                    - Formas de pago: <span class="text-amber-300">[XXX]</span><br>
+                    - Políticas: <span class="text-amber-300">[envíos, devoluciones, garantías]</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-indigo-50 border-y-4 border-indigo-200">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="bg-indigo-700 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-indigo-900">Creá tu propio GPT</h3>
+                </div>
+            </div>
+            <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
+                <li>Pensá <strong>qué problema repetitivo</strong> querés solucionar (consultas de horarios, precios, FAQ, etc.).</li>
+                <li>Reuní en 5 minutos la <strong>info básica</strong>: nombre del bot, función, datos clave.</li>
+                <li>Si tenés ChatGPT Plus, andá a Crear GPT. Si no, abrí <strong>Gemini Gems</strong> en gratis.</li>
+                <li>Configurá el <strong>System Prompt</strong> con la plantilla maestra.</li>
+                <li>Hacé al menos <strong>5 preguntas de prueba</strong> y ajustá si hace falta.</li>
+                <li>Compartí el <strong>link con tu equipo</strong> (o con tus clientes si querés probarlo en vivo).</li>
+            </ol>
+            <div class="bg-white rounded-xl p-4 border border-indigo-200">
+                <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> mostrá tu GPT a 3 personas distintas y pediles que lo "rompan" haciendo preguntas raras. Ajustá las instrucciones para cubrir esos casos.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que te llevás hoy</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Entendiste la diferencia entre <strong>ChatGPT genérico y un GPT personalizado</strong>.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés <strong>4 casos de uso para Pyme</strong>: ventas, FAQ, contenido, onboarding.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés las <strong>3 alternativas</strong>: GPTs de OpenAI, Gems de Gemini, Copilot Builder.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés escribir un <strong>System Prompt profesional</strong> con reglas, tono y datos del negocio.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Creaste tu <strong>primer GPT propio</strong> y lo compartiste.</span></li>
+            </ul>
+            <div class="mt-6 p-5 bg-indigo-50 rounded-xl border-2 border-indigo-200">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-arrow-right text-indigo-700 text-xl mt-1"></i>
+                    <div>
+                        <p class="font-bold text-indigo-900 mb-1">Próxima clase: IA para Finanzas de la Pyme</p>
+                        <p class="text-sm text-indigo-800">Cerramos el bloque estratégico con <strong>finanzas</strong>: control de gastos, proyecciones de ventas, presupuestos profesionales y alertas de flujo de caja. Sin necesidad de saber de contabilidad.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p class="text-sm text-amber-900"><i class="fa-solid fa-house-chimney mr-2"></i><strong>Tarea para casa:</strong> usá tu GPT durante toda la semana. Cada vez que respondas una consulta similar a las que automatizaste, fijate cuánto tiempo te ahorrás.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Esta clase es muy valorada. Preparar un GPT de ejemplo construido para un rubro genérico (ej: ferretera) para mostrar el resultado final antes de que lo hagan.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span>Clase 11</span><span class="text-slate-500">de 22</span>
+                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-indigo-700 rounded-full" style="width: 50%"></div></div>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+</body>
+</html>
