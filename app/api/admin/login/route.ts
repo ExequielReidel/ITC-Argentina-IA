@@ -17,6 +17,9 @@ export async function POST(req: NextRequest) {
   const body = await req.json() as { password?: string }
   const adminPassword = process.env.ADMIN_PASSWORD
 
+  // Visible en Vercel Runtime Logs para diagnosticar
+  console.log('[admin-login] ADMIN_PASSWORD configurada:', !!adminPassword, '| largo:', adminPassword?.length ?? 0)
+
   if (!adminPassword || body.password !== adminPassword) {
     const cur = attempts.get(ip)
     if (!cur || cur.resetAt <= now) {
