@@ -5,13 +5,13 @@ import { eq } from 'drizzle-orm'
 import bcrypt from 'bcryptjs'
 import { verifyAdminToken, COOKIE_NAME } from '@/lib/admin-auth'
 
-function checkAdmin(req: NextRequest): boolean {
+async function checkAdmin(req: NextRequest): Promise<boolean> {
   const cookie = req.cookies.get(COOKIE_NAME)
-  return !!cookie && verifyAdminToken(cookie.value)
+  return !!cookie && await verifyAdminToken(cookie.value)
 }
 
 export async function GET(req: NextRequest) {
-  if (!checkAdmin(req)) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  if (!(await checkAdmin(req))) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
   const profesores = await db
     .select({
@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!checkAdmin(req)) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
+  if (!(await checkAdmin(req))) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
   const body = await req.json() as {
     nombre: string

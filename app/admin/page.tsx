@@ -6,7 +6,7 @@ import AdminLoginForm from './login-form'
 export default async function AdminPage() {
   const cookieStore = await cookies()
   const token = cookieStore.get(COOKIE_NAME)?.value
-  if (token && verifyAdminToken(token)) {
+  if (token && await verifyAdminToken(token)) {
     redirect('/admin/profesores')
   }
   return <AdminLoginForm />

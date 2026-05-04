@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
 
   attempts.delete(ip)
 
-  const token = createAdminToken()
+  const token = await createAdminToken()
   const res = NextResponse.json({ ok: true })
   res.cookies.set(COOKIE_NAME, token, {
     httpOnly: true,
