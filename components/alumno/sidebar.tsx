@@ -13,6 +13,7 @@ import {
   BarChart3,
   Award,
   Settings,
+  HelpCircle,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react'
@@ -30,6 +31,7 @@ const menuItems = [
   { href: '/alumno/examen', label: 'Examen Final', icon: FileText },
   { href: '/alumno/progreso', label: 'Mi Progreso', icon: BarChart3 },
   { href: '/alumno/certificado', label: 'Mi Certificado', icon: Award },
+  { href: '/alumno/soporte', label: 'Soporte', icon: HelpCircle },
   { href: '/alumno/perfil', label: 'Mi Perfil', icon: Settings },
 ]
 

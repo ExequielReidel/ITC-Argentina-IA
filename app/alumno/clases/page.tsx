@@ -7,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Play, RotateCcw, Lock, CheckCircle2, Clock } from 'lucide-react'
+import { Play, RotateCcw, Lock, CheckCircle2, Clock, AlertTriangle } from 'lucide-react'
 import { clasesDemo, getCategoriaBgLight } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
@@ -15,6 +15,7 @@ export default function ClasesPage() {
   const [activeTab, setActiveTab] = useState('fase1')
   const [habilitadas, setHabilitadas] = useState<number[]>([])
   const [completadas, setCompletadas] = useState<number[]>([])
+  const [ausencias, setAusencias] = useState<number[]>([])
 
   useEffect(() => {
     fetch('/api/clases')
@@ -22,11 +23,13 @@ export default function ClasesPage() {
       .then(data => {
         setHabilitadas(data.habilitadas ?? [])
         setCompletadas(data.completadas ?? [])
+        setAusencias(data.ausencias ?? [])
       })
   }, [])
 
   const getEstado = (numero: number) => {
     if (completadas.includes(numero)) return 'completada'
+    if (habilitadas.includes(numero) && ausencias.includes(numero)) return 'pendiente'
     if (habilitadas.includes(numero)) return 'en_curso'
     return 'bloqueada'
   }
@@ -39,6 +42,7 @@ export default function ClasesPage() {
     const isCompletada = estado === 'completada'
     const isEnCurso = estado === 'en_curso'
     const isBloqueada = estado === 'bloqueada'
+    const isPendiente = estado === 'pendiente'
 
     return (
       <Card key={clase.id} className={cn('shadow-itc hover-lift transition-all duration-300 overflow-hidden', isBloqueada && 'opacity-60')}>
@@ -63,6 +67,7 @@ export default function ClasesPage() {
             <div className="flex-shrink-0">
               {isCompletada && <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center"><CheckCircle2 className="h-5 w-5 text-emerald-600" /></div>}
               {isEnCurso && <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center"><Play className="h-4 w-4 text-blue-600" /></div>}
+              {isPendiente && <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center"><AlertTriangle className="h-4 w-4 text-amber-600" /></div>}
               {isBloqueada && <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"><Lock className="h-4 w-4 text-slate-400" /></div>}
             </div>
           </div>
@@ -83,10 +88,12 @@ export default function ClasesPage() {
             <span className={cn('text-sm font-medium',
               isCompletada && 'text-emerald-600',
               isEnCurso && 'text-blue-600',
+              isPendiente && 'text-amber-600',
               isBloqueada && 'text-slate-400'
             )}>
               {isCompletada && 'Completada'}
               {isEnCurso && 'Disponible'}
+              {isPendiente && 'Pendiente — recuperar'}
               {isBloqueada && 'Bloqueada'}
             </span>
             {isCompletada && (
@@ -97,6 +104,11 @@ export default function ClasesPage() {
             {isEnCurso && (
               <Link href={`/alumno/clases/${clase.numero}`}>
                 <Button size="sm" className="gap-1"><Play className="h-3 w-3" />Abrir</Button>
+              </Link>
+            )}
+            {isPendiente && (
+              <Link href={`/alumno/clases/${clase.numero}`}>
+                <Button size="sm" className="gap-1 bg-amber-500 hover:bg-amber-600"><Play className="h-3 w-3" />Recuperar</Button>
               </Link>
             )}
             {isBloqueada && (

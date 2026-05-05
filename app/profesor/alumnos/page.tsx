@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
@@ -10,11 +10,12 @@ import { Progress } from '@/components/ui/progress'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Search, Plus, Eye, Pencil, UserX, UserCheck } from 'lucide-react'
+import { Search, Plus, Eye, UserX, UserCheck, Trash2, AlertTriangle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
 
-const TURNOS = ['Lunes 10:00', 'Lunes 14:00', 'Lunes 16:00', 'Lunes 18:00', 'Lunes 20:00', 'Martes 10:00', 'Martes 14:00', 'Martes 16:00', 'Martes 18:00', 'Martes 20:00', 'Miércoles 10:00', 'Miércoles 14:00', 'Miércoles 16:00', 'Miércoles 18:00', 'Miércoles 20:00', 'Jueves 10:00', 'Jueves 14:00', 'Jueves 16:00', 'Jueves 18:00', 'Jueves 20:00', 'Viernes 10:00', 'Viernes 14:00', 'Viernes 16:00', 'Viernes 18:00', 'Viernes 20:00']
+const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
+const HORARIOS = ['10:00', '14:00', '15:30', '18:00', '19:30', '21:00']
 
 interface AlumnoRow { id: number; nombre: string; email: string; dni?: string; telefono?: string; turno?: string; activo?: boolean; clasesCompletadas: number; asistenciaPct: number }
 
@@ -24,7 +25,9 @@ export default function AlumnosPage() {
   const [showNuevo, setShowNuevo] = useState(false)
   const [detalleId, setDetalleId] = useState<number | null>(null)
   const [detalle, setDetalle] = useState<any>(null)
-  const [form, setForm] = useState({ nombre: '', email: '', dni: '', telefono: '', turno: '', password: '' })
+  const [eliminarId, setEliminarId] = useState<number | null>(null)
+  const [eliminando, setEliminando] = useState(false)
+  const [form, setForm] = useState({ nombre: '', email: '', dni: '', telefono: '', dia: '', hora: '', password: '' })
   const [guardando, setGuardando] = useState(false)
   const [totalClases] = useState(22)
 
@@ -42,21 +45,61 @@ export default function AlumnosPage() {
   const crearAlumno = async () => {
     if (!form.nombre || !form.email || !form.password) { toast.error('Nombre, email y contraseña son obligatorios'); return }
     setGuardando(true)
-    const res = await fetch('/api/alumnos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
-    if (res.ok) { toast.success(`Alumno creado. Contraseña: ${form.password}`); setShowNuevo(false); setForm({ nombre: '', email: '', dni: '', telefono: '', turno: '', password: '' }); cargar() }
-    else { const d = await res.json(); toast.error(d.error ?? 'Error al crear alumno') }
+    const turno = form.dia && form.hora ? `${form.dia} ${form.hora}` : ''
+    const res = await fetch('/api/alumnos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...form, turno }),
+    })
+    if (res.ok) {
+      toast.success(`Alumno creado. Contraseña: ${form.password}`, { duration: 10000 })
+      setShowNuevo(false)
+      setForm({ nombre: '', email: '', dni: '', telefono: '', dia: '', hora: '', password: '' })
+      cargar()
+    } else {
+      const d = await res.json()
+      toast.error(d.error ?? 'Error al crear alumno')
+    }
     setGuardando(false)
   }
 
-  const toggleActivo = async (id: number, activo: boolean) => {
-    await fetch(`/api/alumnos/${id}`, { method: 'DELETE' })
-    toast.success(activo ? 'Alumno desactivado' : 'Alumno reactivado')
+  const pausarAlumno = async (id: number) => {
+    await fetch(`/api/alumnos/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ activo: false }),
+    })
+    toast.success('Alumno pausado')
     cargar()
   }
 
-  const filtrados = alumnos.filter(a => a.nombre.toLowerCase().includes(busqueda.toLowerCase()) || a.email.toLowerCase().includes(busqueda.toLowerCase()))
+  const activarAlumno = async (id: number) => {
+    await fetch(`/api/alumnos/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ activo: true }),
+    })
+    toast.success('Alumno reactivado')
+    cargar()
+  }
+
+  const confirmarEliminar = async () => {
+    if (!eliminarId) return
+    setEliminando(true)
+    await fetch(`/api/alumnos/${eliminarId}`, { method: 'DELETE' })
+    toast.success('Alumno eliminado permanentemente')
+    setEliminarId(null)
+    setEliminando(false)
+    cargar()
+  }
+
+  const filtrados = alumnos.filter(a =>
+    a.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+    a.email.toLowerCase().includes(busqueda.toLowerCase())
+  )
 
   const getAsistenciaColor = (pct: number) => pct >= 75 ? 'text-emerald-600' : pct >= 50 ? 'text-amber-600' : 'text-red-600'
+  const alumnoAEliminar = alumnos.find(a => a.id === eliminarId)
 
   return (
     <div className="space-y-6">
@@ -91,11 +134,23 @@ export default function AlumnosPage() {
                       <p className="font-semibold truncate">{alumno.nombre}</p>
                       <p className="text-sm text-muted-foreground truncate">{alumno.email}</p>
                       {alumno.turno && <p className="text-xs text-muted-foreground">{alumno.turno}</p>}
+                      {!alumno.activo && <Badge variant="outline" className="text-xs text-amber-600 border-amber-300 mt-1">Pausado</Badge>}
                     </div>
                     <div className="flex items-center gap-1 flex-shrink-0">
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0" onClick={() => cargarDetalle(alumno.id)}><Eye className="h-4 w-4" /></Button>
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0" onClick={() => toggleActivo(alumno.id, alumno.activo ?? true)}>
-                        {alumno.activo !== false ? <UserX className="h-4 w-4 text-muted-foreground" /> : <UserCheck className="h-4 w-4 text-emerald-500" />}
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0" title="Ver detalle" onClick={() => cargarDetalle(alumno.id)}>
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                      {alumno.activo !== false ? (
+                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-amber-500 hover:text-amber-700" title="Pausar alumno" onClick={() => pausarAlumno(alumno.id)}>
+                          <UserX className="h-4 w-4" />
+                        </Button>
+                      ) : (
+                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-emerald-500 hover:text-emerald-700" title="Reactivar alumno" onClick={() => activarAlumno(alumno.id)}>
+                          <UserCheck className="h-4 w-4" />
+                        </Button>
+                      )}
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-red-400 hover:text-red-600" title="Eliminar permanentemente" onClick={() => setEliminarId(alumno.id)}>
+                        <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
@@ -138,12 +193,21 @@ export default function AlumnosPage() {
                   onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))} />
               </div>
             ))}
-            <div>
-              <Label className="text-sm">Turno</Label>
-              <Select value={form.turno} onValueChange={v => setForm(f => ({ ...f, turno: v }))}>
-                <SelectTrigger><SelectValue placeholder="Seleccioná el turno" /></SelectTrigger>
-                <SelectContent>{TURNOS.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}</SelectContent>
-              </Select>
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <Label className="text-sm">Día</Label>
+                <Select value={form.dia} onValueChange={v => setForm(f => ({ ...f, dia: v }))}>
+                  <SelectTrigger><SelectValue placeholder="Día" /></SelectTrigger>
+                  <SelectContent>{DIAS.map(d => <SelectItem key={d} value={d}>{d}</SelectItem>)}</SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label className="text-sm">Horario</Label>
+                <Select value={form.hora} onValueChange={v => setForm(f => ({ ...f, hora: v }))}>
+                  <SelectTrigger><SelectValue placeholder="Hora" /></SelectTrigger>
+                  <SelectContent>{HORARIOS.map(h => <SelectItem key={h} value={h}>{h}</SelectItem>)}</SelectContent>
+                </Select>
+              </div>
             </div>
             <div>
               <Label className="text-sm">Contraseña temporal *</Label>
@@ -188,6 +252,32 @@ export default function AlumnosPage() {
               )}
             </div>
           ) : <div className="py-8 text-center"><div className="w-8 h-8 border-4 border-primary/30 border-t-primary rounded-full animate-spin mx-auto" /></div>}
+        </DialogContent>
+      </Dialog>
+
+      {/* Modal confirmar eliminación */}
+      <Dialog open={eliminarId !== null} onOpenChange={() => setEliminarId(null)}>
+        <DialogContent className="max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-red-600">
+              <AlertTriangle className="h-5 w-5" />
+              Eliminar alumno
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Estás por eliminar permanentemente a <span className="font-semibold text-foreground">{alumnoAEliminar?.nombre}</span>.
+            </p>
+            <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
+              Esta acción no se puede deshacer. Se eliminarán todos sus datos, progreso, asistencias y resultados de examen.
+            </p>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setEliminarId(null)}>Cancelar</Button>
+            <Button variant="destructive" onClick={confirmarEliminar} disabled={eliminando}>
+              {eliminando ? 'Eliminando...' : 'Sí, eliminar'}
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>

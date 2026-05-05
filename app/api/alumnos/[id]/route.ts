@@ -52,6 +52,6 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
   }
 
   const { id } = await params
-  await db.update(users).set({ activo: false }).where(eq(users.id, parseInt(id)))
+  await db.delete(users).where(eq(users.id, parseInt(id)))
   return NextResponse.json({ ok: true })
 }

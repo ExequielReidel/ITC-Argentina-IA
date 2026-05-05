@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { clasesHabilitadas, progresoAlumnos, users } from '@/lib/db/schema'
+import { clasesHabilitadas, progresoAlumnos, asistencia, users } from '@/lib/db/schema'
 import { eq, and } from 'drizzle-orm'
 
 export async function GET() {
@@ -20,7 +20,16 @@ export async function GET() {
       .where(and(eq(progresoAlumnos.userId, userId), eq(progresoAlumnos.completada, true)))
     const completadasNums = new Set(progreso.map(p => p.claseNumero))
 
-    return NextResponse.json({ habilitadas: Array.from(habilitadasNums), completadas: Array.from(completadasNums) })
+    const ausenciasRows = await db.select({ claseNumero: asistencia.claseNumero })
+      .from(asistencia)
+      .where(and(eq(asistencia.userId, userId), eq(asistencia.presente, false)))
+    const ausenciasNums = ausenciasRows.map(a => a.claseNumero)
+
+    return NextResponse.json({
+      habilitadas: Array.from(habilitadasNums),
+      completadas: Array.from(completadasNums),
+      ausencias: ausenciasNums,
+    })
   }
 
   // Para el profesor: incluir cuántos alumnos completaron cada clase

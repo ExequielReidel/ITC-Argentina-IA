@@ -10,6 +10,7 @@ import {
   Users,
   BookOpen,
   FileText,
+  ClipboardList,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react'
@@ -24,6 +25,7 @@ const menuItems = [
   { href: '/profesor/inicio', label: 'Panel General', icon: Home },
   { href: '/profesor/alumnos', label: 'Mis Alumnos', icon: Users },
   { href: '/profesor/clases', label: 'Gestión de Clases', icon: BookOpen },
+  { href: '/profesor/asistencia', label: 'Asistencia', icon: ClipboardList },
   { href: '/profesor/examenes', label: 'Exámenes', icon: FileText },
 ]
 

@@ -167,8 +167,11 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          <p className="mt-8 text-center text-sm text-muted-foreground">
+          <p className="mt-6 text-center text-sm text-muted-foreground">
             ¿No tenés cuenta? Pedile el acceso a tu sede ITC.
+          </p>
+          <p className="mt-3 text-center text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3">
+            ¿No podés iniciar sesión? Acercate al salón y hablá con tu profesor/a.
           </p>
         </div>
       </div>
