@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { LogoITC } from '@/components/logo-itc'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Mail, Lock, Eye, EyeOff, Users, MapPin, BookOpen, AlertCircle } from 'lucide-react'
+import { Mail, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -33,7 +33,6 @@ export default function LoginPage() {
       return
     }
 
-    // Obtener la sesión para saber a dónde redirigir
     const res = await fetch('/api/auth/session')
     const session = await res.json()
     const role = session?.user?.role
@@ -47,58 +46,53 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Columna izquierda - Branding */}
+      {/* Columna izquierda — Branding */}
       <div className="hidden lg:flex lg:w-1/2 gradient-itc relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        <div className="relative z-10 flex flex-col justify-between p-12 w-full">
-          <div>
-            <LogoITC variant="light" size="lg" />
-            <p className="text-blue-100 mt-3 text-lg">
-              Capacitaciones presenciales en tu ciudad
+
+        <div className="relative z-10 flex flex-col p-10 w-full h-full">
+          {/* Logo pequeño en esquina superior izquierda */}
+          <div className="flex-shrink-0">
+            <LogoITC variant="light" size="sm" />
+          </div>
+
+          {/* Contenido central */}
+          <div className="flex-1 flex flex-col justify-center items-center text-center px-4">
+            <h1 className="text-5xl xl:text-6xl font-bold text-white leading-tight tracking-tight">
+              Capacitaciones<br />presenciales<br />en tu ciudad
+            </h1>
+            <p className="text-blue-100 mt-8 text-lg leading-relaxed max-w-sm">
+              15 años brindando educación de calidad a más de 65.000 alumnos. Inscribite ahora y comenzá a crear habilidades para tu futuro.
             </p>
           </div>
 
-          <div className="space-y-6">
-            <div className="grid grid-cols-3 gap-4">
-              <div className="glassmorphism rounded-2xl p-4 text-center hover-lift">
-                <Users className="w-6 h-6 text-white mx-auto mb-2" />
-                <p className="text-2xl font-bold text-white">+65.000</p>
-                <p className="text-blue-100 text-sm">alumnos</p>
-              </div>
-              <div className="glassmorphism rounded-2xl p-4 text-center hover-lift">
-                <MapPin className="w-6 h-6 text-white mx-auto mb-2" />
-                <p className="text-2xl font-bold text-white">+200</p>
-                <p className="text-blue-100 text-sm">ciudades</p>
-              </div>
-              <div className="glassmorphism rounded-2xl p-4 text-center hover-lift">
-                <BookOpen className="w-6 h-6 text-white mx-auto mb-2" />
-                <p className="text-2xl font-bold text-white">22</p>
-                <p className="text-blue-100 text-sm">clases</p>
-              </div>
-            </div>
-            <div className="glassmorphism rounded-full py-3 px-6 inline-flex items-center gap-2">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-white font-medium">Curso IA + Automatizaciones 2026</span>
-            </div>
-          </div>
-
-          <div className="text-blue-200 text-sm">
-            <a href="https://www.itcarg.com">
+          {/* Footer */}
+          <div className="flex-shrink-0 text-blue-200 text-sm">
+            <a href="https://www.itcarg.com" className="hover:text-white transition-colors">
               <p>Informatic Training Center</p>
               <p>www.itcarg.com</p>
             </a>
           </div>
         </div>
+
         <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
         <div className="absolute -top-20 -left-20 w-60 h-60 bg-indigo-500/20 rounded-full blur-3xl" />
       </div>
 
-      {/* Columna derecha - Formulario */}
+      {/* Columna derecha — Formulario */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12 bg-background">
         <div className="w-full max-w-md">
+
+          {/* Logo visible solo en móvil */}
           <div className="lg:hidden mb-8 text-center">
-            <LogoITC variant="dark" size="md" className="justify-center" />
+            <LogoITC variant="dark" size="md" className="mx-auto" />
             <p className="text-muted-foreground mt-2 text-sm">Capacitaciones presenciales en tu ciudad</p>
+          </div>
+
+          {/* Badge del curso — visible solo en desktop, arriba del saludo */}
+          <div className="hidden lg:inline-flex items-center gap-2 bg-primary/10 rounded-full py-2 px-4 mb-6">
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+            <span className="text-primary text-sm font-semibold">Curso IA + Automatizaciones 2026</span>
           </div>
 
           <div className="mb-8">
