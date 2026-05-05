@@ -8,21 +8,25 @@ interface LogoITCProps {
   className?: string
 }
 
+const LOGO_URL = 'https://i.postimg.cc/W16HkQ1P/logo-1-1.png'
+
+const sizeMap = {
+  sm: 'w-12 h-12',
+  md: 'w-20 h-20',
+  lg: 'w-36 h-36',
+}
+
 export function LogoITC({ variant = 'dark', size = 'md', className }: LogoITCProps) {
-  const sizeClasses = {
-    sm: 'text-xl',
-    md: 'text-3xl',
-    lg: 'text-5xl',
-  }
-
-  const textColor = variant === 'light' ? 'text-white' : 'text-slate-900'
-
   return (
-    <div className={cn('flex flex-col items-start', className)}>
-      <div className={cn('font-heading font-bold tracking-tight', sizeClasses[size], textColor)}>
-        <span className="font-black">ITC</span>
-        <span className="font-normal ml-1">Argentina</span>
-      </div>
+    <div className={cn('inline-flex items-center justify-center flex-shrink-0', sizeMap[size], className)}>
+      <img
+        src={LOGO_URL}
+        alt="ITC Argentina"
+        className={cn(
+          'w-full h-full object-contain',
+          variant === 'light' && 'brightness-0 invert'
+        )}
+      />
     </div>
   )
 }
