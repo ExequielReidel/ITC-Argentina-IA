@@ -125,7 +125,7 @@ export default function ClaseViewerPage({ params }: { params: Promise<{ id: stri
             src={clase.htmlPath}
             className="w-full h-full border-0"
             title={clase.titulo}
-            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
           />
         )}
       </div>

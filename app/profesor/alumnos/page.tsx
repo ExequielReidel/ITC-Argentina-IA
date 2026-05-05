@@ -10,7 +10,7 @@ import { Progress } from '@/components/ui/progress'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Search, Plus, Eye, UserX, UserCheck, Trash2, AlertTriangle } from 'lucide-react'
+import { Search, Plus, Eye, Pencil, UserX, UserCheck, Trash2, AlertTriangle, KeyRound } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
 
@@ -18,6 +18,14 @@ const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
 const HORARIOS = ['10:00', '14:00', '15:30', '18:00', '19:30', '21:00']
 
 interface AlumnoRow { id: number; nombre: string; email: string; dni?: string; telefono?: string; turno?: string; activo?: boolean; clasesCompletadas: number; asistenciaPct: number }
+interface EditForm { id: number; nombre: string; email: string; dni: string; telefono: string; dia: string; hora: string; nuevaPassword: string }
+
+const parseTurno = (turno?: string): { dia: string; hora: string } => {
+  if (!turno) return { dia: '', hora: '' }
+  const idx = turno.lastIndexOf(' ')
+  if (idx === -1) return { dia: turno, hora: '' }
+  return { dia: turno.slice(0, idx), hora: turno.slice(idx + 1) }
+}
 
 export default function AlumnosPage() {
   const [alumnos, setAlumnos] = useState<AlumnoRow[]>([])
@@ -27,6 +35,8 @@ export default function AlumnosPage() {
   const [detalle, setDetalle] = useState<any>(null)
   const [eliminarId, setEliminarId] = useState<number | null>(null)
   const [eliminando, setEliminando] = useState(false)
+  const [editando, setEditando] = useState<EditForm | null>(null)
+  const [guardandoEdicion, setGuardandoEdicion] = useState(false)
   const [form, setForm] = useState({ nombre: '', email: '', dni: '', telefono: '', dia: '', hora: '', password: '' })
   const [guardando, setGuardando] = useState(false)
   const [totalClases] = useState(22)
@@ -41,6 +51,51 @@ export default function AlumnosPage() {
   }
 
   const genPassword = () => Math.random().toString(36).slice(-8).toUpperCase()
+
+  const abrirEdicion = (alumno: AlumnoRow) => {
+    const { dia, hora } = parseTurno(alumno.turno)
+    setEditando({
+      id: alumno.id,
+      nombre: alumno.nombre,
+      email: alumno.email,
+      dni: alumno.dni ?? '',
+      telefono: alumno.telefono ?? '',
+      dia,
+      hora,
+      nuevaPassword: '',
+    })
+  }
+
+  const guardarEdicion = async () => {
+    if (!editando) return
+    if (!editando.nombre || !editando.email) { toast.error('Nombre y email son obligatorios'); return }
+    setGuardandoEdicion(true)
+    const turno = editando.dia && editando.hora ? `${editando.dia} ${editando.hora}` : ''
+    const body: any = {
+      nombre: editando.nombre,
+      email: editando.email,
+      dni: editando.dni,
+      telefono: editando.telefono,
+      turno,
+    }
+    if (editando.nuevaPassword) body.nuevaPassword = editando.nuevaPassword
+
+    const res = await fetch(`/api/alumnos/${editando.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+    if (res.ok) {
+      toast.success('Datos actualizados correctamente')
+      if (editando.nuevaPassword) toast.success(`Nueva contraseña: ${editando.nuevaPassword}`, { duration: 12000 })
+      setEditando(null)
+      cargar()
+    } else {
+      const d = await res.json()
+      toast.error(d.error ?? 'Error al guardar')
+    }
+    setGuardandoEdicion(false)
+  }
 
   const crearAlumno = async () => {
     if (!form.nombre || !form.email || !form.password) { toast.error('Nombre, email y contraseña son obligatorios'); return }
@@ -140,6 +195,9 @@ export default function AlumnosPage() {
                       <Button size="sm" variant="ghost" className="h-8 w-8 p-0" title="Ver detalle" onClick={() => cargarDetalle(alumno.id)}>
                         <Eye className="h-4 w-4" />
                       </Button>
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-blue-500 hover:text-blue-700" title="Editar datos" onClick={() => abrirEdicion(alumno)}>
+                        <Pencil className="h-4 w-4" />
+                      </Button>
                       {alumno.activo !== false ? (
                         <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-amber-500 hover:text-amber-700" title="Pausar alumno" onClick={() => pausarAlumno(alumno.id)}>
                           <UserX className="h-4 w-4" />
@@ -224,6 +282,67 @@ export default function AlumnosPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Modal editar alumno */}
+      {editando && (
+        <Dialog open={!!editando} onOpenChange={() => setEditando(null)}>
+          <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
+            <DialogHeader><DialogTitle className="flex items-center gap-2"><Pencil className="h-4 w-4" />Editar alumno</DialogTitle></DialogHeader>
+            <div className="space-y-3">
+              <div>
+                <Label className="text-sm">Nombre completo *</Label>
+                <Input value={editando.nombre} onChange={e => setEditando(f => f && ({ ...f, nombre: e.target.value }))} />
+              </div>
+              <div>
+                <Label className="text-sm">Email *</Label>
+                <Input type="email" value={editando.email} onChange={e => setEditando(f => f && ({ ...f, email: e.target.value }))} />
+              </div>
+              <div>
+                <Label className="text-sm">DNI</Label>
+                <Input value={editando.dni} placeholder="28.123.456" onChange={e => setEditando(f => f && ({ ...f, dni: e.target.value }))} />
+              </div>
+              <div>
+                <Label className="text-sm">Teléfono</Label>
+                <Input value={editando.telefono} placeholder="3492 123456" onChange={e => setEditando(f => f && ({ ...f, telefono: e.target.value }))} />
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <Label className="text-sm">Día</Label>
+                  <Select value={editando.dia} onValueChange={v => setEditando(f => f && ({ ...f, dia: v }))}>
+                    <SelectTrigger><SelectValue placeholder="Día" /></SelectTrigger>
+                    <SelectContent>{DIAS.map(d => <SelectItem key={d} value={d}>{d}</SelectItem>)}</SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label className="text-sm">Horario</Label>
+                  <Select value={editando.hora} onValueChange={v => setEditando(f => f && ({ ...f, hora: v }))}>
+                    <SelectTrigger><SelectValue placeholder="Hora" /></SelectTrigger>
+                    <SelectContent>{HORARIOS.map(h => <SelectItem key={h} value={h}>{h}</SelectItem>)}</SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div>
+                <Label className="text-sm flex items-center gap-1"><KeyRound className="h-3.5 w-3.5" />Nueva contraseña</Label>
+                <div className="flex gap-2">
+                  <Input
+                    type="text"
+                    value={editando.nuevaPassword}
+                    placeholder="Dejá vacío para no cambiar"
+                    onChange={e => setEditando(f => f && ({ ...f, nuevaPassword: e.target.value }))}
+                    className="font-mono"
+                  />
+                  <Button variant="outline" type="button" onClick={() => setEditando(f => f && ({ ...f, nuevaPassword: genPassword() }))}>Generar</Button>
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">Si completás este campo se cambiará la contraseña del alumno</p>
+              </div>
+            </div>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setEditando(null)}>Cancelar</Button>
+              <Button onClick={guardarEdicion} disabled={guardandoEdicion}>{guardandoEdicion ? 'Guardando...' : 'Guardar cambios'}</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
 
       {/* Modal detalle alumno */}
       <Dialog open={detalleId !== null} onOpenChange={() => { setDetalleId(null); setDetalle(null) }}>
