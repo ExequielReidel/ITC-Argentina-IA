@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 13 · Repaso Integrador Fase 1 | ITC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body{font-family:'Inter',sans-serif;background:#f8fafc}.step-card{transition:all .3s ease}.step-card:hover{transform:translateY(-4px);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}.prompt-box{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}details[open] .chevron{transform:rotate(90deg)}.chevron{transition:transform .2s ease}.quiz-option{transition:all .15s ease;cursor:pointer}.quiz-option:hover{background:#fef3c7}.quiz-option.selected{background:#fde68a;border-color:#d97706}.quiz-option.correct{background:#d1fae5;border-color:#059669}.quiz-option.incorrect{background:#fee2e2;border-color:#dc2626}</style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 to-amber-600 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-amber-100 text-xs font-bold uppercase tracking-widest mb-4"><span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 13</span><span>•</span><span>Fase 1 — IA Aplicada</span><span>•</span><span><i class="fa-solid fa-clock mr-1"></i>90 min</span></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Repaso Integrador Fase 1</h1>
+            <p class="text-amber-100 text-lg mb-4 max-w-2xl">Un caso ficticio que integra todo lo visto en las primeras 12 clases. Ponete a prueba.</p>
+            <div class="flex flex-wrap gap-2"><span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span><span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">REPASO INTEGRADOR</span></div>
+        </header>
+
+        <section class="bg-amber-50 border-l-8 border-amber-600 p-6 rounded-xl m-6"><div class="flex items-start gap-4"><div class="bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div><div><h2 class="text-xs uppercase tracking-widest font-bold text-amber-700 mb-1">Cómo trabajar esta práctica</h2><p class="text-base text-slate-800">90 min en aula. Esta práctica integra varias clases. Resolvé como puedas, no es prueba. <strong>Quiz amplio al final</strong> repasando toda la Fase 1. <strong>No corre puntaje.</strong></p></div></div></section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200"><h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-xs">
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-amber-800">Caso Pancho's</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>30 min</strong><br><span class="text-amber-800">Ej. 1 — Comunicación</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>30 min</strong><br><span class="text-amber-800">Ej. 2 — Análisis</span></div>
+                <div class="bg-amber-200 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-amber-800">Quiz Fase 1</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-store text-amber-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-amber-700">El caso · 10 min</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Pancho's del Barrio</h3>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-slate-700">
+                <p class="mb-3"><strong>Marcela</strong> tiene un local de comidas rápidas en Junín. Vende panchos, hamburguesas, papas y bebidas. Trabaja con su hermano. Tiene Instagram (@panchos_del_barrio, 800 seguidores) y WhatsApp Business para pedidos.</p>
+                <p class="mb-3"><strong>Problemas que tiene:</strong></p>
+                <ul class="list-disc list-inside ml-2 space-y-1 text-sm">
+                    <li>Tarda mucho en responder mensajes en WhatsApp.</li>
+                    <li>Sus posts de IG no enganchan: pocos likes, casi sin DMs.</li>
+                    <li>No sabe qué producto le deja más plata.</li>
+                    <li>Recibió 3 quejas en Google: "demoran mucho", "el pancho llegó frío", "el delivery se equivocó dirección".</li>
+                </ul>
+                <p class="mt-3"><strong>Marcela quiere:</strong> usar IA para resolver estas 4 cosas. Vos sos el consultor que la asesora.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50"><div class="flex items-center gap-3 mb-3"><div class="bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-comments text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Ejercicio 1 · 30 min</p><h3 class="text-2xl font-extrabold text-slate-900">Comunicación + contenido</h3></div></div>
+            <p class="text-slate-700 mb-4">Para Marcela:</p>
+            <ol class="list-decimal list-inside ml-2 mb-4 text-slate-700 space-y-2">
+                <li>Armale una <strong>plantilla maestra de WhatsApp</strong> para responder pedidos rápido (Clase 3).</li>
+                <li>Generale <strong>10 ideas de posts de IG</strong> sobre su negocio (Clase 4).</li>
+                <li>Tomá 1 idea y desarrollala como <strong>post completo con AIDA</strong> + CTA al WhatsApp.</li>
+                <li>Generale un <strong>prompt visual</strong> para hacer una imagen del producto en Ideogram (Clase 5).</li>
+            </ol>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>Acordate del proceso:</p><ul class="list-disc list-inside ml-2 mt-1"><li>Plantilla WA: Saludo + Reconocimiento + Info/solución + Pregunta de cierre</li><li>10 ideas: pedile a la IA mezclando formatos (mito, antes/después, FAQ, behind the scenes, etc.)</li><li>Post AIDA: Atención → Interés → Deseo → Acción</li><li>Prompt visual: 6 ingredientes (sujeto, escena, luz, estilo, toma, formato)</li></ul></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> Marcela tiene plantilla, ideas, post desarrollado y prompt visual listos para usar.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-chart text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Ejercicio 2 · 30 min</p><h3 class="text-2xl font-extrabold text-slate-900">Análisis + finanzas + GPT propio</h3></div></div>
+            <p class="text-slate-700 mb-4">Para Marcela:</p>
+            <ol class="list-decimal list-inside ml-2 mb-4 text-slate-700 space-y-2">
+                <li><strong>Procesá las 3 quejas</strong> con IA: detectá el patrón y recomendá 3 acciones concretas (Clase 9).</li>
+                <li>Inventá 5 productos típicos (pancho clásico, completo, hamburguesa simple, papas, gaseosa). Pedile a la IA un <strong>análisis de margen</strong> con precios y costos estimados (Clase 12).</li>
+                <li>Diseñale a Marcela un <strong>GPT en simulación</strong> que responda los pedidos típicos: nombre, función, 5 reglas y 3 FAQ (Clase 11).</li>
+            </ol>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>Análisis de quejas: agrupá por causa (operacional vs producto vs comunicacional). Cada causa → 1 acción. Para el GPT, las reglas más útiles: voseo, derivar a humano si es reclamo, no inventar precios, sugerir el menú del día como upsell.</p></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tenés el análisis, el margen y el diseño del GPT entregables a Marcela.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-amber-50 border-y-4 border-amber-200">
+            <div class="flex items-center gap-3 mb-3"><div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-question text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Quiz integrador Fase 1 · 20 min</p><h3 class="text-2xl font-extrabold text-amber-900">10 preguntas que cruzan las 12 clases</h3></div></div>
+
+            <div id="quiz" class="space-y-5">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">1. ¿Qué fórmula es la más completa para prompts?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> RTF</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> TAFEC</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> RIP</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> SOP</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">2. ¿Qué significa AIDA?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Asunto · Imagen · Diseño · Anuncio</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Atención · Información · Datos · Alcance</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Atención · Interés · Deseo · Acción</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Análisis · Idea · Diseño · Acción</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">3. ¿Cuántos ingredientes tiene un buen prompt visual?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> 3</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> 6</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> 10</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> 1</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">4. ¿Qué formato es para Reels?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> 1:1</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> 9:16 vertical</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> 16:9 horizontal</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> 4:3</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d"><p class="font-bold text-slate-900 mb-3">5. ¿Qué hace un Brand Kit?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Imprime</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Genera contenido</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Mide engagement</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Guarda colores, fuentes y logo para mantener consistencia visual</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">6. ¿Qué es un SOP?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Un software</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Un Standard Operating Procedure: paso a paso documentado</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Un cliente</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Una métrica</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">7. ¿Qué hace sentiment analysis?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Analiza el tono emocional de muchos textos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Cuenta palabras</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Encripta datos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Genera imágenes</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">8. ¿Qué dato sensible NO compartirías con la IA pública?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Categorías de productos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Precios públicos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> DNIs, datos bancarios, info personal de clientes</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Hashtags</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">9. ¿Tener un GPT propio requiere?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Ser programador</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> ChatGPT Plus</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Ser empresa</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Tarjeta corporativa</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">10. ¿Producto más vendido = más rentable?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, siempre</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Depende del clima</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No necesariamente: volumen y margen son cosas distintas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Solo en panaderías</div></div></div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto"><i class="fa-solid fa-circle-check mr-2"></i>Corregir mis respuestas</button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto"><i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar quiz</button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-amber-50"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre Fase 1</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-amber-600 mt-1"></i>De las 12 clases, ¿cuál te resultó más útil?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-amber-600 mt-1"></i>¿Qué herramienta te volvió a sorprender?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-amber-600 mt-1"></i>¿Qué vas a aplicar primero esta semana?</li>
+            </ul>
+            <div class="bg-white border-2 border-amber-300 rounded-xl p-4"><p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea:</strong> ya tenés todas las piezas: comunicación, diseño, análisis, finanzas, GPT. Lo que viene en Fase 2 es <strong>conectar todo</strong> para que trabaje solo.</p></div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10"><div class="max-w-3xl mx-auto"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i><h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3></div><p class="text-amber-900 italic font-medium">El caso "Pancho's del Barrio" es deliberadamente simple para que cualquier alumno pueda mapearlo a su realidad. Si quedan ganas y tiempo, sugerirles que lo "rehagan" con su propio negocio en lugar del caso ficticio.</p></div></section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center"><div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto"><div class="text-left"><p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p><p class="font-bold text-white">IA + Automatizaciones · Práctica 13</p></div><div class="flex items-center gap-3 text-sm"><span><i class="fa-solid fa-dumbbell text-amber-400 mr-1"></i>Repaso Fase 1</span></div></div><p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p></footer>
+    </div>
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(opt => { opt.addEventListener('click', function() { const p = this.parentElement; p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected')); this.classList.add('selected'); }); });
+        function corregirQuiz() { const ps = document.querySelectorAll('#quiz > div[data-correct]'); let c = 0; const t = ps.length; ps.forEach(p => { const co = p.getAttribute('data-correct'); const s = p.querySelector('.quiz-option.selected'); p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect')); if (s) { if (s.getAttribute('data-opt') === co) { s.classList.add('correct'); c++; } else { s.classList.add('incorrect'); p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } } else { p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } }); const r = document.getElementById('quiz-resultado'); let m = '', cl = ''; if (c === t) { m = `🎉 ¡${c}/${t}! Excelente, dominás la Fase 1.`; cl = 'text-emerald-600'; } else if (c >= 7) { m = `👍 ${c}/${t} — Muy bien.`; cl = 'text-emerald-600'; } else if (c >= 5) { m = `💪 ${c}/${t} — Bien, repasá las clases que fallaste.`; cl = 'text-amber-600'; } else { m = `📚 ${c}/${t} — Conviene volver al material antes de Fase 2.`; cl = 'text-red-600'; } r.className = `font-bold text-lg ml-auto ${cl}`; r.textContent = m; r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        function resetearQuiz() { document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected', 'correct', 'incorrect')); document.getElementById('quiz-resultado').textContent = ''; }
+    </script>
+</body>
+</html>

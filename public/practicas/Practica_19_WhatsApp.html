@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 19 · Automatización de WhatsApp y Telegram | ITC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body{font-family:'Inter',sans-serif;background:#f8fafc}.step-card{transition:all .3s ease}.step-card:hover{transform:translateY(-4px);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}.prompt-box{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}details[open] .chevron{transform:rotate(90deg)}.chevron{transition:transform .2s ease}.quiz-option{transition:all .15s ease;cursor:pointer}.quiz-option:hover{background:#faf5ff}.quiz-option.selected{background:#f3e8ff;border-color:#9333ea}.quiz-option.correct{background:#d1fae5;border-color:#059669}.quiz-option.incorrect{background:#fee2e2;border-color:#dc2626}</style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 to-purple-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-purple-100 text-xs font-bold uppercase tracking-widest mb-4"><span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 19</span><span>•</span><span>Fase 2 — Automatización</span><span>•</span><span><i class="fa-solid fa-clock mr-1"></i>90 min</span></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Bots y Notificaciones</h1>
+            <p class="text-purple-100 text-lg mb-4 max-w-2xl">Vamos a montar un bot de Telegram y armar un flujo que avisa al instante cuando entra un lead. Sin código de programador.</p>
+            <div class="flex flex-wrap gap-2"><span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span><span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">AUTOMATIZACIÓN</span></div>
+        </header>
+
+        <section class="bg-purple-50 border-l-8 border-purple-600 p-6 rounded-xl m-6"><div class="flex items-start gap-4"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div><div><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700 mb-1">Cómo trabajar esta práctica</h2><p class="text-base text-slate-800">90 min en aula. Pista opcional + quiz opcional. <strong>Trabajamos con Telegram</strong> porque es más sencillo de configurar y gratis. Lo aprendido aplica igual a WhatsApp Business API después.</p></div></div></section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200"><h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-purple-800">Ej. 1 — Crear bot</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-purple-800">Ej. 2 — Notif. lead</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-purple-800">Ej. 3 — Recordatorio</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Quiz</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-bolt text-purple-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700">Repaso flash · 5 min</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">3 conceptos clave</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">¿Por qué Telegram en clase?</p><p class="text-xs text-slate-700">WhatsApp Business API requiere verificación, número y costos. Telegram es gratis, instantáneo y la lógica del bot es la misma.</p></div>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Token = llave del bot</p><p class="text-xs text-slate-700">Cuando creás un bot con @BotFather, te da un token. Es como la contraseña. No la compartas en redes ni en código público.</p></div>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Chat ID</p><p class="text-xs text-slate-700">Número que identifica una conversación. Para enviar un mensaje desde Make, necesitás el chat ID del destinatario o del grupo.</p></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-robot text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 1 · 20 min</p><h3 class="text-2xl font-extrabold text-slate-900">Creá tu bot de Telegram</h3></div></div>
+            <p class="text-slate-700 mb-4">Vas a crear un bot personal y obtener tu token + chat ID. Después lo conectás a Make.</p>
+
+            <div class="space-y-3 mb-4">
+                <div class="bg-white border-l-4 border-purple-600 rounded-lg p-4 step-card"><p class="font-bold text-slate-900 mb-1"><span class="bg-purple-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">1</span>Abrí Telegram</p><p class="text-sm text-slate-700 ml-8">Si no tenés cuenta, instalá la app o usá <a target="_blank" rel="noopener noreferrer" href="https://web.telegram.org" class="text-purple-600 underline">web.telegram.org</a> con tu número de celu.</p></div>
+                <div class="bg-white border-l-4 border-purple-600 rounded-lg p-4 step-card"><p class="font-bold text-slate-900 mb-1"><span class="bg-purple-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">2</span>Buscá @BotFather</p><p class="text-sm text-slate-700 ml-8">Es el bot oficial que crea otros bots. Mandale <code class="bg-slate-200 px-2 py-0.5 rounded text-xs">/newbot</code> y seguí las instrucciones.</p></div>
+                <div class="bg-white border-l-4 border-purple-600 rounded-lg p-4 step-card"><p class="font-bold text-slate-900 mb-1"><span class="bg-purple-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">3</span>Guardá tu token</p><p class="text-sm text-slate-700 ml-8">Te va a dar un texto largo tipo <code class="bg-slate-200 px-2 py-0.5 rounded text-xs">123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11</code>. Copialo en un papel/notas.</p></div>
+                <div class="bg-white border-l-4 border-purple-600 rounded-lg p-4 step-card"><p class="font-bold text-slate-900 mb-1"><span class="bg-purple-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">4</span>Conseguí tu chat ID</p><p class="text-sm text-slate-700 ml-8">Buscá @userinfobot, mandale <code class="bg-slate-200 px-2 py-0.5 rounded text-xs">/start</code>. Te devuelve tu ID numérico. Anotalo.</p></div>
+                <div class="bg-white border-l-4 border-purple-600 rounded-lg p-4 step-card"><p class="font-bold text-slate-900 mb-1"><span class="bg-purple-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">5</span>Hablale primero a tu bot</p><p class="text-sm text-slate-700 ml-8">Buscá tu bot en Telegram (con el username que le pusiste) y mandale "Hola". Sin esto, no puede mandarte mensajes después.</p></div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista si te trabás</summary><div class="mt-3 text-sm text-amber-900"><ul class="list-disc list-inside space-y-1"><li>Si BotFather te pide el "username", debe terminar en <strong>bot</strong> (ej: <em>FerreteriaSanJuan_bot</em>).</li><li>Si no encontrás @userinfobot, alternativa: buscá @getidsbot.</li><li>El nombre del bot puede tener espacios; el username NO.</li></ul></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tenés el token guardado, tu chat ID anotado, y le mandaste al menos un mensaje a tu bot.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-bell text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 2 · 25 min</p><h3 class="text-2xl font-extrabold text-slate-900">Notificación instantánea de lead</h3></div></div>
+            <p class="text-slate-700 mb-4">Cuando alguien completa un Google Form (formulario de contacto), te llega al toque al Telegram. Sin abrir el correo. Sin entrar al Drive. Pum, notificación.</p>
+
+            <div class="bg-slate-100 rounded-xl p-4 mb-4">
+                <p class="text-sm font-bold text-slate-700 mb-2">Flujo en Make:</p>
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-slate-300"><i class="fa-brands fa-google-drive text-blue-600 mr-1"></i>Google Forms · <strong>Watch Responses</strong></span>
+                    <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-slate-300"><i class="fa-brands fa-telegram text-sky-500 mr-1"></i>Telegram Bot · <strong>Send a Text Message</strong></span>
+                </div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pasos detallados</summary><div class="mt-3 text-sm text-amber-900 space-y-2">
+                <p><strong>1.</strong> Creá un Google Form simple con 3 campos: Nombre, Teléfono, Consulta. Andá a <strong>Respuestas</strong> y crucá el botón verde de Sheets para que se vincule a una planilla.</p>
+                <p><strong>2.</strong> En Make, nuevo escenario. Módulo 1: <strong>Google Sheets · Watch New Rows</strong>. Conectá la cuenta y elegí la planilla del form.</p>
+                <p><strong>3.</strong> Módulo 2: <strong>Telegram Bot · Send a Text Message</strong>. Cuando te pida la conexión, pegá tu token. En "Chat ID" pegá tu chat ID. En "Text" escribí el mensaje usando los campos del form como variables.</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-3 font-mono text-xs">🔔 *NUEVO LEAD*<br>Nombre: {{2.Nombre}}<br>Tel: {{2.Telefono}}<br>Consulta: {{2.Consulta}}<br>📅 {{formatDate(now; "DD/MM HH:mm")}}</div>
+                <p><strong>4.</strong> Activá <strong>Parse mode = Markdown</strong> para que se vea el negrita.</p>
+                <p><strong>5.</strong> Corré <em>Run once</em> y completá el Form desde otro celu/PC. Tendrías que ver el mensaje en Telegram.</p>
+            </div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> al completar tu Form, te llega un mensaje formateado al Telegram en menos de 2 minutos.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50 border-y-4 border-purple-200"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-calendar-day text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 3 · 25 min</p><h3 class="text-2xl font-extrabold text-purple-900">Recordatorio diario automático</h3></div></div>
+            <p class="text-slate-800 mb-4">Todos los días a las 9:00 AM (hora de Buenos Aires), tu bot te manda un mensaje con la frase del día y los 3 pendientes que tenés en una planilla.</p>
+
+            <details class="bg-white border border-purple-300 rounded-xl p-4 mb-4"><summary class="font-bold text-purple-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-purple-600"></i><i class="fa-solid fa-lightbulb text-purple-600"></i> Tocá para ver pasos</summary><div class="mt-3 text-sm text-slate-800 space-y-2">
+                <p><strong>1.</strong> Creá una planilla "Pendientes" con una columna <em>Tarea</em> y 3-5 filas con tareas reales o de prueba.</p>
+                <p><strong>2.</strong> Nuevo escenario en Make. Módulo 1: <strong>Google Sheets · Search Rows</strong> (no Watch, queremos leer todo). Configurá: máximo 3 filas.</p>
+                <p><strong>3.</strong> Módulo 2: <strong>Tools · Text aggregator</strong>. Source = Google Sheets. Text = <code class="bg-slate-200 px-1 rounded">• {{Tarea}}</code> con un salto de línea entre cada uno.</p>
+                <p><strong>4.</strong> Módulo 3: <strong>Telegram · Send a Text Message</strong>. Mensaje:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-3 font-mono text-xs">☀️ *Buen día*<br>Hoy es {{formatDate(now; "dddd D [de] MMMM"; "es")}}.<br><br>📋 Tus pendientes:<br>{{output del Text aggregator}}</div>
+                <p><strong>5.</strong> Schedule del escenario: cambiar de <em>On demand</em> a <em>Every day at 09:00</em>. Importante: configurar timezone <strong>America/Argentina/Buenos_Aires</strong> en el ícono de configuración del schedule.</p>
+                <p><strong>6.</strong> Activá el escenario. Mañana a las 9 te llega el mensaje.</p>
+            </div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> el escenario está activo, programado a las 9 AM en horario argentino, y un Run once muestra el mensaje correcto.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-question text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Quiz opcional · 15 min</p><h3 class="text-2xl font-extrabold text-slate-900">10 preguntas</h3></div></div>
+
+            <div id="quiz" class="space-y-5">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">1. ¿Por qué empezamos con Telegram y no WhatsApp?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Telegram tiene más usuarios</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> WhatsApp Business API requiere verificación y costos; Telegram es gratis e inmediato</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> WhatsApp no se puede automatizar</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Telegram es más lindo</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">2. ¿Qué bot oficial crea otros bots en Telegram?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> @TelegramBot</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> @CreatorBot</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> @BotFather</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> @AutoBot</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">3. ¿Qué es el "token" del bot?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> El nombre del bot</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Una contraseña que identifica al bot — no debe compartirse</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> El número de teléfono</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Una moneda virtual</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">4. ¿Para qué sirve el chat ID?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Identifica a quién o a qué grupo el bot debe enviar el mensaje</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Es el avatar del bot</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No sirve para nada</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Reemplaza al token</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">5. Antes de que un bot pueda mandarte mensajes, vos tenés que…</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Pagarle a Telegram</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Esperar 48 horas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Iniciar la conversación con un mensaje al bot</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Verificar tu identidad con DNI</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">6. ¿Qué módulo de Make detecta nuevas respuestas de un Google Form?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Search Rows</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Watch New Rows</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Add Row</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Delete Row</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">7. Para que el negrita aparezca en el mensaje de Telegram, hay que…</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Escribir en mayúsculas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Pagar Premium</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Activar Parse mode = Markdown y usar *texto*</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> No se puede</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">8. ¿Qué módulo permite combinar varias filas en un solo texto?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Iterator</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Text aggregator</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Router</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Filter</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d"><p class="font-bold text-slate-900 mb-3">9. ¿Cuál es el timezone correcto para Argentina?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> America/New_York</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> UTC</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Europe/Madrid</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> America/Argentina/Buenos_Aires</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">10. ¿Qué pasa si compartís el token de tu bot en una captura pública?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Cualquiera puede tomar control del bot — hay que regenerarlo desde @BotFather</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Nada</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Telegram te bloquea</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Se duplica el bot</div></div></div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto"><i class="fa-solid fa-circle-check mr-2"></i>Corregir mis respuestas</button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto"><i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar quiz</button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Te imaginás cuántos minutos por día te ahorrarías con notificaciones bien armadas?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Para qué proceso de tu negocio podrías replicar esto?</li>
+            </ul>
+            <div class="bg-white border-2 border-purple-300 rounded-xl p-4"><p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea:</strong> el bot es un canal personal de info. No solo leads — también alertas de stock, cumpleaños de clientes, vencimiento de pagos. Todo lo que hoy chequeás manualmente, puede venir solo.</p></div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10"><div class="max-w-3xl mx-auto"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i><h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3></div><p class="text-amber-900 italic font-medium">El error más común: olvidarse de mandarle el primer mensaje al bot. Si en el Run once aparece error "Forbidden: bot can't initiate conversation", es por eso. Otra falla típica: usar el username del bot en lugar del chat ID. El chat ID es numérico.</p></div></section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center"><div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto"><div class="text-left"><p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p><p class="font-bold text-white">IA + Automatizaciones · Práctica 19</p></div><div class="flex items-center gap-3 text-sm"><span><i class="fa-solid fa-dumbbell text-purple-400 mr-1"></i>Práctica de Clase 19</span></div></div><p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p></footer>
+    </div>
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(opt => { opt.addEventListener('click', function() { const p = this.parentElement; p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected')); this.classList.add('selected'); }); });
+        function corregirQuiz() { const ps = document.querySelectorAll('#quiz > div[data-correct]'); let c = 0; const t = ps.length; ps.forEach(p => { const co = p.getAttribute('data-correct'); const s = p.querySelector('.quiz-option.selected'); p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect')); if (s) { if (s.getAttribute('data-opt') === co) { s.classList.add('correct'); c++; } else { s.classList.add('incorrect'); p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } } else { p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } }); const r = document.getElementById('quiz-resultado'); let m = '', cl = ''; if (c === t) { m = `🎉 ¡${c}/${t}! Excelente.`; cl = 'text-emerald-600'; } else if (c >= 7) { m = `👍 ${c}/${t} — Muy bien.`; cl = 'text-emerald-600'; } else if (c >= 5) { m = `💪 ${c}/${t} — Bien, repasá.`; cl = 'text-amber-600'; } else { m = `📚 ${c}/${t} — Volvé a la clase.`; cl = 'text-red-600'; } r.className = `font-bold text-lg ml-auto ${cl}`; r.textContent = m; r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        function resetearQuiz() { document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected', 'correct', 'incorrect')); document.getElementById('quiz-resultado').textContent = ''; }
+    </script>
+</body>
+</html>

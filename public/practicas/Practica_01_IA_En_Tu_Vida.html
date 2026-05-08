@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 01 · La IA en tu Vida Cotidiana | ITC Argentina</title>
+    <meta name="description" content="Práctica de 90 minutos para reforzar la Clase 01 del curso IA + Automatizaciones de ITC Argentina.">
+    <meta name="author" content="ITC Argentina">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        details > summary { cursor: pointer; list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] .chevron { transform: rotate(90deg); }
+        .chevron { transition: transform 0.2s ease; }
+        .quiz-option { transition: all 0.15s ease; cursor: pointer; }
+        .quiz-option:hover { background: #eff6ff; }
+        .quiz-option.selected { background: #dbeafe; border-color: #2563eb; }
+        .quiz-option.correct { background: #d1fae5; border-color: #059669; }
+        .quiz-option.incorrect { background: #fee2e2; border-color: #dc2626; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- HEADER -->
+        <header class="bg-gradient-to-r from-indigo-900 to-blue-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-blue-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 01</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">La IA en tu Vida Cotidiana</h1>
+            <p class="text-blue-100 text-lg mb-4 max-w-2xl">Tomate tu tiempo. Esto no es una prueba: es tu hora para practicar tranquilo lo que vimos en clase.</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span>
+                <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">FUNDAMENTOS</span>
+            </div>
+        </header>
+
+        <!-- INTRO CALMO -->
+        <section class="bg-blue-50 border-l-8 border-blue-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-blue-700 mb-1">Cómo trabajar esta práctica</h2>
+                    <p class="text-base text-slate-800 mb-2">Tenés <strong>90 minutos</strong> en el aula para hacerla solo. El docente está disponible si te trabás, pero la idea es que la resuelvas vos.</p>
+                    <ul class="text-sm text-slate-700 space-y-1 mt-3">
+                        <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i>Cada ejercicio tiene una <strong>pista opcional</strong> (no la abras si no la necesitás).</li>
+                        <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i>Al final hay un <strong>quiz opcional de 10 preguntas</strong> para autoevaluarte.</li>
+                        <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i>No corre puntaje. <strong>Lo importante es entender, no terminar primero.</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAPA -->
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la práctica</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Repaso flash</span></div>
+                <div class="bg-blue-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-blue-800">Ej. 1 — Detective</span></div>
+                <div class="bg-blue-100 p-3 rounded-lg"><strong>30 min</strong><br><span class="text-blue-800">Ej. 2 — 5 prompts</span></div>
+                <div class="bg-blue-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-blue-800">Ej. 3 — Tu negocio</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Quiz opcional</span></div>
+            </div>
+        </section>
+
+        <!-- REPASO FLASH -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-bolt text-blue-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-blue-700">Repaso flash · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">3 ideas para tener frescas antes de arrancar</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <div class="text-blue-600 text-2xl mb-2"><i class="fa-solid fa-brain"></i></div>
+                    <p class="font-bold text-blue-900 text-sm mb-1">¿Qué es la IA?</p>
+                    <p class="text-xs text-slate-700">Un sistema que aprende de muchísimos datos para responder, escribir, clasificar o generar contenido. No es magia, es estadística entrenada.</p>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <div class="text-blue-600 text-2xl mb-2"><i class="fa-solid fa-comment-dots"></i></div>
+                    <p class="font-bold text-blue-900 text-sm mb-1">¿Qué es un prompt?</p>
+                    <p class="text-xs text-slate-700">La instrucción que le das a la IA. Cuanto más clara y con más contexto, mejor sale el resultado. Un prompt vago = resultado vago.</p>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <div class="text-blue-600 text-2xl mb-2"><i class="fa-solid fa-user-tie"></i></div>
+                    <p class="font-bold text-blue-900 text-sm mb-1">La analogía</p>
+                    <p class="text-xs text-slate-700">La IA es como un empleado muy capaz pero que recién entra. Necesita instrucciones claras. Si vos sabés explicar, ella sabe ejecutar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EJERCICIO 1: DETECTIVE -->
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-magnifying-glass text-xl"></i></div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest font-bold text-blue-700">Ejercicio 1 · 15 min</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">Detective de IA en tu celular</h3>
+                </div>
+            </div>
+            <p class="text-slate-700 mb-4">Sin abrir ChatGPT todavía. <strong>Mirá tu propio celular</strong> y encontrá <strong>5 lugares donde ya hay IA actuando</strong> sin que te dieras cuenta. Anotalos en una hoja, en Notas o en el cuaderno.</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="text-sm font-bold text-slate-700 mb-3">Para cada uno, escribí:</p>
+                <ol class="list-decimal list-inside space-y-1 text-sm text-slate-700 ml-2">
+                    <li>El nombre de la app</li>
+                    <li>Qué función específica usa IA</li>
+                    <li>Cómo te ayuda concretamente</li>
+                </ol>
+                <p class="text-xs text-slate-500 mt-3 italic">Ejemplo para arrancar: <strong>WhatsApp</strong> → <em>Sugerencias de respuesta rápida</em> → <em>Me ahorra tipear cuando alguien pregunta algo simple.</em></p>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
+                <summary class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-chevron-right chevron text-amber-600"></i>
+                    <i class="fa-solid fa-lightbulb text-amber-600"></i>
+                    ¿Te quedaste sin ideas? Tocá para ver pista
+                </summary>
+                <div class="mt-3 text-sm text-amber-900 space-y-2">
+                    <p>Algunos lugares donde podés encontrar IA en tu celular:</p>
+                    <ul class="list-disc list-inside ml-2 space-y-1">
+                        <li><strong>Galería de fotos:</strong> reconoce caras y agrupa fotos por persona.</li>
+                        <li><strong>Teclado:</strong> autocorrector y predicción de palabras.</li>
+                        <li><strong>Mapas:</strong> sugerencia de ruta más rápida según tráfico.</li>
+                        <li><strong>Mercado Libre / Amazon:</strong> recomendaciones de productos.</li>
+                        <li><strong>Spotify / YouTube:</strong> "te puede gustar".</li>
+                        <li><strong>Instagram / TikTok:</strong> el feed que decide qué mostrarte.</li>
+                        <li><strong>Banco / Mercado Pago:</strong> alertas de gastos inusuales.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3">
+                <p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si tenés:</strong> 5 apps anotadas con la función de IA y cómo te ayuda.</p>
+            </div>
+        </section>
+
+        <!-- EJERCICIO 2: 5 PROMPTS -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-comment-dots text-xl"></i></div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest font-bold text-blue-700">Ejercicio 2 · 30 min</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">Tus primeros 5 prompts en ChatGPT</h3>
+                </div>
+            </div>
+            <p class="text-slate-700 mb-4">Abrí ChatGPT (<a target="_blank" rel="noopener noreferrer" href="https://chat.openai.com" class="text-blue-600 underline font-semibold">chat.openai.com</a>) y probá estos 5 prompts <strong>uno por uno</strong>. Para cada uno, leé tranquilo la respuesta y respondé al final: ¿te sirvió o no?</p>
+
+            <div class="space-y-4 mb-6">
+                <!-- Prompt 1 -->
+                <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                        <h4 class="text-base font-extrabold text-blue-900">Pedir una explicación simple</h4>
+                    </div>
+                    <div class="prompt-box text-slate-100 rounded-xl p-4 ml-12 font-mono text-xs">
+                        <p>Explicame qué es la IA generativa como si yo tuviera 12 años. Usá un ejemplo de la vida real.</p>
+                    </div>
+                </div>
+
+                <!-- Prompt 2 -->
+                <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                        <h4 class="text-base font-extrabold text-blue-900">Pedir una lista corta</h4>
+                    </div>
+                    <div class="prompt-box text-slate-100 rounded-xl p-4 ml-12 font-mono text-xs">
+                        <p>Dame 5 ideas de regalo económicas (menos de $15.000 ARS) para una persona que le gusta cocinar.</p>
+                    </div>
+                </div>
+
+                <!-- Prompt 3 -->
+                <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                        <h4 class="text-base font-extrabold text-blue-900">Pedir una redacción</h4>
+                    </div>
+                    <div class="prompt-box text-slate-100 rounded-xl p-4 ml-12 font-mono text-xs">
+                        <p>Redactame un mensaje cordial para WhatsApp avisando a un cliente que su pedido se demora 1 día. Tono argentino, breve.</p>
+                    </div>
+                </div>
+
+                <!-- Prompt 4 -->
+                <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                        <h4 class="text-base font-extrabold text-blue-900">Pedir una comparación</h4>
+                    </div>
+                    <div class="prompt-box text-slate-100 rounded-xl p-4 ml-12 font-mono text-xs">
+                        <p>Comparame en una tabla las ventajas y desventajas de tener un local físico vs vender solo online en Argentina.</p>
+                    </div>
+                </div>
+
+                <!-- Prompt 5 -->
+                <div class="step-card bg-white border-l-8 border-blue-600 rounded-xl shadow-md p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm">5</div>
+                        <h4 class="text-base font-extrabold text-blue-900">Pedir una idea creativa</h4>
+                    </div>
+                    <div class="prompt-box text-slate-100 rounded-xl p-4 ml-12 font-mono text-xs">
+                        <p>Soy [tu rubro]. Dame 3 ideas de promociones distintas que podría hacer para el próximo fin de semana largo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
+                <summary class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-chevron-right chevron text-amber-600"></i>
+                    <i class="fa-solid fa-lightbulb text-amber-600"></i>
+                    ¿Las respuestas no te convencen? Tocá para ver pista
+                </summary>
+                <div class="mt-3 text-sm text-amber-900 space-y-2">
+                    <p><strong>Probá estas 3 cosas:</strong></p>
+                    <ol class="list-decimal list-inside ml-2 space-y-1">
+                        <li><strong>Sumá contexto:</strong> en lugar de "Dame ideas de regalo", escribí "Dame ideas de regalo para mi hermano que tiene 28 años, vive en Mendoza y le gusta el asado".</li>
+                        <li><strong>Pedí formato específico:</strong> "Hacelo en lista numerada", "máximo 100 palabras", "tono informal".</li>
+                        <li><strong>Si no te gustó, pedí cambios:</strong> "Hacelo más corto", "cambiá el tono", "sumá un ejemplo".</li>
+                    </ol>
+                </div>
+            </details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3">
+                <p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> probaste los 5 prompts y entendiste cuáles te dieron respuestas más útiles.</p>
+            </div>
+        </section>
+
+        <!-- EJERCICIO 3: TU NEGOCIO -->
+        <section class="p-6 md:p-10 bg-blue-50 border-y-4 border-blue-200">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-store text-xl"></i></div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest font-bold text-blue-700">Ejercicio 3 · 25 min</p>
+                    <h3 class="text-2xl font-extrabold text-blue-900">Aplicá IA a tu propio negocio</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Acá la cosa se pone personal. Pensá en <strong>una tarea concreta de tu negocio o trabajo</strong> que te lleva tiempo y que podrías acelerar con IA.</p>
+
+            <div class="bg-white rounded-xl p-5 border border-blue-200 mb-4">
+                <p class="font-bold text-slate-900 mb-3">3 pasos:</p>
+                <ol class="list-decimal list-inside space-y-3 text-sm text-slate-700">
+                    <li><strong>Elegí 1 tarea</strong> que hagas seguido (responder consultas, escribir descripciones de productos, hacer un resumen, etc.).</li>
+                    <li><strong>Escribí un prompt</strong> claro pidiéndole a ChatGPT que te ayude con esa tarea. Incluí: qué hacés, para quién, en qué tono.</li>
+                    <li><strong>Probalo</strong>. Si la respuesta no te sirvió, ajustá el prompt y volvé a probar. Repetí 3 veces hasta que te guste el resultado.</li>
+                </ol>
+            </div>
+
+            <div class="bg-white rounded-xl p-5 border border-blue-200 mb-4">
+                <p class="text-sm font-bold text-slate-700 mb-2"><i class="fa-solid fa-circle-info text-blue-600 mr-1"></i> Si no tenés negocio propio, elegí UNO de estos casos:</p>
+                <ul class="text-sm text-slate-700 space-y-1 ml-2">
+                    <li><i class="fa-solid fa-check text-blue-600 mr-2"></i>Sos estudiante: pedile a ChatGPT que te explique un tema difícil de la facultad.</li>
+                    <li><i class="fa-solid fa-check text-blue-600 mr-2"></i>Sos empleado: pedile que te ayude a redactar un mail formal a tu jefe.</li>
+                    <li><i class="fa-solid fa-check text-blue-600 mr-2"></i>Sos emprendedor sin negocio activo: pedile 5 ideas de negocio basadas en tus hobbies.</li>
+                </ul>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
+                <summary class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-chevron-right chevron text-amber-600"></i>
+                    <i class="fa-solid fa-lightbulb text-amber-600"></i>
+                    Tocá para ver una plantilla de prompt que podés adaptar
+                </summary>
+                <div class="mt-3 text-sm text-amber-900">
+                    <div class="prompt-box text-slate-100 rounded-xl p-4 font-mono text-xs">
+                        <p>Soy <span class="text-amber-300">[tu rubro: ej. dueño de una panadería en Junín]</span>.<br><br>
+                        Necesito que me ayudes a <span class="text-amber-300">[tu tarea: ej. redactar la descripción de un nuevo producto]</span>.<br><br>
+                        El producto/servicio es: <span class="text-amber-300">[contale qué es]</span><br>
+                        El cliente típico es: <span class="text-amber-300">[describí brevemente]</span><br>
+                        El tono que uso es: <span class="text-amber-300">[cercano / profesional / divertido]</span><br><br>
+                        Hacelo de máximo <span class="text-amber-300">[X palabras]</span>. En español argentino.</p>
+                    </div>
+                </div>
+            </details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3">
+                <p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tenés 1 prompt que te dio una respuesta útil para una tarea real tuya. Guardalo en una nota: <strong>es tu primer prompt útil del curso</strong>.</p>
+            </div>
+        </section>
+
+        <!-- QUIZ OPCIONAL -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-question text-xl"></i></div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest font-bold text-amber-700">Quiz opcional · 15 min</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">10 preguntas para autoevaluarte</h3>
+                </div>
+            </div>
+            <p class="text-slate-700 mb-6">Si te sobra tiempo, este quiz te ayuda a saber qué tan firmes te quedaron los conceptos. <strong>No corre puntaje.</strong> Tocá la opción que creas correcta. Al final tocá "Corregir" y vas a ver cuáles acertaste.</p>
+
+            <div id="quiz" class="space-y-5">
+                <!-- Pregunta 1 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b">
+                    <p class="font-bold text-slate-900 mb-3">1. ¿Qué es la IA generativa?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Una computadora que piensa como un humano.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Un sistema entrenado con muchísimos datos que genera texto, imágenes o sonidos nuevos.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Un buscador como Google.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Un programa de antivirus.</div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c">
+                    <p class="font-bold text-slate-900 mb-3">2. ¿Qué es un prompt?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> El nombre del modelo de IA.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Un error del sistema.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> La instrucción que le das a la IA.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Un tipo de cuenta paga.</div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b">
+                    <p class="font-bold text-slate-900 mb-3">3. Si la IA no te da una buena respuesta, ¿qué conviene hacer primero?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Cerrar todo y volver a abrir.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Sumar más contexto y especificar mejor.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Pagar la versión Plus.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Cambiar de IA inmediatamente.</div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c">
+                    <p class="font-bold text-slate-900 mb-3">4. ¿Cuál de estas tareas hace IA en tu día sin que te des cuenta?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> El reloj despertador.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> La calculadora del celular.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> El feed de Instagram que decide qué mostrarte.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Tipear en el teclado.</div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a">
+                    <p class="font-bold text-slate-900 mb-3">5. ¿La IA puede equivocarse o "inventar"?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, a veces inventa datos. Hay que validar.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> No, siempre dice la verdad.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Solo cuando hay poca señal.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Solo en la versión gratis.</div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 6 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d">
+                    <p class="font-bold text-slate-900 mb-3">6. ¿Cuál es un buen prompt?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> "Hola"</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> "Ayudame"</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> "Decime algo"</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> "Soy dueña de una panadería en Junín. Redactá un post de Instagram para promocionar facturas recién horneadas. 80 palabras, tono cercano."</div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 7 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b">
+                    <p class="font-bold text-slate-900 mb-3">7. La IA es como...</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Un mago que adivina.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Un empleado capaz al que tenés que dar instrucciones claras.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Una calculadora con voz.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Un buscador de internet.</div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 8 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c">
+                    <p class="font-bold text-slate-900 mb-3">8. ¿Para qué <strong>NO</strong> deberías usar la IA?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Redactar un mail.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Hacer un resumen.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Subir datos sensibles de un cliente sin anonimizarlos.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Pedir ideas de negocio.</div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 9 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b">
+                    <p class="font-bold text-slate-900 mb-3">9. Si pedís "Dame ideas para mi negocio", ¿qué pasa?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Da ideas perfectas para tu rubro.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Da ideas genéricas porque le falta contexto.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No responde nada.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Cobra automáticamente.</div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 10 -->
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d">
+                    <p class="font-bold text-slate-900 mb-3">10. ¿Cuál es la mejor estrategia para mejorar tus resultados con IA?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Usarla solo en inglés.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Pagar siempre la versión Plus.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Aceptar la primera respuesta sin discutirla.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Practicar prompts y ajustarlos hasta que el resultado te sirva.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto">
+                    <i class="fa-solid fa-circle-check mr-2"></i>Corregir mis respuestas
+                </button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto">
+                    <i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar quiz
+                </button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <!-- CIERRE -->
+        <section class="p-6 md:p-10 bg-blue-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <p class="text-slate-700 mb-4">Tomate 1 minuto y respondé estas preguntas <strong>en tu cuaderno o notas</strong>:</p>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>¿Qué descubrí en esta práctica que no sabía?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>¿Cuál fue el prompt que mejor me funcionó?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>¿Qué tarea de mi vida cotidiana voy a probar con IA esta semana?</li>
+            </ul>
+            <div class="bg-white border-2 border-blue-300 rounded-xl p-4">
+                <p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea para llevarte:</strong> guardá el prompt útil que armaste en el Ejercicio 3. Es tu <strong>primer ladrillo</strong> de tu carpeta "IA al rescate" que vamos a armar a lo largo del curso.</p>
+            </div>
+        </section>
+
+        <!-- NOTA DOCENTE -->
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Práctica autónoma. Circular por el aula sin invadir. Si un alumno se traba más de 5 min en un ejercicio, sugerirle que abra la pista. Si se traba con la pista, intervenir. Algunos alumnos van a terminar antes que otros: pedirles que ayuden a un compañero o que profundicen el Ejercicio 3 con un segundo caso.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones · Práctica 01</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span><i class="fa-solid fa-dumbbell text-blue-400 mr-1"></i>Práctica de Clase 01</span>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Manejo de selección de opciones
+        document.querySelectorAll('.quiz-option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                const parent = this.parentElement;
+                parent.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        function corregirQuiz() {
+            const preguntas = document.querySelectorAll('#quiz > div[data-correct]');
+            let correctas = 0;
+            let total = preguntas.length;
+
+            preguntas.forEach(p => {
+                const correcta = p.getAttribute('data-correct');
+                const seleccionada = p.querySelector('.quiz-option.selected');
+                p.querySelectorAll('.quiz-option').forEach(o => {
+                    o.classList.remove('correct', 'incorrect');
+                });
+                if (seleccionada) {
+                    if (seleccionada.getAttribute('data-opt') === correcta) {
+                        seleccionada.classList.add('correct');
+                        correctas++;
+                    } else {
+                        seleccionada.classList.add('incorrect');
+                        // marcar la correcta también
+                        p.querySelector(`[data-opt="${correcta}"]`).classList.add('correct');
+                    }
+                } else {
+                    // si no respondió, marcar la correcta para que vea
+                    p.querySelector(`[data-opt="${correcta}"]`).classList.add('correct');
+                }
+            });
+
+            const resultado = document.getElementById('quiz-resultado');
+            let mensaje = '';
+            let color = '';
+            if (correctas === total) {
+                mensaje = `🎉 ¡${correctas}/${total}! Excelente.`;
+                color = 'text-emerald-600';
+            } else if (correctas >= 7) {
+                mensaje = `👍 ${correctas}/${total} — Muy bien.`;
+                color = 'text-emerald-600';
+            } else if (correctas >= 5) {
+                mensaje = `💪 ${correctas}/${total} — Bien, repasá las falladas.`;
+                color = 'text-amber-600';
+            } else {
+                mensaje = `📚 ${correctas}/${total} — Volvé a la clase y repasá.`;
+                color = 'text-red-600';
+            }
+            resultado.className = `font-bold text-lg ml-auto ${color}`;
+            resultado.textContent = mensaje;
+            resultado.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetearQuiz() {
+            document.querySelectorAll('.quiz-option').forEach(o => {
+                o.classList.remove('selected', 'correct', 'incorrect');
+            });
+            document.getElementById('quiz-resultado').textContent = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 18 · APIs y JSON | ITC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body{font-family:'Inter',sans-serif;background:#f8fafc}.prompt-box{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}details[open] .chevron{transform:rotate(90deg)}.chevron{transition:transform .2s ease}.quiz-option{transition:all .15s ease;cursor:pointer}.quiz-option:hover{background:#faf5ff}.quiz-option.selected{background:#f3e8ff;border-color:#9333ea}.quiz-option.correct{background:#d1fae5;border-color:#059669}.quiz-option.incorrect{background:#fee2e2;border-color:#dc2626}</style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 to-purple-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-purple-100 text-xs font-bold uppercase tracking-widest mb-4"><span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 18</span><span>•</span><span>Fase 2 — Automatización</span><span>•</span><span><i class="fa-solid fa-clock mr-1"></i>90 min</span></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">APIs y JSON en la Vida Real</h1>
+            <p class="text-purple-100 text-lg mb-4 max-w-2xl">Conectar con APIs reales argentinas: dólar y clima. Leer JSON, extraer datos clave y armarte tu propio "noticiero" automático.</p>
+            <div class="flex flex-wrap gap-2"><span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span><span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">AUTOMATIZACIÓN</span></div>
+        </header>
+
+        <section class="bg-purple-50 border-l-8 border-purple-600 p-6 rounded-xl m-6"><div class="flex items-start gap-4"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div><div><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700 mb-1">Cómo trabajar esta práctica</h2><p class="text-base text-slate-800">Vamos a usar APIs <strong>gratuitas y públicas</strong>: no necesitan registro ni token. 90 min en aula, paciencia, y mucho "probar y mirar el JSON".</p></div></div></section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200"><h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-purple-800">Ej. 1 — Dólar</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-purple-800">Ej. 2 — Clima</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-purple-800">Ej. 3 — Combinar</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Quiz</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-bolt text-purple-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700">Repaso flash · 5 min</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">3 conceptos clave</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">API</p><p class="text-xs text-slate-700">Una "puerta" para que tu programa hable con otro. Vos pedís, te devuelve datos.</p></div>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">JSON</p><p class="text-xs text-slate-700">El formato más común de respuesta de una API. Es texto estructurado en clave-valor.</p></div>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Endpoint</p><p class="text-xs text-slate-700">La URL específica de la API que te devuelve los datos que querés. Ej: <code class="bg-purple-100 px-1 rounded">/clima/hoy</code></p></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-dollar-sign text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 1 · 20 min</p><h3 class="text-2xl font-extrabold text-slate-900">Dólar Argentina</h3></div></div>
+            <p class="text-slate-700 mb-4">Vamos a usar <a target="_blank" rel="noopener noreferrer" href="https://dolarapi.com" class="text-purple-600 underline font-semibold">dolarapi.com</a>, una API gratuita que devuelve el valor del dólar en Argentina (oficial, blue, MEP, etc.).</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="font-bold text-slate-900 mb-2 text-sm">Pasos:</p>
+                <ol class="list-decimal list-inside space-y-2 text-sm text-slate-700 ml-2">
+                    <li>Abrí <a target="_blank" rel="noopener noreferrer" href="https://dolarapi.com/v1/dolares" class="text-purple-600 underline">https://dolarapi.com/v1/dolares</a> en el navegador. Mirá la estructura del JSON que devuelve.</li>
+                    <li>En Make: nuevo escenario → módulo <strong>HTTP → Make a request</strong>.</li>
+                    <li>URL: <code class="bg-slate-100 px-1 rounded text-xs">https://dolarapi.com/v1/dolares/blue</code> (este endpoint trae solo el dólar blue).</li>
+                    <li>Method: GET. Activá <strong>Parse response</strong>.</li>
+                    <li>Run once. Vas a ver campos: nombre, compra, venta, fechaActualizacion.</li>
+                    <li>Sumá Gmail y armá un mail con: "Hoy el dólar blue está a $[venta]. Última actualización: [fechaActualizacion]".</li>
+                </ol>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>Otros endpoints útiles:</p><ul class="list-disc list-inside ml-2 mt-1"><li><code>/v1/dolares/oficial</code></li><li><code>/v1/dolares/mep</code></li><li><code>/v1/dolares/tarjeta</code></li></ul><p class="mt-2">Para que la fecha se vea linda, podés usar <code>formatDate(fechaActualizacion; "DD/MM/YYYY HH:mm")</code> en el cuerpo del mail.</p></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> recibís un mail con el dólar blue actualizado del día.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-cloud-sun text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 2 · 25 min</p><h3 class="text-2xl font-extrabold text-slate-900">Clima de Buenos Aires</h3></div></div>
+            <p class="text-slate-700 mb-4">Vamos a usar <a target="_blank" rel="noopener noreferrer" href="https://open-meteo.com" class="text-purple-600 underline font-semibold">open-meteo.com</a>, otra API gratuita y sin token. Te devuelve el clima en cualquier punto del planeta.</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="font-bold text-slate-900 mb-2 text-sm">Pasos:</p>
+                <ol class="list-decimal list-inside space-y-2 text-sm text-slate-700 ml-2">
+                    <li>Coordenadas Buenos Aires: <strong>lat: -34.61, lon: -58.38</strong>.</li>
+                    <li>Endpoint: <code class="bg-slate-100 px-1 rounded text-xs break-all">https://api.open-meteo.com/v1/forecast?latitude=-34.61&longitude=-58.38&current=temperature_2m,weather_code&timezone=America/Buenos_Aires</code></li>
+                    <li>Pegalo en un navegador y mirá el JSON.</li>
+                    <li>En Make: nuevo escenario, módulo HTTP, GET, Parse response, esa URL.</li>
+                    <li>Buscá el campo <code>current.temperature_2m</code>.</li>
+                    <li>Mandate un mail: "En Buenos Aires hace [temperature_2m]°C ahora mismo".</li>
+                </ol>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>Si querés tu ciudad, buscá las coordenadas en Google Maps:</p><ol class="list-decimal list-inside ml-2 mt-1"><li>Andá a Google Maps</li><li>Buscá tu ciudad</li><li>Click derecho en el punto → primer número que aparece son las coordenadas</li></ol><p class="mt-2">Bonus: agregale <code>&daily=temperature_2m_max,temperature_2m_min</code> para que te traiga máxima y mínima del día.</p></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> recibís un mail con la temperatura actual de Buenos Aires (o tu ciudad).</p></div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50 border-y-4 border-purple-200"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-newspaper text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 3 · 25 min</p><h3 class="text-2xl font-extrabold text-purple-900">Tu Noticiero Personal</h3></div></div>
+            <p class="text-slate-800 mb-4">Combiná los Ejercicios 1 y 2: armá un único escenario que se ejecute <strong>cada mañana a las 8:00 AM</strong> y te mande un mail con dólar blue + clima del día. Como un noticiero pero solo con la info que a vos te importa.</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="font-bold text-slate-900 mb-2 text-sm">Estructura sugerida:</p>
+                <p class="text-sm text-slate-700 mb-2 font-mono">[Schedule 8:00 AM] → [HTTP Dólar] → [HTTP Clima] → [Gmail con todo]</p>
+                <p class="text-sm text-slate-700 mt-3">El mail debería tener algo así:</p>
+                <div class="bg-slate-50 rounded p-3 text-sm mt-2">
+                    <p>Asunto: ☀️ Tu briefing del [fecha]</p>
+                    <p class="mt-2">Hola, este es tu briefing diario:</p>
+                    <p class="mt-2">💵 Dólar Blue: $[venta]<br>🌤️ Buenos Aires: [temp]°C<br>📅 [fecha]</p>
+                    <p class="mt-2">Que tengas un gran día.</p>
+                </div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>Truco: en el módulo Gmail, en el campo "Body" podés alternar entre texto plano y HTML. Si elegís HTML, podés poner colores y emojis. Para conectar 2 módulos HTTP en serie: simplemente arrastrá el segundo después del primero. Make ejecuta en orden.</p></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tu escenario corre, te llega el mail combinando ambos datos, y está programado para las 8 AM diariamente.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-question text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Quiz opcional · 15 min</p><h3 class="text-2xl font-extrabold text-slate-900">10 preguntas</h3></div></div>
+
+            <div id="quiz" class="space-y-5">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">1. ¿Qué es una API?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Una página web</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Una "puerta" para que tu programa hable con otro</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Un editor</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Un mail</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">2. ¿Qué formato suelen devolver las APIs?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> XML</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> PDF</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> JSON (clave: valor)</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Word</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">3. ¿Qué es un endpoint?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> La URL específica que te devuelve los datos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> El final del flujo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Un módulo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Una contraseña</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">4. ¿Cuál de estas APIs vimos en clase?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Twitter</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> dolarapi.com</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Banco Nación</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Spotify</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d"><p class="font-bold text-slate-900 mb-3">5. ¿Qué necesitás para usar dolarapi.com?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Tarjeta de crédito</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Token pago</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> CUIT</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Nada, es pública y gratuita</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">6. ¿Qué necesitás de una ciudad para usar open-meteo?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Su nombre</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Latitud y longitud</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Su CP</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Su clave</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">7. ¿Cómo encontrás coordenadas?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Comprándolas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Pidiendo permiso</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Click derecho en Google Maps</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> En el INDEC</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">8. ¿Para qué sirve "Parse response"?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Que Make entienda y exponga los campos del JSON</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Acelerar el flujo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Imprimir</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Borrar lo viejo</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">9. ¿Cuál es una buena aplicación REAL de un escenario "API + Schedule"?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Imprimir libros</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Recibir alertas si el dólar sube/baja un X%</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Cocinar</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Ir a la oficina</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">10. ¿Qué método HTTP usaste hoy?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> POST</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> DELETE</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> GET (para LEER datos)</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> PATCH</div></div></div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto"><i class="fa-solid fa-circle-check mr-2"></i>Corregir mis respuestas</button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto"><i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar quiz</button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Qué dato te gustaría recibir CADA mañana automáticamente?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Qué API te ahorraría minutos hoy mismo?</li>
+            </ul>
+            <div class="bg-white border-2 border-purple-300 rounded-xl p-4"><p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea:</strong> hay APIs públicas para todo: BCRA, AFIP (algunas), CONICET, datos abiertos del gobierno, redes sociales, ecommerce. Cuando entendés cómo se usan, encontrás 10 ideas por semana.</p></div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10"><div class="max-w-3xl mx-auto"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i><h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3></div><p class="text-amber-900 italic font-medium">Algunos alumnos van a confundirse con la estructura del JSON anidado (current.temperature_2m). Mostrales en pantalla cómo Make presenta los datos: cuando hacés clic en un campo del módulo siguiente, aparecen agrupados por nivel. Si un campo "no aparece" para mapear, es 99% por Parse Response apagado.</p></div></section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center"><div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto"><div class="text-left"><p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p><p class="font-bold text-white">IA + Automatizaciones · Práctica 18</p></div><div class="flex items-center gap-3 text-sm"><span><i class="fa-solid fa-dumbbell text-purple-400 mr-1"></i>Práctica de Clase 18</span></div></div><p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p></footer>
+    </div>
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(opt => { opt.addEventListener('click', function() { const p = this.parentElement; p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected')); this.classList.add('selected'); }); });
+        function corregirQuiz() { const ps = document.querySelectorAll('#quiz > div[data-correct]'); let c = 0; const t = ps.length; ps.forEach(p => { const co = p.getAttribute('data-correct'); const s = p.querySelector('.quiz-option.selected'); p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect')); if (s) { if (s.getAttribute('data-opt') === co) { s.classList.add('correct'); c++; } else { s.classList.add('incorrect'); p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } } else { p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } }); const r = document.getElementById('quiz-resultado'); let m = '', cl = ''; if (c === t) { m = `🎉 ¡${c}/${t}! Excelente.`; cl = 'text-emerald-600'; } else if (c >= 7) { m = `👍 ${c}/${t} — Muy bien.`; cl = 'text-emerald-600'; } else if (c >= 5) { m = `💪 ${c}/${t} — Bien, repasá.`; cl = 'text-amber-600'; } else { m = `📚 ${c}/${t} — Volvé a la clase.`; cl = 'text-red-600'; } r.className = `font-bold text-lg ml-auto ${cl}`; r.textContent = m; r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        function resetearQuiz() { document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected', 'correct', 'incorrect')); document.getElementById('quiz-resultado').textContent = ''; }
+    </script>
+</body>
+</html>

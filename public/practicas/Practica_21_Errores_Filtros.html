@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 21 · Filtros, Errores y Flujos Robustos | ITC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body{font-family:'Inter',sans-serif;background:#f8fafc}.step-card{transition:all .3s ease}.step-card:hover{transform:translateY(-4px);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}.prompt-box{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}details[open] .chevron{transform:rotate(90deg)}.chevron{transition:transform .2s ease}.quiz-option{transition:all .15s ease;cursor:pointer}.quiz-option:hover{background:#faf5ff}.quiz-option.selected{background:#f3e8ff;border-color:#9333ea}.quiz-option.correct{background:#d1fae5;border-color:#059669}.quiz-option.incorrect{background:#fee2e2;border-color:#dc2626}</style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 to-purple-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-purple-100 text-xs font-bold uppercase tracking-widest mb-4"><span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 21</span><span>•</span><span>Fase 2 — Automatización</span><span>•</span><span><i class="fa-solid fa-clock mr-1"></i>90 min</span></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Filtros, Errores y Flujos Robustos</h1>
+            <p class="text-purple-100 text-lg mb-4 max-w-2xl">Lo que separa a un escenario de juguete de uno productivo: que no se rompa cuando algo sale mal.</p>
+            <div class="flex flex-wrap gap-2"><span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span><span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">AUTOMATIZACIÓN</span></div>
+        </header>
+
+        <section class="bg-purple-50 border-l-8 border-purple-600 p-6 rounded-xl m-6"><div class="flex items-start gap-4"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div><div><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700 mb-1">Cómo trabajar esta práctica</h2><p class="text-base text-slate-800">Práctica más técnica que las anteriores. Tomate el tiempo. Si no entendés un módulo, frená y preguntá. <strong>Sin puntaje, sin apuro.</strong></p></div></div></section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200"><h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-purple-800">Ej. 1 — Iterator</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-purple-800">Ej. 2 — Aggregator</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-purple-800">Ej. 3 — Error handler</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Quiz</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-bolt text-purple-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700">Repaso flash · 5 min</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">3 conceptos clave</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Iterator</p><p class="text-xs text-slate-700">Si un módulo te devuelve una lista (array), Iterator la "abre" y procesa cada ítem por separado. <em>Como sacar caramelos de una bolsa, uno por uno.</em></p></div>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Aggregator</p><p class="text-xs text-slate-700">Hace lo opuesto: junta varios items en uno solo (texto, array o JSON). <em>Como meter todos los caramelos juntos en una bolsa nueva.</em></p></div>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Error handler</p><p class="text-xs text-slate-700">Cuando un módulo falla (API caída, dato vacío, etc.), el escenario explota. El error handler te dice qué hacer en ese caso: reintentar, ignorar, alertar.</p></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-list-ol text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 1 · 20 min</p><h3 class="text-2xl font-extrabold text-slate-900">Iterator: procesar una lista item por item</h3></div></div>
+            <p class="text-slate-700 mb-4">Vas a leer todos los emails de tus últimas 24 hs en Gmail, y por cada uno guardar el remitente y el asunto en una planilla. Sin Iterator, te lo guardaría todo junto en una sola fila — un desastre.</p>
+
+            <div class="bg-slate-100 rounded-xl p-4 mb-4">
+                <p class="text-sm font-bold text-slate-700 mb-2">Flujo:</p>
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-slate-300"><i class="fa-solid fa-envelope text-blue-600 mr-1"></i>Gmail · Search Emails</span>
+                    <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-purple-400"><i class="fa-solid fa-list-ol text-purple-600 mr-1"></i>Iterator</span>
+                    <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-emerald-400"><i class="fa-brands fa-google-drive text-emerald-600 mr-1"></i>Sheets · Add Row</span>
+                </div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pasos</summary><div class="mt-3 text-sm text-amber-900 space-y-2">
+                <p><strong>1.</strong> Creá una planilla con columnas: Fecha, De, Asunto.</p>
+                <p><strong>2.</strong> En Make, módulo 1: <strong>Gmail · Search Emails</strong>. Filter: query <code class="bg-slate-200 px-1 rounded">newer_than:1d</code>. Max results: 20. Esto devuelve un array de mails.</p>
+                <p><strong>3.</strong> Módulo 2: <strong>Flow Control · Iterator</strong>. Array: el campo "Array" del módulo Gmail (te aparece automáticamente). Hace que cada email se procese individualmente.</p>
+                <p><strong>4.</strong> Módulo 3: <strong>Google Sheets · Add a Row</strong>. Mapeá: Fecha = <code class="bg-slate-200 px-1 rounded">{{2.date}}</code>, De = <code class="bg-slate-200 px-1 rounded">{{2.from.address}}</code>, Asunto = <code class="bg-slate-200 px-1 rounded">{{2.subject}}</code> (los <code>2.</code> apuntan al Iterator, no al Gmail original).</p>
+                <p><strong>5.</strong> Run once. Tendrías que ver tantas filas nuevas como mails recibió.</p>
+            </div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> en la planilla aparecen N filas (1 por cada mail), no 1 fila con todo concatenado.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-layer-group text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 2 · 25 min</p><h3 class="text-2xl font-extrabold text-slate-900">Aggregator: del detalle al resumen</h3></div></div>
+            <p class="text-slate-700 mb-4">Ahora hacé lo opuesto: leé las filas de una planilla "Pendientes" y mandate <strong>un solo</strong> mensaje a Telegram con todas juntas, en formato lista.</p>
+
+            <div class="bg-slate-100 rounded-xl p-4 mb-4">
+                <p class="text-sm font-bold text-slate-700 mb-2">Flujo:</p>
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-slate-300"><i class="fa-brands fa-google-drive text-blue-600 mr-1"></i>Sheets · Search Rows</span>
+                    <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-purple-400"><i class="fa-solid fa-layer-group text-purple-600 mr-1"></i>Text aggregator</span>
+                    <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-sky-400"><i class="fa-brands fa-telegram text-sky-600 mr-1"></i>Telegram · Send Message</span>
+                </div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pasos</summary><div class="mt-3 text-sm text-amber-900 space-y-2">
+                <p><strong>1.</strong> Planilla con columnas: Tarea, Prioridad. Cargá 5 filas.</p>
+                <p><strong>2.</strong> Módulo 1: <strong>Google Sheets · Search Rows</strong>. Sin filter (devuelve todas). Max: 10.</p>
+                <p><strong>3.</strong> Módulo 2: <strong>Tools · Text aggregator</strong>. Source = Google Sheets. Row separator = New row. Text:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-3 font-mono text-xs">• [{{Prioridad}}] {{Tarea}}</div>
+                <p><strong>4.</strong> Módulo 3: <strong>Telegram · Send a Text Message</strong>. Mensaje:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-3 font-mono text-xs">📋 *Tus pendientes:*<br>{{2.text}}</div>
+                <p><strong>5.</strong> Run once. <strong>Solo</strong> debe llegarte UN mensaje, con todas las tareas en una lista.</p>
+            </div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> recibís UN solo mensaje en Telegram, no 5 mensajes separados.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50 border-y-4 border-purple-200"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-shield text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 3 · 25 min</p><h3 class="text-2xl font-extrabold text-purple-900">Error handler: que tu flujo no se caiga</h3></div></div>
+            <p class="text-slate-800 mb-4">Tomá un escenario que ya tenés (de la clase 18 o 20) y agregale manejo de errores. El objetivo: si un módulo falla, en lugar de detenerse, el flujo te avise por Telegram y siga procesando los siguientes ítems.</p>
+
+            <details class="bg-white border border-purple-300 rounded-xl p-4 mb-4"><summary class="font-bold text-purple-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-purple-600"></i><i class="fa-solid fa-lightbulb text-purple-600"></i> Tocá para ver pasos</summary><div class="mt-3 text-sm text-slate-800 space-y-2">
+                <p><strong>1.</strong> Abrí el escenario que querés robustecer (sugerencia: el de Práctica 18 con la API del dólar).</p>
+                <p><strong>2.</strong> Hacé clic con botón derecho sobre el módulo que más probable falle (el HTTP del API). Elegí <strong>Add error handler</strong>.</p>
+                <p><strong>3.</strong> Te aparece una ruta nueva, gris/punteada. Agregale un módulo <strong>Telegram · Send a Text Message</strong> con este mensaje:</p>
+                <div class="prompt-box text-slate-100 rounded-xl p-3 font-mono text-xs">⚠️ *Error en escenario*<br>Módulo: {{1.name}}<br>Mensaje: {{1.message}}<br>Hora: {{formatDate(now; "DD/MM HH:mm")}}</div>
+                <p><strong>4.</strong> Después del Telegram, agregá un módulo <strong>Flow Control · Resume</strong>. Esto le dice a Make: "después del aviso, seguí con el siguiente ítem como si nada".</p>
+                <p><strong>5.</strong> Para testear: temporalmente cambiá la URL del API a algo inválido (ej: <code class="bg-slate-200 px-1 rounded">https://dolarapi-falsa-xyz.com/v1/dolares</code>), corré el escenario, deberías recibir el mensaje de error en Telegram.</p>
+                <p class="mt-2"><strong>3 tipos de error handlers principales:</strong></p>
+                <ul class="list-disc list-inside ml-2 space-y-1">
+                    <li><strong>Resume:</strong> avisa y sigue con el próximo ítem</li>
+                    <li><strong>Rollback:</strong> deshace todos los cambios de la operación que falló</li>
+                    <li><strong>Break:</strong> guarda el estado y permite reintento manual desde el panel</li>
+                </ul>
+            </div></details>
+
+            <div class="bg-white border-l-4 border-purple-600 rounded-lg p-3"><p class="text-sm text-purple-900"><i class="fa-solid fa-flag-checkered text-purple-600 mr-2"></i><strong>Listo si:</strong> al simular un error con URL falsa, te llega un mensaje al Telegram y el escenario no queda bloqueado.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-question text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Quiz opcional · 15 min</p><h3 class="text-2xl font-extrabold text-slate-900">10 preguntas</h3></div></div>
+
+            <div id="quiz" class="space-y-5">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">1. ¿Para qué sirve un Iterator?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Para combinar datos en un solo string</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Para abrir una lista (array) y procesar cada item por separado</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Para detener el flujo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Para conectarse al API</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">2. ¿Qué hace un Aggregator?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Borra datos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Manda emails</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Lo opuesto del iterator: junta varios ítems en uno solo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Hace pausa de 1 hora</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">3. Sin Iterator, si Gmail te devuelve 10 mails y los conectás directo a Sheets…</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Crea 10 filas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Crea 1 sola fila con todo concatenado, o falla</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Te manda un mail de error</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Crea 100 filas</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">4. ¿Qué pasa si un módulo de Make falla y NO tiene error handler?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> El escenario se detiene y queda en estado de error</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Sigue como si nada</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Se reinicia solo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Te llama por teléfono</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">5. ¿Qué error handler usás si querés "avisar y seguir con el próximo ítem"?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Rollback</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Break</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Resume</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Commit</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">6. ¿Para qué sirve "Break"?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Para borrar el escenario</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Para guardar el estado del error y permitir reintento manual desde el panel</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Para acelerar el escenario</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Para reiniciar Make</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">7. ¿Qué tipo de errores son típicos en flujos productivos?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> APIs caídas, datos vacíos, rate limits, credenciales expiradas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Solo errores de tipeo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Solo errores de internet</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Ningún error existe en producción</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d"><p class="font-bold text-slate-900 mb-3">8. ¿Cómo se llama el filtro que solo deja pasar lo que cumple una condición?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Aggregator</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Iterator</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Router</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Filter</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">9. ¿Qué buena práctica conviene en flujos productivos?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> No usar nunca filtros</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Que cada módulo crítico tenga su error handler</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Borrar los logs</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Usar siempre máximo de operaciones</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">10. ¿Por qué un escenario "robusto" es valioso para una pyme?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Por estética</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Cuesta menos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Funciona sin que el dueño tenga que estar mirándolo: confianza y escala</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Da más likes</div></div></div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto"><i class="fa-solid fa-circle-check mr-2"></i>Corregir mis respuestas</button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto"><i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar quiz</button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>De los escenarios que construiste hasta hoy, ¿a cuál le agregarías error handlers urgente?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Qué procesos tuyos manejan listas (clientes, productos, órdenes) que podrías iterar?</li>
+            </ul>
+            <div class="bg-white border-2 border-purple-300 rounded-xl p-4"><p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea:</strong> "Robusto" no significa complicado. Significa que cuando falla algo, el negocio se entera y sigue funcionando. Esa es la diferencia entre un experimento y un sistema.</p></div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10"><div class="max-w-3xl mx-auto"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i><h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3></div><p class="text-amber-900 italic font-medium">Esta es la práctica más técnica del curso. Es normal que el ejercicio 3 (error handler) cueste. Si se atrasan, prioridad: que entiendan el <em>concepto</em> del Iterator y Aggregator (ej. 1 y 2). El error handler se puede revisar luego en clase 22 cuando armen su proyecto final. Recordatorio: no hace falta que TODOS los módulos tengan error handler — solo los críticos (APIs externas, llamadas a IA pagas, envío a clientes).</p></div></section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center"><div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto"><div class="text-left"><p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p><p class="font-bold text-white">IA + Automatizaciones · Práctica 21</p></div><div class="flex items-center gap-3 text-sm"><span><i class="fa-solid fa-dumbbell text-purple-400 mr-1"></i>Práctica de Clase 21</span></div></div><p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p></footer>
+    </div>
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(opt => { opt.addEventListener('click', function() { const p = this.parentElement; p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected')); this.classList.add('selected'); }); });
+        function corregirQuiz() { const ps = document.querySelectorAll('#quiz > div[data-correct]'); let c = 0; const t = ps.length; ps.forEach(p => { const co = p.getAttribute('data-correct'); const s = p.querySelector('.quiz-option.selected'); p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect')); if (s) { if (s.getAttribute('data-opt') === co) { s.classList.add('correct'); c++; } else { s.classList.add('incorrect'); p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } } else { p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } }); const r = document.getElementById('quiz-resultado'); let m = '', cl = ''; if (c === t) { m = `🎉 ¡${c}/${t}! Excelente.`; cl = 'text-emerald-600'; } else if (c >= 7) { m = `👍 ${c}/${t} — Muy bien.`; cl = 'text-emerald-600'; } else if (c >= 5) { m = `💪 ${c}/${t} — Bien, repasá.`; cl = 'text-amber-600'; } else { m = `📚 ${c}/${t} — Volvé a la clase.`; cl = 'text-red-600'; } r.className = `font-bold text-lg ml-auto ${cl}`; r.textContent = m; r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        function resetearQuiz() { document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected', 'correct', 'incorrect')); document.getElementById('quiz-resultado').textContent = ''; }
+    </script>
+</body>
+</html>

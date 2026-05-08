@@ -11,7 +11,8 @@ import {
   BookOpen,
   FileText,
   BarChart3,
-  Award,
+  // Award,  // Mi Certificado — oculto temporalmente
+  PenLine,
   Settings,
   HelpCircle,
   ChevronLeft,
@@ -28,9 +29,10 @@ interface SidebarProps {
 const menuItems = [
   { href: '/alumno/inicio', label: 'Mi Inicio', icon: Home },
   { href: '/alumno/clases', label: 'Mis Clases', icon: BookOpen },
+  { href: '/alumno/practicas', label: 'Mis Prácticas', icon: PenLine },
   { href: '/alumno/examen', label: 'Examen Final', icon: FileText },
   { href: '/alumno/progreso', label: 'Mi Progreso', icon: BarChart3 },
-  { href: '/alumno/certificado', label: 'Mi Certificado', icon: Award },
+  // { href: '/alumno/certificado', label: 'Mi Certificado', icon: Award }, // oculto — disponible en duplicado de marca
   { href: '/alumno/soporte', label: 'Soporte', icon: HelpCircle },
   { href: '/alumno/perfil', label: 'Mi Perfil', icon: Settings },
 ]

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 16 · Introducción a la Automatización | ITC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body{font-family:'Inter',sans-serif;background:#f8fafc}.prompt-box{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}details[open] .chevron{transform:rotate(90deg)}.chevron{transition:transform .2s ease}.quiz-option{transition:all .15s ease;cursor:pointer}.quiz-option:hover{background:#faf5ff}.quiz-option.selected{background:#f3e8ff;border-color:#9333ea}.quiz-option.correct{background:#d1fae5;border-color:#059669}.quiz-option.incorrect{background:#fee2e2;border-color:#dc2626}</style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 to-purple-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-purple-100 text-xs font-bold uppercase tracking-widest mb-4"><span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 16</span><span>•</span><span>Fase 2 — Automatización</span><span>•</span><span><i class="fa-solid fa-clock mr-1"></i>90 min</span></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Tu Primer Make</h1>
+            <p class="text-purple-100 text-lg mb-4 max-w-2xl">Crear cuenta + entender la lógica + armar tu primer escenario: Form → Sheets → Gmail.</p>
+            <div class="flex flex-wrap gap-2"><span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span><span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">AUTOMATIZACIÓN</span></div>
+        </header>
+
+        <section class="bg-purple-50 border-l-8 border-purple-600 p-6 rounded-xl m-6"><div class="flex items-start gap-4"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div><div><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700 mb-1">Cómo trabajar esta práctica</h2><p class="text-base text-slate-800">Bienvenido/a a la <strong>Fase 2</strong>. Acá empezás a construir la "fábrica" de tu negocio. 90 min, paciencia y muchos screenshots de tus avances.</p></div></div></section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200"><h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Repaso</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-purple-800">Ej. 1 — Cuenta Make</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>30 min</strong><br><span class="text-purple-800">Ej. 2 — Form-Sheets</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-purple-800">Ej. 3 — + Gmail</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Quiz</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-bolt text-purple-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700">Repaso flash · 5 min</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">3 conceptos clave</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Trigger (disparador)</p><p class="text-xs text-slate-700">El "evento" que arranca todo. Ej: "alguien completó el formulario" o "llegó un mail".</p></div>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Módulo</p><p class="text-xs text-slate-700">Cada paso del flujo. Cada caja redonda en Make. Conecta una app con otra.</p></div>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Escenario</p><p class="text-xs text-slate-700">El flujo completo: trigger + 1 o más módulos. Es la "automatización".</p></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-user-plus text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 1 · 15 min</p><h3 class="text-2xl font-extrabold text-slate-900">Crear tu cuenta de Make</h3></div></div>
+            <p class="text-slate-700 mb-4">Andá a <a target="_blank" rel="noopener noreferrer" href="https://www.make.com" class="text-purple-600 underline font-semibold">make.com</a>. Creá una cuenta gratuita (con tu Google funciona). Explorá: Scenarios, Connections, Templates.</p>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>El plan gratuito da <strong>1.000 operaciones / mes</strong>. Cada vez que un módulo se ejecuta = 1 operación. Para empezar es más que suficiente. Hacé "Take a tour" si te ofrece, te muestra todo en 5 min.</p></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> entrás al dashboard de Make logueado/a y entendés qué es Scenarios y Connections.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-table text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 2 · 30 min</p><h3 class="text-2xl font-extrabold text-slate-900">Form → Sheets (tu primer escenario)</h3></div></div>
+            <p class="text-slate-700 mb-4">Vas a armar el escenario más clásico del mundo: cuando alguien complete un Google Form, la respuesta se guarda automáticamente en una Google Sheet.</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="font-bold text-slate-900 mb-2 text-sm">Pasos:</p>
+                <ol class="list-decimal list-inside space-y-2 text-sm text-slate-700 ml-2">
+                    <li>En tu Google Drive, creá un Google Form de prueba con 3 preguntas: Nombre, Email, Mensaje.</li>
+                    <li>Creá un Google Sheets vacío con esas 3 columnas en la primera fila.</li>
+                    <li>En Make: <strong>+ Create new scenario</strong>.</li>
+                    <li>Primer módulo: <strong>Google Forms → Watch Responses</strong>. Conectá tu cuenta y elegí el form.</li>
+                    <li>Segundo módulo: <strong>Google Sheets → Add a Row</strong>. Conectá la sheet y mapeá: Nombre → columna A, Email → columna B, Mensaje → columna C.</li>
+                    <li>Probalo: completá el form y mirá si aparece la fila en la sheet.</li>
+                </ol>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>Para que el trigger de Forms funcione, tenés que ejecutar el escenario manualmente la primera vez ("Run once") y completar el form para que Make capte la estructura. Después podés activarlo (botón Switch ON abajo a la izquierda).</p></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> al completar el form aparece la fila en la sheet automáticamente.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50 border-y-4 border-purple-200"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-envelope text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 3 · 25 min</p><h3 class="text-2xl font-extrabold text-purple-900">Sumá Gmail al flujo</h3></div></div>
+            <p class="text-slate-800 mb-4">Volvé al escenario del Ejercicio 2 y sumale un <strong>tercer módulo</strong>: cuando alguien complete el form, además de guardarse en Sheets, también te llega un mail a vos avisándote que llegó una consulta.</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="font-bold text-slate-900 mb-2 text-sm">Estructura final:</p>
+                <p class="text-sm text-slate-700 mb-2 font-mono">Google Forms → Google Sheets → Gmail (Send Email)</p>
+                <p class="font-bold text-slate-900 mb-2 text-sm mt-3">El mail debería decir:</p>
+                <div class="bg-slate-50 rounded p-3 text-sm">
+                    <p>Asunto: 🔔 Nueva consulta de [Nombre]</p>
+                    <p>Cuerpo: Hola, te llegó una consulta nueva.<br>Nombre: [Nombre]<br>Email: [Email]<br>Mensaje: [Mensaje]<br><br>Respondele cuanto antes.</p>
+                </div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>En Make, cuando agregues el módulo de Gmail "Send Email":</p><ul class="list-disc list-inside ml-2 mt-1"><li>Para el campo "To" → tu propio mail</li><li>Para "Subject" → escribí "Nueva consulta de " y arrastrá el campo "Nombre" del módulo de Forms</li><li>Para "Body" → mismo método, mezclás texto fijo + variables del form</li></ul></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> al completar el form: aparece fila en Sheets + recibís mail con los datos.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-question text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Quiz opcional · 15 min</p><h3 class="text-2xl font-extrabold text-slate-900">10 preguntas</h3></div></div>
+
+            <div id="quiz" class="space-y-5">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">1. ¿Qué es un trigger?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Una contraseña</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> El evento que arranca el escenario</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Un mail</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Un módulo final</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">2. ¿Qué es un módulo?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> El sueldo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Una cuenta de Google</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Cada paso del flujo: una app conectada</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> El nombre del escenario</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">3. ¿Qué cuenta gratuita da Make?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> 1.000 operaciones / mes</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Ilimitado</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> 100 / día</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Cero</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">4. ¿Qué es una "operación" en Make?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Cada login</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Cada vez que un módulo se ejecuta</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Cada escenario nuevo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Cada conexión</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d"><p class="font-bold text-slate-900 mb-3">5. ¿Cómo se llama "el flujo completo" en Make?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Workflow</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Pipeline</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Bot</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Escenario / Scenario</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">6. ¿Para "encender" un escenario qué hacés?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Lo borrás</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Apretás el switch ON abajo a la izquierda</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Le das save</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Lo descargás</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">7. ¿Qué hace "Run once"?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Lo ejecuta para siempre</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Borra el escenario</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Lo ejecuta una sola vez para probarlo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Lo agenda</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">8. ¿Qué es "mapear" un campo?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Conectar un dato del módulo anterior con el siguiente</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Imprimirlo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Borrarlo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Subirlo</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">9. ¿Cuántos módulos puede tener un escenario?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Solo 2</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Tantos como quieras (con límites del plan)</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Solo 5</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Solo 10</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">10. ¿Qué tarea conviene automatizar primero?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Contratar empleados</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Decisiones complejas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Tareas repetitivas que hacés todos los días sin pensar</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Atención al cliente VIP</div></div></div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto"><i class="fa-solid fa-circle-check mr-2"></i>Corregir mis respuestas</button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto"><i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar quiz</button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-purple-50"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Qué tarea de tu negocio podrías automatizar con un trigger Form/Sheets/Mail?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Cuántos minutos te ahorraría 1 vez por día?</li>
+            </ul>
+            <div class="bg-white border-2 border-purple-300 rounded-xl p-4"><p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea:</strong> renombrá el escenario "Ejercicio práctica 16" para encontrarlo después. Make va a tener decenas con el tiempo.</p></div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10"><div class="max-w-3xl mx-auto"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i><h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3></div><p class="text-amber-900 italic font-medium">Esta es la práctica que más fricción genera por las conexiones de Google. Tener listo un Google Form y una Sheet de demo por si algún alumno no logra crearlas. La autenticación de Google a veces da error 403 — paciencia, suele ser un tema de permisos de cuenta corporativa.</p></div></section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center"><div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto"><div class="text-left"><p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p><p class="font-bold text-white">IA + Automatizaciones · Práctica 16</p></div><div class="flex items-center gap-3 text-sm"><span><i class="fa-solid fa-dumbbell text-purple-400 mr-1"></i>Práctica de Clase 16</span></div></div><p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p></footer>
+    </div>
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(opt => { opt.addEventListener('click', function() { const p = this.parentElement; p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected')); this.classList.add('selected'); }); });
+        function corregirQuiz() { const ps = document.querySelectorAll('#quiz > div[data-correct]'); let c = 0; const t = ps.length; ps.forEach(p => { const co = p.getAttribute('data-correct'); const s = p.querySelector('.quiz-option.selected'); p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect')); if (s) { if (s.getAttribute('data-opt') === co) { s.classList.add('correct'); c++; } else { s.classList.add('incorrect'); p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } } else { p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } }); const r = document.getElementById('quiz-resultado'); let m = '', cl = ''; if (c === t) { m = `🎉 ¡${c}/${t}! Excelente.`; cl = 'text-emerald-600'; } else if (c >= 7) { m = `👍 ${c}/${t} — Muy bien.`; cl = 'text-emerald-600'; } else if (c >= 5) { m = `💪 ${c}/${t} — Bien, repasá.`; cl = 'text-amber-600'; } else { m = `📚 ${c}/${t} — Volvé a la clase.`; cl = 'text-red-600'; } r.className = `font-bold text-lg ml-auto ${cl}`; r.textContent = m; r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        function resetearQuiz() { document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected', 'correct', 'incorrect')); document.getElementById('quiz-resultado').textContent = ''; }
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 05 · Diseño Visual con IA | ITC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; } .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        details > summary { cursor: pointer; list-style: none; } details > summary::-webkit-details-marker { display: none; }
+        details[open] .chevron { transform: rotate(90deg); } .chevron { transition: transform 0.2s ease; }
+        .quiz-option { transition: all 0.15s ease; cursor: pointer; }
+        .quiz-option:hover { background: #fdf2f8; } .quiz-option.selected { background: #fce7f3; border-color: #db2777; }
+        .quiz-option.correct { background: #d1fae5; border-color: #059669; } .quiz-option.incorrect { background: #fee2e2; border-color: #dc2626; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 to-pink-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-pink-100 text-xs font-bold uppercase tracking-widest mb-4"><span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 05</span><span>•</span><span>Fase 1 — IA Aplicada</span><span>•</span><span><i class="fa-solid fa-clock mr-1"></i>90 min</span></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Diseño Visual con IA</h1>
+            <p class="text-pink-100 text-lg mb-4 max-w-2xl">Generar imágenes profesionales de tu negocio con Ideogram, Firefly y Remove.bg. Sin diseñador. Sin saber Photoshop.</p>
+            <div class="flex flex-wrap gap-2"><span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span><span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">DISEÑO CON IA</span></div>
+        </header>
+
+        <section class="bg-pink-50 border-l-8 border-pink-600 p-6 rounded-xl m-6"><div class="flex items-start gap-4"><div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div><div><h2 class="text-xs uppercase tracking-widest font-bold text-pink-700 mb-1">Cómo trabajar esta práctica</h2><p class="text-base text-slate-800">90 minutos. <strong>Pista opcional</strong> en cada ejercicio. <strong>Quiz opcional</strong> al final. <strong>No corre puntaje.</strong></p></div></div></section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la práctica</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Repaso flash</span></div>
+                <div class="bg-pink-100 p-3 rounded-lg"><strong>30 min</strong><br><span class="text-pink-800">Ej. 1 — 3 imágenes</span></div>
+                <div class="bg-pink-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-pink-800">Ej. 2 — Quitar fondo</span></div>
+                <div class="bg-pink-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-pink-800">Ej. 3 — Variantes</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Quiz opcional</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-bolt text-pink-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-pink-700">Repaso flash · 5 min</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Los 6 ingredientes del prompt visual</h3>
+            <div class="grid md:grid-cols-3 gap-3">
+                <div class="bg-pink-50 border border-pink-200 rounded-xl p-3 text-sm"><strong class="text-pink-900">Sujeto:</strong> <span class="text-slate-700">qué/quién</span></div>
+                <div class="bg-pink-50 border border-pink-200 rounded-xl p-3 text-sm"><strong class="text-pink-900">Escena:</strong> <span class="text-slate-700">dónde</span></div>
+                <div class="bg-pink-50 border border-pink-200 rounded-xl p-3 text-sm"><strong class="text-pink-900">Luz:</strong> <span class="text-slate-700">tipo de iluminación</span></div>
+                <div class="bg-pink-50 border border-pink-200 rounded-xl p-3 text-sm"><strong class="text-pink-900">Estilo:</strong> <span class="text-slate-700">foto / ilustración</span></div>
+                <div class="bg-pink-50 border border-pink-200 rounded-xl p-3 text-sm"><strong class="text-pink-900">Toma:</strong> <span class="text-slate-700">close-up, plano gral.</span></div>
+                <div class="bg-pink-50 border border-pink-200 rounded-xl p-3 text-sm"><strong class="text-pink-900">Formato:</strong> <span class="text-slate-700">1:1, 9:16, 16:9</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-3"><div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-image text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-pink-700">Ejercicio 1 · 30 min</p><h3 class="text-2xl font-extrabold text-slate-900">Generá 3 imágenes para tu negocio</h3></div></div>
+            <p class="text-slate-700 mb-4">Andá a <a target="_blank" rel="noopener noreferrer" href="https://ideogram.ai" class="text-pink-600 underline font-semibold">ideogram.ai</a> (gratis con cuenta Google). Generá 3 imágenes para tu negocio: una para producto, una para promo, una para historia/branding.</p>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
+                <summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver plantilla</summary>
+                <div class="mt-3 text-sm text-amber-900"><div class="prompt-box text-slate-100 rounded-xl p-4 font-mono text-xs"><p>[Sujeto: producto detallado] sobre [escena: superficie de madera clara],<br>[luz: natural lateral suave de mañana],<br>[estilo: foto profesional, hiperrealista],<br>[toma: cenital, encuadrado al producto],<br>[formato: 1:1 cuadrado para Instagram],<br>colores cálidos, fondo desenfocado.</p></div></div>
+            </details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tenés 3 imágenes descargadas que sirven para usar en tus redes hoy mismo.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-3"><div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-eraser text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-pink-700">Ejercicio 2 · 20 min</p><h3 class="text-2xl font-extrabold text-slate-900">Quitar fondo a una foto real</h3></div></div>
+            <p class="text-slate-700 mb-4">Sacale una foto a <strong>cualquier objeto</strong> con tu celular (un producto, un mate, lo que tengas a mano). Andá a <a target="_blank" rel="noopener noreferrer" href="https://www.remove.bg" class="text-pink-600 underline font-semibold">remove.bg</a>, subí la foto, descargá la versión sin fondo. Después usá Ideogram o Firefly para reemplazar el fondo por uno generado.</p>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
+                <summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary>
+                <div class="mt-3 text-sm text-amber-900"><p>Si remove.bg no te alcanza, probá <a target="_blank" rel="noopener noreferrer" href="https://www.adobe.com/express/feature/image/remove-background" class="underline">Adobe Express</a> (gratis con cuenta). Y para reemplazar el fondo, en Firefly hay opción "Generative Fill" que reemplaza zonas específicas.</p></div>
+            </details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tenés tu objeto con un fondo nuevo profesional, pasaste de "foto casera" a "foto de catálogo".</p></div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-pink-50 border-y-4 border-pink-200">
+            <div class="flex items-center gap-3 mb-3"><div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-clone text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-pink-700">Ejercicio 3 · 20 min</p><h3 class="text-2xl font-extrabold text-pink-900">5 variantes del mismo concepto</h3></div></div>
+            <p class="text-slate-800 mb-4">Tomá una de las imágenes del Ejercicio 1 y pedile a Ideogram <strong>5 variantes del mismo concepto</strong> cambiando solo: estilo, paleta de color, ángulo, ambiente, hora del día. Compará las 5 y elegí cuál sería tu "imagen oficial" para esa publicación.</p>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
+                <summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary>
+                <div class="mt-3 text-sm text-amber-900"><p>Cambiá un solo ingrediente por vez para entender qué efecto tiene cada variable:</p><ul class="list-disc list-inside ml-2 mt-1"><li>V1: foto realista</li><li>V2: estilo ilustración minimalista</li><li>V3: con luz dramática nocturna</li><li>V4: con paleta pastel</li><li>V5: cenital "flat lay"</li></ul></div>
+            </details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> elegiste una de las 5 variantes y podés explicar por qué encaja con la identidad de tu marca.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-3"><div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-question text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Quiz opcional · 15 min</p><h3 class="text-2xl font-extrabold text-slate-900">10 preguntas</h3></div></div>
+
+            <div id="quiz" class="space-y-5">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">1. ¿Cuántos ingredientes tiene un buen prompt visual?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> 3</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> 6 (sujeto, escena, luz, estilo, toma, formato)</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> 10</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> 1, solo el sujeto</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">2. ¿Cuál herramienta es gratis para quitar fondo?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Photoshop completo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Microsoft Word</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> remove.bg / Adobe Express</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Excel</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">3. ¿Qué formato es para Reels y Stories?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> 1:1</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> 9:16 (vertical)</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> 16:9 (horizontal)</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> 4:3</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d"><p class="font-bold text-slate-900 mb-3">4. ¿Qué es un "flat lay"?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Una hamaca</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Una foto borrosa</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Una foto en movimiento</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Una toma cenital con objetos acomodados sobre una superficie</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">5. ¿Por qué probar 5 variantes de la misma idea?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Para entender qué afecta cada variable y elegir mejor</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Para usar las 5</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Para gastar tokens</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> No tiene sentido</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">6. ¿Para qué generar imágenes con IA en lugar de fotos reales?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Reemplazar todo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Para conceptos, fondos, ambientaciones cuando no podés hacer una foto real</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Para engañar al cliente</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Es siempre mejor IA</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">7. ¿Qué herramientas vimos en clase?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Excel y Word</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> WhatsApp y Gmail</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Ideogram, Firefly y Remove.bg</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Solo MidJourney</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">8. ¿Cuál es la mejor descripción de "luz cinematográfica"?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Luz fluorescente plana</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Luz dramática con sombras y contraste</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Sin luz</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Solo blanco y negro</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">9. ¿Qué hacer si la imagen sale "rara" (manos extra, ojos raros)?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Regenerar y ajustar el prompt</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Subirla así</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Cerrar la app</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Desinstalar</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d"><p class="font-bold text-slate-900 mb-3">10. ¿Qué hacer con las imágenes generadas que te gusten?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Borrarlas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Ignorarlas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Compartir el prompt en redes</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Guardarlas + guardar el prompt que las generó (para reusar)</div></div></div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-pink-600 hover:bg-pink-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto"><i class="fa-solid fa-circle-check mr-2"></i>Corregir mis respuestas</button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto"><i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar quiz</button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-pink-50">
+            <div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-pink-600 mt-1"></i>¿Cuántas fotos profesionales generaste hoy sin pagar a un fotógrafo?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-pink-600 mt-1"></i>¿Qué imagen vas a publicar primero?</li>
+            </ul>
+            <div class="bg-white border-2 border-pink-300 rounded-xl p-4"><p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea para llevarte:</strong> guardá los <strong>prompts visuales</strong>, no solo las imágenes. Un buen prompt es reusable.</p></div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10"><div class="max-w-3xl mx-auto"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i><h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3></div><p class="text-amber-900 italic font-medium">Algunos alumnos van a frustrarse porque "la IA hace caras raras". Es normal: explicar que se itera. Ideogram tiene plan free generoso pero limitado, recordales no quemarlo en pruebas.</p></div></section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center"><div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto"><div class="text-left"><p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p><p class="font-bold text-white">IA + Automatizaciones · Práctica 05</p></div><div class="flex items-center gap-3 text-sm"><span><i class="fa-solid fa-dumbbell text-pink-400 mr-1"></i>Práctica de Clase 05</span></div></div><p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p></footer>
+    </div>
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(opt => { opt.addEventListener('click', function() { const p = this.parentElement; p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected')); this.classList.add('selected'); }); });
+        function corregirQuiz() { const ps = document.querySelectorAll('#quiz > div[data-correct]'); let c = 0; const t = ps.length; ps.forEach(p => { const co = p.getAttribute('data-correct'); const s = p.querySelector('.quiz-option.selected'); p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect')); if (s) { if (s.getAttribute('data-opt') === co) { s.classList.add('correct'); c++; } else { s.classList.add('incorrect'); p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } } else { p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } }); const r = document.getElementById('quiz-resultado'); let m = '', cl = ''; if (c === t) { m = `🎉 ¡${c}/${t}! Excelente.`; cl = 'text-emerald-600'; } else if (c >= 7) { m = `👍 ${c}/${t} — Muy bien.`; cl = 'text-emerald-600'; } else if (c >= 5) { m = `💪 ${c}/${t} — Bien, repasá.`; cl = 'text-amber-600'; } else { m = `📚 ${c}/${t} — Volvé a la clase.`; cl = 'text-red-600'; } r.className = `font-bold text-lg ml-auto ${cl}`; r.textContent = m; r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        function resetearQuiz() { document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected', 'correct', 'incorrect')); document.getElementById('quiz-resultado').textContent = ''; }
+    </script>
+</body>
+</html>

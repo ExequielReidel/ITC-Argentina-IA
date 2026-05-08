@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 22 · Proyecto Final | ITC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body{font-family:'Inter',sans-serif;background:#f8fafc}.step-card{transition:all .3s ease}.step-card:hover{transform:translateY(-4px);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}.prompt-box{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}details[open] .chevron{transform:rotate(90deg)}.chevron{transition:transform .2s ease}.checklist input[type="checkbox"]{width:1.25rem;height:1.25rem;accent-color:#059669;cursor:pointer}.checklist label{cursor:pointer}.checklist input:checked + label{text-decoration:line-through;color:#64748b}</style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 to-emerald-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-emerald-100 text-xs font-bold uppercase tracking-widest mb-4"><span><i class="fa-solid fa-trophy mr-1"></i>Práctica 22</span><span>•</span><span>Fase 2 — Cierre del curso</span><span>•</span><span><i class="fa-solid fa-clock mr-1"></i>90 min</span></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Tu Proyecto Final</h1>
+            <p class="text-emerald-100 text-lg mb-4 max-w-2xl">Es la última clase. Hoy armás (o terminás de pulir) el sistema que vas a presentar. Es tuyo, es real, es el certificado que te llevás puesto.</p>
+            <div class="flex flex-wrap gap-2"><span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span><span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PROYECTO</span></div>
+        </header>
+
+        <section class="bg-emerald-50 border-l-8 border-emerald-600 p-6 rounded-xl m-6"><div class="flex items-start gap-4"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div><div><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700 mb-1">Cómo trabajar esta práctica</h2><p class="text-base text-slate-800">No es un quiz. No es teoría. Son 90 min para que <strong>tu proyecto quede listo</strong>. La presentación se hace en aula al final. Lo que armes hoy lo vas a poder seguir usando mañana en tu negocio.</p></div></div></section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200"><h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Definir caso</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>30 min</strong><br><span class="text-emerald-800">Bloque 1 — IA</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>30 min</strong><br><span class="text-emerald-800">Bloque 2 — Automatización</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-emerald-800">Bloque 3 — Pres.</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-amber-800">Checklist</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-bullseye text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-emerald-700">Bloque 0 · 10 min</p><h3 class="text-2xl font-extrabold text-slate-900">Definí (o reconfirmá) tu caso</h3></div></div>
+            <p class="text-slate-700 mb-4">Si ya tenías tu caso de la Práctica 15, perfecto. Si todavía no lo definiste o querés cambiarlo, este es el momento. Necesitamos en una sola hoja:</p>
+
+            <div class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-5 mb-4">
+                <p class="font-bold text-emerald-900 mb-3"><i class="fa-solid fa-clipboard-list mr-2"></i>Plantilla del caso (escribilo en una hoja o doc):</p>
+                <ol class="list-decimal list-inside space-y-2 text-sm text-slate-800">
+                    <li><strong>Negocio:</strong> ¿qué hacés? (rubro, tamaño, lugar)</li>
+                    <li><strong>Problema concreto:</strong> 1 frase. "Pierdo X horas/semana en Y".</li>
+                    <li><strong>Solución:</strong> 1 frase. "Voy a usar [IA / automatización / ambas] para…".</li>
+                    <li><strong>Impacto esperado:</strong> tiempo ahorrado, conversiones extra, errores evitados.</li>
+                </ol>
+                <p class="mt-3 text-xs text-emerald-700 italic"><i class="fa-solid fa-lightbulb mr-1"></i>Ejemplo: "Tengo un almacén de barrio en Junín. Pierdo 1 hora todos los lunes contestando precios por WhatsApp. Voy a usar un GPT personalizado con mi lista de productos + un flujo Make que lo notifique cuando alguien pregunte por algo que no está en stock. Ahorro: 4-5 hs por mes y dejo de perder consultas."</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50"><div class="flex items-center gap-3 mb-3"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-robot text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-emerald-700">Bloque 1 · 30 min</p><h3 class="text-2xl font-extrabold text-slate-900">Bloque IA · al menos 1 entregable</h3></div></div>
+            <p class="text-slate-700 mb-4">Tu proyecto debe tener <strong>al menos uno</strong> de estos componentes IA, listo para mostrar:</p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-white border-l-4 border-blue-500 rounded-lg p-4 step-card">
+                    <p class="font-bold text-blue-900 mb-1"><i class="fa-solid fa-quote-right mr-2"></i>Opción A: Plantillas de prompts</p>
+                    <p class="text-sm text-slate-700">Documento con 5-10 prompts probados, listos para que vos o tu equipo copien y peguen. Cada uno con su contexto y variables.</p>
+                </div>
+                <div class="bg-white border-l-4 border-purple-500 rounded-lg p-4 step-card">
+                    <p class="font-bold text-purple-900 mb-1"><i class="fa-solid fa-microchip mr-2"></i>Opción B: GPT personalizado</p>
+                    <p class="text-sm text-slate-700">Un GPT a medida cargado con tu data (lista de productos, FAQs, tono). Si no tenés Plus, simulalo con prompt + chat largo.</p>
+                </div>
+                <div class="bg-white border-l-4 border-pink-500 rounded-lg p-4 step-card">
+                    <p class="font-bold text-pink-900 mb-1"><i class="fa-solid fa-image mr-2"></i>Opción C: Pack de contenido visual</p>
+                    <p class="text-sm text-slate-700">Mínimo 3 piezas hechas con IA + Canva: flyer, post IG, Reel. Coherentes con tu identidad.</p>
+                </div>
+                <div class="bg-white border-l-4 border-violet-500 rounded-lg p-4 step-card">
+                    <p class="font-bold text-violet-900 mb-1"><i class="fa-solid fa-chart-line mr-2"></i>Opción D: Análisis de datos con IA</p>
+                    <p class="text-sm text-slate-700">Tomaste una planilla real (ventas, clientes), la procesaste con IA y armaste un reporte de 1 página con insights.</p>
+                </div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista si te trabás</summary><div class="mt-3 text-sm text-amber-900"><p>El error más común: querer hacer las 4. <strong>Elegí UNA</strong>, que sea la que más impacto tiene en tu negocio. Más vale 1 cosa terminada que 4 a medias.</p><p class="mt-2">Si todavía no sabés cuál: la opción A (plantillas de prompts) es la más rápida y la que más usás todos los días.</p></div></details>
+
+            <div class="bg-emerald-100 border-l-4 border-emerald-600 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-700 mr-2"></i><strong>Listo si:</strong> el componente IA está terminado, probado, y guardado en algún lado (Drive, Notion, papel impreso).</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-bolt text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-emerald-700">Bloque 2 · 30 min</p><h3 class="text-2xl font-extrabold text-slate-900">Bloque Automatización · al menos 1 escenario</h3></div></div>
+            <p class="text-slate-700 mb-4">Tu proyecto también debe tener <strong>al menos un escenario Make funcional</strong> conectado a tu negocio. No tiene que ser complejo: tiene que servir.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-white border-l-4 border-emerald-500 rounded-lg p-4">
+                    <p class="font-bold text-emerald-900 mb-1">Idea simple</p>
+                    <p class="text-sm text-slate-700">Form → Sheets → Telegram (notif. de lead). 3 módulos. Funciona.</p>
+                </div>
+                <div class="bg-white border-l-4 border-emerald-500 rounded-lg p-4">
+                    <p class="font-bold text-emerald-900 mb-1">Idea intermedia</p>
+                    <p class="text-sm text-slate-700">Gmail → IA clasifica → Router → distintas acciones (Práctica 20 adaptada a tu rubro).</p>
+                </div>
+                <div class="bg-white border-l-4 border-emerald-500 rounded-lg p-4">
+                    <p class="font-bold text-emerald-900 mb-1">Idea ambiciosa</p>
+                    <p class="text-sm text-slate-700">Schedule diario → API externa → IA resume → mensaje a tu Telegram con info útil del día.</p>
+                </div>
+                <div class="bg-white border-l-4 border-emerald-500 rounded-lg p-4">
+                    <p class="font-bold text-emerald-900 mb-1">Idea para Pyme establecida</p>
+                    <p class="text-sm text-slate-700">Sheets de pedidos → cuando se marca "ENVIADO" → IA arma mail al cliente con tracking → Gmail lo manda.</p>
+                </div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p><strong>Regla de oro:</strong> que el escenario esté <strong>activado</strong> (no en "On demand"). Si no lo activás, no es un proyecto, es un boceto.</p><p class="mt-2">Para presentar: tené listo un Run once o un screenshot de las últimas ejecuciones exitosas. Eso prueba que funciona.</p></div></details>
+
+            <div class="bg-emerald-100 border-l-4 border-emerald-600 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-700 mr-2"></i><strong>Listo si:</strong> tu escenario está activo, ejecutado al menos 1 vez con éxito, y lo podés mostrar en pantalla.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-emerald-50 border-y-4 border-emerald-200"><div class="flex items-center gap-3 mb-3"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-presentation-screen text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-emerald-700">Bloque 3 · 15 min</p><h3 class="text-2xl font-extrabold text-emerald-900">Estructura de la presentación (5 min)</h3></div></div>
+            <p class="text-slate-800 mb-4">Cada alumno presenta 5 minutos al cierre. Estructura sugerida (cronometralo, en serio):</p>
+
+            <div class="space-y-2 mb-4">
+                <div class="bg-white border border-emerald-300 rounded-lg p-3"><p class="font-bold text-emerald-900"><span class="bg-emerald-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">1</span>30 seg — Quién sos y qué hacés</p><p class="text-xs text-slate-600 ml-8">Nombre, negocio, ciudad. 2 frases.</p></div>
+                <div class="bg-white border border-emerald-300 rounded-lg p-3"><p class="font-bold text-emerald-900"><span class="bg-emerald-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">2</span>1 min — El problema</p><p class="text-xs text-slate-600 ml-8">¿Cuál era el dolor concreto? Hablá en horas/plata/clientes perdidos, no abstracciones.</p></div>
+                <div class="bg-white border border-emerald-300 rounded-lg p-3"><p class="font-bold text-emerald-900"><span class="bg-emerald-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">3</span>2 min — Demo en vivo</p><p class="text-xs text-slate-600 ml-8">Mostrá la pantalla. Hacé un Run once. Mostrá el GPT contestando. Que vean que funciona.</p></div>
+                <div class="bg-white border border-emerald-300 rounded-lg p-3"><p class="font-bold text-emerald-900"><span class="bg-emerald-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">4</span>1 min — Impacto + próximos pasos</p><p class="text-xs text-slate-600 ml-8">¿Cuánto te ahorra? ¿Qué vas a sumar después? La continuidad muestra que esto no terminó hoy.</p></div>
+                <div class="bg-white border border-emerald-300 rounded-lg p-3"><p class="font-bold text-emerald-900"><span class="bg-emerald-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">5</span>30 seg — 1 cosa que aprendiste</p><p class="text-xs text-slate-600 ml-8">No del proyecto, del curso. Esto es lo más importante para vos.</p></div>
+            </div>
+
+            <details class="bg-white border border-emerald-300 rounded-xl p-4 mb-4"><summary class="font-bold text-emerald-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-emerald-600"></i><i class="fa-solid fa-lightbulb text-emerald-600"></i> Tocá para tips de presentación</summary><div class="mt-3 text-sm text-slate-800 space-y-1">
+                <p>• <strong>No leas slides</strong>. Si tenés slides, que sean 3 o 4, con poca letra.</p>
+                <p>• <strong>El demo en vivo es lo más impactante</strong>. Pase lo que pase, mostralo.</p>
+                <p>• <strong>Si algo falla</strong>, no te paralices. Decí "aquí debería pasar X" y pasá al siguiente bloque. Pasa, no es grave.</p>
+                <p>• <strong>Cronometralo en casa</strong> al menos una vez. 5 min se vuelan.</p>
+                <p>• <strong>Mirá al curso</strong>, no a la pantalla.</p>
+            </div></details>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-emerald-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-clipboard-check text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-emerald-700">Checklist final · 5 min</p><h3 class="text-2xl font-extrabold text-slate-900">Tildá lo que ya tenés listo</h3></div></div>
+            <p class="text-slate-700 mb-4">Antes de presentar, asegurate de tener todos estos puntos. Tildá los que ya cumpliste:</p>
+
+            <div class="checklist space-y-3 bg-slate-50 rounded-xl p-5">
+                <div class="flex items-center gap-3"><input type="checkbox" id="c1"><label for="c1" class="text-slate-800">Mi caso (negocio + problema + solución + impacto) está escrito en una hoja o doc.</label></div>
+                <div class="flex items-center gap-3"><input type="checkbox" id="c2"><label for="c2" class="text-slate-800">Tengo al menos 1 entregable de IA terminado y guardado.</label></div>
+                <div class="flex items-center gap-3"><input type="checkbox" id="c3"><label for="c3" class="text-slate-800">Tengo al menos 1 escenario de Make activo y probado.</label></div>
+                <div class="flex items-center gap-3"><input type="checkbox" id="c4"><label for="c4" class="text-slate-800">Practiqué la presentación al menos una vez completa, cronometrada.</label></div>
+                <div class="flex items-center gap-3"><input type="checkbox" id="c5"><label for="c5" class="text-slate-800">Tengo en mi celu/PC todo lo que necesito mostrar en pantalla (Make, Sheets, ChatGPT, Telegram).</label></div>
+                <div class="flex items-center gap-3"><input type="checkbox" id="c6"><label for="c6" class="text-slate-800">Pensé qué voy a hacer si la conexión a internet en aula es lenta (¿tengo screenshots de respaldo?).</label></div>
+                <div class="flex items-center gap-3"><input type="checkbox" id="c7"><label for="c7" class="text-slate-800">Identifiqué la cosa más importante que aprendí del curso (la frase del cierre).</label></div>
+                <div class="flex items-center gap-3"><input type="checkbox" id="c8"><label for="c8" class="text-slate-800">Tengo claro qué voy a hacer en mi negocio en los próximos 30 días con esto.</label></div>
+            </div>
+
+            <div class="mt-6 bg-emerald-100 border-2 border-emerald-400 rounded-xl p-5">
+                <p class="text-emerald-900 font-bold text-lg mb-2"><i class="fa-solid fa-trophy mr-2"></i>Si tildaste 6 o más, estás listo.</p>
+                <p class="text-sm text-slate-700">Si tildaste 3 o menos: respirá, priorizá los primeros 3 ítems (caso + IA + Make). El resto se acomoda.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-emerald-50"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre del curso</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Lo que te llevás</h3>
+            <p class="text-slate-700 mb-4">Hace 22 clases no sabías diferenciar un prompt de un trigger. Hoy diseñaste un sistema integrado de IA + Automatización adaptado a tu negocio. Eso ya es valioso. Pero lo más importante:</p>
+
+            <div class="bg-white border-2 border-emerald-300 rounded-xl p-5 mb-4">
+                <p class="text-slate-800 italic text-lg">Aprendiste a <strong>mirar tu negocio con ojos de automatizador</strong>. Vas a empezar a ver oportunidades en lugares donde antes solo veías trabajo manual. Y eso ya no se desaprende.</p>
+            </div>
+
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Tenés herramientas que muchos profesionales aún no entienden.</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Tenés un proyecto real corriendo en tu negocio.</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Tenés certificado privado con validez nacional, respaldado por UDEMM.</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-600 mt-1"></i>Tenés una red de compañeros que arrancan al mismo tiempo: aprovechala.</li>
+            </ul>
+
+            <div class="bg-emerald-700 text-white rounded-xl p-5 text-center">
+                <p class="text-2xl font-extrabold mb-1">¡Felicitaciones!</p>
+                <p class="text-emerald-100">Sos parte oficial de los +65.000 alumnos de ITC Argentina.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10"><div class="max-w-3xl mx-auto"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i><h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3></div><p class="text-amber-900 italic font-medium">Día especial. Cuidado con los nervios de los alumnos. Si alguien no llegó con todo terminado, NO lo dejes afuera de la presentación: que muestre lo que tiene, aunque sea mínimo. La presentación es ejercicio de comunicación, no de perfección. Reservá 30 min al final para entrega de certificados, foto grupal y networking — eso es lo que les queda en la memoria. Importante: recordales que pueden volver a contactar a la institución para consultas durante 6 meses post-curso.</p></div></section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center"><div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto"><div class="text-left"><p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p><p class="font-bold text-white">IA + Automatizaciones · Práctica 22</p></div><div class="flex items-center gap-3 text-sm"><span><i class="fa-solid fa-trophy text-amber-400 mr-1"></i>Última práctica del curso</span></div></div><p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p></footer>
+    </div>
+</body>
+</html>

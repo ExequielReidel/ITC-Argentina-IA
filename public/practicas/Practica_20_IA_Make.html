@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 20 · IA + Make: tu Empleado Digital | ITC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body{font-family:'Inter',sans-serif;background:#f8fafc}.step-card{transition:all .3s ease}.step-card:hover{transform:translateY(-4px);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}.prompt-box{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}details[open] .chevron{transform:rotate(90deg)}.chevron{transition:transform .2s ease}.quiz-option{transition:all .15s ease;cursor:pointer}.quiz-option:hover{background:#f5f3ff}.quiz-option.selected{background:#ede9fe;border-color:#7c3aed}.quiz-option.correct{background:#d1fae5;border-color:#059669}.quiz-option.incorrect{background:#fee2e2;border-color:#dc2626}</style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 via-purple-700 to-emerald-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-purple-100 text-xs font-bold uppercase tracking-widest mb-4"><span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 20</span><span>•</span><span>Fase 2 — Automatización</span><span>•</span><span><i class="fa-solid fa-clock mr-1"></i>90 min</span></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">IA + Make: tu Empleado Digital</h1>
+            <p class="text-purple-100 text-lg mb-4 max-w-2xl">Acá pasa la magia: la IA dentro del flujo. Lee el mail, lo entiende, lo clasifica y actúa solo.</p>
+            <div class="flex flex-wrap gap-2"><span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span><span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">INTEGRACIÓN</span></div>
+        </header>
+
+        <section class="bg-gradient-to-r from-purple-50 to-emerald-50 border-l-8 border-purple-600 p-6 rounded-xl m-6"><div class="flex items-start gap-4"><div class="bg-gradient-to-br from-purple-600 to-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div><div><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700 mb-1">Cómo trabajar esta práctica</h2><p class="text-base text-slate-800">Esta práctica integra todo lo de Fase 1 + Fase 2. <strong>Es la más importante del curso.</strong> Tomate los 90 min sin apuro. Si algo no anda, pista o profe. No hay ranking ni puntaje.</p></div></div></section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200"><h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso + diseño</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-purple-800">Ej. 1 — IA clasifica</span></div>
+                <div class="bg-purple-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-purple-800">Ej. 2 — Router</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-emerald-800">Ej. 3 — Acciones</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Quiz</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-bolt text-purple-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-purple-700">Repaso flash · 10 min</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">El concepto que cambia todo</h3>
+            <p class="text-slate-700 mb-4">Hasta acá, Make movía datos como una cinta transportadora: si pasa A, ejecuta B. Pero los datos del mundo real son <strong>desordenados</strong>. Un mail puede ser una consulta, un reclamo, una queja, un spam. La IA es lo que le da <strong>cerebro</strong> al flujo.</p>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-4"><p class="font-bold text-purple-900 text-sm mb-1">Antes</p><p class="text-xs text-slate-700">"Si llega un mail, mandalo a la planilla". Punto. Todos juntos. Después clasificás vos.</p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4"><p class="font-bold text-emerald-900 text-sm mb-1">Ahora</p><p class="text-xs text-slate-700">"Si llega un mail, IA decide si es consulta/reclamo/spam y manda cada uno a un lado distinto".</p></div>
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4"><p class="font-bold text-amber-900 text-sm mb-1">Resultado</p><p class="text-xs text-slate-700">El bandeja deja de ser caótica. Los reclamos van a Telegram. Las consultas a la planilla. El spam, descartado.</p></div>
+            </div>
+
+            <div class="mt-5 bg-slate-100 rounded-xl p-4">
+                <p class="text-sm font-bold text-slate-700 mb-2">Diseño del flujo de hoy:</p>
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-slate-300"><i class="fa-solid fa-envelope text-blue-600 mr-1"></i>Gmail · Watch</span>
+                    <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-purple-400"><i class="fa-solid fa-robot text-purple-600 mr-1"></i>OpenAI · Classify</span>
+                    <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-amber-400"><i class="fa-solid fa-code-fork text-amber-600 mr-1"></i>Router</span>
+                    <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-emerald-400"><i class="fa-solid fa-bolt text-emerald-600 mr-1"></i>3 acciones distintas</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-robot text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 1 · 20 min</p><h3 class="text-2xl font-extrabold text-slate-900">La IA lee y clasifica</h3></div></div>
+            <p class="text-slate-700 mb-4">Vas a configurar Gmail (Watch Emails) + OpenAI (Create a Completion). Cuando llegue un mail, la IA devuelve <strong>una sola palabra</strong>: <code class="bg-slate-200 px-2 py-0.5 rounded text-xs">consulta</code>, <code class="bg-slate-200 px-2 py-0.5 rounded text-xs">reclamo</code> o <code class="bg-slate-200 px-2 py-0.5 rounded text-xs">spam</code>.</p>
+
+            <div class="bg-white border-l-4 border-purple-600 rounded-lg p-4 mb-3 step-card"><p class="font-bold text-slate-900 mb-1"><span class="bg-purple-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">1</span>Módulo 1: Gmail</p><p class="text-sm text-slate-700 ml-8">Trigger <strong>Watch Emails</strong>. Folder = INBOX, máximo 1 por ejecución mientras testeás. Si nunca usaste OAuth con Gmail, te pide login y permisos.</p></div>
+
+            <div class="bg-white border-l-4 border-purple-600 rounded-lg p-4 mb-3 step-card"><p class="font-bold text-slate-900 mb-1"><span class="bg-purple-600 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">2</span>Módulo 2: OpenAI · Create a Completion</p><p class="text-sm text-slate-700 ml-8">Conectá tu cuenta OpenAI con tu API Key. Modelo: <strong>gpt-4o-mini</strong> (barato y rápido). Messages: 1 mensaje de tipo <em>system</em> + 1 de tipo <em>user</em>.</p></div>
+
+            <div class="prompt-box text-slate-100 rounded-xl p-4 my-4">
+                <p class="text-xs uppercase tracking-wider text-slate-400 mb-2">System message:</p>
+                <p class="font-mono text-xs">Sos un clasificador de mails de un negocio. Recibís el asunto y el cuerpo del mail. Tu única respuesta posible es UNA palabra de estas tres opciones, sin comillas ni puntuación: consulta, reclamo, spam. Si tenés dudas, elegí "consulta".</p>
+                <p class="text-xs uppercase tracking-wider text-slate-400 mt-3 mb-2">User message (con variables Make):</p>
+                <p class="font-mono text-xs">Asunto: {{1.Subject}}<br>Cuerpo: {{1.Text content}}</p>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista si te trabás</summary><div class="mt-3 text-sm text-amber-900 space-y-1"><p>• Si nunca creaste API Key de OpenAI: <a target="_blank" rel="noopener noreferrer" href="https://platform.openai.com/api-keys" class="underline font-bold">platform.openai.com/api-keys</a> → Create new secret key. Tiene costo (centavos por uso).</p><p>• Para testear sin gastar: mandate vos un mail con asunto "Quiero consultar precios" y otro "Mi pedido nunca llegó, exijo reembolso". Comparalos.</p><p>• <strong>Importante:</strong> Max tokens = 10. No queremos que la IA escriba párrafos. Solo una palabra.</p><p>• <strong>Temperature = 0</strong>. Queremos respuesta determinística, no creatividad.</p></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> el Run once muestra que el módulo OpenAI devolvió en su salida una de las tres palabras esperadas.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-code-fork text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio 2 · 25 min</p><h3 class="text-2xl font-extrabold text-slate-900">Router con 3 ramas</h3></div></div>
+            <p class="text-slate-700 mb-4">Después del módulo OpenAI, agregá un <strong>Router</strong>. El router crea ramas paralelas; en cada rama vas a poner un <strong>filtro</strong> que solo deja pasar el caso correspondiente.</p>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver cómo configurar los filtros</summary><div class="mt-3 text-sm text-amber-900 space-y-3">
+                <p><strong>1.</strong> Después del módulo OpenAI, hacé clic con botón derecho → <em>Add a router</em>.</p>
+                <p><strong>2.</strong> Sale 1 ruta. Hacé clic en el "+" para agregar más rutas. Total: 3 rutas.</p>
+                <p><strong>3.</strong> En cada conexión hacia el módulo siguiente, hacé clic en la <strong>llave inglesa</strong> de la línea → "Set up a filter".</p>
+                <p><strong>4.</strong> Configurá los 3 filtros así:</p>
+                <div class="bg-white rounded-lg p-3 border border-amber-300">
+                    <p class="font-bold text-purple-700">Rama 1 — Consultas:</p>
+                    <p class="text-xs">Label: "Es consulta" — Condition: <code class="bg-slate-100 px-1 rounded">{{2.choices[].message.content}}</code> · Text operator · <em>contains</em> · <code class="bg-slate-100 px-1 rounded">consulta</code></p>
+                </div>
+                <div class="bg-white rounded-lg p-3 border border-amber-300">
+                    <p class="font-bold text-red-700">Rama 2 — Reclamos:</p>
+                    <p class="text-xs">Label: "Es reclamo" — mismo campo · contains · <code class="bg-slate-100 px-1 rounded">reclamo</code></p>
+                </div>
+                <div class="bg-white rounded-lg p-3 border border-amber-300">
+                    <p class="font-bold text-slate-700">Rama 3 — Spam:</p>
+                    <p class="text-xs">Label: "Es spam" — mismo campo · contains · <code class="bg-slate-100 px-1 rounded">spam</code></p>
+                </div>
+                <p class="mt-2"><strong>Tip:</strong> Activá "Case sensitive = NO" en cada filtro. La IA a veces devuelve "Reclamo" con mayúscula.</p>
+            </div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tu escenario tiene un router con 3 rutas y cada una con su filtro distinto.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-emerald-50 border-y-4 border-emerald-200"><div class="flex items-center gap-3 mb-3"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-bolt text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-emerald-700">Ejercicio 3 · 20 min</p><h3 class="text-2xl font-extrabold text-emerald-900">Cada rama hace algo distinto</h3></div></div>
+            <p class="text-slate-800 mb-4">Acá termina el flujo. Cada rama del router termina en una acción distinta:</p>
+
+            <div class="space-y-3 mb-4">
+                <div class="bg-white border-l-4 border-purple-600 rounded-lg p-4"><p class="font-bold text-purple-900 mb-1"><i class="fa-solid fa-circle-question mr-2"></i>Rama Consulta → Google Sheets · Add Row</p><p class="text-sm text-slate-700">Guardá: fecha, remitente, asunto, primeras 200 caracteres del cuerpo. Para que después un humano responda.</p></div>
+                <div class="bg-white border-l-4 border-red-500 rounded-lg p-4"><p class="font-bold text-red-700 mb-1"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Rama Reclamo → Telegram · Send a Text Message</p><p class="text-sm text-slate-700">Mandá una alerta urgente con el asunto y el remitente. Esto es lo que NO podés dejar para mañana.</p></div>
+                <div class="bg-white border-l-4 border-slate-400 rounded-lg p-4"><p class="font-bold text-slate-700 mb-1"><i class="fa-solid fa-trash mr-2"></i>Rama Spam → Gmail · Add a label</p><p class="text-sm text-slate-700">Etiqueta el mail como "AutoSpam-IA" para revisarlo después. <em>No lo borres en este ejercicio</em>: queremos auditarlo primero por si la IA se equivoca.</p></div>
+            </div>
+
+            <details class="bg-white border border-emerald-300 rounded-xl p-4 mb-4"><summary class="font-bold text-emerald-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-emerald-600"></i><i class="fa-solid fa-lightbulb text-emerald-600"></i> Tocá para ver el plan de testeo</summary><div class="mt-3 text-sm text-slate-800 space-y-2">
+                <p>Para validar las 3 ramas en aula sin esperar mails reales, usá <strong>Run once</strong> y mandate <strong>3 mails de prueba</strong> desde otra cuenta:</p>
+                <ol class="list-decimal list-inside space-y-1 ml-2">
+                    <li>Asunto: "Cuánto sale el envío a Mendoza?" → debería ir a Sheets</li>
+                    <li>Asunto: "Hace 2 semanas pedí y nunca llegó. Quiero plata." → debería ir a Telegram</li>
+                    <li>Asunto: "URGENTE!! HAZTE RICO YA!!! click aqui" → debería etiquetar como spam</li>
+                </ol>
+                <p class="mt-2"><strong>Si una rama no se activa:</strong> revisá la respuesta exacta de la IA en el Run once. A veces devuelve "Es una consulta." y el filtro no encuentra la palabra exacta. Solución: ajustá el system prompt para que devuelva SOLO una palabra.</p>
+            </div></details>
+
+            <div class="bg-white border-l-4 border-emerald-600 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> los 3 mails de prueba terminaron cada uno en su destino correcto.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-question text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Quiz opcional · 15 min</p><h3 class="text-2xl font-extrabold text-slate-900">10 preguntas</h3></div></div>
+
+            <div id="quiz" class="space-y-5">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">1. ¿Qué le agrega la IA a un flujo de Make tradicional?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Velocidad</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Capacidad de entender e interpretar texto desordenado del mundo real</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Más operaciones por mes gratis</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Mejor diseño visual</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">2. ¿Para qué sirve el módulo Router?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Para mejorar la velocidad</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Para combinar datos en uno solo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Para crear ramas paralelas y que el flujo tome distintos caminos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Para conectarse a internet</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">3. ¿Qué hace un filtro entre dos módulos?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Borra los datos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Solo deja pasar los datos que cumplen una condición</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Hace una pausa</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Encripta el dato</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">4. ¿Qué temperature usamos para que la IA sea predecible?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> 1.0</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> 0.7</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> 0</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> 100</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">5. ¿Por qué le decimos en el system prompt "responde con UNA sola palabra"?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Para que el filtro pueda comparar la salida exacta sin errores</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Para gastar menos tokens (esto es secundario)</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Por estética</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Porque OpenAI lo exige</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">6. Si la IA devuelve "Reclamo." (con mayúscula y punto) y el filtro busca exactamente "reclamo"…</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Funciona igual</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> No pasa el filtro — hay que usar "contains" + case insensitive o ajustar el prompt</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Se borra el mail</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Se reinicia Make</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d"><p class="font-bold text-slate-900 mb-3">7. ¿Cuál es el modelo barato y rápido recomendado para tareas simples?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> gpt-4</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> dall-e-3</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> whisper-1</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> gpt-4o-mini</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">8. ¿Por qué etiquetar el spam en lugar de borrarlo (al principio)?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Para auditar si la IA se equivoca antes de confiar 100%</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Porque borrar es lento</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Porque Gmail no permite borrar con API</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Por estética</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c"><p class="font-bold text-slate-900 mb-3">9. ¿De dónde se obtiene la API Key de OpenAI?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> chat.openai.com/settings</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> google.com/openai</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> platform.openai.com/api-keys</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Make.com</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b"><p class="font-bold text-slate-900 mb-3">10. ¿Cuál es la idea principal del "Empleado Digital"?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Reemplazar a todos los empleados</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Que la IA + automatización tomen decisiones simples y dejen las complejas a las personas</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No usar más mails</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Cobrar más caro</div></div></div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto"><i class="fa-solid fa-circle-check mr-2"></i>Corregir mis respuestas</button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto"><i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar quiz</button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-gradient-to-r from-purple-50 to-emerald-50"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Qué proceso de tu negocio replicarías con esta lógica IA + Router?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Cuál es la decisión más simple y repetitiva que tomás todos los días? Esa es la primera que tenés que automatizar.</li>
+            </ul>
+            <div class="bg-white border-2 border-purple-300 rounded-xl p-4"><p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea:</strong> esto que armaste hoy podría costar miles de dólares como software a medida hace 5 años. Hoy lo armaste con cuenta gratis y centavos por mail. Tomá conciencia de la palanca que tenés en la mano.</p></div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10"><div class="max-w-3xl mx-auto"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i><h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3></div><p class="text-amber-900 italic font-medium">Esta práctica es la culminación del curso. Si un alumno no llega a terminar las 3 ramas, prioridad: que al menos tenga la IA clasificando y 1 rama con su acción. Es preferible 1 rama funcional que 3 a medio terminar. Acompañá especialmente la creación de la API Key de OpenAI: muchos se trancan ahí porque no tienen tarjeta cargada en plataforma OpenAI. Tener saldo mínimo (USD 5) cubre miles de tests.</p></div></section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center"><div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto"><div class="text-left"><p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p><p class="font-bold text-white">IA + Automatizaciones · Práctica 20</p></div><div class="flex items-center gap-3 text-sm"><span><i class="fa-solid fa-dumbbell text-purple-400 mr-1"></i>Práctica de Clase 20</span></div></div><p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p></footer>
+    </div>
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(opt => { opt.addEventListener('click', function() { const p = this.parentElement; p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected')); this.classList.add('selected'); }); });
+        function corregirQuiz() { const ps = document.querySelectorAll('#quiz > div[data-correct]'); let c = 0; const t = ps.length; ps.forEach(p => { const co = p.getAttribute('data-correct'); const s = p.querySelector('.quiz-option.selected'); p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect')); if (s) { if (s.getAttribute('data-opt') === co) { s.classList.add('correct'); c++; } else { s.classList.add('incorrect'); p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } } else { p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } }); const r = document.getElementById('quiz-resultado'); let m = '', cl = ''; if (c === t) { m = `🎉 ¡${c}/${t}! Excelente.`; cl = 'text-emerald-600'; } else if (c >= 7) { m = `👍 ${c}/${t} — Muy bien.`; cl = 'text-emerald-600'; } else if (c >= 5) { m = `💪 ${c}/${t} — Bien, repasá.`; cl = 'text-amber-600'; } else { m = `📚 ${c}/${t} — Volvé a la clase.`; cl = 'text-red-600'; } r.className = `font-bold text-lg ml-auto ${cl}`; r.textContent = m; r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        function resetearQuiz() { document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected', 'correct', 'incorrect')); document.getElementById('quiz-resultado').textContent = ''; }
+    </script>
+</body>
+</html>

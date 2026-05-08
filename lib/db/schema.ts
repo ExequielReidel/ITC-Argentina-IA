@@ -59,6 +59,14 @@ export const examenesResultados = pgTable('examenes_resultados', {
   preguntasIds: jsonb('preguntas_ids'),
 })
 
+export const progresoPracticas = pgTable('progreso_practicas', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  practicaNumero: integer('practica_numero').notNull(),
+  completada: boolean('completada').default(false),
+  fechaCompletada: timestamp('fecha_completada'),
+}, (t) => [unique().on(t.userId, t.practicaNumero)])
+
 export const preguntasExamen = pgTable('preguntas_examen', {
   id: serial('id').primaryKey(),
   enunciado: text('enunciado').notNull(),

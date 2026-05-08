@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 02 · Prompt Engineering para Negocios | ITC Argentina</title>
+    <meta name="description" content="Práctica de 90 minutos para reforzar la Clase 02 del curso IA + Automatizaciones de ITC Argentina.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        details > summary { cursor: pointer; list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] .chevron { transform: rotate(90deg); }
+        .chevron { transition: transform 0.2s ease; }
+        .quiz-option { transition: all 0.15s ease; cursor: pointer; }
+        .quiz-option:hover { background: #eff6ff; }
+        .quiz-option.selected { background: #dbeafe; border-color: #2563eb; }
+        .quiz-option.correct { background: #d1fae5; border-color: #059669; }
+        .quiz-option.incorrect { background: #fee2e2; border-color: #dc2626; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 to-blue-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-blue-100 text-xs font-bold uppercase tracking-widest mb-4">
+                <span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 02</span><span>•</span>
+                <span>Fase 1 — IA Aplicada</span><span>•</span>
+                <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Prompt Engineering para Negocios</h1>
+            <p class="text-blue-100 text-lg mb-4 max-w-2xl">Convertirte en quien le sabe hablar a la IA. RTF, TAFEC y CoT, pero practicando tranquilo con tu propio negocio.</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span>
+                <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">FUNDAMENTOS</span>
+            </div>
+        </header>
+
+        <section class="bg-blue-50 border-l-8 border-blue-600 p-6 rounded-xl m-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div>
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-blue-700 mb-1">Cómo trabajar esta práctica</h2>
+                    <p class="text-base text-slate-800 mb-2">Tenés <strong>90 minutos</strong> en el aula. Cada ejercicio tiene una <strong>pista opcional</strong>. Al final hay un <strong>quiz opcional de 10 preguntas</strong>. <strong>No corre puntaje.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200">
+            <h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa de la práctica</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Repaso flash</span></div>
+                <div class="bg-blue-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-blue-800">Ej. 1 — RTF</span></div>
+                <div class="bg-blue-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-blue-800">Ej. 2 — TAFEC</span></div>
+                <div class="bg-blue-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-blue-800">Ej. 3 — Mejora</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Quiz opcional</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-bolt text-blue-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-blue-700">Repaso flash · 5 min</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Las 3 fórmulas que vimos en clase</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <p class="font-bold text-blue-900 text-sm mb-1">RTF</p>
+                    <p class="text-xs text-slate-700"><strong>Rol</strong> + <strong>Tarea</strong> + <strong>Formato</strong>. Le decís quién sea, qué haga, cómo se lo entregue.</p>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <p class="font-bold text-blue-900 text-sm mb-1">TAFEC</p>
+                    <p class="text-xs text-slate-700"><strong>T</strong>area + <strong>A</strong>cción + <strong>F</strong>ormato + <strong>E</strong>jemplo + <strong>C</strong>ontexto. Más completo, mejor calidad.</p>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <p class="font-bold text-blue-900 text-sm mb-1">Chain of Thought</p>
+                    <p class="text-xs text-slate-700">"Pensá paso a paso antes de responder". Mejora el razonamiento en problemas complejos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-pencil text-xl"></i></div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest font-bold text-blue-700">Ejercicio 1 · 20 min</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">Armá 3 prompts con la fórmula RTF</h3>
+                </div>
+            </div>
+            <p class="text-slate-700 mb-4">Para tu negocio (o uno imaginario), escribí <strong>3 prompts diferentes</strong> usando la fórmula RTF. Después probá cada uno en ChatGPT y mirá los resultados.</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="font-bold text-slate-900 mb-2">Las 3 tareas que tenés que cubrir:</p>
+                <ol class="list-decimal list-inside space-y-2 text-sm text-slate-700 ml-2">
+                    <li><strong>Una respuesta para un cliente molesto</strong> (mail o WhatsApp).</li>
+                    <li><strong>Una descripción de producto</strong> para tu web o redes.</li>
+                    <li><strong>Un plan de acción</strong> para resolver un problema concreto.</li>
+                </ol>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
+                <summary class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-chevron-right chevron text-amber-600"></i>
+                    <i class="fa-solid fa-lightbulb text-amber-600"></i>
+                    Tocá para ver una plantilla de RTF
+                </summary>
+                <div class="mt-3 text-sm text-amber-900">
+                    <div class="prompt-box text-slate-100 rounded-xl p-4 font-mono text-xs">
+                        <p><span class="text-amber-300">Rol:</span> Sos un experto en atención al cliente de [tu rubro].<br>
+                        <span class="text-amber-300">Tarea:</span> Redactá una respuesta a un cliente que se quejó porque su pedido llegó tarde.<br>
+                        <span class="text-amber-300">Formato:</span> Mensaje de WhatsApp, máximo 80 palabras, tono cercano y empático argentino.</p>
+                    </div>
+                </div>
+            </details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3">
+                <p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si tenés:</strong> 3 prompts armados con RTF y sus 3 respuestas de ChatGPT guardadas.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-layer-group text-xl"></i></div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest font-bold text-blue-700">Ejercicio 2 · 25 min</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">Subí de nivel: usá TAFEC</h3>
+                </div>
+            </div>
+            <p class="text-slate-700 mb-4">Tomá <strong>UNO</strong> de los 3 prompts del ejercicio anterior y reescribilo usando la fórmula TAFEC completa. Probalo y compará el resultado con el de RTF.</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="font-bold text-slate-900 mb-2">Los 5 ingredientes de TAFEC:</p>
+                <ul class="text-sm text-slate-700 space-y-1 ml-2">
+                    <li><strong>T</strong>area: ¿qué tiene que hacer?</li>
+                    <li><strong>A</strong>cción: ¿cómo tiene que actuar (paso a paso)?</li>
+                    <li><strong>F</strong>ormato: ¿cómo lo entrega?</li>
+                    <li><strong>E</strong>jemplo: dale 1 ejemplo de lo que esperás.</li>
+                    <li><strong>C</strong>ontexto: ¿quién sos, para quién, en qué situación?</li>
+                </ul>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
+                <summary class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-chevron-right chevron text-amber-600"></i>
+                    <i class="fa-solid fa-lightbulb text-amber-600"></i>
+                    Tocá para ver un ejemplo armado de TAFEC
+                </summary>
+                <div class="mt-3 text-sm text-amber-900">
+                    <div class="prompt-box text-slate-100 rounded-xl p-4 font-mono text-xs">
+                        <p><span class="text-amber-300">Tarea:</span> Redactá un mensaje para clientes morosos.<br>
+                        <span class="text-amber-300">Acción:</span> 1) Saludá cordial. 2) Recordá factura. 3) Ofrecé 2 medios de pago. 4) Cerrá con tono empático.<br>
+                        <span class="text-amber-300">Formato:</span> WhatsApp, máx 100 palabras.<br>
+                        <span class="text-amber-300">Ejemplo:</span> "Hola Juan, te aviso que tu factura de marzo ($X) está pendiente. Podés pagar por transferencia o MercadoPago. Si tenés algún inconveniente, contame."<br>
+                        <span class="text-amber-300">Contexto:</span> Soy contadora independiente en Salta. Mis clientes son comercios chicos.</p>
+                    </div>
+                </div>
+            </details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3">
+                <p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> compaste el resultado RTF vs TAFEC y notaste la diferencia de calidad.</p>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-blue-50 border-y-4 border-blue-200">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-wand-magic-sparkles text-xl"></i></div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest font-bold text-blue-700">Ejercicio 3 · 25 min</p>
+                    <h3 class="text-2xl font-extrabold text-blue-900">Mejorá un prompt malo</h3>
+                </div>
+            </div>
+            <p class="text-slate-800 mb-4">Te dejamos 3 prompts pésimos. Tu tarea es <strong>reescribirlos para que funcionen bien</strong>. Después probá las 2 versiones (la mala y la tuya) y mirá las diferencias.</p>
+
+            <div class="space-y-3 mb-4">
+                <div class="bg-white rounded-xl border border-red-200 p-4">
+                    <p class="text-xs font-bold text-red-700 uppercase mb-1">Prompt malo 1</p>
+                    <p class="font-mono text-sm text-slate-700">"Hacé un post para Instagram"</p>
+                </div>
+                <div class="bg-white rounded-xl border border-red-200 p-4">
+                    <p class="text-xs font-bold text-red-700 uppercase mb-1">Prompt malo 2</p>
+                    <p class="font-mono text-sm text-slate-700">"Ayudame con un cliente"</p>
+                </div>
+                <div class="bg-white rounded-xl border border-red-200 p-4">
+                    <p class="text-xs font-bold text-red-700 uppercase mb-1">Prompt malo 3</p>
+                    <p class="font-mono text-sm text-slate-700">"Decime cómo vender más"</p>
+                </div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4">
+                <summary class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-chevron-right chevron text-amber-600"></i>
+                    <i class="fa-solid fa-lightbulb text-amber-600"></i>
+                    Tocá para ver pista
+                </summary>
+                <div class="mt-3 text-sm text-amber-900">
+                    <p class="mb-2">Para cada uno, agregale <strong>al menos</strong>:</p>
+                    <ul class="list-disc list-inside ml-2 space-y-1">
+                        <li>Quién sos (rol/rubro)</li>
+                        <li>Para quién es (público objetivo)</li>
+                        <li>Qué tono querés</li>
+                        <li>Qué formato y largo</li>
+                        <li>Algún detalle específico (producto, situación, etc.)</li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3">
+                <p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> los 3 prompts mejorados ahora dan respuestas claramente más útiles.</p>
+            </div>
+        </section>
+
+        <!-- QUIZ -->
+        <section class="p-6 md:p-10">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-question text-xl"></i></div>
+                <div>
+                    <p class="text-xs uppercase tracking-widest font-bold text-amber-700">Quiz opcional · 15 min</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">10 preguntas para autoevaluarte</h3>
+                </div>
+            </div>
+
+            <div id="quiz" class="space-y-5">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b">
+                    <p class="font-bold text-slate-900 mb-3">1. ¿Qué significa la "R" en RTF?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Resultado</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Rol</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Respuesta</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Razón</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c">
+                    <p class="font-bold text-slate-900 mb-3">2. ¿Qué fórmula es más completa?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> RTF</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> CoT</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> TAFEC</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Las tres son iguales</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b">
+                    <p class="font-bold text-slate-900 mb-3">3. ¿Para qué sirve agregar un ejemplo en TAFEC?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Para que la IA copie literal.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Para mostrarle el estilo y tono que esperás.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Para hacer el prompt más largo.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> No sirve, es relleno.</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a">
+                    <p class="font-bold text-slate-900 mb-3">4. "Pensá paso a paso" se llama:</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Chain of Thought (CoT)</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Multi-shot</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Roleplay</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Workflow</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d">
+                    <p class="font-bold text-slate-900 mb-3">5. ¿Cuál es el mejor prompt?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> "Vendé"</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> "Hacé marketing"</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> "Dame ideas"</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> "Sos community manager. Redactá 3 posts de Instagram para promocionar facturas recién horneadas en una panadería de Junín. Tono cercano, 80 palabras cada uno."</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b">
+                    <p class="font-bold text-slate-900 mb-3">6. Si la respuesta es muy larga, ¿qué hacés?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> La copiás igual.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Le pedís: "Hacelo más corto, máximo 50 palabras".</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Cierras y arrancás de nuevo.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Pagás Plus.</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="c">
+                    <p class="font-bold text-slate-900 mb-3">7. ¿Para qué sirve dar contexto?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Para sumar palabras.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Para que la IA "te conozca".</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Para que la respuesta sea relevante a tu situación.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> No sirve.</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="b">
+                    <p class="font-bold text-slate-900 mb-3">8. ¿Qué es "iterar" un prompt?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Borrarlo.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Ajustarlo y probarlo varias veces hasta tener un buen resultado.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Imprimirlo.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Convertirlo en código.</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a">
+                    <p class="font-bold text-slate-900 mb-3">9. Si querés tono argentino, ¿cómo lo pedís?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> "En español rioplatense, usando 'vos' en lugar de 'tú'".</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> "Tono normal".</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> "En argentino".</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> No se puede.</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="d">
+                    <p class="font-bold text-slate-900 mb-3">10. Después de un buen prompt, ¿qué te conviene hacer?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Borrarlo.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Compartirlo en redes.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Olvidarlo.</div>
+                        <div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="d"><strong class="text-slate-500 mr-2">d)</strong> Guardarlo en tu carpeta de "prompts útiles" para reusarlo.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto">
+                    <i class="fa-solid fa-circle-check mr-2"></i>Corregir mis respuestas
+                </button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto">
+                    <i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar quiz
+                </button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-blue-50">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre</h2>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>¿Cuál de las 3 fórmulas (RTF, TAFEC, CoT) te resultó más fácil?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>¿Qué prompt vas a guardar para reusar siempre?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-blue-600 mt-1"></i>¿En qué tarea de tu trabajo vas a aplicar TAFEC esta semana?</li>
+            </ul>
+            <div class="bg-white border-2 border-blue-300 rounded-xl p-4">
+                <p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea para llevarte:</strong> sumá los 3 prompts mejorados a tu carpeta "IA al rescate". Tenés <strong>4 ladrillos</strong> guardados.</p>
+            </div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i>
+                    <h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3>
+                </div>
+                <p class="text-amber-900 italic font-medium">Práctica autónoma. Si un alumno trae un prompt malo y la IA "no le entiende", ese es un buen momento para pedirle que abra la pista. Comparar resultados RTF vs TAFEC en voz alta al final puede ser interesante si queda tiempo.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div class="text-left">
+                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="font-bold text-white">IA + Automatizaciones · Práctica 02</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                    <span><i class="fa-solid fa-dumbbell text-blue-400 mr-1"></i>Práctica de Clase 02</span>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                const parent = this.parentElement;
+                parent.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+        function corregirQuiz() {
+            const preguntas = document.querySelectorAll('#quiz > div[data-correct]');
+            let correctas = 0;
+            const total = preguntas.length;
+            preguntas.forEach(p => {
+                const correcta = p.getAttribute('data-correct');
+                const sel = p.querySelector('.quiz-option.selected');
+                p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect'));
+                if (sel) {
+                    if (sel.getAttribute('data-opt') === correcta) { sel.classList.add('correct'); correctas++; }
+                    else { sel.classList.add('incorrect'); p.querySelector(`[data-opt="${correcta}"]`).classList.add('correct'); }
+                } else { p.querySelector(`[data-opt="${correcta}"]`).classList.add('correct'); }
+            });
+            const r = document.getElementById('quiz-resultado');
+            let msg = '', color = '';
+            if (correctas === total) { msg = `🎉 ¡${correctas}/${total}! Excelente.`; color = 'text-emerald-600'; }
+            else if (correctas >= 7) { msg = `👍 ${correctas}/${total} — Muy bien.`; color = 'text-emerald-600'; }
+            else if (correctas >= 5) { msg = `💪 ${correctas}/${total} — Bien, repasá las falladas.`; color = 'text-amber-600'; }
+            else { msg = `📚 ${correctas}/${total} — Volvé a la clase y repasá.`; color = 'text-red-600'; }
+            r.className = `font-bold text-lg ml-auto ${color}`;
+            r.textContent = msg;
+            r.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        function resetearQuiz() {
+            document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected', 'correct', 'incorrect'));
+            document.getElementById('quiz-resultado').textContent = '';
+        }
+    </script>
+</body>
+</html>

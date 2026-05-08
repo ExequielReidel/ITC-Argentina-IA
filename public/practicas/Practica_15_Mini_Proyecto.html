@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 15 · Mini Proyecto Fase 1 | ITC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body{font-family:'Inter',sans-serif;background:#f8fafc}.prompt-box{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}details[open] .chevron{transform:rotate(90deg)}.chevron{transition:transform .2s ease}.quiz-option{transition:all .15s ease;cursor:pointer}.quiz-option:hover{background:#ecfdf5}.quiz-option.selected{background:#d1fae5;border-color:#059669}.quiz-option.correct{background:#d1fae5;border-color:#059669}.quiz-option.incorrect{background:#fee2e2;border-color:#dc2626}</style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+        <header class="bg-gradient-to-r from-indigo-900 to-emerald-700 text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-emerald-100 text-xs font-bold uppercase tracking-widest mb-4"><span><i class="fa-solid fa-dumbbell mr-1"></i>Práctica 15</span><span>•</span><span>Fase 1 — IA Aplicada</span><span>•</span><span><i class="fa-solid fa-clock mr-1"></i>90 min</span></div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Mini Proyecto · Cierre Fase 1</h1>
+            <p class="text-emerald-100 text-lg mb-4 max-w-2xl">El gran ensayo. Hoy preparás tu Mini Proyecto: un caso real donde aplicás todo lo aprendido en la Fase 1.</p>
+            <div class="flex flex-wrap gap-2"><span class="inline-block bg-amber-400/30 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PRÁCTICA</span><span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">PROYECTO</span></div>
+        </header>
+
+        <section class="bg-emerald-50 border-l-8 border-emerald-600 p-6 rounded-xl m-6"><div class="flex items-start gap-4"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-xl"></i></div><div><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700 mb-1">Sobre esta práctica</h2><p class="text-base text-slate-800">Hoy <strong>no aprendemos algo nuevo</strong>: aplicamos todo. Vas a planificar y empezar a construir tu Mini Proyecto. La presentación final es la próxima clase.</p></div></div></section>
+
+        <section class="p-6 md:p-10 border-b border-slate-200"><h3 class="text-xs uppercase tracking-widest font-bold text-slate-500 mb-4"><i class="fa-solid fa-clock mr-1"></i> Mapa</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+                <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso Fase 1</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-emerald-800">Ej. 1 — Definir caso</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>25 min</strong><br><span class="text-emerald-800">Ej. 2 — Construir</span></div>
+                <div class="bg-emerald-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-emerald-800">Ej. 3 — Presentación</span></div>
+                <div class="bg-amber-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-amber-800">Checklist</span></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-bolt text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Repaso Fase 1 · 10 min</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-4">Lo que tenés en tu mochila</h3>
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">Prompts profesionales</strong> (RTF, TAFEC, CoT)</p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">Plantilla maestra de WhatsApp</strong></p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">30 ideas de contenido</strong> + AIDA</p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">Imágenes generadas con IA</strong></p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">Brand Kit + flyer + carrusel</strong></p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">Reel con CapCut</strong></p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">SOPs de tus tareas</strong></p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">Análisis de clientes + tablero financiero</strong></p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">GPT Personalizado</strong></p></div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3"><p class="text-sm"><strong class="text-emerald-900">Mapa de tareas + plan a 12 meses</strong></p></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-slate-50"><div class="flex items-center gap-3 mb-3"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-bullseye text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-emerald-700">Ejercicio 1 · 20 min</p><h3 class="text-2xl font-extrabold text-slate-900">Definí tu caso</h3></div></div>
+            <p class="text-slate-700 mb-4">Elegí <strong>UN problema concreto</strong> de tu negocio (o uno imaginario) y armá la ficha del proyecto:</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="font-bold text-slate-900 mb-2 text-sm">Ficha del Mini Proyecto:</p>
+                <ul class="space-y-2 text-sm text-slate-700">
+                    <li><strong class="text-emerald-700">1. Negocio:</strong> ¿qué rubro, qué tamaño, qué cliente?</li>
+                    <li><strong class="text-emerald-700">2. Problema concreto:</strong> ¿qué te hace perder tiempo o ventas hoy?</li>
+                    <li><strong class="text-emerald-700">3. Solución con IA:</strong> ¿qué herramientas/clases vas a aplicar?</li>
+                    <li><strong class="text-emerald-700">4. Entregable:</strong> ¿qué vas a mostrar la próxima clase? (puede ser: 5 posts + 1 Reel + plantilla WA + GPT personalizado, por ejemplo)</li>
+                    <li><strong class="text-emerald-700">5. Métrica de éxito:</strong> ¿cómo sabés si funcionó? (tiempo ahorrado, clientes nuevos, etc.)</li>
+                </ul>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver ejemplo</summary><div class="mt-3 text-sm text-amber-900"><p class="mb-2"><strong>Ejemplo de ferretería:</strong></p><ul class="list-disc list-inside ml-2 space-y-1"><li><strong>Negocio:</strong> Ferretería barrial en Mendoza, atiende 50 clientes/día</li><li><strong>Problema:</strong> Pierdo 2 hs/día respondiendo lo mismo en WhatsApp</li><li><strong>Solución IA:</strong> GPT Personalizado para FAQ + plantilla maestra + 5 posts/semana de redes</li><li><strong>Entregable:</strong> GPT funcionando, plantilla, 5 posts en Canva, 1 Reel</li><li><strong>Métrica:</strong> Bajar de 2 hs a 30 min en consultas. 1 venta nueva por redes en 2 semanas</li></ul></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tenés la ficha completa con los 5 puntos.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-hammer text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-emerald-700">Ejercicio 2 · 25 min</p><h3 class="text-2xl font-extrabold text-slate-900">Empezá a construir</h3></div></div>
+            <p class="text-slate-700 mb-4">Con el plan del Ejercicio 1, <strong>arrancá</strong> el primer entregable. No necesitás terminarlo hoy: la idea es que dejes 1 cosa concreta hecha en el aula.</p>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-5 mb-4">
+                <p class="font-bold text-slate-900 mb-2 text-sm">Sugerencias rápidas:</p>
+                <ul class="space-y-1 text-sm text-slate-700 ml-2 list-disc list-inside">
+                    <li>Si elegiste hacer un GPT Personalizado: arrancá la configuración (Práctica 11).</li>
+                    <li>Si elegiste un kit de redes: armá el primer flyer en Canva.</li>
+                    <li>Si elegiste un sistema de respuestas WhatsApp: armá la plantilla maestra y probala con 3 mensajes reales.</li>
+                </ul>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>Volvé a las prácticas pasadas. Tenés casi todo armado:</p><ul class="list-disc list-inside ml-2 mt-1"><li>Plantilla WA → Práctica 03</li><li>30 ideas + posts → Práctica 04</li><li>Imágenes → Práctica 05</li><li>Flyers/carruseles → Práctica 06</li><li>Reel → Práctica 07</li><li>SOPs → Práctica 08</li><li>GPT → Práctica 11</li></ul><p class="mt-2">Tu Mini Proyecto es <strong>combinar 2-3 de estas piezas en un caso real coherente</strong>.</p></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tenés al menos 1 entregable concreto avanzado al 50%.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-emerald-50 border-y-4 border-emerald-200"><div class="flex items-center gap-3 mb-3"><div class="bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-presentation-screen text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-emerald-700">Ejercicio 3 · 20 min</p><h3 class="text-2xl font-extrabold text-emerald-900">Estructura de tu presentación</h3></div></div>
+            <p class="text-slate-800 mb-4">Para la próxima clase vas a presentar en <strong>5 minutos</strong>. Armá ahora el guion de tu presentación con esta estructura:</p>
+
+            <div class="space-y-3 mb-4">
+                <div class="bg-white border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm"><strong class="text-emerald-700">Slide 1 (30s):</strong> ¿Quién sos? ¿Qué negocio?</p></div>
+                <div class="bg-white border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm"><strong class="text-emerald-700">Slide 2 (1 min):</strong> El problema que tenías</p></div>
+                <div class="bg-white border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm"><strong class="text-emerald-700">Slide 3 (2 min):</strong> La solución que armaste con IA</p></div>
+                <div class="bg-white border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm"><strong class="text-emerald-700">Slide 4 (1 min):</strong> Demo concreta (mostrás lo que hiciste)</p></div>
+                <div class="bg-white border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm"><strong class="text-emerald-700">Slide 5 (30s):</strong> ¿Qué vas a hacer la semana que viene?</p></div>
+            </div>
+
+            <details class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-4"><summary class="font-bold text-amber-900 text-sm flex items-center gap-2"><i class="fa-solid fa-chevron-right chevron text-amber-600"></i><i class="fa-solid fa-lightbulb text-amber-600"></i> Tocá para ver pista</summary><div class="mt-3 text-sm text-amber-900"><p>La parte más potente es la <strong>demo</strong>: no expliques con palabras lo que hiciste, mostralo. Pantalla compartida → abrís ChatGPT/Canva/CapCut → mostrás el resultado en vivo.</p><p class="mt-2">Si lo hiciste bien, no necesitás defender nada: el trabajo habla solo.</p></div></details>
+
+            <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-lg p-3"><p class="text-sm text-emerald-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-2"></i><strong>Listo si:</strong> tenés escrito qué vas a decir en cada uno de los 5 momentos.</p></div>
+        </section>
+
+        <section class="p-6 md:p-10"><div class="flex items-center gap-3 mb-3"><div class="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-list-check text-xl"></i></div><div><p class="text-xs uppercase tracking-widest font-bold text-amber-700">Checklist final · 15 min</p><h3 class="text-2xl font-extrabold text-slate-900">¿Estás lista/o para presentar?</h3></div></div>
+
+            <div id="quiz" class="space-y-5">
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">1. ¿Tu caso es un problema CONCRETO de tu negocio?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, está claro y específico</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Es genérico, "mejorar las ventas"</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No tengo idea</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">2. ¿Tu solución integra al menos 2 herramientas vistas en clase?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, 2 o más</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Solo 1</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Ninguna</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">3. ¿Tenés un entregable real (no una idea)?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, algo que se puede ver/usar</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Solo el plan, no llegué a hacerlo</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> Solo idea</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">4. ¿Definiste cómo vas a medir el éxito?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, hay una métrica clara</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Algo así, no muy claro</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">5. ¿Pensaste tu presentación de 5 minutos?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, tengo el guion de los 5 slides</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Tengo idea pero no escrito</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">6. ¿Tu solución es realista para tu negocio (no ciencia ficción)?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, lo puedo aplicar el lunes</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Necesita inversión grande</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No estoy seguro</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">7. ¿Tenés contenido visual para mostrar en la demo?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí: pantallas, imágenes, archivos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Solo voy a hablar</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No tengo</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">8. ¿Practicaste la presentación en voz alta?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, al menos 1 vez</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> No, lo hago en clase</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">9. ¿Sabés qué vas a hacer la semana que viene con esto?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, hay un próximo paso</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> No pensé eso</div></div></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm" data-correct="a"><p class="font-bold text-slate-900 mb-3">10. ¿Estás orgulloso/a de lo que armaste?</p><div class="space-y-2"><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="a"><strong class="text-slate-500 mr-2">a)</strong> Sí, lo siento útil y propio</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="b"><strong class="text-slate-500 mr-2">b)</strong> Más o menos</div><div class="quiz-option border-2 border-slate-200 rounded-lg p-3 text-sm" data-opt="c"><strong class="text-slate-500 mr-2">c)</strong> No, tengo que mejorarlo</div></div></div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center">
+                <button onclick="corregirQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition w-full sm:w-auto"><i class="fa-solid fa-circle-check mr-2"></i>Verificar mi check</button>
+                <button onclick="resetearQuiz()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl transition w-full sm:w-auto"><i class="fa-solid fa-rotate-left mr-2"></i>Reiniciar</button>
+                <div id="quiz-resultado" class="font-bold text-lg ml-auto"></div>
+            </div>
+        </section>
+
+        <section class="p-6 md:p-10 bg-emerald-50"><div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i><h2 class="text-xs uppercase tracking-widest font-bold text-emerald-700">Cierre</h2></div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-3">Antes de irte</h3>
+            <ul class="space-y-2 text-slate-700 ml-2 mb-4">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-emerald-600 mt-1"></i>¿Qué hace falta terminar antes de la próxima clase?</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-emerald-600 mt-1"></i>¿Cuándo lo vas a hacer? (poné día y hora)</li>
+            </ul>
+            <div class="bg-white border-2 border-emerald-300 rounded-xl p-4"><p class="text-sm text-slate-800"><i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i><strong>Idea:</strong> mandate vos mismo/a un mail con la ficha del proyecto. Nada de "después lo armo": tiene que estar guardado y accesible.</p></div>
+        </section>
+
+        <section class="bg-amber-50 border-t-4 border-amber-500 p-6 md:p-10"><div class="max-w-3xl mx-auto"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation text-amber-600 text-2xl"></i><h3 class="text-xs uppercase tracking-widest font-extrabold text-amber-900">Nota Docente — Solo para el profesor</h3></div><p class="text-amber-900 italic font-medium">Esta práctica es bisagra. Algunos alumnos van a llegar con todo claro, otros se van a trabar en "no sé qué problema elegir". Tener listos 3-4 ejemplos de problemas típicos para sugerirles. La meta NO es que terminen hoy, sino que tengan claro qué van a presentar.</p></div></section>
+
+        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center"><div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto"><div class="text-left"><p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p><p class="font-bold text-white">IA + Automatizaciones · Práctica 15</p></div><div class="flex items-center gap-3 text-sm"><span><i class="fa-solid fa-dumbbell text-emerald-400 mr-1"></i>Práctica de Clase 15</span></div></div><p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p></footer>
+    </div>
+    <script>
+        document.querySelectorAll('.quiz-option').forEach(opt => { opt.addEventListener('click', function() { const p = this.parentElement; p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected')); this.classList.add('selected'); }); });
+        function corregirQuiz() { const ps = document.querySelectorAll('#quiz > div[data-correct]'); let c = 0; const t = ps.length; ps.forEach(p => { const co = p.getAttribute('data-correct'); const s = p.querySelector('.quiz-option.selected'); p.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'incorrect')); if (s) { if (s.getAttribute('data-opt') === co) { s.classList.add('correct'); c++; } else { s.classList.add('incorrect'); p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } } else { p.querySelector(`[data-opt="${co}"]`).classList.add('correct'); } }); const r = document.getElementById('quiz-resultado'); let m = '', cl = ''; if (c === t) { m = `🎉 ¡${c}/${t}! Listo para presentar.`; cl = 'text-emerald-600'; } else if (c >= 7) { m = `👍 ${c}/${t} — Casi listo.`; cl = 'text-emerald-600'; } else if (c >= 5) { m = `💪 ${c}/${t} — Reforzá lo pendiente.`; cl = 'text-amber-600'; } else { m = `📚 ${c}/${t} — Necesitás más preparación.`; cl = 'text-red-600'; } r.className = `font-bold text-lg ml-auto ${cl}`; r.textContent = m; r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        function resetearQuiz() { document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected', 'correct', 'incorrect')); document.getElementById('quiz-resultado').textContent = ''; }
+    </script>
+</body>
+</html>

@@ -347,6 +347,46 @@ export const logrosDemo: Logro[] = [
   { id: '6', titulo: 'Aprobé el examen', descripcion: 'Aprobaste el examen final con más del 70%', icono: '🏆', desbloqueado: false },
 ]
 
+// Prácticas del curso (una por clase, opcionales)
+export interface Practica {
+  id: number
+  numero: number
+  titulo: string
+  claseRelacionada: number
+  htmlPath: string
+  duracion: number
+  fase: number
+  categoria: string
+  categoriaLabel: string
+}
+
+export const practicasDemo: Practica[] = [
+  // Fase 1
+  { id: 1,  numero: 1,  titulo: 'Identificá la IA en tu día a día',         claseRelacionada: 1,  htmlPath: '/practicas/Practica_01_IA_En_Tu_Vida.html',          duracion: 30, fase: 1, categoria: 'ia-aplicada',    categoriaLabel: 'IA Aplicada' },
+  { id: 2,  numero: 2,  titulo: 'Escribí tus primeros prompts',              claseRelacionada: 2,  htmlPath: '/practicas/Practica_02_Prompt_Engineering.html',     duracion: 45, fase: 1, categoria: 'ia-aplicada',    categoriaLabel: 'IA Aplicada' },
+  { id: 3,  numero: 3,  titulo: 'Simulación de atención al cliente con IA',  claseRelacionada: 3,  htmlPath: '/practicas/Practica_03_Ventas_Atencion.html',        duracion: 40, fase: 1, categoria: 'ia-aplicada',    categoriaLabel: 'Aplicación Comercial' },
+  { id: 4,  numero: 4,  titulo: 'Creá textos de venta con IA',               claseRelacionada: 4,  htmlPath: '/practicas/Practica_04_Copywriting.html',            duracion: 40, fase: 1, categoria: 'ia-aplicada',    categoriaLabel: 'IA Aplicada' },
+  { id: 5,  numero: 5,  titulo: 'Generá imágenes para tu negocio',           claseRelacionada: 5,  htmlPath: '/practicas/Practica_05_Diseno_Visual.html',          duracion: 45, fase: 1, categoria: 'diseno-ia',      categoriaLabel: 'Diseño con IA' },
+  { id: 6,  numero: 6,  titulo: 'Diseñá un flyer en Canva con IA',           claseRelacionada: 6,  htmlPath: '/practicas/Practica_06_Canva.html',                  duracion: 50, fase: 1, categoria: 'diseno-ia',      categoriaLabel: 'Diseño con IA' },
+  { id: 7,  numero: 7,  titulo: 'Editá un video corto con CapCut',           claseRelacionada: 7,  htmlPath: '/practicas/Practica_07_Video_Marketing.html',        duracion: 50, fase: 1, categoria: 'diseno-ia',      categoriaLabel: 'Diseño con IA' },
+  { id: 8,  numero: 8,  titulo: 'Armá tu sistema de productividad',          claseRelacionada: 8,  htmlPath: '/practicas/Practica_08_Productividad.html',          duracion: 35, fase: 1, categoria: 'ia-aplicada',    categoriaLabel: 'IA Aplicada' },
+  { id: 9,  numero: 9,  titulo: 'Analizá tu mercado con IA',                 claseRelacionada: 9,  htmlPath: '/practicas/Practica_09_Analisis_Clientes.html',     duracion: 40, fase: 1, categoria: 'ia-aplicada',    categoriaLabel: 'IA Aplicada' },
+  { id: 10, numero: 10, titulo: 'Creá un reporte de datos con IA',           claseRelacionada: 10, htmlPath: '/practicas/Practica_10_Datos_Excel.html',            duracion: 45, fase: 1, categoria: 'ia-aplicada',    categoriaLabel: 'IA Aplicada' },
+  { id: 11, numero: 11, titulo: 'Configurá tu primer GPT personalizado',     claseRelacionada: 11, htmlPath: '/practicas/Practica_11_GPT_Personalizado.html',      duracion: 50, fase: 1, categoria: 'estrategia',     categoriaLabel: 'Estrategia' },
+  { id: 12, numero: 12, titulo: 'Simulá un análisis financiero PyME',        claseRelacionada: 12, htmlPath: '/practicas/Practica_12_Finanzas.html',               duracion: 40, fase: 1, categoria: 'estrategia',     categoriaLabel: 'Estrategia' },
+  { id: 13, numero: 13, titulo: 'Autoevaluación Fase 1',                     claseRelacionada: 13, htmlPath: '/practicas/Practica_13_Repaso_Fase1.html',           duracion: 30, fase: 1, categoria: 'ia-aplicada',    categoriaLabel: 'IA Aplicada' },
+  { id: 14, numero: 14, titulo: 'Explorá un agente de IA en acción',         claseRelacionada: 14, htmlPath: '/practicas/Practica_14_Agentes_IA.html',             duracion: 35, fase: 1, categoria: 'ia-aplicada',    categoriaLabel: 'IA Aplicada' },
+  { id: 15, numero: 15, titulo: 'Mini Proyecto I — Entrega guiada',          claseRelacionada: 15, htmlPath: '/practicas/Practica_15_Mini_Proyecto.html',          duracion: 60, fase: 1, categoria: 'proyectos',      categoriaLabel: 'Proyectos' },
+  // Fase 2
+  { id: 16, numero: 16, titulo: 'Tu primer escenario en Make',               claseRelacionada: 16, htmlPath: '/practicas/Practica_16_Intro_Automatizacion.html',   duracion: 45, fase: 2, categoria: 'automatizacion',  categoriaLabel: 'Automatización' },
+  { id: 17, numero: 17, titulo: 'Conectá dos apps reales en Make',           claseRelacionada: 17, htmlPath: '/practicas/Practica_17_Conexiones_Make.html',        duracion: 50, fase: 2, categoria: 'automatizacion',  categoriaLabel: 'Automatización' },
+  { id: 18, numero: 18, titulo: 'Consumí una API y procesá JSON',            claseRelacionada: 18, htmlPath: '/practicas/Practica_18_APIs_JSON.html',              duracion: 50, fase: 2, categoria: 'automatizacion',  categoriaLabel: 'Automatización' },
+  { id: 19, numero: 19, titulo: 'Automatizá un mensaje de WhatsApp',         claseRelacionada: 19, htmlPath: '/practicas/Practica_19_WhatsApp.html',               duracion: 55, fase: 2, categoria: 'automatizacion',  categoriaLabel: 'Automatización' },
+  { id: 20, numero: 20, titulo: 'Integrá ChatGPT dentro de Make',            claseRelacionada: 20, htmlPath: '/practicas/Practica_20_IA_Make.html',                duracion: 55, fase: 2, categoria: 'automatizacion',  categoriaLabel: 'Automatización' },
+  { id: 21, numero: 21, titulo: 'Manejá errores y filtros en tu flujo',      claseRelacionada: 21, htmlPath: '/practicas/Practica_21_Errores_Filtros.html',        duracion: 45, fase: 2, categoria: 'automatizacion',  categoriaLabel: 'Automatización' },
+  { id: 22, numero: 22, titulo: 'Proyecto Final — Guía paso a paso',         claseRelacionada: 22, htmlPath: '/practicas/Practica_22_Proyecto_Final.html',         duracion: 90, fase: 2, categoria: 'proyectos',      categoriaLabel: 'Proyectos' },
+]
+
 // Función para obtener el color de la categoría
 export function getCategoriaColor(categoria: string): string {
   const colores: Record<string, string> = {
