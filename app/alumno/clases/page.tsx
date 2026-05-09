@@ -7,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Play, RotateCcw, Lock, CheckCircle2, Clock, UserX } from 'lucide-react'
+import { Play, RotateCcw, Lock, CheckCircle2, Clock, RotateCcw as Recuperar } from 'lucide-react'
 import { clasesDemo, getCategoriaBgLight } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
@@ -67,7 +67,7 @@ export default function ClasesPage() {
             <div className="flex-shrink-0">
               {isCompletada && <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center"><CheckCircle2 className="h-5 w-5 text-emerald-600" /></div>}
               {isEnCurso && <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center"><Play className="h-4 w-4 text-blue-600" /></div>}
-              {isAusente && <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center"><UserX className="h-4 w-4 text-red-400" /></div>}
+              {isAusente && <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center"><Recuperar className="h-4 w-4 text-amber-500" /></div>}
               {isBloqueada && <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"><Lock className="h-4 w-4 text-slate-400" /></div>}
             </div>
           </div>
@@ -88,12 +88,12 @@ export default function ClasesPage() {
             <span className={cn('text-sm font-medium',
               isCompletada && 'text-emerald-600',
               isEnCurso && 'text-blue-600',
-              isAusente && 'text-red-500',
+              isAusente && 'text-amber-600',
               isBloqueada && 'text-slate-400'
             )}>
               {isCompletada && 'Completada'}
               {isEnCurso && 'Disponible'}
-              {isAusente && 'Ausente'}
+              {isAusente && 'Pendiente — Recuperar'}
               {isBloqueada && 'Próximamente'}
             </span>
             {isCompletada && (
