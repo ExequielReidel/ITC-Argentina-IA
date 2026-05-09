@@ -12,7 +12,8 @@ import {
   FileText,
   ClipboardList,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  HelpCircle
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -27,6 +28,7 @@ const menuItems = [
   { href: '/profesor/clases', label: 'Gestión de Clases', icon: BookOpen },
   { href: '/profesor/asistencia', label: 'Asistencia', icon: ClipboardList },
   { href: '/profesor/examenes', label: 'Exámenes', icon: FileText },
+  { href: '/profesor/ayuda', label: 'Guía de Uso', icon: HelpCircle },
 ]
 
 export function ProfesorSidebar({ isCollapsed, onToggle }: SidebarProps) {
