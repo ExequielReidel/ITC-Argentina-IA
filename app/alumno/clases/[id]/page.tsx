@@ -4,7 +4,7 @@ import { useState, useEffect, use } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { X, ChevronLeft, ChevronRight, Check, Clock, Maximize2, Minimize2, Lock } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Check, Clock, Maximize2, Minimize2, Lock, UserX } from 'lucide-react'
 import { clasesDemo, getCategoriaBgLight } from '@/lib/data'
 import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
@@ -16,6 +16,7 @@ export default function ClaseViewerPage({ params }: { params: Promise<{ id: stri
   const [isMarking, setIsMarking] = useState(false)
   const [habilitadas, setHabilitadas] = useState<number[]>([])
   const [completadas, setCompletadas] = useState<number[]>([])
+  const [ausencias, setAusencias] = useState<number[]>([])
   const [loading, setLoading] = useState(true)
 
   const claseNum = parseInt(id)
@@ -27,6 +28,7 @@ export default function ClaseViewerPage({ params }: { params: Promise<{ id: stri
       .then(data => {
         setHabilitadas(data.habilitadas ?? [])
         setCompletadas(data.completadas ?? [])
+        setAusencias(data.ausencias ?? [])
         setLoading(false)
       })
   }, [])
@@ -61,14 +63,26 @@ export default function ClaseViewerPage({ params }: { params: Promise<{ id: stri
     setIsMarking(false)
   }
 
+  const esAusente = ausencias.includes(claseNum)
+
   if (!loading && !estaHabilitada) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-center p-8">
-        <div className="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center">
-          <Lock className="h-10 w-10 text-slate-400" />
+        <div className={cn('w-20 h-20 rounded-full flex items-center justify-center', esAusente ? 'bg-red-100' : 'bg-slate-100')}>
+          {esAusente
+            ? <UserX className="h-10 w-10 text-red-400" />
+            : <Lock className="h-10 w-10 text-slate-400" />
+          }
         </div>
-        <h2 className="font-heading text-xl font-bold">Esta clase aún no está disponible</h2>
-        <p className="text-muted-foreground max-w-sm">Tu profesor todavía no habilitó esta clase. Volvé más tarde o consultale.</p>
+        <h2 className="font-heading text-xl font-bold">
+          {esAusente ? 'No pudiste asistir a esta clase' : 'Esta clase aún no está disponible'}
+        </h2>
+        <p className="text-muted-foreground max-w-sm">
+          {esAusente
+            ? 'Tu profesor registró tu ausencia en esta clase. Hablá con él para coordinar cómo recuperarla.'
+            : 'Tu acceso se habilita automáticamente cuando tu profesor toma asistencia. Volvé cuando empiece la clase.'
+          }
+        </p>
         <Button variant="outline" onClick={() => router.push('/alumno/clases')}>
           <ChevronLeft className="h-4 w-4 mr-2" />
           Volver a mis clases

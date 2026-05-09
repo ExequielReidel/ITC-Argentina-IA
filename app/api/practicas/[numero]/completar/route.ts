@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { clasesHabilitadas, progresoPracticas } from '@/lib/db/schema'
+import { asistencia, progresoPracticas } from '@/lib/db/schema'
 import { eq, and } from 'drizzle-orm'
 
 export async function POST(_req: Request, { params }: { params: Promise<{ numero: string }> }) {
@@ -19,13 +19,13 @@ export async function POST(_req: Request, { params }: { params: Promise<{ numero
     return NextResponse.json({ error: 'Número inválido' }, { status: 400 })
   }
 
-  // Verificar que la clase correspondiente está habilitada
-  const [habilitada] = await db.select()
-    .from(clasesHabilitadas)
-    .where(eq(clasesHabilitadas.claseNumero, practicaNumero))
+  // Solo puede completar la práctica si asistió a la clase correspondiente
+  const [asistenciaRow] = await db.select()
+    .from(asistencia)
+    .where(and(eq(asistencia.userId, userId), eq(asistencia.claseNumero, practicaNumero), eq(asistencia.presente, true)))
 
-  if (!habilitada) {
-    return NextResponse.json({ error: 'Práctica no disponible aún' }, { status: 403 })
+  if (!asistenciaRow) {
+    return NextResponse.json({ error: 'Práctica no disponible' }, { status: 403 })
   }
 
   await db.insert(progresoPracticas).values({

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { progresoAlumnos, clasesHabilitadas } from '@/lib/db/schema'
+import { progresoAlumnos, asistencia } from '@/lib/db/schema'
 import { eq, and } from 'drizzle-orm'
 
 export async function POST(req: Request, { params }: { params: Promise<{ numero: string }> }) {
@@ -15,12 +15,12 @@ export async function POST(req: Request, { params }: { params: Promise<{ numero:
   const claseNum = parseInt(numero)
   const userId = parseInt((session.user as any).id)
 
-  // Verificar que la clase esté habilitada
-  const [habilitada] = await db.select().from(clasesHabilitadas)
-    .where(eq(clasesHabilitadas.claseNumero, claseNum))
+  // Solo puede completar si asistió a la clase
+  const [asistenciaRow] = await db.select().from(asistencia)
+    .where(and(eq(asistencia.userId, userId), eq(asistencia.claseNumero, claseNum), eq(asistencia.presente, true)))
 
-  if (!habilitada) {
-    return NextResponse.json({ error: 'Esta clase aún no fue habilitada' }, { status: 403 })
+  if (!asistenciaRow) {
+    return NextResponse.json({ error: 'No tenés acceso a esta clase' }, { status: 403 })
   }
 
   await db.insert(progresoAlumnos).values({

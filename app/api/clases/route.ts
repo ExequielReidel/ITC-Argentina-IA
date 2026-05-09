@@ -20,15 +20,20 @@ export async function GET() {
       .where(and(eq(progresoAlumnos.userId, userId), eq(progresoAlumnos.completada, true)))
     const completadasNums = new Set(progreso.map(p => p.claseNumero))
 
-    const ausenciasRows = await db.select({ claseNumero: asistencia.claseNumero })
+    // Presentes: clases a las que asistió → puede acceder
+    const presenteRows = await db.select({ claseNumero: asistencia.claseNumero })
+      .from(asistencia)
+      .where(and(eq(asistencia.userId, userId), eq(asistencia.presente, true)))
+
+    // Ausentes: el turno ya pasó pero faltó → bloqueada con estado "ausente"
+    const ausenteRows = await db.select({ claseNumero: asistencia.claseNumero })
       .from(asistencia)
       .where(and(eq(asistencia.userId, userId), eq(asistencia.presente, false)))
-    const ausenciasNums = ausenciasRows.map(a => a.claseNumero)
 
     return NextResponse.json({
-      habilitadas: Array.from(habilitadasNums),
+      habilitadas: presenteRows.map(r => r.claseNumero),
       completadas: Array.from(completadasNums),
-      ausencias: ausenciasNums,
+      ausencias: ausenteRows.map(r => r.claseNumero),
     })
   }
 

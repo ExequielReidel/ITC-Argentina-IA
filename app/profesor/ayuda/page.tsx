@@ -145,30 +145,29 @@ export default function AyudaPage() {
           <Steps>
             <Step n={1}>Hacé clic en <strong>Asistencia</strong> en el menú lateral.</Step>
             <Step n={2}>Seleccioná la clase que se está dictando hoy.</Step>
-            <Step n={3}>Vas a ver la lista de alumnos. Marcá a cada uno como <strong>Presente</strong> o <strong>Ausente</strong>.</Step>
-            <Step n={4}>Guardá los cambios. Los alumnos ausentes verán una alerta en su panel para recuperar el material.</Step>
+            <Step n={3}>Vas a ver la lista de alumnos. Marcá a cada uno como <strong>Presente</strong> o <strong>Ausente</strong>. Los cambios se guardan automáticamente al instante.</Step>
           </Steps>
           <InfoBox color="blue">
-            <strong>¿Qué ve el alumno si faltó?</strong> La clase aparece marcada como "Pendiente" en su panel, con acceso al material para recuperarla por su cuenta.
+            <strong>¿Qué ve el alumno si faltó?</strong> La clase aparece marcada como "Pendiente" en su panel, con acceso al material para recuperarla por su cuenta antes de la próxima clase.
           </InfoBox>
+          <TipBox>Tomá asistencia durante la clase, no al final, así los alumnos que llegan un poco tarde igual quedan registrados.</TipBox>
         </Section>
 
         {/* PASO 7 */}
         <Section numero={7} titulo="Examen Final" emoji="📝">
-          <p className="text-slate-700 mb-3">Hacé clic en <strong>Exámenes</strong> para configurar el examen final y ver los resultados de tus alumnos.</p>
+          <p className="text-slate-700 mb-3">Hacé clic en <strong>Exámenes</strong> para habilitar el examen y ver los resultados. La configuración de parámetros (cantidad de intentos, tiempo, puntaje de aprobación) ya está definida por la empresa y <strong>no necesita modificarse</strong> salvo que la empresa lo indique expresamente.</p>
 
-          <p className="font-semibold text-slate-800 mb-2">Configuración del examen:</p>
-          <ul className="list-disc pl-5 space-y-1 text-slate-700 text-sm mb-4">
-            <li><strong>Habilitado:</strong> si el examen está activo para los alumnos o no.</li>
-            <li><strong>Contraseña:</strong> opcional. Si la ponés, el alumno la necesita para arrancar el examen.</li>
-            <li><strong>Intentos permitidos:</strong> cuántas veces puede rendir cada alumno (por defecto 3).</li>
-            <li><strong>Tiempo límite:</strong> minutos disponibles para completarlo (por defecto 45 min).</li>
-            <li><strong>Puntaje mínimo:</strong> respuestas correctas necesarias para aprobar (por defecto 9 de 15).</li>
-          </ul>
+          <p className="font-semibold text-slate-800 mb-2">Cómo habilitar el examen:</p>
+          <Steps>
+            <Step n={1}>Ingresá a la sección <strong>Exámenes</strong> desde el menú.</Step>
+            <Step n={2}>Activá el interruptor de <strong>Habilitado</strong> para que los alumnos puedan verlo.</Step>
+            <Step n={3}>Escribí una <strong>contraseña</strong> para el examen y guardala. Esta contraseña se la das en persona a los alumnos el día y hora acordados para el examen.</Step>
+          </Steps>
 
-          <p className="font-semibold text-slate-800 mb-2">Ver resultados:</p>
+          <WarnBox>La contraseña es <strong>obligatoria</strong>. Es el único mecanismo para evitar que alumnos de otros turnos rindan antes de tiempo. Nunca la compartas por mensaje o grupo — entregala solo en el salón, el día del examen.</WarnBox>
+
+          <p className="font-semibold text-slate-800 mt-4 mb-2">Ver resultados:</p>
           <p className="text-slate-700 text-sm">En la misma pantalla vas a ver una tabla con todos los alumnos que rindieron: nombre, intento, puntaje, estado (aprobado/desaprobado) y fecha.</p>
-          <TipBox>Habilitá el examen recién cuando el curso esté terminado o cerca del final. Una vez que un alumno aprueba, se desbloquea su certificado.</TipBox>
         </Section>
 
         {/* PASO 8 */}
@@ -181,11 +180,11 @@ export default function AyudaPage() {
         <Section numero={9} titulo="Consejos Generales" emoji="🌟">
           <ul className="space-y-3 text-sm text-slate-700">
             {[
-              ['Habilitá las clases con anticipación', 'Unos 5 o 10 minutos antes de que empiece, para que los alumnos puedan entrar sin problemas.'],
-              ['Tomá asistencia durante la clase', 'Así los alumnos que llegan un poco tarde igual quedan registrados.'],
-              ['Cambiá la contraseña desde el panel', 'Si un alumno olvidó su contraseña, podés editarla vos desde Mis Alumnos → Editar.'],
+              ['Tomá asistencia al inicio de la clase', 'Los alumnos que marcás presentes obtienen acceso automáticamente al contenido de esa clase.'],
+              ['Usá "Pausar" en vez de "Eliminar"', 'Si un alumno deja el curso, pausarlo conserva su historial por si vuelve más adelante.'],
+              ['Cambiá la contraseña desde el panel', 'Si un alumno olvidó su contraseña, podés editarla desde Mis Alumnos → Editar.'],
               ['Funciona en cualquier dispositivo', 'Computadora, tablet y celular, sin instalar nada.'],
-              ['Las prácticas son opcionales', 'Se habilitan automáticamente con cada clase. No afectan la nota final del alumno.'],
+              ['Las prácticas son opcionales', 'Se habilitan automáticamente cuando el alumno accede a cada clase. No afectan la nota final.'],
             ].map(([titulo, desc], i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="text-blue-600 font-bold mt-0.5">→</span>

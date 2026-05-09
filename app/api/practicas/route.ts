@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { clasesHabilitadas, progresoPracticas } from '@/lib/db/schema'
+import { asistencia, progresoPracticas } from '@/lib/db/schema'
 import { eq, and } from 'drizzle-orm'
 
 export async function GET() {
@@ -13,9 +13,11 @@ export async function GET() {
 
   const userId = parseInt((session.user as any).id)
 
-  // Las prácticas se habilitan automáticamente cuando el profesor habilita la clase correspondiente
-  const habilitadas = await db.select({ claseNumero: clasesHabilitadas.claseNumero }).from(clasesHabilitadas)
-  const habilitadasNums = habilitadas.map(h => h.claseNumero)
+  // Las prácticas se habilitan solo para alumnos que asistieron a la clase correspondiente
+  const presenteRows = await db.select({ claseNumero: asistencia.claseNumero })
+    .from(asistencia)
+    .where(and(eq(asistencia.userId, userId), eq(asistencia.presente, true)))
+  const habilitadasNums = presenteRows.map(r => r.claseNumero)
 
   const completadas = await db.select({ practicaNumero: progresoPracticas.practicaNumero })
     .from(progresoPracticas)

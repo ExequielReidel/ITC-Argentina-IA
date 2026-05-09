@@ -7,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Play, RotateCcw, Lock, CheckCircle2, Clock, AlertTriangle } from 'lucide-react'
+import { Play, RotateCcw, Lock, CheckCircle2, Clock, UserX } from 'lucide-react'
 import { clasesDemo, getCategoriaBgLight } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
@@ -29,8 +29,8 @@ export default function ClasesPage() {
 
   const getEstado = (numero: number) => {
     if (completadas.includes(numero)) return 'completada'
-    if (habilitadas.includes(numero) && ausencias.includes(numero)) return 'pendiente'
     if (habilitadas.includes(numero)) return 'en_curso'
+    if (ausencias.includes(numero)) return 'ausente'
     return 'bloqueada'
   }
 
@@ -42,10 +42,10 @@ export default function ClasesPage() {
     const isCompletada = estado === 'completada'
     const isEnCurso = estado === 'en_curso'
     const isBloqueada = estado === 'bloqueada'
-    const isPendiente = estado === 'pendiente'
+    const isAusente = estado === 'ausente'
 
     return (
-      <Card key={clase.id} className={cn('shadow-itc hover-lift transition-all duration-300 overflow-hidden', isBloqueada && 'opacity-60')}>
+      <Card key={clase.id} className={cn('shadow-itc hover-lift transition-all duration-300 overflow-hidden', (isBloqueada || isAusente) && 'opacity-60')}>
         <div className={cn('h-1',
           clase.categoria === 'ia-aplicada' && 'bg-blue-500',
           clase.categoria === 'diseno-ia' && 'bg-pink-500',
@@ -67,7 +67,7 @@ export default function ClasesPage() {
             <div className="flex-shrink-0">
               {isCompletada && <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center"><CheckCircle2 className="h-5 w-5 text-emerald-600" /></div>}
               {isEnCurso && <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center"><Play className="h-4 w-4 text-blue-600" /></div>}
-              {isPendiente && <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center"><AlertTriangle className="h-4 w-4 text-amber-600" /></div>}
+              {isAusente && <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center"><UserX className="h-4 w-4 text-red-400" /></div>}
               {isBloqueada && <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"><Lock className="h-4 w-4 text-slate-400" /></div>}
             </div>
           </div>
@@ -88,13 +88,13 @@ export default function ClasesPage() {
             <span className={cn('text-sm font-medium',
               isCompletada && 'text-emerald-600',
               isEnCurso && 'text-blue-600',
-              isPendiente && 'text-amber-600',
+              isAusente && 'text-red-500',
               isBloqueada && 'text-slate-400'
             )}>
               {isCompletada && 'Completada'}
               {isEnCurso && 'Disponible'}
-              {isPendiente && 'Pendiente — recuperar'}
-              {isBloqueada && 'Bloqueada'}
+              {isAusente && 'Ausente'}
+              {isBloqueada && 'Próximamente'}
             </span>
             {isCompletada && (
               <Link href={`/alumno/clases/${clase.numero}`}>
@@ -106,13 +106,8 @@ export default function ClasesPage() {
                 <Button size="sm" className="gap-1"><Play className="h-3 w-3" />Abrir</Button>
               </Link>
             )}
-            {isPendiente && (
-              <Link href={`/alumno/clases/${clase.numero}`}>
-                <Button size="sm" className="gap-1 bg-amber-500 hover:bg-amber-600"><Play className="h-3 w-3" />Recuperar</Button>
-              </Link>
-            )}
-            {isBloqueada && (
-              <Button variant="outline" size="sm" disabled>Próximamente</Button>
+            {(isAusente || isBloqueada) && (
+              <Button variant="outline" size="sm" disabled><Lock className="h-3 w-3" /></Button>
             )}
           </div>
         </CardContent>
@@ -140,12 +135,12 @@ export default function ClasesPage() {
         </TabsContent>
       </Tabs>
 
-      <Card className="bg-amber-50 border-amber-200">
+      <Card className="bg-blue-50 border-blue-200">
         <CardContent className="p-4 flex items-start gap-3">
-          <Lock className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
+          <Lock className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-sm font-medium text-amber-800">Sistema de desbloqueo secuencial</p>
-            <p className="text-sm text-amber-700 mt-1">Las clases se desbloquean cuando tu profesor las habilita. Podés repasar las clases completadas en cualquier momento.</p>
+            <p className="text-sm font-medium text-blue-800">Acceso por asistencia</p>
+            <p className="text-sm text-blue-700 mt-1">Las clases se habilitan automáticamente cuando tu profesor registra tu asistencia. Podés repasar las clases completadas en cualquier momento.</p>
           </div>
         </CardContent>
       </Card>
