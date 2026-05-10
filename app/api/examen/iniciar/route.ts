@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
-import { examenConfig, preguntasExamen, examenesResultados } from '@/lib/db/schema'
+import { examenConfig, preguntasExamen, examenesResultados, users } from '@/lib/db/schema'
 import { eq, and } from 'drizzle-orm'
 
 function shuffle<T>(arr: T[]): T[] {
@@ -23,7 +23,12 @@ export async function POST(req: Request) {
   const userId = parseInt((session.user as any).id)
   const { password } = await req.json()
 
-  const [config] = await db.select().from(examenConfig).limit(1)
+  // Obtener el profesorId del alumno para usar la config de su profesor
+  const [alumnoRow] = await db.select({ profesorId: users.profesorId }).from(users).where(eq(users.id, userId))
+  const alumnoProfesorId = alumnoRow?.profesorId
+  if (!alumnoProfesorId) return NextResponse.json({ error: 'Alumno sin profesor asignado' }, { status: 403 })
+
+  const [config] = await db.select().from(examenConfig).where(eq(examenConfig.profesorId, alumnoProfesorId)).limit(1)
   if (!config?.habilitado) {
     return NextResponse.json({ error: 'El examen no está habilitado aún' }, { status: 403 })
   }

@@ -12,10 +12,12 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
     return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
   }
 
+  const profesorId = parseInt((session.user as any).id)
   const { id } = await params
   const userId = parseInt(id)
 
-  const [alumno] = await db.select().from(users).where(eq(users.id, userId))
+  const [alumno] = await db.select().from(users)
+    .where(and(eq(users.id, userId), eq(users.profesorId, profesorId)))
   if (!alumno) return NextResponse.json({ error: 'No encontrado' }, { status: 404 })
 
   const progreso = await db.select().from(progresoAlumnos).where(eq(progresoAlumnos.userId, userId))
@@ -31,6 +33,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
   }
 
+  const profesorId = parseInt((session.user as any).id)
   const { id } = await params
   const userId = parseInt(id)
   const body = await req.json()
@@ -41,7 +44,8 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     updateData.passwordHash = await bcrypt.hash(nuevaPassword, 12)
   }
 
-  await db.update(users).set(updateData).where(eq(users.id, userId))
+  await db.update(users).set(updateData)
+    .where(and(eq(users.id, userId), eq(users.profesorId, profesorId)))
   return NextResponse.json({ ok: true })
 }
 
@@ -51,7 +55,9 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
     return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
   }
 
+  const profesorId = parseInt((session.user as any).id)
   const { id } = await params
-  await db.delete(users).where(eq(users.id, parseInt(id)))
+  await db.delete(users)
+    .where(and(eq(users.id, parseInt(id)), eq(users.profesorId, profesorId)))
   return NextResponse.json({ ok: true })
 }

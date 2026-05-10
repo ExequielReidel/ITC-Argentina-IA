@@ -12,9 +12,12 @@ export async function GET() {
     return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
   }
 
-  const alumnos = await db.select().from(users).where(eq(users.role, 'alumno'))
+  const profesorId = parseInt((session.user as any).id)
+  const alumnos = await db.select().from(users)
+    .where(and(eq(users.role, 'alumno'), eq(users.profesorId, profesorId)))
 
   const habilitadas = await db.select().from(clasesHabilitadas)
+    .where(eq(clasesHabilitadas.profesorId, profesorId))
   const totalHabilitadas = habilitadas.length || 1
 
   const result = await Promise.all(alumnos.map(async (a) => {
@@ -47,6 +50,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
   }
 
+  const profesorId = parseInt((session.user as any).id)
   const body = await req.json()
   const { nombre, email, dni, telefono, turno, password } = body
 
@@ -65,6 +69,7 @@ export async function POST(req: Request) {
     turno: turno || null,
     role: 'alumno',
     activo: true,
+    profesorId,
   }).returning({ id: users.id, nombre: users.nombre, email: users.email })
 
   return NextResponse.json(nuevo, { status: 201 })

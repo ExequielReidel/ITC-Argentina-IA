@@ -11,14 +11,16 @@ export const users = pgTable('users', {
   role: varchar('role', { length: 20 }).notNull().default('alumno'),
   activo: boolean('activo').default(true),
   createdAt: timestamp('created_at').defaultNow(),
+  profesorId: integer('profesor_id'),  // FK al profesor que gestiona este alumno
 })
 
 export const clasesHabilitadas = pgTable('clases_habilitadas', {
   id: serial('id').primaryKey(),
-  claseNumero: integer('clase_numero').notNull().unique(),
+  claseNumero: integer('clase_numero').notNull(),
+  profesorId: integer('profesor_id').notNull(),  // cada profesor tiene su propia lista
   fechaHabilitada: timestamp('fecha_habilitada').defaultNow(),
   notasDocente: text('notas_docente'),
-})
+}, (t) => [unique().on(t.claseNumero, t.profesorId)])
 
 export const progresoAlumnos = pgTable('progreso_alumnos', {
   id: serial('id').primaryKey(),
@@ -38,6 +40,7 @@ export const asistencia = pgTable('asistencia', {
 
 export const examenConfig = pgTable('examen_config', {
   id: serial('id').primaryKey(),
+  profesorId: integer('profesor_id'),  // cada profesor tiene su propia config
   habilitado: boolean('habilitado').default(false),
   passwordExamen: varchar('password_examen', { length: 100 }),
   intentosPermitidos: integer('intentos_permitidos').default(3),

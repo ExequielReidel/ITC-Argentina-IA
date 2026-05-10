@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { examenesResultados, users } from '@/lib/db/schema'
-import { eq } from 'drizzle-orm'
+import { eq, and } from 'drizzle-orm'
 
 export async function GET(req: Request) {
   const session = await getServerSession(authOptions)
@@ -18,7 +18,8 @@ export async function GET(req: Request) {
     return NextResponse.json(resultados)
   }
 
-  // Para profesor: todos los resultados con nombre del alumno
+  // Para profesor: solo resultados de sus alumnos
+  const profesorId = userId
   const resultados = await db
     .select({
       id: examenesResultados.id,
@@ -33,7 +34,7 @@ export async function GET(req: Request) {
       fechaFin: examenesResultados.fechaFin,
     })
     .from(examenesResultados)
-    .innerJoin(users, eq(examenesResultados.userId, users.id))
+    .innerJoin(users, and(eq(examenesResultados.userId, users.id), eq(users.profesorId, profesorId)))
 
   return NextResponse.json(resultados)
 }
