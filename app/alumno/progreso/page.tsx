@@ -17,7 +17,7 @@ const CATEGORIAS = [
 
 interface Insignia {
   id: string
-  emoji: string
+  imagen: string
   nombre: string
   descripcion: string
   desbloqueada: boolean
@@ -36,70 +36,70 @@ function buildInsignias(
   return [
     {
       id: 'primera-clase',
-      emoji: '🌱',
+      imagen: '/insigneas/1.jpg',
       nombre: 'Primera Chispa',
       descripcion: 'Completaste tu primera clase del curso.',
       desbloqueada: completadas.length >= 1,
     },
     {
       id: 'cinco-clases',
-      emoji: '🔥',
+      imagen: '/insigneas/2.jpg',
       nombre: 'En Racha',
       descripcion: 'Llevas 5 clases completadas. Vas muy bien.',
       desbloqueada: completadas.length >= 5,
     },
     {
       id: 'mitad',
-      emoji: '⚡',
+      imagen: '/insigneas/3.jpg',
       nombre: 'Mitad del Camino',
       descripcion: 'Superaste la mitad del curso. 11 clases completadas.',
       desbloqueada: completadas.length >= 11,
     },
     {
       id: 'fase1',
-      emoji: '🧠',
+      imagen: '/insigneas/4.jpg',
       nombre: 'Experto en IA',
       descripcion: 'Completaste todas las clases de la Fase 1 — IA Aplicada.',
       desbloqueada: todasFase1,
     },
     {
       id: 'fase2-inicio',
-      emoji: '🤖',
+      imagen: '/insigneas/5.jpg',
       nombre: 'Primer Automatizador',
       descripcion: 'Completaste tu primera clase de la Fase 2 — Automatización.',
       desbloqueada: fase2.some(n => completadas.includes(n)),
     },
     {
       id: 'fase2',
-      emoji: '⚙️',
+      imagen: '/insigneas/6.jpg',
       nombre: 'Arquitecto Digital',
       descripcion: 'Completaste todas las clases de la Fase 2 — Automatización.',
       desbloqueada: todasFase2,
     },
     {
       id: 'curso-completo',
-      emoji: '🏆',
+      imagen: '/insigneas/7.jpg',
       nombre: 'Curso Completo',
       descripcion: 'Completaste las 22 clases del curso. ¡Logro máximo!',
       desbloqueada: completadas.length >= 22,
     },
     {
       id: 'practicante',
-      emoji: '✏️',
+      imagen: '/insigneas/8.jpg',
       nombre: 'Practicante',
       descripcion: 'Realizaste 5 prácticas opcionales. Tu dedicación se nota.',
       desbloqueada: practicasCompletadas.length >= 5,
     },
     {
       id: 'practicante-pro',
-      emoji: '📚',
+      imagen: '/insigneas/9.jpg',
       nombre: 'Curioso Profesional',
       descripcion: 'Realizaste 10 prácticas opcionales. Vas más allá.',
       desbloqueada: practicasCompletadas.length >= 10,
     },
     {
       id: 'aprobado',
-      emoji: '🎓',
+      imagen: '/insigneas/10.jpg',
       nombre: 'Graduado',
       descripcion: 'Aprobaste el examen final del curso.',
       desbloqueada: aprobado,
@@ -246,12 +246,14 @@ export default function ProgresoPage() {
                   'flex flex-col items-center gap-2 p-3 rounded-2xl border text-center transition-all duration-200 cursor-default select-none',
                   insignia.desbloqueada
                     ? 'bg-gradient-to-b from-amber-50 to-white border-amber-200 shadow-sm'
-                    : 'bg-slate-50 border-slate-200 opacity-50 grayscale'
+                    : 'bg-slate-50 border-slate-200 opacity-40'
                 )}
               >
-                <span className={cn('text-3xl leading-none', !insignia.desbloqueada && 'filter grayscale')}>
-                  {insignia.emoji}
-                </span>
+                <img
+                  src={insignia.imagen}
+                  alt={insignia.nombre}
+                  className={cn('w-14 h-14 object-contain', !insignia.desbloqueada && 'grayscale')}
+                />
                 <span className={cn(
                   'text-xs font-semibold leading-tight',
                   insignia.desbloqueada ? 'text-amber-800' : 'text-slate-400'
