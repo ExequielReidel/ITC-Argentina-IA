@@ -33,7 +33,7 @@ const menuItems = [
   { href: '/alumno/examen', label: 'Examen Final', icon: FileText },
   { href: '/alumno/progreso', label: 'Mi Progreso', icon: BarChart3 },
   // { href: '/alumno/certificado', label: 'Mi Certificado', icon: Award }, // oculto — disponible en duplicado de marca
-  { href: '/alumno/soporte', label: 'Soporte', icon: HelpCircle },
+  // { href: '/alumno/soporte', label: 'Soporte', icon: HelpCircle }, // ITC — cursos 100% presenciales
   { href: '/alumno/perfil', label: 'Mi Perfil', icon: Settings },
 ]
 

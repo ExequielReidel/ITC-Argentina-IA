@@ -5,19 +5,112 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { clasesDemo } from '@/lib/data'
 import { cn } from '@/lib/utils'
-import { CheckCircle2, Circle, BookOpen, Award, TrendingUp } from 'lucide-react'
+import { TrendingUp } from 'lucide-react'
 
 const CATEGORIAS = [
-  { key: 'ia-aplicada', nombre: 'IA Aplicada', color: 'bg-blue-500' },
-  { key: 'diseno-ia', nombre: 'Diseño con IA', color: 'bg-pink-500' },
-  { key: 'estrategia', nombre: 'Estrategia', color: 'bg-violet-500' },
-  { key: 'automatizacion', nombre: 'Automatización', color: 'bg-purple-500' },
-  { key: 'proyectos', nombre: 'Proyectos', color: 'bg-emerald-500' },
+  { key: 'ia-aplicada',    nombre: 'IA Aplicada',     color: 'bg-blue-500' },
+  { key: 'diseno-ia',      nombre: 'Diseño con IA',   color: 'bg-pink-500' },
+  { key: 'estrategia',     nombre: 'Estrategia',      color: 'bg-violet-500' },
+  { key: 'automatizacion', nombre: 'Automatización',  color: 'bg-purple-500' },
+  { key: 'proyectos',      nombre: 'Proyectos',       color: 'bg-emerald-500' },
 ]
+
+interface Insignia {
+  id: string
+  emoji: string
+  nombre: string
+  descripcion: string
+  desbloqueada: boolean
+}
+
+function buildInsignias(
+  completadas: number[],
+  practicasCompletadas: number[],
+  aprobado: boolean,
+): Insignia[] {
+  const fase1 = clasesDemo.filter(c => c.fase === 1).map(c => c.numero)
+  const fase2 = clasesDemo.filter(c => c.fase === 2).map(c => c.numero)
+  const todasFase1 = fase1.every(n => completadas.includes(n))
+  const todasFase2 = fase2.every(n => completadas.includes(n))
+
+  return [
+    {
+      id: 'primera-clase',
+      emoji: '🌱',
+      nombre: 'Primera Chispa',
+      descripcion: 'Completaste tu primera clase del curso.',
+      desbloqueada: completadas.length >= 1,
+    },
+    {
+      id: 'cinco-clases',
+      emoji: '🔥',
+      nombre: 'En Racha',
+      descripcion: 'Llevas 5 clases completadas. Vas muy bien.',
+      desbloqueada: completadas.length >= 5,
+    },
+    {
+      id: 'mitad',
+      emoji: '⚡',
+      nombre: 'Mitad del Camino',
+      descripcion: 'Superaste la mitad del curso. 11 clases completadas.',
+      desbloqueada: completadas.length >= 11,
+    },
+    {
+      id: 'fase1',
+      emoji: '🧠',
+      nombre: 'Experto en IA',
+      descripcion: 'Completaste todas las clases de la Fase 1 — IA Aplicada.',
+      desbloqueada: todasFase1,
+    },
+    {
+      id: 'fase2-inicio',
+      emoji: '🤖',
+      nombre: 'Primer Automatizador',
+      descripcion: 'Completaste tu primera clase de la Fase 2 — Automatización.',
+      desbloqueada: fase2.some(n => completadas.includes(n)),
+    },
+    {
+      id: 'fase2',
+      emoji: '⚙️',
+      nombre: 'Arquitecto Digital',
+      descripcion: 'Completaste todas las clases de la Fase 2 — Automatización.',
+      desbloqueada: todasFase2,
+    },
+    {
+      id: 'curso-completo',
+      emoji: '🏆',
+      nombre: 'Curso Completo',
+      descripcion: 'Completaste las 22 clases del curso. ¡Logro máximo!',
+      desbloqueada: completadas.length >= 22,
+    },
+    {
+      id: 'practicante',
+      emoji: '✏️',
+      nombre: 'Practicante',
+      descripcion: 'Realizaste 5 prácticas opcionales. Tu dedicación se nota.',
+      desbloqueada: practicasCompletadas.length >= 5,
+    },
+    {
+      id: 'practicante-pro',
+      emoji: '📚',
+      nombre: 'Curioso Profesional',
+      descripcion: 'Realizaste 10 prácticas opcionales. Vas más allá.',
+      desbloqueada: practicasCompletadas.length >= 10,
+    },
+    {
+      id: 'aprobado',
+      emoji: '🎓',
+      nombre: 'Graduado',
+      descripcion: 'Aprobaste el examen final del curso.',
+      desbloqueada: aprobado,
+    },
+  ]
+}
 
 export default function ProgresoPage() {
   const [completadas, setCompletadas] = useState<number[]>([])
   const [habilitadas, setHabilitadas] = useState<number[]>([])
+  const [practicasCompletadas, setPracticasCompletadas] = useState<number[]>([])
   const [resultados, setResultados] = useState<any[]>([])
   const [cargando, setCargando] = useState(true)
   const totalClases = 22
@@ -25,10 +118,12 @@ export default function ProgresoPage() {
   useEffect(() => {
     Promise.all([
       fetch('/api/clases').then(r => r.json()),
+      fetch('/api/practicas').then(r => r.json()),
       fetch('/api/examen/resultados').then(r => r.json()),
-    ]).then(([clases, res]) => {
+    ]).then(([clases, practicas, res]) => {
       setCompletadas(clases?.completadas ?? [])
       setHabilitadas(clases?.habilitadas ?? [])
+      setPracticasCompletadas(practicas?.completadas ?? [])
       setResultados(Array.isArray(res) ? res : [])
       setCargando(false)
     })
@@ -43,6 +138,9 @@ export default function ProgresoPage() {
     const completadasCat = clasesCat.filter(c => completadas.includes(c.numero)).length
     return { ...cat, completadas: completadasCat, total: clasesCat.length }
   })
+
+  const insignias = buildInsignias(completadas, practicasCompletadas, aprobado)
+  const desbloqueadas = insignias.filter(i => i.desbloqueada).length
 
   if (cargando) {
     return (
@@ -78,8 +176,8 @@ export default function ProgresoPage() {
         </Card>
         <Card className="shadow-itc">
           <CardContent className="p-4">
-            <p className="text-sm text-muted-foreground">Clases disponibles</p>
-            <p className="text-3xl font-bold mt-1 text-blue-600">{habilitadas.length}</p>
+            <p className="text-sm text-muted-foreground">Prácticas hechas</p>
+            <p className="text-3xl font-bold mt-1 text-blue-600">{practicasCompletadas.length}</p>
           </CardContent>
         </Card>
         <Card className="shadow-itc">
@@ -128,34 +226,46 @@ export default function ProgresoPage() {
         </CardContent>
       </Card>
 
-      {/* Lista de clases */}
+      {/* Insignias */}
       <Card className="shadow-itc">
         <CardHeader>
-          <CardTitle className="font-heading text-lg">Detalle por clase</CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle className="font-heading text-lg">Insignias</CardTitle>
+            <span className="text-sm font-medium text-muted-foreground">
+              {desbloqueadas}/{insignias.length} desbloqueadas
+            </span>
+          </div>
         </CardHeader>
-        <CardContent className="p-0">
-          <div className="divide-y">
-            {clasesDemo.map(clase => {
-              const esCompletada = completadas.includes(clase.numero)
-              const esHabilitada = habilitadas.includes(clase.numero)
-              return (
-                <div key={clase.numero} className="flex items-center gap-3 p-3">
-                  <div className={cn('w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-bold',
-                    esCompletada ? 'bg-emerald-100 text-emerald-700' : esHabilitada ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-400')}>
-                    {String(clase.numero).padStart(2, '0')}
-                  </div>
-                  <span className={cn('flex-1 text-sm truncate', !esHabilitada && 'text-muted-foreground')}>
-                    {clase.titulo}
-                  </span>
-                  {esCompletada
-                    ? <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
-                    : esHabilitada
-                      ? <Circle className="h-4 w-4 text-blue-400 flex-shrink-0" />
-                      : <Circle className="h-4 w-4 text-slate-200 flex-shrink-0" />
-                  }
-                </div>
-              )
-            })}
+        <CardContent>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {insignias.map(insignia => (
+              <div
+                key={insignia.id}
+                title={insignia.descripcion}
+                className={cn(
+                  'flex flex-col items-center gap-2 p-3 rounded-2xl border text-center transition-all duration-200 cursor-default select-none',
+                  insignia.desbloqueada
+                    ? 'bg-gradient-to-b from-amber-50 to-white border-amber-200 shadow-sm'
+                    : 'bg-slate-50 border-slate-200 opacity-50 grayscale'
+                )}
+              >
+                <span className={cn('text-3xl leading-none', !insignia.desbloqueada && 'filter grayscale')}>
+                  {insignia.emoji}
+                </span>
+                <span className={cn(
+                  'text-xs font-semibold leading-tight',
+                  insignia.desbloqueada ? 'text-amber-800' : 'text-slate-400'
+                )}>
+                  {insignia.nombre}
+                </span>
+                {insignia.desbloqueada && (
+                  <span className="text-[10px] text-amber-600 leading-tight">{insignia.descripcion}</span>
+                )}
+                {!insignia.desbloqueada && (
+                  <span className="text-[10px] text-slate-400 leading-tight">Bloqueada</span>
+                )}
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>

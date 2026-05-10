@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { Users, BookOpen, Award, ChevronRight, CheckCircle2, AlertTriangle, Unlock } from 'lucide-react'
+import { Users, BookOpen, ChevronRight, CheckCircle2, AlertTriangle, Unlock } from 'lucide-react'
 import { clasesDemo } from '@/lib/data'
 import { toast } from 'sonner'
 
@@ -36,8 +36,10 @@ export default function ProfesorInicioPage() {
   const proximaAHabilitar = clasesEstado.find(c => !c.habilitada)
   const ultimaHabilitada = habilitadas[habilitadas.length - 1]
   const promedioAsistencia = alumnos.length > 0 ? Math.round(alumnos.reduce((s, a) => s + a.asistenciaPct, 0) / alumnos.length) : 0
-  const aprobados = new Set(examResultados.filter(r => r.aprobado).map(r => r.userId)).size
-  const alumnosConPocaAsistencia = alumnos.filter(a => a.asistenciaPct < 50)
+  const alumnosConFaltas = alumnos.filter(a => {
+    const presentes = Math.round(habilitadas.length * a.asistenciaPct / 100)
+    return habilitadas.length - presentes >= 2
+  })
 
   const habilitarProxima = async () => {
     if (!proximaAHabilitar) return
@@ -57,12 +59,11 @@ export default function ProfesorInicioPage() {
       </div>
 
       {/* Métricas principales */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {[
           { icon: Users, color: 'blue', label: 'Alumnos activos', value: alumnos.filter(a => a.activo !== false).length },
           { icon: BookOpen, color: 'violet', label: 'Clases habilitadas', value: `${habilitadas.length}/22` },
           { icon: CheckCircle2, color: 'emerald', label: 'Asistencia promedio', value: `${promedioAsistencia}%` },
-          { icon: Award, color: 'amber', label: 'Aprobaron examen', value: `${aprobados}/${alumnos.length}` },
         ].map(({ icon: Icon, color, label, value }) => (
           <Card key={label} className="shadow-itc hover-lift">
             <CardContent className="p-4 lg:p-6">
@@ -109,17 +110,23 @@ export default function ProfesorInicioPage() {
       )}
 
       {/* Alertas */}
-      {alumnosConPocaAsistencia.length > 0 && (
+      {alumnosConFaltas.length > 0 && (
         <Card className="shadow-itc border-amber-200">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
               <AlertTriangle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-amber-800">Alumnos con baja asistencia (&lt;50%)</p>
+                <p className="font-medium text-amber-800">Alumnos con 2 o más faltas</p>
                 <div className="mt-2 space-y-1">
-                  {alumnosConPocaAsistencia.map(a => (
-                    <p key={a.id} className="text-sm text-amber-700">{a.nombre} — {a.asistenciaPct}%</p>
-                  ))}
+                  {alumnosConFaltas.map(a => {
+                    const presentes = Math.round(habilitadas.length * a.asistenciaPct / 100)
+                    const faltas = habilitadas.length - presentes
+                    return (
+                      <p key={a.id} className="text-sm text-amber-700">
+                        {a.nombre} — {faltas} {faltas === 1 ? 'falta' : 'faltas'}
+                      </p>
+                    )
+                  })}
                 </div>
               </div>
             </div>
