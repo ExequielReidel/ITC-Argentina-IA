@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -23,21 +23,7 @@
             font-size: 0.75rem;
             font-weight: 700;
         }
-            /* anti-copy + copy-btn */
-        body { user-select: none; -webkit-user-select: none; }
-        .copy-btn {
-            position: absolute; top: 8px; right: 8px;
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: #e2e8f0; border-radius: 6px;
-            padding: 3px 10px; font-size: 11px; line-height: 1.5;
-            cursor: pointer; font-family: sans-serif;
-            transition: background 0.2s, border-color 0.2s;
-            user-select: none; -webkit-user-select: none;
-            z-index: 10;
-        }
-        .copy-btn:hover { background: rgba(255,255,255,0.28); }
-        .copy-btn.copied { background: rgba(52,211,153,0.35); border-color: rgba(52,211,153,0.7); color: #6ee7b7; }    </style>
+    </style>
 </head>
 <body class="p-4 md:p-10">
     <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -155,7 +141,7 @@
                 </div>
             </div>
 
-            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">El módulo HTTP: la "comodín universal"</h4>
+            <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">El módulo HTTP: el "comodín universal"</h4>
             <p class="text-slate-700 mb-4">Cuando una app no tiene un módulo nativo en Make, podés usar el <strong>módulo HTTP</strong> para hablarle a su API. Es más técnico, pero te abre miles de posibilidades. Ejemplo: pedirle al servicio de la AFIP el tipo de cambio del día.</p>
             <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
                 <p class="text-sm text-purple-900"><i class="fa-solid fa-circle-info mr-2"></i><strong>Tranquilo:</strong> en la próxima clase (Clase 18) vamos a profundizar APIs y JSON con la analogía del restaurante. Hoy lo mencionamos para que sepas que existe.</p>
@@ -183,6 +169,16 @@
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>¿Qué tipo de propiedad buscás?</strong> (opción múltiple: Departamento / Casa / Local comercial)</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Mensaje adicional</strong> (texto largo)</li>
                 </ul>
+                <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-4 text-sm text-amber-900">
+                    <p class="font-bold mb-2"><i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i>Ojo: Make NO detecta los campos nuevos automáticamente</p>
+                    <p class="mb-2">Como el módulo "Watch New Rows" de la clase pasada se configuró cuando la planilla tenía menos columnas, <strong>los campos nuevos no van a aparecer como variables</strong> al configurar los próximos módulos.</p>
+                    <p class="mb-2"><strong>Cómo destrabarlo (elegí UNA opción):</strong></p>
+                    <ul class="space-y-1 ml-2">
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Opción A (más rápida):</strong> entrá al módulo "Watch New Rows", hacé clic en "OK" para guardar (aunque no cambies nada). Después en la planilla cargá una respuesta de prueba al formulario nuevo. Luego en Make hacé <strong>"Run once"</strong> para que detecte la nueva estructura. Los campos nuevos van a aparecer disponibles.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Opción B (segura):</strong> borrá el módulo "Watch New Rows" y volvé a crearlo apuntando a la misma hoja. No perdés nada del resto del escenario.</li>
+                    </ul>
+                    <p class="mt-2 italic">Esta es una limitación conocida de Make: cuando agregás columnas a una hoja que ya estaba conectada, el módulo "se queda" con el esquema viejo.</p>
+                </div>
             </div>
 
             <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
@@ -238,27 +234,13 @@
                     <h4 class="text-lg font-extrabold text-purple-900">Programar la frecuencia del escenario</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Abajo a la izquierda hay un ícono de reloj. Hacé clic.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Te aparecen opciones: cada X minutos, cada X horas, en horario específico, etc.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Para un formulario de contacto, configurá <strong>cada 15 minutos</strong> (lo más rápido del plan FREE).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Si fuera un reporte semanal, configurá <strong>"Once a week"</strong> y elegí el día y la hora exacta.</li>
-                </ul>
-            </div>
-
-            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
-                    <h4 class="text-lg font-extrabold text-purple-900">Demo del módulo HTTP (avanzado)</h4>
-                </div>
-                <p class="text-slate-700 ml-13 mb-3">Mostremos un ejemplo simple: agregar al final un módulo que consulta el dólar oficial del día y lo loguea en otra hoja:</p>
-                <ul class="ml-13 text-slate-700 space-y-2 text-sm mb-3">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Agregá un módulo HTTP → "Make a request".</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En URL: <code class="bg-slate-100 px-2 py-0.5 rounded text-xs">https://dolarapi.com/v1/dolares/oficial</code> (API pública gratuita argentina).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En Method: <strong>GET</strong>.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Activá la opción <strong>"Parse response"</strong> para que Make convierta el JSON automáticamente.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Abajo a la izquierda hay un texto que dice <strong>"Every 15 minutes"</strong> con un ícono de reloj. Hacé clic.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Te aparecen opciones: <em>At regular intervals</em>, <em>Every day</em>, <em>Days of the week</em>, <em>Days of the month</em>, fechas específicas, On demand, etc.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Para un formulario de contacto, dejá <strong>"At regular intervals" → 15 minutos</strong> (es el mínimo del plan FREE).</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Si fuera un reporte semanal, elegirías <strong>"Days of the week"</strong> y configurarías el día y la hora exacta.</li>
                 </ul>
                 <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
-                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>Make te devuelve datos que podés usar en módulos siguientes: <span class="var-tag">{{HTTP.compra}}</span> o <span class="var-tag">{{HTTP.venta}}</span>. Útil si tu negocio depende del dólar.
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>El módulo <strong>HTTP</strong> que mencionamos en la teoría lo vamos a usar en serio la próxima clase, cuando aprendamos a leer datos externos (clima, dólar, etc.) con APIs.
                 </div>
             </div>
 
@@ -307,7 +289,7 @@
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Dominás el <strong>mapeo de variables</strong> entre módulos.</span></li>
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés los <strong>3 tipos de programación</strong>: polling, webhook, scheduled.</span></li>
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés un escenario robusto con <strong>4 módulos en cadena</strong>.</span></li>
-                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tuviste tu primer encuentro con el módulo <strong>HTTP</strong> (la "comodín universal").</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tuviste tu primer encuentro con el módulo <strong>HTTP</strong> (el "comodín universal").</span></li>
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Aplicaste <strong>buenas prácticas</strong> de nombre, notas y testing.</span></li>
             </ul>
             <div class="mt-6 p-5 bg-purple-50 rounded-xl border-2 border-purple-300">
@@ -349,35 +331,5 @@
         </footer>
 
     </div>
-    <script>
-    (function() {
-        document.querySelectorAll('.prompt-box').forEach(function(box) {
-            box.style.position = 'relative';
-            var btn = document.createElement('button');
-            btn.className = 'copy-btn';
-            btn.textContent = 'Copiar';
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                var ps = box.querySelectorAll('p');
-                var text = ps.length > 0
-                    ? Array.from(ps).map(function(p) { return p.innerText; }).join('\n').trim()
-                    : box.innerText.replace(/^Copiar\s*/i, '').trim();
-                navigator.clipboard.writeText(text).then(function() {
-                    btn.textContent = '✓ Copiado';
-                    btn.classList.add('copied');
-                    setTimeout(function() { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
-                }).catch(function() {
-                    var ta = document.createElement('textarea');
-                    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-                    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-                    document.body.removeChild(ta);
-                    btn.textContent = '✓ Copiado';
-                    btn.classList.add('copied');
-                    setTimeout(function() { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
-                });
-            });
-            box.insertBefore(btn, box.firstChild);
-        });
-    })();
-    </script></body>
+</body>
 </html>

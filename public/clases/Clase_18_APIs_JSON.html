@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -27,21 +27,7 @@
             font-size: 0.75rem;
             font-weight: 700;
         }
-            /* anti-copy + copy-btn */
-        body { user-select: none; -webkit-user-select: none; }
-        .copy-btn {
-            position: absolute; top: 8px; right: 8px;
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: #e2e8f0; border-radius: 6px;
-            padding: 3px 10px; font-size: 11px; line-height: 1.5;
-            cursor: pointer; font-family: sans-serif;
-            transition: background 0.2s, border-color 0.2s;
-            user-select: none; -webkit-user-select: none;
-            z-index: 10;
-        }
-        .copy-btn:hover { background: rgba(255,255,255,0.28); }
-        .copy-btn.copied { background: rgba(52,211,153,0.35); border-color: rgba(52,211,153,0.7); color: #6ee7b7; }    </style>
+    </style>
 </head>
 <body class="p-4 md:p-10">
     <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -220,9 +206,21 @@
                     <h4 class="text-lg font-extrabold text-purple-900">Crear el escenario base</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Crea un nuevo escenario y nombralo <strong>"Recomendación diaria de plantas"</strong>.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Como trigger, usá <strong>"Schedule"</strong> (programado) → cada día a las 7:00 AM hora Argentina.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En Make, hacé clic en <strong>"Create a new scenario"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Nombralo <strong>"Recomendación diaria de plantas"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>El primer módulo va a ser directamente el <strong>HTTP del clima</strong> (lo configuramos en el paso siguiente). En Make no existe un módulo separado de "Schedule": la frecuencia se configura aparte, no es un módulo.</li>
                 </ul>
+                <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-3 text-sm text-amber-900">
+                    <p class="font-bold mb-2"><i class="fa-solid fa-clock text-amber-600 mr-2"></i>Cómo programar el escenario para que corra todos los días a las 7 AM</p>
+                    <p class="mb-2">Esto lo vas a configurar al final, cuando ya tengas todo el flujo armado. Pero anotalo desde ya para que sepas dónde está:</p>
+                    <ul class="space-y-1 ml-2">
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i>Abajo a la izquierda en el editor vas a ver el texto <strong>"Every 15 minutes"</strong> con un ícono de reloj. Hacé clic.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i>En el panel que se abre, en <strong>"Run scenario"</strong> elegí <strong>"Every day"</strong>.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i>En "Time" poné <strong>07:00</strong>.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i>Hacé clic en <strong>OK</strong> y después activá el toggle del escenario (queda en verde).</li>
+                    </ul>
+                    <p class="mt-2 italic">Make usa la zona horaria que vos definiste en tu perfil de usuario. Confirmá que sea <strong>America/Argentina/Buenos_Aires</strong> antes de activar.</p>
+                </div>
             </div>
 
             <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
@@ -238,7 +236,7 @@
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Hacé clic en <strong>Run once</strong> y mirá la respuesta. Vas a ver datos como temperatura actual y código del clima.</li>
                 </ul>
                 <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
-                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>Make te muestra todos los datos disponibles. Vas a poder usar <span class="var-tag">{{2.current.temperature_2m}}</span> en los próximos módulos.
+                    <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>Make te muestra todos los datos disponibles. Vas a poder usar <span class="var-tag">{{1.current.temperature_2m}}</span> en los próximos módulos.
                 </div>
             </div>
 
@@ -254,7 +252,7 @@
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "Messages" → contenido del mensaje user:</li>
                 </ul>
                 <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 mt-3 font-mono text-xs">
-                    <p>Sos un experto en jardinería de Mar del Plata. La temperatura de hoy es <span class="text-purple-300">{{2.current.temperature_2m}}</span>°C.<br><br>
+                    <p>Sos un experto en jardinería de Mar del Plata. La temperatura de hoy es <span class="text-purple-300">{{1.current.temperature_2m}}</span>°C.<br><br>
                     Recomendá UNA planta de exterior ideal para hoy y dame:<br>
                     1) Nombre<br>
                     2) Por qué es ideal con este clima (1 frase)<br>
@@ -271,7 +269,7 @@
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Antes, creá una planilla nueva con columnas: Fecha, Temperatura, Recomendación.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Agregá módulo Google Sheets → <strong>"Add a Row"</strong>.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Mapea las variables: Fecha = <span class="var-tag">{{now}}</span>, Temperatura = <span class="var-tag">{{2.current.temperature_2m}}</span>, Recomendación = <span class="var-tag">{{3.choices[].message.content}}</span>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Mapea las variables: Fecha = <span class="var-tag">{{now}}</span>, Temperatura = <span class="var-tag">{{1.current.temperature_2m}}</span>, Recomendación = <span class="var-tag">{{2.choices[].message.content}}</span>.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Probá el escenario completo con "Run once".</li>
                 </ul>
             </div>
@@ -287,9 +285,9 @@
                 </ul>
                 <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 mt-3 font-mono text-xs">
                     <p>Buen día!<br><br>
-                    Hoy en MDP: <span class="text-purple-300">{{2.current.temperature_2m}}°C</span><br><br>
+                    Hoy en MDP: <span class="text-purple-300">{{1.current.temperature_2m}}°C</span><br><br>
                     Recomendación generada para Instagram:<br><br>
-                    <span class="text-purple-300">{{3.choices[].message.content}}</span><br><br>
+                    <span class="text-purple-300">{{2.choices[].message.content}}</span><br><br>
                     Subila a la planilla y publicá cuando puedas.</p>
                 </div>
                 <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 ml-13 mt-3 text-sm text-emerald-900">
@@ -390,35 +388,5 @@
         </footer>
 
     </div>
-    <script>
-    (function() {
-        document.querySelectorAll('.prompt-box').forEach(function(box) {
-            box.style.position = 'relative';
-            var btn = document.createElement('button');
-            btn.className = 'copy-btn';
-            btn.textContent = 'Copiar';
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                var ps = box.querySelectorAll('p');
-                var text = ps.length > 0
-                    ? Array.from(ps).map(function(p) { return p.innerText; }).join('\n').trim()
-                    : box.innerText.replace(/^Copiar\s*/i, '').trim();
-                navigator.clipboard.writeText(text).then(function() {
-                    btn.textContent = '✓ Copiado';
-                    btn.classList.add('copied');
-                    setTimeout(function() { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
-                }).catch(function() {
-                    var ta = document.createElement('textarea');
-                    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-                    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-                    document.body.removeChild(ta);
-                    btn.textContent = '✓ Copiado';
-                    btn.classList.add('copied');
-                    setTimeout(function() { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
-                });
-            });
-            box.insertBefore(btn, box.firstChild);
-        });
-    })();
-    </script></body>
+</body>
 </html>
