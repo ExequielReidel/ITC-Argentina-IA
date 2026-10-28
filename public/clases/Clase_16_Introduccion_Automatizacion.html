@@ -239,7 +239,8 @@
                     <h4 class="text-lg font-extrabold text-purple-900">Crear tu primer escenario en Make</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En el panel izquierdo, hacé clic en <strong>"Scenarios"</strong> → botón morado <strong>"+ Create a new scenario"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Hacé clic en el botón violeta <strong>"+ Create scenario"</strong> (está en la barra superior; también lo encontrás entrando a <strong>"Scenarios"</strong> en el panel izquierdo).</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Arriba a la izquierda dice <em>"New scenario"</em>: hacé clic ahí para ponerle nombre, por ejemplo <strong>"Aviso formulario"</strong>.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Vas a ver un lienzo en blanco con un círculo grande con un signo "+".</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Ese círculo es donde vas a poner tu primer módulo.</li>
                 </ul>
@@ -254,25 +255,25 @@
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Hacé clic en el círculo. Buscá <strong>"Google Sheets"</strong> y seleccioná.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Elegí la opción <strong>"Watch New Rows"</strong> (vigilar nuevas filas).</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Make te pide <strong>conectarte a Google</strong>. Aceptá los permisos.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Buscá la planilla "Respuestas Contacto Cliente" y seleccioná la hoja que creó Google Forms.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Dejá <strong>Search Method</strong> en <em>"Search by path"</em> y <strong>Drive</strong> en <em>"My Drive"</em>. En <strong>Spreadsheet ID</strong> hacé clic en <em>"Click here to choose file"</em> y elegí la planilla "Contacto Cliente (respuestas)". Después, en <strong>Sheet Name</strong>, seleccioná la hoja que creó Google Forms.</li>
                 </ul>
                 <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-4 text-sm text-amber-900">
                     <p class="font-bold mb-2"><i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i>Atención: Make te va a pedir más cosas</p>
                     <p class="mb-2">Después de seleccionar la hoja, Make abre <strong>varias opciones más</strong>. No te asustes, son simples:</p>
                     <ul class="space-y-1 ml-2">
                         <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Table contains headers:</strong> elegí <strong>Yes</strong> (la primera fila de tu planilla tiene los nombres de columna).</li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Row with headers:</strong> dejá <strong>A1</strong> (es la celda donde empiezan los títulos).</li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Limit:</strong> escribí <strong>2</strong> (cuántas filas procesa por ejecución).</li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i>Hacé clic en <strong>OK</strong>.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Row with headers:</strong> dejá <strong>A1:Z1</strong> (es el rango donde están los títulos de columna; viene así por defecto).</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Limit:</strong> dejá <strong>2</strong> (cuántas filas procesa por ejecución; también viene por defecto).</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i>Hacé clic en <strong>Save</strong> (abajo a la derecha del panel, al lado de "Cancel"). Ojo: este Save confirma el módulo, <strong>no guarda el escenario</strong>; eso lo hacemos en el paso 7.</li>
                     </ul>
                     <p class="mt-3 mb-2">Después se abre <strong>otra ventana</strong> que dice <em>"Choose where to start"</em>. Tenés tres opciones:</p>
                     <ul class="space-y-1 ml-2">
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>All:</strong> procesa TODAS las respuestas (incluso las viejas que ya estaban antes).</li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>From now on:</strong> solo procesa respuestas nuevas que lleguen de acá en más. <strong>← Elegí esta.</strong></li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Choose manually:</strong> elegís a partir de qué fila.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Choose manually:</strong> elegís a partir de qué fila empieza a mirar.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>All:</strong> procesa TODAS las filas que haya, y después las nuevas. <strong>← Elegí esta</strong> (tu planilla recién creada todavía no tiene respuestas, así que no hay nada viejo que procesar).</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Since specific ID:</strong> empieza a partir de un número de fila concreto.</li>
                     </ul>
-                    <p class="mt-2">Hacé clic en <strong>OK</strong>.</p>
-                    <p class="mt-3 text-xs">Los nombres de estas opciones cambian un poco según la versión de Make (podés ver también <em>"Since specific ID"</em> o <em>"Select manually"</em>). Si cerraste la ventana sin querer, hacé clic derecho sobre el módulo de Sheets → <strong>"Choose where to start"</strong> y vuelve a aparecer.</p>
+                    <p class="mt-2">Hacé clic en <strong>Save</strong>.</p>
+                    <p class="mt-3 text-xs">Si la ventana no aparece, o la cerraste sin querer, hacé clic derecho sobre el módulo de Sheets → <strong>"Choose where to start"</strong>. Si Make dice <em>"Before you can choose where to start, you must first fix errors in the module settings"</em>, es que falta completar algún campo del paso anterior.</p>
                 </div>
                 <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
                     <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>El trigger ya está listo. Cada vez que llegue una respuesta nueva al formulario, Make lo va a detectar.
@@ -286,21 +287,21 @@
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Al costado del módulo de Sheets, te aparece otro círculo "+". Hacé clic.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Buscá <strong>"Gmail"</strong> y seleccioná <strong>"Send an Email"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Buscá <strong>"Gmail"</strong> y seleccioná <strong>"Send an email"</strong>. Arriba a la derecha de la lista hay un selector de versión: dejá <strong>"Version 4"</strong>.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Conectate a tu cuenta de Gmail (leé el aviso de abajo antes: no todas las cuentas conectan igual).</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "To": tu propio email.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "Subject": <code class="bg-slate-100 px-2 py-0.5 rounded text-xs">📩 Nuevo contacto: {{1.Nombre}}</code></li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En <strong>"Body type"</strong> elegí <strong>"Raw"</strong> (es el formato más simple para empezar — escribís el mensaje directo).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En <strong>"Content type"</strong> dejá <strong>"HTML"</strong> (viene así por defecto).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "Content": redactá un mensaje. Para meter datos del formulario hacé clic en los campos del módulo Sheets a la izquierda y se autocompletan.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En <strong>"Body type"</strong> elegí <strong>"Raw HTML"</strong> (escribís el mensaje directo; la otra opción, <em>"Collection of contents"</em>, es para armar el mail por bloques).</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En <strong>"Body contents"</strong>: redactá un mensaje. Para meter datos del formulario hacé clic en los campos del módulo Sheets que aparecen a la izquierda y se insertan solos.</li>
                 </ul>
                 <div class="bg-red-50 border-l-4 border-red-400 rounded-lg p-4 ml-13 mt-3 text-sm text-red-900">
-                    <p class="font-bold mb-2"><i class="fa-solid fa-triangle-exclamation text-red-600 mr-2"></i>Atención: conectar Gmail depende del tipo de cuenta</p>
+                    <p class="font-bold mb-2"><i class="fa-solid fa-triangle-exclamation text-red-600 mr-2"></i>Atención: la conexión de Gmail puede fallar con cuentas personales</p>
+                    <p class="mb-2">Al hacer clic en <strong>"Create a connection"</strong> Make muestra: Connection name, "Additional Scopes" (no lo toques) y un toggle <em>"Advanced settings"</em> con Client ID / Client Secret (son opcionales, dejalos vacíos). Hacé clic en <strong>"Sign in with Google"</strong> y aceptá los permisos.</p>
                     <ul class="space-y-1 ml-2">
-                        <li><i class="fa-solid fa-circle-dot text-red-600 mr-2 text-xs"></i><strong>Cuenta de Google Workspace</strong> (mail con el dominio de tu empresa, ej. vos@tunegocio.com): conecta directo. Aceptá los permisos y listo.</li>
-                        <li><i class="fa-solid fa-circle-dot text-red-600 mr-2 text-xs"></i><strong>Cuenta personal @gmail.com:</strong> Google restringe el acceso y Make te pide crear un <em>"custom OAuth client"</em> en Google Cloud. Es un trámite largo y con errores frecuentes (403, "Access blocked"); no lo vamos a hacer en esta clase.</li>
+                        <li><i class="fa-solid fa-circle-dot text-red-600 mr-2 text-xs"></i><strong>Cuenta de Google Workspace</strong> (mail con el dominio de tu empresa, ej. vos@tunegocio.com): suele conectar sin problemas.</li>
+                        <li><i class="fa-solid fa-circle-dot text-red-600 mr-2 text-xs"></i><strong>Cuenta personal @gmail.com:</strong> Google restringe el acceso a Gmail. Puede aparecer "Access blocked" / error 403, y aunque conecte, Make te va a pedir <strong>reautorizar la conexión cada 6 meses</strong> (aparece "Connection expired… Reauthorize connection"). La solución "oficial" es crear un cliente OAuth propio en Google Cloud: es largo y no lo vamos a hacer en esta clase.</li>
                     </ul>
-                    <p class="mt-2"><strong>Alternativa para @gmail.com:</strong> en lugar del módulo "Gmail", buscá la app <strong>"Email"</strong> de Make y usá <strong>"Send an Email"</strong> con conexión <strong>SMTP</strong>. Datos: servidor <code class="bg-red-100 px-1.5 py-0.5 rounded text-xs font-mono">smtp.gmail.com</code>, puerto <code class="bg-red-100 px-1.5 py-0.5 rounded text-xs font-mono">465</code> (SSL), tu mail como usuario y una <strong>"Contraseña de aplicación"</strong> de Google como clave (se genera en <a href="https://myaccount.google.com/apppasswords" class="underline font-semibold">myaccount.google.com/apppasswords</a>; requiere tener activada la verificación en 2 pasos). Los campos To / Subject / Content son los mismos.</p>
+                    <p class="mt-2"><strong>Plan B si Gmail no conecta:</strong> borrá el módulo Gmail y agregá la app <strong>"Email"</strong> de Make (la que dice <em>Built-in</em>) → módulo <strong>"Send an Email"</strong>. Al crear la conexión elegí <strong>Connection type: "Others (SMTP)"</strong> → Email provider: <strong>"Other"</strong>, y completá: Email address (tu Gmail), Your full name, SMTP server <code class="bg-red-100 px-1.5 py-0.5 rounded text-xs font-mono">smtp.gmail.com</code>, Port <code class="bg-red-100 px-1.5 py-0.5 rounded text-xs font-mono">465</code>, Use a secure connection (TLS): Yes, User name (tu Gmail) y Password: una <strong>"Contraseña de aplicación"</strong> de Google (se genera en <a href="https://myaccount.google.com/apppasswords" class="underline font-semibold">myaccount.google.com/apppasswords</a>; requiere verificación en 2 pasos). En ese módulo los campos son <strong>To, Subject, Content Type (HTML) y Content</strong>: mismo contenido que abajo.</p>
                 </div>
                 <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-3 text-sm text-amber-900">
                     <p class="font-bold mb-1"><i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i>Importante sobre los saltos de línea</p>
@@ -321,7 +322,7 @@
                     <h4 class="text-lg font-extrabold text-purple-900">Probar el escenario</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En la barra de herramientas del escenario hay un botón violeta <strong>"Run once"</strong> (según la versión de Make está abajo a la izquierda o arriba). Hacé clic.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Abajo a la izquierda hay un botón violeta <strong>"Run once"</strong>. Hacé clic.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Make queda esperando que llegue una respuesta nueva al formulario.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Abrí el formulario y completá tú mismo una respuesta de prueba.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En 30-60 segundos, Make detecta la fila nueva, ejecuta el flujo y te llega el email.</li>
@@ -337,9 +338,9 @@
                     <h4 class="text-lg font-extrabold text-purple-900">Activar el escenario para que corra solo</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Primero guardá el escenario: hacé clic en <strong>"Save"</strong> (ícono de disquete, en la misma barra de herramientas donde está "Run once").</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En esa barra hay un <strong>toggle ON/OFF</strong> (en algunas versiones dice <em>"Scheduling"</em> o <em>"Immediately as data arrives"</em>). Hacé clic para activarlo (queda en <strong>verde</strong>).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Al lado vas a ver un texto tipo <em>"Every 15 minutes"</em> con un ícono de reloj. Ahí configurás cada cuánto Make revisa el formulario. Para empezar dejalo en 15 minutos (es el mínimo del plan FREE).</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Primero guardá el escenario: hacé clic en <strong>"Save"</strong> (ícono de disquete, abajo, justo a la derecha de "Run once"). La flechita de al lado abre "Save a version": no la necesitás por ahora.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i><strong>Arriba a la derecha</strong> vas a ver el texto <em>"Every 15 minutes"</em> con un ícono de reloj. Ahí configurás cada cuánto Make revisa el formulario: se abre "Schedule settings" con <em>Run scenario: At regular intervals</em> y <em>Minutes: 15</em>. Dejalo así (15 es el mínimo del plan FREE) y hacé clic en Save.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Al lado de ese texto está el toggle que dice <strong>"Inactive"</strong>. Hacé clic para pasarlo a <strong>"Active"</strong> (queda en verde). Make también te lo puede ofrecer solo, con un botón "Activate scenario", después de guardar la programación.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Listo: ahora corre solo. <strong>Hasta cuando estés durmiendo o de vacaciones.</strong></li>
                 </ul>
                 <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-3 text-sm text-amber-900">
@@ -354,7 +355,8 @@
                 </div>
                 <ul class="space-y-2 text-purple-900 text-sm">
                     <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Crédito (antes "operación"):</strong> cada vez que un módulo se ejecuta, consume 1 crédito. Tu plan FREE tiene 1.000/mes y 2 escenarios activos como máximo.</li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Frecuencia:</strong> en plan FREE el escenario revisa cada 15 minutos como mínimo.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Frecuencia:</strong> en plan FREE el escenario revisa cada 15 minutos como mínimo, y cada ejecución puede durar hasta 5 minutos.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Conexiones:</strong> las cuentas que conectaste (Google, Gmail) se administran desde <strong>"Credentials"</strong> en el panel izquierdo. Ahí las reautorizás si vencen.</li>
                     <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Historial:</strong> Make te muestra el historial de ejecuciones. Si algo falla, vas y miras qué pasó.</li>
                 </ul>
             </div>
