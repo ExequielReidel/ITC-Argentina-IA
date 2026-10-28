@@ -177,7 +177,7 @@
                         <tr class="border-t border-slate-200 bg-purple-50/40">
                             <td class="p-3 font-bold text-purple-900">Make ⭐</td>
                             <td class="p-3 text-slate-700">Pymes con flujos visuales complejos</td>
-                            <td class="p-3 text-slate-700">Plan gratuito (1.000 ops/mes)</td>
+                            <td class="p-3 text-slate-700">Plan gratuito (1.000 créditos/mes)</td>
                             <td class="p-3 text-slate-700">Media (2-3 semanas)</td>
                         </tr>
                         <tr class="border-t border-slate-200">
@@ -217,7 +217,7 @@
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Andá a <a href="https://www.make.com" class="text-purple-600 underline font-semibold">make.com</a> y hacé clic en "Get started free".</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Registrate con tu cuenta de Google (es lo más rápido).</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Make te pregunta dónde está tu zona horaria. Elegí <strong>America/Argentina/Buenos_Aires</strong>.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Te asigna automáticamente el plan <strong>FREE</strong>: 1.000 operaciones por mes.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Te asigna automáticamente el plan <strong>FREE</strong>: 1.000 créditos por mes (Make antes los llamaba "operaciones"; en algunas pantallas todavía vas a ver ese nombre) y hasta 2 escenarios activos a la vez.</li>
                 </ul>
             </div>
 
@@ -272,6 +272,7 @@
                         <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Choose manually:</strong> elegís a partir de qué fila.</li>
                     </ul>
                     <p class="mt-2">Hacé clic en <strong>OK</strong>.</p>
+                    <p class="mt-3 text-xs">Los nombres de estas opciones cambian un poco según la versión de Make (podés ver también <em>"Since specific ID"</em> o <em>"Select manually"</em>). Si cerraste la ventana sin querer, hacé clic derecho sobre el módulo de Sheets → <strong>"Choose where to start"</strong> y vuelve a aparecer.</p>
                 </div>
                 <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
                     <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>El trigger ya está listo. Cada vez que llegue una respuesta nueva al formulario, Make lo va a detectar.
@@ -286,13 +287,21 @@
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Al costado del módulo de Sheets, te aparece otro círculo "+". Hacé clic.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Buscá <strong>"Gmail"</strong> y seleccioná <strong>"Send an Email"</strong>.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Conectate a tu cuenta de Gmail.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Conectate a tu cuenta de Gmail (leé el aviso de abajo antes: no todas las cuentas conectan igual).</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "To": tu propio email.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "Subject": <code class="bg-slate-100 px-2 py-0.5 rounded text-xs">📩 Nuevo contacto: {{1.Nombre}}</code></li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En <strong>"Body type"</strong> elegí <strong>"Raw"</strong> (es el formato más simple para empezar — escribís el mensaje directo).</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En <strong>"Content type"</strong> dejá <strong>"HTML"</strong> (viene así por defecto).</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "Content": redactá un mensaje. Para meter datos del formulario hacé clic en los campos del módulo Sheets a la izquierda y se autocompletan.</li>
                 </ul>
+                <div class="bg-red-50 border-l-4 border-red-400 rounded-lg p-4 ml-13 mt-3 text-sm text-red-900">
+                    <p class="font-bold mb-2"><i class="fa-solid fa-triangle-exclamation text-red-600 mr-2"></i>Atención: conectar Gmail depende del tipo de cuenta</p>
+                    <ul class="space-y-1 ml-2">
+                        <li><i class="fa-solid fa-circle-dot text-red-600 mr-2 text-xs"></i><strong>Cuenta de Google Workspace</strong> (mail con el dominio de tu empresa, ej. vos@tunegocio.com): conecta directo. Aceptá los permisos y listo.</li>
+                        <li><i class="fa-solid fa-circle-dot text-red-600 mr-2 text-xs"></i><strong>Cuenta personal @gmail.com:</strong> Google restringe el acceso y Make te pide crear un <em>"custom OAuth client"</em> en Google Cloud. Es un trámite largo y con errores frecuentes (403, "Access blocked"); no lo vamos a hacer en esta clase.</li>
+                    </ul>
+                    <p class="mt-2"><strong>Alternativa para @gmail.com:</strong> en lugar del módulo "Gmail", buscá la app <strong>"Email"</strong> de Make y usá <strong>"Send an Email"</strong> con conexión <strong>SMTP</strong>. Datos: servidor <code class="bg-red-100 px-1.5 py-0.5 rounded text-xs font-mono">smtp.gmail.com</code>, puerto <code class="bg-red-100 px-1.5 py-0.5 rounded text-xs font-mono">465</code> (SSL), tu mail como usuario y una <strong>"Contraseña de aplicación"</strong> de Google como clave (se genera en <a href="https://myaccount.google.com/apppasswords" class="underline font-semibold">myaccount.google.com/apppasswords</a>; requiere tener activada la verificación en 2 pasos). Los campos To / Subject / Content son los mismos.</p>
+                </div>
                 <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-3 text-sm text-amber-900">
                     <p class="font-bold mb-1"><i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i>Importante sobre los saltos de línea</p>
                     <p>Como el contenido se envía como HTML, los <strong>Enter normales no se ven</strong> en el email. Para que haya un salto de línea usá <code class="bg-amber-100 px-1.5 py-0.5 rounded text-xs font-mono">&lt;br&gt;</code> al final de cada renglón (mirá el ejemplo de abajo).</p>
@@ -312,7 +321,7 @@
                     <h4 class="text-lg font-extrabold text-purple-900">Probar el escenario</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Abajo a la izquierda hay un botón violeta <strong>"Run once"</strong>. Hacé clic.</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En la barra de herramientas del escenario hay un botón violeta <strong>"Run once"</strong> (según la versión de Make está abajo a la izquierda o arriba). Hacé clic.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Make queda esperando que llegue una respuesta nueva al formulario.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Abrí el formulario y completá tú mismo una respuesta de prueba.</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En 30-60 segundos, Make detecta la fila nueva, ejecuta el flujo y te llega el email.</li>
@@ -328,9 +337,9 @@
                     <h4 class="text-lg font-extrabold text-purple-900">Activar el escenario para que corra solo</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Primero guardá el escenario: hacé clic en <strong>"Save"</strong> (ícono de disquete, abajo a la izquierda).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Al lado del Save, en la barra de abajo, hay un <strong>toggle ON/OFF</strong>. Hacé clic para activarlo (queda en <strong>verde</strong>).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Justo al lado vas a ver un texto tipo <em>"Every 15 minutes"</em> con un ícono de reloj. Ahí configurás cada cuánto Make revisa el formulario. Para empezar dejalo en 15 minutos (es el mínimo del plan FREE).</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Primero guardá el escenario: hacé clic en <strong>"Save"</strong> (ícono de disquete, en la misma barra de herramientas donde está "Run once").</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En esa barra hay un <strong>toggle ON/OFF</strong> (en algunas versiones dice <em>"Scheduling"</em> o <em>"Immediately as data arrives"</em>). Hacé clic para activarlo (queda en <strong>verde</strong>).</li>
+                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Al lado vas a ver un texto tipo <em>"Every 15 minutes"</em> con un ícono de reloj. Ahí configurás cada cuánto Make revisa el formulario. Para empezar dejalo en 15 minutos (es el mínimo del plan FREE).</li>
                     <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Listo: ahora corre solo. <strong>Hasta cuando estés durmiendo o de vacaciones.</strong></li>
                 </ul>
                 <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-3 text-sm text-amber-900">
@@ -344,7 +353,7 @@
                     <h4 class="text-lg font-extrabold text-purple-900">Cosas importantes que conviene saber</h4>
                 </div>
                 <ul class="space-y-2 text-purple-900 text-sm">
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Operación:</strong> cada vez que un módulo se ejecuta, consume "1 operación". Tu plan FREE tiene 1.000/mes.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Crédito (antes "operación"):</strong> cada vez que un módulo se ejecuta, consume 1 crédito. Tu plan FREE tiene 1.000/mes y 2 escenarios activos como máximo.</li>
                     <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Frecuencia:</strong> en plan FREE el escenario revisa cada 15 minutos como mínimo.</li>
                     <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Historial:</strong> Make te muestra el historial de ejecuciones. Si algo falla, vas y miras qué pasó.</li>
                 </ul>
@@ -383,7 +392,7 @@
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés los <strong>5 conceptos básicos</strong>: trigger, acción, módulo, escenario, conexión.</span></li>
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés tu <strong>cuenta de Make activa</strong>, conectada a Google.</span></li>
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Diseñaste y ejecutaste tu <strong>primer escenario funcionando</strong>.</span></li>
-                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés qué es una "operación" y cómo cuidar tu plan gratis.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés qué es un "crédito" (antes "operación") y cómo cuidar tu plan gratis.</span></li>
             </ul>
             <div class="mt-6 p-5 bg-purple-50 rounded-xl border-2 border-purple-300">
                 <div class="flex items-start gap-3">
