@@ -7,55 +7,65 @@
     <meta name="description" content="Clase 16 del curso IA + Automatizaciones de ITC Argentina. Arrancás Fase 2: qué es automatizar, conceptos clave, Make vs Zapier vs n8n, y tu primer escenario.">
     <meta name="author" content="ITC Argentina">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { make: {
+            50: '#F7F2FF', 100: '#EEE3FF', 200: '#DAC4FF', 300: '#BE9BFF', 400: '#9F6BF2',
+            500: '#833FE3', 600: '#6D00CC', 700: '#5600A3', 800: '#41007B', 900: '#2C0354', 950: '#1B0235',
+            pink: '#FF2D9B', pinkdark: '#C9006F', lime: '#B6F03B'
+        } } } } };
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .step-card { transition: all 0.3s ease; }
-        .step-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        .prompt-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        body { font-family: 'Inter', sans-serif; background-color: #F3EEFB; color: #1E1B2E; }
+        .step-card { transition: transform .25s ease, box-shadow .25s ease; }
+        .step-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -12px rgba(109,0,204,.35); }
+        .prompt-box { background: linear-gradient(135deg, #1B0235 0%, #2C0354 60%, #41007B 100%); border: 1px solid rgba(255,255,255,.12); }
+        /* Hero con trama de puntos tipo lienzo de Make */
+        .make-hero {
+            background:
+                radial-gradient(circle at 1px 1px, rgba(255,255,255,.14) 1px, transparent 0) 0 0 / 22px 22px,
+                linear-gradient(115deg, #1B0235 0%, #41007B 55%, #6D00CC 100%);
+        }
+        /* Nodos (módulos) como en el editor de Make */
         .module-circle {
-            width: 80px; height: 80px;
+            width: 88px; height: 88px;
             border-radius: 50%;
-            background: white;
-            border: 3px solid #9333ea;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #6b21a8;
-            text-align: center;
-            line-height: 1;
+            background: linear-gradient(145deg, #833FE3 0%, #6D00CC 100%);
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 3px #DAC4FF, 0 10px 20px -10px rgba(109,0,204,.6);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-size: 0.6rem; font-weight: 800; letter-spacing: .04em;
+            color: #fff; text-align: center; line-height: 1;
         }
-        .arrow-connector {
-            display: flex;
-            align-items: center;
-            color: #9333ea;
-            font-size: 1.25rem;
-        }
+        .module-circle i { color: #fff; font-size: 1.35rem; }
+        .arrow-connector { display: flex; align-items: center; color: #9F6BF2; font-size: 1.1rem; }
+        .arrow-connector::before { content: ""; width: 22px; height: 3px; background: #BE9BFF; border-radius: 2px; margin-right: 4px; }
+        /* Número de paso como nodo pequeño */
+        .step-num { background: linear-gradient(145deg, #833FE3, #6D00CC); box-shadow: 0 0 0 3px #EEE3FF; }
+        /* Barra de "programación" al estilo toolbar de Make */
+        .make-chip { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); backdrop-filter: blur(4px); }
     </style>
 </head>
 <body class="p-4 md:p-10">
-    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden ring-1 ring-make-200">
 
-        <header class="bg-gradient-to-r from-purple-700 to-indigo-900 text-white p-8 md:p-12">
-            <div class="flex flex-wrap items-center gap-3 text-purple-100 text-xs font-bold uppercase tracking-widest mb-4">
+        <header class="make-hero text-white p-8 md:p-12">
+            <div class="flex flex-wrap items-center gap-3 text-make-100 text-xs font-bold uppercase tracking-widest mb-4">
                 <span>Clase 16</span><span>•</span>
                 <span>Fase 2 — Automatización</span><span>•</span>
                 <span><i class="fa-solid fa-clock mr-1"></i>90 min</span>
             </div>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-3 uppercase tracking-tight">Introducción a la Automatización</h1>
-            <p class="text-purple-100 text-lg mb-4 max-w-2xl">Bienvenido a Fase 2. La IA piensa, Make ejecuta. Acá empieza el negocio que trabaja solo.</p>
-            <span class="inline-block bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-bold">AUTOMATIZACIÓN</span>
+            <p class="text-make-100 text-lg mb-4 max-w-2xl">Bienvenido a Fase 2. La IA piensa, Make ejecuta. Acá empieza el negocio que trabaja solo.</p>
+            <div class="flex flex-wrap gap-2"><span class="make-chip inline-block px-4 py-1 rounded-full text-sm font-bold">AUTOMATIZACIÓN</span><span class="inline-block bg-make-pinkdark text-white px-4 py-1 rounded-full text-sm font-bold"><i class="fa-solid fa-diagram-project mr-1"></i>MAKE</span></div>
         </header>
 
-        <section class="bg-purple-50 border-l-8 border-purple-600 p-6 rounded-xl m-6">
+        <section class="bg-make-50 border-l-8 border-make-600 p-6 rounded-xl m-6">
             <div class="flex items-start gap-4">
-                <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
+                <div class="bg-make-600 text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-bullseye text-xl"></i></div>
                 <div>
-                    <h2 class="text-xs uppercase tracking-widest font-bold text-purple-700 mb-1">Objetivo de la clase</h2>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-make-700 mb-1">Objetivo de la clase</h2>
                     <p class="text-lg text-slate-800 font-medium">Al finalizar esta clase vas a <strong>tener tu cuenta de Make creada</strong>, vas a entender los conceptos clave (escenario, módulo, trigger, acción) y vas a ejecutar tu <strong>primer flujo automático</strong>: una notificación por email cuando llega un formulario de Google.</p>
                 </div>
             </div>
@@ -66,7 +76,7 @@
             <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
                 <div class="bg-slate-100 p-3 rounded-lg"><strong>10 min</strong><br><span class="text-slate-600">Repaso</span></div>
                 <div class="bg-slate-100 p-3 rounded-lg"><strong>20 min</strong><br><span class="text-slate-600">Teoría</span></div>
-                <div class="bg-purple-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-purple-800">Práctica</span></div>
+                <div class="bg-make-100 p-3 rounded-lg"><strong>40 min</strong><br><span class="text-make-800">Práctica</span></div>
                 <div class="bg-slate-100 p-3 rounded-lg"><strong>15 min</strong><br><span class="text-slate-600">Ejercicio</span></div>
                 <div class="bg-slate-100 p-3 rounded-lg"><strong>5 min</strong><br><span class="text-slate-600">Cierre</span></div>
             </div>
@@ -81,19 +91,19 @@
             <p class="text-slate-700 text-lg mb-4">En las 15 clases anteriores aprendiste a usar la IA como tu <strong>asistente de inteligencia</strong>: te ayuda a redactar, diseñar, analizar, decidir. Pero todavía vos sos las "manos": abrís ChatGPT, copiás, pegás, mandás.</p>
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
                 <ul class="space-y-2 text-slate-700">
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Qué tarea de tu día querrías que se haga sola, sin que vos tengas que estar al lado?</li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-purple-600 mt-1"></i>¿Tenés cuenta de Google activa? La vamos a usar mucho hoy.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-make-600 mt-1"></i>¿Qué tarea de tu día querrías que se haga sola, sin que vos tengas que estar al lado?</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-question text-make-600 mt-1"></i>¿Tenés cuenta de Google activa? La vamos a usar mucho hoy.</li>
                 </ul>
             </div>
-            <div class="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-xl">
-                <p class="text-sm text-purple-900"><i class="fa-solid fa-rocket text-purple-600 mr-2"></i><strong>El gran salto de Fase 2:</strong> no vas a aprender una herramienta nueva de IA. Vas a aprender a <strong>conectar herramientas</strong> para que se hablen entre sí sin vos. Make es el "lenguaje universal" que une Gmail con WhatsApp con Excel con ChatGPT.</p>
+            <div class="mt-4 p-4 bg-make-50 border border-make-200 rounded-xl">
+                <p class="text-sm text-make-900"><i class="fa-solid fa-rocket text-make-600 mr-2"></i><strong>El gran salto de Fase 2:</strong> no vas a aprender una herramienta nueva de IA. Vas a aprender a <strong>conectar herramientas</strong> para que se hablen entre sí sin vos. Make es el "lenguaje universal" que une Gmail con WhatsApp con Excel con ChatGPT.</p>
             </div>
         </section>
 
         <section class="p-6 md:p-10 bg-slate-50">
             <div class="flex items-center gap-3 mb-4">
-                <i class="fa-solid fa-book-open text-purple-600 text-xl"></i>
-                <h2 class="text-xs uppercase tracking-widest font-bold text-purple-600">Desarrollo teórico · 20 min</h2>
+                <i class="fa-solid fa-book-open text-make-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-make-600">Desarrollo teórico · 20 min</h2>
             </div>
             <h3 class="text-2xl font-extrabold text-slate-900 mb-4">¿Qué significa "automatizar"?</h3>
             <p class="text-slate-700 text-lg mb-4">Automatizar es <strong>diseñar un flujo donde, cuando pasa X, automáticamente pasa Y</strong>. Sin que vos hagas nada. Sin estar conectado. Las 24 horas. Los 7 días. Pasa solo.</p>
@@ -111,37 +121,37 @@
 
             <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Los 5 conceptos básicos que tenés que saber</h4>
             <div class="grid md:grid-cols-2 gap-4 mb-6">
-                <div class="step-card bg-white rounded-xl border-l-4 border-purple-600 p-5 shadow-sm">
+                <div class="step-card bg-white rounded-xl border-l-4 border-make-600 p-5 shadow-sm">
                     <div class="flex items-center gap-2 mb-2">
-                        <i class="fa-solid fa-bell text-purple-600 text-xl"></i>
+                        <i class="fa-solid fa-bell text-make-600 text-xl"></i>
                         <h5 class="font-extrabold text-slate-900">Trigger (disparador)</h5>
                     </div>
                     <p class="text-sm text-slate-700">El "evento" que arranca todo. Ejemplo: "cuando llega un nuevo formulario", "cuando recibo un mail con la palabra 'urgente'".</p>
                 </div>
-                <div class="step-card bg-white rounded-xl border-l-4 border-purple-600 p-5 shadow-sm">
+                <div class="step-card bg-white rounded-xl border-l-4 border-make-600 p-5 shadow-sm">
                     <div class="flex items-center gap-2 mb-2">
-                        <i class="fa-solid fa-bolt text-purple-600 text-xl"></i>
+                        <i class="fa-solid fa-bolt text-make-600 text-xl"></i>
                         <h5 class="font-extrabold text-slate-900">Acción</h5>
                     </div>
                     <p class="text-sm text-slate-700">Lo que pasa después del trigger. "Se manda un mail", "se guarda en Excel", "se notifica en Slack".</p>
                 </div>
-                <div class="step-card bg-white rounded-xl border-l-4 border-purple-600 p-5 shadow-sm">
+                <div class="step-card bg-white rounded-xl border-l-4 border-make-600 p-5 shadow-sm">
                     <div class="flex items-center gap-2 mb-2">
-                        <i class="fa-solid fa-cube text-purple-600 text-xl"></i>
+                        <i class="fa-solid fa-cube text-make-600 text-xl"></i>
                         <h5 class="font-extrabold text-slate-900">Módulo</h5>
                     </div>
                     <p class="text-sm text-slate-700">Cada "circulito" en el lienzo de Make. Representa una app (Gmail, Sheets, ChatGPT) o una operación lógica.</p>
                 </div>
-                <div class="step-card bg-white rounded-xl border-l-4 border-purple-600 p-5 shadow-sm">
+                <div class="step-card bg-white rounded-xl border-l-4 border-make-600 p-5 shadow-sm">
                     <div class="flex items-center gap-2 mb-2">
-                        <i class="fa-solid fa-diagram-project text-purple-600 text-xl"></i>
+                        <i class="fa-solid fa-diagram-project text-make-600 text-xl"></i>
                         <h5 class="font-extrabold text-slate-900">Escenario</h5>
                     </div>
                     <p class="text-sm text-slate-700">El flujo completo (la "cinta entera"). Está formado por un trigger + uno o más módulos conectados.</p>
                 </div>
-                <div class="step-card bg-white rounded-xl border-l-4 border-purple-600 p-5 shadow-sm md:col-span-2">
+                <div class="step-card bg-white rounded-xl border-l-4 border-make-600 p-5 shadow-sm md:col-span-2">
                     <div class="flex items-center gap-2 mb-2">
-                        <i class="fa-solid fa-link text-purple-600 text-xl"></i>
+                        <i class="fa-solid fa-link text-make-600 text-xl"></i>
                         <h5 class="font-extrabold text-slate-900">Conexión</h5>
                     </div>
                     <p class="text-sm text-slate-700">El permiso que le das a Make para acceder a una app tuya (tu Gmail, tu Drive, etc.). Se hace 1 sola vez por app y queda guardada.</p>
@@ -151,13 +161,13 @@
             <h4 class="text-xl font-extrabold text-slate-900 mb-3 mt-8">Visualización: cómo se ve un escenario</h4>
             <div class="bg-white border border-slate-200 rounded-xl p-6">
                 <div class="flex items-center justify-center flex-wrap gap-3">
-                    <div class="module-circle"><i class="fa-solid fa-bell text-purple-600"></i><span class="mt-1">FORMULARIO</span></div>
+                    <div class="module-circle"><i class="fa-solid fa-bell text-make-600"></i><span class="mt-1">FORMULARIO</span></div>
                     <div class="arrow-connector"><i class="fa-solid fa-arrow-right"></i></div>
-                    <div class="module-circle"><i class="fa-solid fa-table text-purple-600"></i><span class="mt-1">SHEETS</span></div>
+                    <div class="module-circle"><i class="fa-solid fa-table text-make-600"></i><span class="mt-1">SHEETS</span></div>
                     <div class="arrow-connector"><i class="fa-solid fa-arrow-right"></i></div>
-                    <div class="module-circle"><i class="fa-solid fa-envelope text-purple-600"></i><span class="mt-1">GMAIL</span></div>
+                    <div class="module-circle"><i class="fa-solid fa-envelope text-make-600"></i><span class="mt-1">GMAIL</span></div>
                     <div class="arrow-connector"><i class="fa-solid fa-arrow-right"></i></div>
-                    <div class="module-circle"><i class="fa-brands fa-whatsapp text-purple-600"></i><span class="mt-1">WHATSAPP</span></div>
+                    <div class="module-circle"><i class="fa-brands fa-whatsapp text-make-600"></i><span class="mt-1">WHATSAPP</span></div>
                 </div>
                 <p class="text-center text-xs text-slate-600 mt-4 italic">Trigger (formulario) → Acción 1 (guardar en Sheets) → Acción 2 (mail bienvenida) → Acción 3 (notificación WhatsApp)</p>
             </div>
@@ -174,10 +184,10 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white">
-                        <tr class="border-t border-slate-200 bg-purple-50/40">
-                            <td class="p-3 font-bold text-purple-900">Make ⭐</td>
+                        <tr class="border-t border-slate-200 bg-make-50/40">
+                            <td class="p-3 font-bold text-make-900">Make ⭐</td>
                             <td class="p-3 text-slate-700">Pymes con flujos visuales complejos</td>
-                            <td class="p-3 text-slate-700">Plan gratuito (1.000 ops/mes)</td>
+                            <td class="p-3 text-slate-700">Plan gratuito (1.000 créditos/mes)</td>
                             <td class="p-3 text-slate-700">Media (2-3 semanas)</td>
                         </tr>
                         <tr class="border-t border-slate-200">
@@ -195,168 +205,179 @@
                     </tbody>
                 </table>
             </div>
-            <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mt-4">
-                <p class="text-sm text-purple-900"><i class="fa-solid fa-circle-info mr-2"></i><strong>Nuestra elección: Make.</strong> Tiene el mejor balance entre poder, facilidad y costo para una Pyme argentina. Plan gratuito alcanza para empezar y escalar.</p>
+            <div class="bg-make-50 border border-make-200 rounded-lg p-4 mt-4">
+                <p class="text-sm text-make-900"><i class="fa-solid fa-circle-info mr-2"></i><strong>Nuestra elección: Make.</strong> Tiene el mejor balance entre poder, facilidad y costo para una Pyme argentina. Plan gratuito alcanza para empezar y escalar.</p>
             </div>
         </section>
 
         <section class="p-6 md:p-10">
             <div class="flex items-center gap-3 mb-4">
-                <i class="fa-solid fa-screwdriver-wrench text-purple-600 text-xl"></i>
-                <h2 class="text-xs uppercase tracking-widest font-bold text-purple-600">Práctica guiada · 40 min</h2>
+                <i class="fa-solid fa-screwdriver-wrench text-make-600 text-xl"></i>
+                <h2 class="text-xs uppercase tracking-widest font-bold text-make-600">Práctica guiada · 40 min</h2>
             </div>
             <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Tu primer escenario en Make</h3>
             <p class="text-slate-700 mb-6">Vamos a hacer el flujo más clásico para empezar: <strong>"cuando alguien llena mi formulario, me llega un email de aviso"</strong>. Suena simple, pero te enseña los 5 conceptos a la vez.</p>
 
-            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+            <div class="step-card bg-white border-l-8 border-make-600 rounded-xl shadow-md p-6 mb-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
-                    <h4 class="text-lg font-extrabold text-purple-900">Crear tu cuenta de Make</h4>
+                    <div class="step-num text-white w-10 h-10 rounded-full flex items-center justify-center font-extrabold">1</div>
+                    <h4 class="text-lg font-extrabold text-make-900">Crear tu cuenta de Make</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Andá a <a href="https://www.make.com" class="text-purple-600 underline font-semibold">make.com</a> y hacé clic en "Get started free".</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Registrate con tu cuenta de Google (es lo más rápido).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Make te pregunta dónde está tu zona horaria. Elegí <strong>America/Argentina/Buenos_Aires</strong>.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Te asigna automáticamente el plan <strong>FREE</strong>: 1.000 operaciones por mes.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Andá a <a href="https://www.make.com" class="text-make-600 underline font-semibold">make.com</a> y hacé clic en "Get started free".</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Registrate con tu cuenta de Google (es lo más rápido).</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Make te pregunta dónde está tu zona horaria. Elegí <strong>America/Argentina/Buenos_Aires</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Te asigna automáticamente el plan <strong>FREE</strong>: 1.000 créditos por mes (Make antes los llamaba "operaciones"; en algunas pantallas todavía vas a ver ese nombre) y hasta 2 escenarios activos a la vez.</li>
                 </ul>
             </div>
 
-            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+            <div class="step-card bg-white border-l-8 border-make-600 rounded-xl shadow-md p-6 mb-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
-                    <h4 class="text-lg font-extrabold text-purple-900">Crear el formulario de Google</h4>
+                    <div class="step-num text-white w-10 h-10 rounded-full flex items-center justify-center font-extrabold">2</div>
+                    <h4 class="text-lg font-extrabold text-make-900">Crear el formulario de Google</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Andá a <a href="https://forms.google.com" class="text-purple-600 underline font-semibold">forms.google.com</a> y crea uno nuevo.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Llamale <strong>"Contacto Cliente"</strong>. Agregá 3 campos: Nombre, Email, Mensaje.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Hacé clic en <strong>Respuestas</strong> (arriba) → ícono Sheets verde → "Crear nueva planilla". Esto crea un Excel donde se guardan las respuestas.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Andá a <a href="https://forms.google.com" class="text-make-600 underline font-semibold">forms.google.com</a> y crea uno nuevo.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Llamale <strong>"Contacto Cliente"</strong>. Agregá 3 campos: Nombre, Email, Mensaje.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Hacé clic en <strong>Respuestas</strong> (arriba) → ícono Sheets verde → "Crear nueva planilla". Esto crea un Excel donde se guardan las respuestas.</li>
                 </ul>
             </div>
 
-            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+            <div class="step-card bg-white border-l-8 border-make-600 rounded-xl shadow-md p-6 mb-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
-                    <h4 class="text-lg font-extrabold text-purple-900">Crear tu primer escenario en Make</h4>
+                    <div class="step-num text-white w-10 h-10 rounded-full flex items-center justify-center font-extrabold">3</div>
+                    <h4 class="text-lg font-extrabold text-make-900">Crear tu primer escenario en Make</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En el panel izquierdo, hacé clic en <strong>"Scenarios"</strong> → botón morado <strong>"+ Create a new scenario"</strong>.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Vas a ver un lienzo en blanco con un círculo grande con un signo "+".</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Ese círculo es donde vas a poner tu primer módulo.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Hacé clic en el botón violeta <strong>"+ Create scenario"</strong> (está en la barra superior; también lo encontrás entrando a <strong>"Scenarios"</strong> en el panel izquierdo).</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Arriba a la izquierda dice <em>"New scenario"</em>: hacé clic ahí para ponerle nombre, por ejemplo <strong>"Aviso formulario"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Vas a ver un lienzo en blanco con un círculo grande con un signo "+".</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Ese círculo es donde vas a poner tu primer módulo.</li>
                 </ul>
             </div>
 
-            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+            <div class="step-card bg-white border-l-8 border-make-600 rounded-xl shadow-md p-6 mb-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">4</div>
-                    <h4 class="text-lg font-extrabold text-purple-900">Configurar el TRIGGER (Google Sheets)</h4>
+                    <div class="step-num text-white w-10 h-10 rounded-full flex items-center justify-center font-extrabold">4</div>
+                    <h4 class="text-lg font-extrabold text-make-900">Configurar el TRIGGER (Google Sheets)</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Hacé clic en el círculo. Buscá <strong>"Google Sheets"</strong> y seleccioná.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Elegí la opción <strong>"Watch New Rows"</strong> (vigilar nuevas filas).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Make te pide <strong>conectarte a Google</strong>. Aceptá los permisos.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Buscá la planilla "Respuestas Contacto Cliente" y seleccioná la hoja que creó Google Forms.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Hacé clic en el círculo. Buscá <strong>"Google Sheets"</strong> y seleccioná.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Elegí la opción <strong>"Watch New Rows"</strong> (vigilar nuevas filas).</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Make te pide <strong>conectarte a Google</strong>. Aceptá los permisos.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Dejá <strong>Search Method</strong> en <em>"Search by path"</em> y <strong>Drive</strong> en <em>"My Drive"</em>. En <strong>Spreadsheet ID</strong> hacé clic en <em>"Click here to choose file"</em> y elegí la planilla "Contacto Cliente (respuestas)". Después, en <strong>Sheet Name</strong>, seleccioná la hoja que creó Google Forms.</li>
                 </ul>
                 <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-4 text-sm text-amber-900">
                     <p class="font-bold mb-2"><i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i>Atención: Make te va a pedir más cosas</p>
                     <p class="mb-2">Después de seleccionar la hoja, Make abre <strong>varias opciones más</strong>. No te asustes, son simples:</p>
                     <ul class="space-y-1 ml-2">
                         <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Table contains headers:</strong> elegí <strong>Yes</strong> (la primera fila de tu planilla tiene los nombres de columna).</li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Row with headers:</strong> dejá <strong>A1</strong> (es la celda donde empiezan los títulos).</li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Limit:</strong> escribí <strong>2</strong> (cuántas filas procesa por ejecución).</li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i>Hacé clic en <strong>OK</strong>.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Row with headers:</strong> dejá <strong>A1:Z1</strong> (es el rango donde están los títulos de columna; viene así por defecto).</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Limit:</strong> dejá <strong>2</strong> (cuántas filas procesa por ejecución; también viene por defecto).</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i>Hacé clic en <strong>Save</strong> (abajo a la derecha del panel, al lado de "Cancel"). Ojo: este Save confirma el módulo, <strong>no guarda el escenario</strong>; eso lo hacemos en el paso 7.</li>
                     </ul>
                     <p class="mt-3 mb-2">Después se abre <strong>otra ventana</strong> que dice <em>"Choose where to start"</em>. Tenés tres opciones:</p>
                     <ul class="space-y-1 ml-2">
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>All:</strong> procesa TODAS las respuestas (incluso las viejas que ya estaban antes).</li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>From now on:</strong> solo procesa respuestas nuevas que lleguen de acá en más. <strong>← Elegí esta.</strong></li>
-                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Choose manually:</strong> elegís a partir de qué fila.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Choose manually:</strong> elegís a partir de qué fila empieza a mirar.</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>All:</strong> procesa TODAS las filas que haya, y después las nuevas. <strong>← Elegí esta</strong> (tu planilla recién creada todavía no tiene respuestas, así que no hay nada viejo que procesar).</li>
+                        <li><i class="fa-solid fa-circle-dot text-amber-600 mr-2 text-xs"></i><strong>Since specific ID:</strong> empieza a partir de un número de fila concreto.</li>
                     </ul>
-                    <p class="mt-2">Hacé clic en <strong>OK</strong>.</p>
+                    <p class="mt-2">Hacé clic en <strong>Save</strong>.</p>
+                    <p class="mt-3 text-xs">Si la ventana no aparece, o la cerraste sin querer, hacé clic derecho sobre el módulo de Sheets → <strong>"Choose where to start"</strong>. Si Make dice <em>"Before you can choose where to start, you must first fix errors in the module settings"</em>, es que falta completar algún campo del paso anterior.</p>
                 </div>
                 <div class="bg-slate-100 rounded-lg p-3 ml-13 mt-3 text-sm text-slate-700">
                     <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i>El trigger ya está listo. Cada vez que llegue una respuesta nueva al formulario, Make lo va a detectar.
                 </div>
             </div>
 
-            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+            <div class="step-card bg-white border-l-8 border-make-600 rounded-xl shadow-md p-6 mb-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">5</div>
-                    <h4 class="text-lg font-extrabold text-purple-900">Agregar la ACCIÓN (Gmail)</h4>
+                    <div class="step-num text-white w-10 h-10 rounded-full flex items-center justify-center font-extrabold">5</div>
+                    <h4 class="text-lg font-extrabold text-make-900">Agregar la ACCIÓN (Gmail)</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Al costado del módulo de Sheets, te aparece otro círculo "+". Hacé clic.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Buscá <strong>"Gmail"</strong> y seleccioná <strong>"Send an Email"</strong>.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Conectate a tu cuenta de Gmail.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "To": tu propio email.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "Subject": <code class="bg-slate-100 px-2 py-0.5 rounded text-xs">📩 Nuevo contacto: {{1.Nombre}}</code></li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En <strong>"Body type"</strong> elegí <strong>"Raw"</strong> (es el formato más simple para empezar — escribís el mensaje directo).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En <strong>"Content type"</strong> dejá <strong>"HTML"</strong> (viene así por defecto).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En "Content": redactá un mensaje. Para meter datos del formulario hacé clic en los campos del módulo Sheets a la izquierda y se autocompletan.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Al costado del módulo de Sheets, te aparece otro círculo "+". Hacé clic.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Buscá <strong>"Gmail"</strong> y seleccioná <strong>"Send an email"</strong>. Arriba a la derecha de la lista hay un selector de versión: dejá <strong>"Version 4"</strong>.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Conectate a tu cuenta de Gmail (leé el aviso de abajo antes: no todas las cuentas conectan igual).</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>En "To": tu propio email.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>En "Subject": <code class="bg-slate-100 px-2 py-0.5 rounded text-xs">📩 Nuevo contacto: {{1.Nombre}}</code></li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>En <strong>"Body type"</strong> elegí <strong>"Raw HTML"</strong> (escribís el mensaje directo; la otra opción, <em>"Collection of contents"</em>, es para armar el mail por bloques).</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>En <strong>"Body contents"</strong>: redactá un mensaje. Para meter datos del formulario hacé clic en los campos del módulo Sheets que aparecen a la izquierda y se insertan solos.</li>
                 </ul>
+                <div class="bg-red-50 border-l-4 border-red-400 rounded-lg p-4 ml-13 mt-3 text-sm text-red-900">
+                    <p class="font-bold mb-2"><i class="fa-solid fa-triangle-exclamation text-red-600 mr-2"></i>Atención: la conexión de Gmail puede fallar con cuentas personales</p>
+                    <p class="mb-2">Al hacer clic en <strong>"Create a connection"</strong> Make muestra: Connection name, "Additional Scopes" (no lo toques) y un toggle <em>"Advanced settings"</em> con Client ID / Client Secret (son opcionales, dejalos vacíos). Hacé clic en <strong>"Sign in with Google"</strong> y aceptá los permisos.</p>
+                    <ul class="space-y-1 ml-2">
+                        <li><i class="fa-solid fa-circle-dot text-red-600 mr-2 text-xs"></i><strong>Cuenta de Google Workspace</strong> (mail con el dominio de tu empresa, ej. vos@tunegocio.com): suele conectar sin problemas.</li>
+                        <li><i class="fa-solid fa-circle-dot text-red-600 mr-2 text-xs"></i><strong>Cuenta personal @gmail.com:</strong> Google restringe el acceso a Gmail. Puede aparecer "Access blocked" / error 403, y aunque conecte, Make te va a pedir <strong>reautorizar la conexión cada 6 meses</strong> (aparece "Connection expired… Reauthorize connection"). La solución "oficial" es crear un cliente OAuth propio en Google Cloud: es largo y no lo vamos a hacer en esta clase.</li>
+                    </ul>
+                    <p class="mt-2"><strong>Plan B si Gmail no conecta:</strong> borrá el módulo Gmail y agregá la app <strong>"Email"</strong> de Make (la que dice <em>Built-in</em>) → módulo <strong>"Send an Email"</strong>. Al crear la conexión elegí <strong>Connection type: "Others (SMTP)"</strong> → Email provider: <strong>"Other"</strong>, y completá: Email address (tu Gmail), Your full name, SMTP server <code class="bg-red-100 px-1.5 py-0.5 rounded text-xs font-mono">smtp.gmail.com</code>, Port <code class="bg-red-100 px-1.5 py-0.5 rounded text-xs font-mono">465</code>, Use a secure connection (TLS): Yes, User name (tu Gmail) y Password: una <strong>"Contraseña de aplicación"</strong> de Google (se genera en <a href="https://myaccount.google.com/apppasswords" class="underline font-semibold">myaccount.google.com/apppasswords</a>; requiere verificación en 2 pasos). En ese módulo los campos son <strong>To, Subject, Content Type (HTML) y Content</strong>: mismo contenido que abajo.</p>
+                </div>
                 <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-3 text-sm text-amber-900">
                     <p class="font-bold mb-1"><i class="fa-solid fa-triangle-exclamation text-amber-600 mr-2"></i>Importante sobre los saltos de línea</p>
                     <p>Como el contenido se envía como HTML, los <strong>Enter normales no se ven</strong> en el email. Para que haya un salto de línea usá <code class="bg-amber-100 px-1.5 py-0.5 rounded text-xs font-mono">&lt;br&gt;</code> al final de cada renglón (mirá el ejemplo de abajo).</p>
                 </div>
                 <div class="prompt-box text-slate-100 rounded-xl p-5 ml-13 mt-3 font-mono text-xs">
                     <p>Hola, recibiste una nueva consulta:&lt;br&gt;&lt;br&gt;
-                    <span class="text-purple-300">Nombre: {{1.Nombre}}</span>&lt;br&gt;
-                    <span class="text-purple-300">Email: {{1.Email}}</span>&lt;br&gt;
-                    <span class="text-purple-300">Mensaje: {{1.Mensaje}}</span>&lt;br&gt;&lt;br&gt;
+                    <span class="text-make-300">Nombre: {{1.Nombre}}</span>&lt;br&gt;
+                    <span class="text-make-300">Email: {{1.Email}}</span>&lt;br&gt;
+                    <span class="text-make-300">Mensaje: {{1.Mensaje}}</span>&lt;br&gt;&lt;br&gt;
                     Respondele dentro de las próximas 24 horas.</p>
                 </div>
             </div>
 
-            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+            <div class="step-card bg-white border-l-8 border-make-600 rounded-xl shadow-md p-6 mb-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">6</div>
-                    <h4 class="text-lg font-extrabold text-purple-900">Probar el escenario</h4>
+                    <div class="step-num text-white w-10 h-10 rounded-full flex items-center justify-center font-extrabold">6</div>
+                    <h4 class="text-lg font-extrabold text-make-900">Probar el escenario</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Abajo a la izquierda hay un botón violeta <strong>"Run once"</strong>. Hacé clic.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Make queda esperando que llegue una respuesta nueva al formulario.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Abrí el formulario y completá tú mismo una respuesta de prueba.</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>En 30-60 segundos, Make detecta la fila nueva, ejecuta el flujo y te llega el email.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Abajo a la izquierda hay un botón violeta <strong>"Run once"</strong>. Hacé clic.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Make queda esperando que llegue una respuesta nueva al formulario.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Abrí el formulario y completá tú mismo una respuesta de prueba.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>En 30-60 segundos, Make detecta la fila nueva, ejecuta el flujo y te llega el email.</li>
                 </ul>
                 <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 ml-13 mt-3 text-sm text-emerald-900">
                     <i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i><strong>¡Lo lograste!</strong> Tu primer flujo automático está corriendo. La próxima clase agregamos más complejidad.
                 </div>
             </div>
 
-            <div class="step-card bg-white border-l-8 border-purple-600 rounded-xl shadow-md p-6 mb-5">
+            <div class="step-card bg-white border-l-8 border-make-600 rounded-xl shadow-md p-6 mb-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="bg-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">7</div>
-                    <h4 class="text-lg font-extrabold text-purple-900">Activar el escenario para que corra solo</h4>
+                    <div class="step-num text-white w-10 h-10 rounded-full flex items-center justify-center font-extrabold">7</div>
+                    <h4 class="text-lg font-extrabold text-make-900">Activar el escenario para que corra solo</h4>
                 </div>
                 <ul class="ml-13 text-slate-700 space-y-2 text-sm">
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Primero guardá el escenario: hacé clic en <strong>"Save"</strong> (ícono de disquete, abajo a la izquierda).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Al lado del Save, en la barra de abajo, hay un <strong>toggle ON/OFF</strong>. Hacé clic para activarlo (queda en <strong>verde</strong>).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Justo al lado vas a ver un texto tipo <em>"Every 15 minutes"</em> con un ícono de reloj. Ahí configurás cada cuánto Make revisa el formulario. Para empezar dejalo en 15 minutos (es el mínimo del plan FREE).</li>
-                    <li><i class="fa-solid fa-arrow-right text-purple-600 mr-2"></i>Listo: ahora corre solo. <strong>Hasta cuando estés durmiendo o de vacaciones.</strong></li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Primero guardá el escenario: hacé clic en <strong>"Save"</strong> (ícono de disquete, abajo, justo a la derecha de "Run once"). La flechita de al lado abre "Save a version": no la necesitás por ahora.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i><strong>Arriba a la derecha</strong> vas a ver el texto <em>"Every 15 minutes"</em> con un ícono de reloj. Ahí configurás cada cuánto Make revisa el formulario: se abre "Schedule settings" con <em>Run scenario: At regular intervals</em> y <em>Minutes: 15</em>. Dejalo así (15 es el mínimo del plan FREE) y hacé clic en Save.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Al lado de ese texto está el toggle que dice <strong>"Inactive"</strong>. Hacé clic para pasarlo a <strong>"Active"</strong> (queda en verde). Make también te lo puede ofrecer solo, con un botón "Activate scenario", después de guardar la programación.</li>
+                    <li><i class="fa-solid fa-arrow-right text-make-600 mr-2"></i>Listo: ahora corre solo. <strong>Hasta cuando estés durmiendo o de vacaciones.</strong></li>
                 </ul>
                 <div class="bg-amber-50 border-l-4 border-amber-400 rounded-lg p-4 ml-13 mt-3 text-sm text-amber-900">
                     <p><i class="fa-solid fa-info-circle text-amber-600 mr-2"></i>El botón <strong>"Run once"</strong> que usaste en el paso anterior corre el escenario UNA sola vez para probar. Para que corra solo de verdad, necesitás activar el toggle de este paso.</p>
                 </div>
             </div>
 
-            <div class="step-card bg-purple-50 border-2 border-purple-400 rounded-xl shadow-md p-6 mb-4">
+            <div class="step-card bg-make-50 border-2 border-make-400 rounded-xl shadow-md p-6 mb-4">
                 <div class="flex items-center gap-3 mb-3">
-                    <i class="fa-solid fa-star text-purple-600 text-2xl"></i>
-                    <h4 class="text-lg font-extrabold text-purple-900">Cosas importantes que conviene saber</h4>
+                    <i class="fa-solid fa-star text-make-600 text-2xl"></i>
+                    <h4 class="text-lg font-extrabold text-make-900">Cosas importantes que conviene saber</h4>
                 </div>
-                <ul class="space-y-2 text-purple-900 text-sm">
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Operación:</strong> cada vez que un módulo se ejecuta, consume "1 operación". Tu plan FREE tiene 1.000/mes.</li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Frecuencia:</strong> en plan FREE el escenario revisa cada 15 minutos como mínimo.</li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-purple-700 mt-1"></i><strong>Historial:</strong> Make te muestra el historial de ejecuciones. Si algo falla, vas y miras qué pasó.</li>
+                <ul class="space-y-2 text-make-900 text-sm">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-make-700 mt-1"></i><strong>Crédito (antes "operación"):</strong> cada vez que un módulo se ejecuta, consume 1 crédito. Tu plan FREE tiene 1.000/mes y 2 escenarios activos como máximo.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-make-700 mt-1"></i><strong>Frecuencia:</strong> en plan FREE el escenario revisa cada 15 minutos como mínimo, y cada ejecución puede durar hasta 5 minutos.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-make-700 mt-1"></i><strong>Conexiones:</strong> las cuentas que conectaste (Google, Gmail) se administran desde <strong>"Credentials"</strong> en el panel izquierdo. Ahí las reautorizás si vencen.</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle-dot text-make-700 mt-1"></i><strong>Historial:</strong> Make te muestra el historial de ejecuciones. Si algo falla, vas y miras qué pasó.</li>
                 </ul>
             </div>
         </section>
 
-        <section class="p-6 md:p-10 bg-purple-50 border-y-4 border-purple-200">
+        <section class="p-6 md:p-10 bg-make-50 border-y-4 border-make-200">
             <div class="flex items-center gap-3 mb-4">
-                <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
+                <div class="bg-make-600 text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa-solid fa-rocket text-xl"></i></div>
                 <div>
-                    <h2 class="text-xs uppercase tracking-widest font-bold text-purple-700">Ejercicio autónomo · 15 min</h2>
-                    <h3 class="text-2xl font-extrabold text-purple-900">Personalizá tu primer flujo</h3>
+                    <h2 class="text-xs uppercase tracking-widest font-bold text-make-700">Ejercicio autónomo · 15 min</h2>
+                    <h3 class="text-2xl font-extrabold text-make-900">Personalizá tu primer flujo</h3>
                 </div>
             </div>
             <ol class="list-decimal list-inside space-y-3 text-slate-800 ml-2 mb-6">
@@ -367,7 +388,7 @@
                 <li>Verificá que llegue el email. Si no llega, revisá el historial de Make.</li>
                 <li>Activá el escenario.</li>
             </ol>
-            <div class="bg-white rounded-xl p-4 border border-purple-200">
+            <div class="bg-white rounded-xl p-4 border border-make-200">
                 <p class="text-sm text-slate-700"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i><strong>Desafío extra:</strong> compartí el link del formulario con 3 personas y comprobá que el flujo funciona en producción. La sensación de ver llegar emails sin haber hecho nada es adictiva.</p>
             </div>
         </section>
@@ -383,14 +404,14 @@
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Conocés los <strong>5 conceptos básicos</strong>: trigger, acción, módulo, escenario, conexión.</span></li>
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Tenés tu <strong>cuenta de Make activa</strong>, conectada a Google.</span></li>
                 <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Diseñaste y ejecutaste tu <strong>primer escenario funcionando</strong>.</span></li>
-                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés qué es una "operación" y cómo cuidar tu plan gratis.</span></li>
+                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-600 mt-1 text-lg"></i><span>Sabés qué es un "crédito" (antes "operación") y cómo cuidar tu plan gratis.</span></li>
             </ul>
-            <div class="mt-6 p-5 bg-purple-50 rounded-xl border-2 border-purple-300">
+            <div class="mt-6 p-5 bg-make-50 rounded-xl border-2 border-make-300">
                 <div class="flex items-start gap-3">
-                    <i class="fa-solid fa-arrow-right text-purple-600 text-xl mt-1"></i>
+                    <i class="fa-solid fa-arrow-right text-make-600 text-xl mt-1"></i>
                     <div>
-                        <p class="font-bold text-purple-900 mb-1">Próxima clase: Conexiones Fundamentales en Make</p>
-                        <p class="text-sm text-purple-800">Subimos un nivel: vamos a conectar <strong>Google Forms con Sheets, con Gmail y con módulos HTTP</strong>. Vas a aprender a "mapear variables" entre módulos y a programar cuándo se ejecutan los escenarios.</p>
+                        <p class="font-bold text-make-900 mb-1">Próxima clase: Conexiones Fundamentales en Make</p>
+                        <p class="text-sm text-make-800">Subimos un nivel: vamos a conectar <strong>Google Forms con Sheets, con Gmail y con módulos HTTP</strong>. Vas a aprender a "mapear variables" entre módulos y a programar cuándo se ejecutan los escenarios.</p>
                     </div>
                 </div>
             </div>
@@ -409,18 +430,18 @@
             </div>
         </section>
 
-        <footer class="bg-slate-900 text-slate-300 p-6 md:p-8 text-center">
+        <footer class="bg-make-950 text-make-200 p-6 md:p-8 text-center">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
                 <div class="text-left">
-                    <p class="text-xs uppercase tracking-widest text-slate-500 font-bold">ITC Argentina · Curso 2026</p>
+                    <p class="text-xs uppercase tracking-widest text-make-300 font-bold">ITC Argentina · Curso 2026</p>
                     <p class="font-bold text-white">IA + Automatizaciones para Negocios</p>
                 </div>
                 <div class="flex items-center gap-3 text-sm">
-                    <span>Clase 16</span><span class="text-slate-500">de 22</span>
-                    <div class="w-32 h-2 bg-slate-700 rounded-full ml-2"><div class="h-full bg-purple-500 rounded-full" style="width: 72.5%"></div></div>
+                    <span>Clase 16</span><span class="text-make-300">de 22</span>
+                    <div class="w-32 h-2 bg-make-800 rounded-full ml-2"><div class="h-full bg-make-pink rounded-full" style="width: 72.5%"></div></div>
                 </div>
             </div>
-            <p class="text-xs text-slate-500 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
+            <p class="text-xs text-make-300 mt-4 italic">Material docente confidencial — Informatic Training Center®</p>
         </footer>
 
     </div>
